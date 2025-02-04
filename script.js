@@ -52,7 +52,7 @@ creativeToggle.addEventListener('click', () => {
   showContent(creativeContent, softwareContent);
 });
 
-<!-- Place this script before the closing </body> tag -->
+// Place this script before the closing </body> tag
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const animateElements = document.querySelectorAll('.animate');
@@ -68,3 +68,47 @@ creativeToggle.addEventListener('click', () => {
     });
   });
 </script>
+
+document.querySelector('.back-to-top').addEventListener('click', function(e) {
+  e.preventDefault();
+  
+  const scrollToTop = () => {
+    const c = document.documentElement.scrollTop || document.body.scrollTop;
+    
+    // If we haven't reached the top yet
+    if (c > 0) {
+      window.requestAnimationFrame(scrollToTop);
+      // Scroll by moving a percentage of the remaining distance
+      window.scrollTo(0, c - c / 8);
+    }
+  };
+  
+  scrollToTop();
+});
+
+// Project Filter Functionality
+document.addEventListener('DOMContentLoaded', () => {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const projects = document.querySelectorAll('.project-card');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Update active button
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      const filterValue = button.getAttribute('data-filter');
+
+      // Filter projects with smooth transitions
+      projects.forEach(project => {
+        const projectCategory = project.getAttribute('data-category');
+        
+        if (filterValue === 'all' || filterValue === projectCategory) {
+          project.classList.remove('hidden');
+        } else {
+          project.classList.add('hidden');
+        }
+      });
+    });
+  });
+});

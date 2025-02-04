@@ -120,10 +120,23 @@ h2 {
   text-decoration: none;
   font-size: 1rem;
   transition: color 0.3s ease;
+  position: relative;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
   color: var(--accent);
+}
+
+/* Optional: Add underline for current page */
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--accent);
 }
 
 /* ========================== */
@@ -254,12 +267,33 @@ h2 {
   -webkit-text-fill-color: transparent;
 }
 
-.where strong{
-  background: linear-gradient(180deg, #f0f0f0, #7d12ff); /* Match the --gradient-1 variable */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  /* font-style: italic; */
-  /* display: inline; */
+.where {
+  display: block;  /* Changed from flex to block */
+}
+
+.where strong {
+  display: inline-flex;  /* Changed to inline-flex to align with icon */
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+  color: var(--white);
+  transform: translate(2px, 3px);
+  font-size: 24px;
+}
+
+.company-icon {
+  width: 30px;
+  height: 30px;
+  /* filter: invert(1) grayscale(100%); */
+  opacity: 0.9;
+  transform: translateY(8px);
+}
+
+.where i {
+  display: block;
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: 0.25rem;
 }
 
 /* ========================== */
@@ -272,36 +306,49 @@ h2 {
   margin: 2rem 0;
 }
 
+/* Minimalist floating layout for skills without boxes */
+.skill-scroll {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center; /* Change to 'flex-start' or 'space-between' if desired */
+  padding: 1rem 0;
+}
+
 .skill {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--gray);
-  border-radius: 8px;
-  padding: 1rem;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .skill:hover {
-  background: rgba(125, 18, 255, 0.1);
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(125, 18, 255, 0.2);
+  transform: translateY(-3px); /* Subtle lift on hover */
 }
 
 .skill-icon {
-  width: 30px;
-  height: 30px;
-  margin-bottom: 1rem;
+  width: 40px;
+  height: 40px;
+  /* Ensure the image stays inverted */
   filter: invert(1);
+  transition: transform 0.3s ease; /* Only transition the transform if needed */
 }
 
-.skill span {
+/* Experience section company icons - keeping these separate */
+.company-icon {
+  width: 30px;
+  height: 30px;
+  /* filter: invert(1) grayscale(100%); */
+  opacity: 0.9;
+  transform: translateY(-3px);
+}
+*/
+ 
+.skill-name {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
   color: #ccc;
-  font-size: 0.95rem;
-  font-weight: 500;
 }
 
 /* Ensure all target images have a smooth transition */
@@ -315,7 +362,7 @@ h2 {
 .skill-icon:hover,
 .project-card img:hover,
 .social-icons img:hover { /* Add other selectors if needed */
-  transform: scale(1.25); /* Slightly enlarges the image */
+  transform: scale(1.05); /* Slightly enlarges the image */
 }
 
 /* ========================== */
