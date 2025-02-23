@@ -1,17 +1,18 @@
-import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
-import "./globals.css";
-import { Navbar } from './components/layout/Navbar';
+import './globals.css';
+import type { Metadata } from 'next';
+import { Plus_Jakarta_Sans } from 'next/font/google';
+import { Header } from './components/layout/Header';
+import { DomainProvider } from './components/layout/DomainProvider';
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-montserrat",
+const jakarta = Plus_Jakarta_Sans({ 
+  subsets: ['latin'],
+  // Includes a range of weights for more design flexibility
+  weight: ['300', '400', '500', '600', '700']
 });
 
 export const metadata: Metadata = {
-  title: "Adriel Vijuan",
-  description: "Personal portfolio of Adriel Vijuan - AI, Software, Creative",
+  title: 'Adriel Vijuan - Creative Developer & Designer',
+  description: 'Portfolio showcasing creative, software, and design work by Adriel Vijuan',
 };
 
 export default function RootLayout({
@@ -20,15 +21,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={montserrat.variable}>
-      <body className="bg-[#0a0a0a] text-white selection:bg-purple-500 selection:text-white">
-        <Navbar />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <footer className="container mx-auto px-6 py-8 text-center">
-          Adriel Vijuan 2025
-        </footer>
+    <html lang="en">
+      <body className={`${jakarta.className} bg-black text-white min-h-screen`}>
+        <DomainProvider>
+          <Header />
+          <main>{children}</main>
+          <footer className="container mx-auto px-6 py-8 text-center text-white/60">
+            © {new Date().getFullYear()} Adriel Vijuan. All rights reserved.
+          </footer>
+        </DomainProvider>
       </body>
     </html>
   );
