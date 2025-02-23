@@ -3,13 +3,6 @@
 import React from 'react';
 
 export const SoftwareHero = () => {
-  const categories = [
-    { icon: '🤖', label: 'AI/ML' },
-    { icon: '👁️', label: 'Computer Vision' },
-    { icon: '🌐', label: 'Web Development' },
-    { icon: '⚙️', label: 'Systems & Architecture' }
-  ];
-
   return (
     <section className="relative min-h-[90vh] flex items-center pt-20">
       {/* Background Effects */}
@@ -30,9 +23,29 @@ export const SoftwareHero = () => {
           </h1>
           
           {/* Description */}
-          <p className="text-xl md:text-2xl text-white/70 leading-relaxed">
-            ai/ml, computer vision, web development, and systems.
+          <p className="text-xl md:text-2xl text-white/70 leading-relaxed mb-12">
+            AI/ML, computer vision, web development, and systems.
           </p>
+
+          {/* Categories */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="bg-white/5 rounded-xl p-4 flex items-center gap-3">
+              <span className="text-2xl">🤖</span>
+              <span className="text-white/80">AI/ML</span>
+            </div>
+            <div className="bg-white/5 rounded-xl p-4 flex items-center gap-3">
+              <span className="text-2xl">👁️</span>
+              <span className="text-white/80">Computer Vision</span>
+            </div>
+            <div className="bg-white/5 rounded-xl p-4 flex items-center gap-3">
+              <span className="text-2xl">🌐</span>
+              <span className="text-white/80">Web Development</span>
+            </div>
+            <div className="bg-white/5 rounded-xl p-4 flex items-center gap-3">
+              <span className="text-2xl">⚙️</span>
+              <span className="text-white/80">Systems</span>
+            </div>
+          </div>
         </div>
       </div>
 

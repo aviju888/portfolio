@@ -6,7 +6,6 @@ import { type Domain } from './components/layout/DomainSwitcher';
 
 export default function Home() {
   const [isInitialAnimation, setIsInitialAnimation] = useState(true);
-  const [showDomains, setShowDomains] = useState(false);
   const [fadeOutName, setFadeOutName] = useState(false);
   const [loadingProgress, setLoadingProgress] = useState(0);
 
@@ -24,14 +23,10 @@ export default function Home() {
 
     // Start the animation sequence faster
     const timer1 = setTimeout(() => {
-      setShowDomains(true);
-    }, 1000); // Faster delay
-
-    const timer2 = setTimeout(() => {
       setFadeOutName(true);
     }, 1200); // Faster delay
 
-    const timer3 = setTimeout(() => {
+    const timer2 = setTimeout(() => {
       setIsInitialAnimation(false);
     }, 1500); // Faster delay
 
@@ -39,7 +34,6 @@ export default function Home() {
       clearInterval(loadingInterval);
       clearTimeout(timer1);
       clearTimeout(timer2);
-      clearTimeout(timer3);
     };
   }, []);
 
@@ -82,9 +76,9 @@ export default function Home() {
             transition-all duration-1000
             ${fadeOutName ? 'opacity-0 transform translate-y-10' : ''}`}
         >
-          {/* <div className="animate-typing inline-block" data-first-text="UC BERKELEY EECS" data-second-text="Aspiring Polymath.">
+          <div className="animate-typing">
             UC BERKELEY EECS
-          </div> */}
+          </div>
         </div>
         
         {/* Loading Bar */}
