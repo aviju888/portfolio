@@ -27,8 +27,8 @@ export const SoftwareHero = () => {
             AI/ML, computer vision, web development, and systems.
           </p>
 
-          {/* Categories */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {/* Skills Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
             <div className="bg-white/5 rounded-xl p-4 flex items-center gap-3">
               <span className="text-2xl">🤖</span>
               <span className="text-white/80">AI/ML</span>
@@ -44,6 +44,42 @@ export const SoftwareHero = () => {
             <div className="bg-white/5 rounded-xl p-4 flex items-center gap-3">
               <span className="text-2xl">⚙️</span>
               <span className="text-white/80">Systems</span>
+            </div>
+          </div>
+
+          {/* Languages & Tools */}
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-lg font-medium text-white/60 mb-4">Languages</h3>
+              <div className="flex flex-wrap gap-3">
+                {['Python', 'TypeScript', 'JavaScript', 'C'].map((lang) => (
+                  <span key={lang} className="px-4 py-2 bg-blue-500/10 text-blue-400/90 rounded-lg border border-blue-500/20">
+                    {lang}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-medium text-white/60 mb-4">Frameworks & Libraries</h3>
+              <div className="flex flex-wrap gap-3">
+                {['PyTorch', 'React', 'Next.js', 'OpenCV', 'Pandas'].map((framework) => (
+                  <span key={framework} className="px-4 py-2 bg-blue-500/10 text-blue-400/90 rounded-lg border border-blue-500/20">
+                    {framework}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-medium text-white/60 mb-4">Tools & Technologies</h3>
+              <div className="flex flex-wrap gap-3">
+                {['Docker', 'Git', 'Tailwind CSS', 'Jupyter'].map((tool) => (
+                  <span key={tool} className="px-4 py-2 bg-blue-500/10 text-blue-400/90 rounded-lg border border-blue-500/20">
+                    {tool}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
