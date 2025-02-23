@@ -23,9 +23,9 @@ export const SoftwareHero = () => {
           </h1>
           
           {/* Description */}
-          <p className="text-xl md:text-2xl text-white/70 leading-relaxed mb-12">
+          {/* <p className="text-xl md:text-2xl text-white/70 leading-relaxed mb-12">
             Specializing in AI/ML, computer vision, web development, and systems engineering.
-          </p>
+          </p> */}
 
           {/* Skills Section */}
           <div className="text-sm space-y-6">
