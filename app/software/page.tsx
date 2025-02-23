@@ -14,7 +14,9 @@ interface Project {
   link?: string;
 }
 
-const projects = {
+type ProjectCategories = Record<string, Project[]>;
+
+const projects: ProjectCategories = {
   'ai-ml': [
     {
       title: "Pacman AI Agent",
@@ -27,7 +29,8 @@ const projects = {
         "Adaptive reward functions"
       ],
       year: "April 2023",
-      thumbnail: "/images/software/pacman-ai.jpg"
+      thumbnail: "/images/software/pacman-ai.jpg",
+      link: "https://github.com/aviju888/diffusion-models"
     },
     {
       title: "TERF Toxic Speech Detection",

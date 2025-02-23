@@ -37,7 +37,7 @@ export const ProjectsSection = ({ categories }: ProjectsSectionProps) => {
         return 'from-pink-500 to-purple-500';
       case 'software':
         return 'from-blue-500 to-cyan-500';
-      case 'design':
+      case 'ui-ux':
         return 'from-orange-500 to-yellow-500';
       default:
         return 'from-white/20 to-white/10';
