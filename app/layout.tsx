@@ -6,8 +6,12 @@ import { DomainProvider } from './components/layout/DomainProvider';
 
 const jakarta = Plus_Jakarta_Sans({ 
   subsets: ['latin'],
-  // Includes a range of weights for more design flexibility
-  weight: ['300', '400', '500', '600', '700']
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+  fallback: ['system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Arial', 'sans-serif'],
+  preload: true,
+  adjustFontFallback: true,
+  variable: '--font-jakarta'
 });
 
 export const metadata: Metadata = {
@@ -22,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${jakarta.className} bg-black text-white min-h-screen`}>
+      <body className={`${jakarta.className} ${jakarta.variable} bg-black text-white min-h-screen`}>
         <DomainProvider>
           <Header />
           <main>{children}</main>
