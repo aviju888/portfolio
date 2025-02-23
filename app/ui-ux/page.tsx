@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { DesignHero } from '../components/domain/DesignHero';
 
 export default function UIUXPage() {
   return (

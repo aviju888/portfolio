@@ -31,13 +31,13 @@ export default function About() {
         <div className="space-y-8">
           <div className="space-y-4 text-sm leading-relaxed">
             <p className="text-white/80 pl-8">
-              Hi, I'm Adriel! I am currently a 4th-year at UC Berkeley majoring in Electrical Engineering and Computer Sciences with a minor in Data Science. My passions lie at the intersection of artificial intelligence, software design, and creativity. I enjoy leveraging technology to solve real-world problems while adding a touch of innovation and artistry to my work.
+              Hi, I&apos;m Adriel! I am currently a 4th-year at UC Berkeley majoring in Electrical Engineering and Computer Sciences with a minor in Data Science. My passions lie at the intersection of artificial intelligence, software design, and creativity. I enjoy leveraging technology to solve real-world problems while adding a touch of innovation and artistry to my work.
             </p>
             <p className="text-white/80 pl-8">
-              Over the years, I've done work in AI/ML, front-end development, and computational photography. Whether I'm fine-tuning a diffusion model, leading a team, or capturing moments through photography, I'm constantly seeking to blend logic with creativity.
+              Over the years, I&apos;ve done work in AI/ML, front-end development, and computational photography. Whether I&apos;m fine-tuning a diffusion model, leading a team, or capturing moments through photography, I&apos;m constantly seeking to blend logic with creativity.
             </p>
             <p className="text-white/80 pl-8">
-              Above all, I find myself to be a person with a true passion for learning. You'll likely find me teaching myself new skills, capturing moments through my camera, leading dance teams, or actively seeking ways to grow and connect with the community around me.
+              Above all, I find myself to be a person with a true passion for learning. You&apos;ll likely find me teaching myself new skills, capturing moments through my camera, leading dance teams, or actively seeking ways to grow and connect with the community around me.
             </p>
           </div>
           
