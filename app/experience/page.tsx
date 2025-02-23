@@ -139,8 +139,7 @@ export default function ExperiencePage() {
             Experience
           </h1>
           <p className="text-xl text-white/80 max-w-3xl">
-            A diverse portfolio spanning software engineering, creative direction, and leadership roles.
-            Currently focused on AI/ML, computer vision, and creative technology.
+            software, research, creative direction, and leadership roles.
           </p>
         </div>
 
