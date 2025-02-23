@@ -9,7 +9,7 @@ export const ScrollIndicator = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
+      if (window.scrollY > 50) {
         setIsVisible(false);
       } else {
         setIsVisible(true);
@@ -26,7 +26,7 @@ export const ScrollIndicator = () => {
         return 'from-pink-500 to-purple-500';
       case 'software':
         return 'from-blue-500 to-cyan-500';
-      case 'design':
+      case 'ui-ux':
         return 'from-orange-500 to-yellow-500';
       default:
         return 'from-white/20 to-white/10';
@@ -36,10 +36,10 @@ export const ScrollIndicator = () => {
   return (
     <div 
       className={`fixed bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center
-        transition-all duration-500 z-50
-        ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+        transition-all duration-700 z-50 pointer-events-none
+        ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
     >
-      <div className="text-white/50 mb-2 text-sm">Scroll to explore projects</div>
+      <div className="text-white/50 mb-2 text-sm">Scroll to explore</div>
       <div 
         className={`w-6 h-12 rounded-full border-2 border-white/20 relative
           before:absolute before:w-1 before:h-1 before:rounded-full

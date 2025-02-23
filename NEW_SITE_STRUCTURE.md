@@ -1,7 +1,7 @@
 # New Portfolio Site Structure
 
 ## Overview
-A Next.js-based personal portfolio website featuring three distinct domains: Creative, Software, and Design. Each domain offers a unique visual and interactive experience while maintaining a cohesive design language through domain-aware components and dynamic theming.
+A Next.js-based personal portfolio website featuring three distinct domains: Creative, Software, and UI/UX. Each domain offers a unique visual and interactive experience while maintaining a cohesive design language through domain-aware components and dynamic theming.
 
 ## Technical Stack
 - Framework: Next.js 15.1.7 with App Router
@@ -9,7 +9,8 @@ A Next.js-based personal portfolio website featuring three distinct domains: Cre
 - Styling: Tailwind CSS with CSS Variables for theming
 - State Management: React Context for domain state
 - Animations: CSS transitions and keyframe animations
-- Font: Montserrat (Google Fonts)
+- Font: Plus Jakarta Sans (Google Fonts)
+- Image Optimization: Next.js Image with WebP support
 
 ## Core Features
 - Domain-specific theming
@@ -18,30 +19,41 @@ A Next.js-based personal portfolio website featuring three distinct domains: Cre
 - Interactive UI components
 - Context-aware styling
 - Mobile-first approach
+- Optimized image loading
 
 ## File Structure
 ```
 /app/
 ├── components/
 │   ├── layout/
-│   │   ├── Header.tsx           # Domain-aware navigation header
+│   │   ├── Header.tsx           # Domain-aware navigation header with dropdown
 │   │   ├── DomainProvider.tsx   # Context provider for domain state
-│   │   └── DomainSwitcher.tsx   # Domain navigation component
+│   │   ├── DomainSwitcher.tsx   # Domain navigation component
+│   │   ├── Experience.tsx       # Timeline component for experience
+│   │   └── Skills.tsx          # Skills showcase grid
 │   │
 │   ├── domain/                  # Domain-specific components
 │   │   ├── CreativeHero.tsx     # Creative domain hero
 │   │   ├── SoftwareHero.tsx     # Software domain hero
-│   │   └── DesignHero.tsx       # Design domain hero
+│   │   └── UIUXHero.tsx        # UI/UX domain hero
 │   │
 │   └── ui/                      # Shared UI components
-│       └── Button.tsx           # Domain-aware button component
+│       ├── Button.tsx           # Domain-aware button component
+│       ├── ProjectCard.tsx      # Optimized project card with image handling
+│       └── ScrollIndicator.tsx  # Scroll animation indicator
 │
 ├── [domain]/                    # Domain-specific pages
 │   ├── creative/
+│   │   └── page.tsx            # Creative portfolio page
 │   ├── software/
-│   └── design/
+│   │   └── page.tsx            # Software projects page
+│   └── ui-ux/
+│       └── page.tsx            # UI/UX design page
 │
-├── contact/                     # Contact page with domain-aware styling
+├── experience/                  # Experience timeline page
+│   └── page.tsx
+│
+├── about/                      # About page
 │   └── page.tsx
 │
 ├── layout.tsx                   # Root layout with DomainProvider
@@ -49,30 +61,50 @@ A Next.js-based personal portfolio website featuring three distinct domains: Cre
 └── globals.css                  # Global styles and theme variables
 ```
 
+## Image Optimization Configuration
+```javascript
+// next.config.js
+{
+  images: {
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    formats: ['image/webp'],
+    minimumCacheTTL: 60,
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  }
+}
+```
+
 ## Component Details
 
-### DomainProvider
+### ProjectCard
 ```typescript
-interface DomainContextType {
-  activeDomain?: Domain;
+interface ProjectCardProps {
+  title: string;
+  description: string;
+  tools: string[];
+  thumbnail?: string;
+  link?: string;
+  onClick?: () => void;
 }
-
-type Domain = 'creative' | 'software' | 'design';
 ```
-- Manages global domain state
-- Provides domain context to child components
-- Handles domain detection from URL
+Features:
+- Optimized image loading with WebP support
+- Responsive image sizing
+- Lazy loading for performance
+- Black image fallback
+- Blur placeholder effect
+- Domain-specific styling
 
 ### Button Component
 ```typescript
 interface ButtonProps {
-  variant?: 'solid' | 'outline' | 'ghost';
+  variant?: 'solid' | 'outline' | 'ghost' | 'link';
   size?: 'sm' | 'md' | 'lg';
   children: React.ReactNode;
   href?: string;
-  onClick?: () => void;
   className?: string;
-  type?: 'button' | 'submit' | 'reset';
 }
 ```
 Features:
@@ -85,6 +117,7 @@ Features:
 Features:
 - Domain-aware styling
 - Responsive navigation
+- Links dropdown menu
 - Mobile menu
 - Scroll-aware background
 - Smooth transitions
@@ -101,7 +134,7 @@ Features:
   /* Domain Gradients */
   --gradient-creative: linear-gradient(135deg, #FF1493 0%, #7928CA 100%);
   --gradient-software: linear-gradient(135deg, #0891B2 0%, #2563EB 100%);
-  --gradient-design: linear-gradient(135deg, #F97316 0%, #FBBF24 100%);
+  --gradient-ui-ux: linear-gradient(135deg, #F97316 0%, #FBBF24 100%);
   
   /* Transitions */
   --transition-slow: 700ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -124,52 +157,10 @@ Features:
   --theme-accent: #38BDF8;
 }
 
-.theme-design {
+.theme-ui-ux {
   --theme-primary: #F97316;
   --theme-secondary: #FBBF24;
   --theme-accent: #FFA500;
-}
-```
-
-## Animations
-
-### Keyframe Animations
-```css
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes textGlow {
-  0% { text-shadow: 0 0 10px rgba(255,255,255,0.1); }
-  100% { 
-    text-shadow: 0 0 20px rgba(255,255,255,0.2),
-                 0 0 30px rgba(255,255,255,0.1);
-  }
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-```
-
-### Transition Classes
-```css
-.hover-lift {
-  transition: transform var(--transition-medium);
-}
-
-.page-enter {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.page-enter-active {
-  opacity: 1;
-  transform: translateY(0);
 }
 ```
 
@@ -182,49 +173,50 @@ Features:
   xl: 1280px  /* Large Desktop */
   ```
 - Mobile-first approach
-- Collapsible navigation
 - Adaptive layouts
+- Responsive images
 - Touch-friendly interactions
 
 ## Domain-Specific Features
 
 ### Creative Domain
 - Artistic gradients (Pink to Purple)
-- Image overlays
-- Floating animations
-- Creative project showcase
+- Photography and videography showcase
+- Dynamic project cards
+- Media galleries
 
 ### Software Domain
 - Technical gradients (Blue to Cyan)
 - Code snippets
-- Technology tags
 - Project documentation
+- Technology tags
 
-### Design Domain
+### UI/UX Domain
 - Design gradients (Orange to Yellow)
-- Grid patterns
-- UI component showcase
+- Project case studies
 - Design process visualization
+- Prototype demonstrations
 
 ## Performance Optimizations
-- CSS variable-based theming
-- Efficient transitions
-- Lazy-loaded images
-- Minimal DOM updates
-- Optimized animations
+- WebP image format support
+- Responsive image loading
+- Lazy loading for off-screen content
+- Blur image placeholders
+- Optimized font loading
+- Minimal bundle size
 
 ## Development Guidelines
 1. Use 'use client' directive for interactive components
-2. Maintain consistent spacing using Tailwind classes
+2. Implement proper image optimization
 3. Follow domain-specific color schemes
-4. Implement smooth transitions
-5. Ensure mobile responsiveness
-6. Optimize assets and animations
+4. Ensure responsive design
+5. Optimize for performance
+6. Maintain consistent styling
 
 ## Future Enhancements
-1. Page transition animations
-2. Domain-specific loading states
-3. Enhanced mobile interactions
-4. Cross-domain filtering
-5. Advanced animation patterns
-6. SEO optimizations 
+1. Image gallery lightbox
+2. Advanced filtering system
+3. Case study deep-dives
+4. Animation improvements
+5. SEO optimizations
+6. Performance monitoring 
