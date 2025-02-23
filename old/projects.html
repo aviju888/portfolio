@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Adriel Vijuan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#0a0a0a] text-white selection:bg-purple-500 selection:text-white">
+    <!-- Navigation -->
+    <nav class="navbar animate">
+        <div class="nav-links" id="nav-links">
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="about.html">About</a>
+        </div>
+        <div class="nav-toggle" id="nav-toggle">☰</div>
+    </nav>
+
+    <!-- Projects Section -->
+    <section class="container mx-auto px-4 py-12">
+        <h2 class="text-3xl font-medium mb-8"></h2>
+        
+        <!-- Category Filter Menu -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button class="filter-btn active px-4 py-2 border border-white/30 rounded hover:translate-y-[-2px] transition-transform" data-filter="all">All</button>
+            <button class="filter-btn px-4 py-2 border border-white/30 rounded hover:translate-y-[-2px] transition-transform" data-filter="ai-ml">AI/ML</button>
+            <button class="filter-btn px-4 py-2 border border-white/30 rounded hover:translate-y-[-2px] transition-transform" data-filter="computer-vision">Computer Vision</button>
+            <button class="filter-btn px-4 py-2 border border-white/30 rounded hover:translate-y-[-2px] transition-transform" data-filter="comp-photo">Computational Photography</button>
+            <button class="filter-btn px-4 py-2 border border-white/30 rounded hover:translate-y-[-2px] transition-transform" data-filter="design">Design</button>
+            <button class="filter-btn px-4 py-2 border border-white/30 rounded hover:translate-y-[-2px] transition-transform" data-filter="photography">Photography</button>
+            <button class="filter-btn px-4 py-2 border border-white/30 rounded hover:translate-y-[-2px] transition-transform" data-filter="music">Music</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- AI/ML Projects -->
+            <div class="project-card border border-white/30 rounded p-6 hover:translate-y-[-3px] transition-transform" data-category="ai-ml">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-xl">Diffusion Models</h3>
+                    <a href="placeholder" target="_blank">
+                        <img src="icons/github.png" alt="GitHub" class="w-4 h-4 invert">
+                    </a>
+                </div>
+                <ul class="text-gray-300 mb-6 space-y-2">
+                    <li>Implementation and fine-tuning of Stable Diffusion models</li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 text-sm border border-white/30 rounded">Python</span>
+                    <span class="px-3 py-1 text-sm border border-white/30 rounded">PyTorch</span>
+                </div>
+            </div>
+
+            <!-- Add more project cards following the same structure -->
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="container mx-auto px-4 py-8 text-center">
+        <a href="#" class="back-to-top hover:text-purple-500 transition-colors">Adriel Vijuan 2025</a>     
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

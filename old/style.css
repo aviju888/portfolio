@@ -52,6 +52,7 @@ h2 {
   justify-content: flex-end;
   background: rgba(10, 10, 10, 0.95);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* transform: translateX(-25px); */
 }
 
 .navbar.scrolled {
@@ -63,28 +64,33 @@ h2 {
   display: flex;
   gap: 2rem;
   transition: all 0.3s ease;
+  /* transform: translateX(70px); */
 }
 
 .navbar.minimized .nav-links {
-  display: none;
-}
-
-.nav-links.dropdown-active {
+  /* Make sure they remain a flex container for proper layout */
   display: flex;
-  flex-direction: column;
+  flex-direction: column;  /* Stack them vertically */
   position: absolute;
-  top: 100%;
-  right: 0;
-  background: rgba(10, 10, 10, 0.95);
+  top: 60px;  /* Adjust this value to match your minimized navbar height */
+  right: 2rem; /* This should roughly align with your hamburger icon */
+  background-color: rgba(10, 10, 10, 0.95);
+  padding: 1rem;
   border: 1px solid var(--gray);
   border-radius: 8px;
-  padding: 1rem;
-  gap: 1rem;
-  z-index: 1001;
+  
+  /* Hide them initially with a fade transition */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.nav-links.dropdown-active a {
-  display: block;
+/* When the dropdown is active */
+.navbar.minimized .nav-links.dropdown-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .nav-toggle {
@@ -281,12 +287,20 @@ h2 {
   font-size: 24px;
 }
 
-.company-icon {
+.where .company-icon {
   width: 30px;
   height: 30px;
   /* filter: invert(1) grayscale(100%); */
   opacity: 0.9;
   transform: translateY(8px);
+}
+
+.where .company-icon1 {
+  width: 30px;
+  height: 30px;
+  /* filter: invert(1) grayscale(100%); */
+  opacity: 0.9;
+  transform: translateY(0px);
 }
 
 .where i {
@@ -506,19 +520,44 @@ footer::before {
 
   .navbar {
     padding: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
   }
 
-  .nav-links {
-    display: none;  /* Hide by default on mobile */
+  /* Hide nav links by default on mobile */
+  #nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* adjust to your nav height */
+    right: 0;
+    width: 100%;
+    background-color: #1a1a1a; /* dark background for contrast */
+    padding: 10px 0;
+    z-index: 1000;
   }
 
-  .nav-toggle {
-    display: block;  /* Always show toggle on mobile */
-  }
-
-  .navbar.scrolled .nav-toggle,
-  .navbar.minimized .nav-toggle {
+  /* Ensure each link is styled correctly */
+  #nav-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
     display: block;
+  }
+
+  /* Display nav links when dropdown-active is added */
+  #nav-links.dropdown-active {
+    display: flex;
+  }
+
+  /* Style the hamburger icon */
+  #nav-toggle {
+    font-size: 1.5rem;
+    cursor: pointer;
+    user-select: none;
   }
 
   .hero {

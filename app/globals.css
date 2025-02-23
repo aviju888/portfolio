@@ -1,0 +1,298 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base Colors */
+    --color-background: #0a0a0a;
+    --color-text: #ffffff;
+    
+    /* Domain Gradients */
+    --gradient-creative: linear-gradient(135deg, #FF1493 0%, #7928CA 100%);
+    --gradient-software: linear-gradient(135deg, #0891B2 0%, #2563EB 100%);
+    --gradient-design: linear-gradient(135deg, #F97316 0%, #FBBF24 100%);
+    
+    /* Dark Mode Colors */
+    --dark-bg-primary: #09090b;
+    --dark-bg-secondary: #18181b;
+    --dark-border: #27272a;
+    
+    /* Transitions */
+    --transition-slow: 700ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-medium: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  body {
+    @apply bg-[var(--dark-bg-primary)] text-white antialiased;
+  }
+
+  ::selection {
+    @apply bg-white/20;
+  }
+}
+
+@layer components {
+  /* Domain-specific theme classes */
+  .theme-creative {
+    --theme-primary: #FF1493;
+    --theme-secondary: #7928CA;
+    --theme-accent: #FF69B4;
+  }
+
+  .theme-software {
+    --theme-primary: #0891B2;
+    --theme-secondary: #2563EB;
+    --theme-accent: #38BDF8;
+  }
+
+  .theme-design {
+    --theme-primary: #F97316;
+    --theme-secondary: #FBBF24;
+    --theme-accent: #FFA500;
+  }
+
+  /* Animated background gradients */
+  .gradient-animate {
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+
+  /* Add gradient-x animation */
+  @keyframes gradient-x {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .animate-gradient-x {
+    animation: gradient-x 3s ease infinite;
+  }
+
+  /* Text animations */
+  .animate-textGlow {
+    animation: textGlow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-textScroll {
+    animation: textScroll 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  .animate-nameEntrance {
+    animation: nameEntrance 2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  .animate-domainEntrance {
+    animation: domainEntrance 2s ease-out forwards;
+    animation-delay: 0.4s;
+  }
+
+  /* Fade in animation */
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-out forwards;
+    opacity: 0;
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    transition: transform var(--transition-medium);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Page transitions */
+  .page-enter {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .page-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity var(--transition-medium),
+                transform var(--transition-medium);
+  }
+
+  /* Domain-specific cards */
+  .domain-card {
+    @apply relative overflow-hidden rounded-2xl p-8;
+    transition: all var(--transition-medium);
+    background: var(--dark-bg-secondary);
+    border: 1px solid var(--dark-border);
+  }
+
+  .domain-card::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: radial-gradient(circle at center, 
+                rgba(255,255,255,0.1) 0%,
+                transparent 70%);
+  }
+
+  .domain-card:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Navigation effects */
+  .nav-link {
+    @apply relative overflow-hidden;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  /* Domain-specific nav links */
+  .theme-creative .nav-link::after {
+    background: var(--theme-primary);
+  }
+
+  .theme-software .nav-link::after {
+    background: var(--theme-primary);
+  }
+
+  .theme-design .nav-link::after {
+    background: var(--theme-primary);
+  }
+
+  .animate-typing {
+    width: 0;
+    animation: typing 4s steps(30, end) infinite;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    border-right: 2px solid transparent;
+    animation: typing 4s steps(30, end) infinite,
+              blink 0.5s step-end infinite;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 20px rgba(255,255,255,0.1);
+  }
+  100% {
+    text-shadow: 0 0 30px rgba(255,255,255,0.15);
+  }
+}
+
+@keyframes nameEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.02);
+    text-shadow: 0 0 30px rgba(255,255,255,0.1);
+  }
+}
+
+@keyframes domainEntrance {
+  0%, 20% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 0.7;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes scrollBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) translateX(-50%);
+  }
+  40% {
+    transform: translateY(8px) translateX(-50%);
+  }
+  60% {
+    transform: translateY(4px) translateX(-50%);
+  }
+}
+
+.animate-scrollBounce {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes progressPulse {
+  0% {
+    transform: translateX(-10%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-10%);
+  }
+}
+
+@keyframes textScroll {
+  0%, 40% {
+    transform: translateY(0);
+  }
+  50%, 90% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes typing {
+  0% { width: 0; }
+  10%, 40% { width: 15ch; }  /* UC BERKELEY EECS */
+  45%, 50% { width: 0; }
+  55%, 90% { width: 16ch; }  /* Aspiring Polymath. */
+  95%, 100% { width: 0; }
+}
+
+@keyframes blink {
+  from, to { border-color: transparent; }
+  50% { border-color: white; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .domain-card {
+    @apply p-6;
+  }
+  
+  .text-glow {
+    animation: none;
+  }
+}
