@@ -24,62 +24,39 @@ export const SoftwareHero = () => {
           
           {/* Description */}
           <p className="text-xl md:text-2xl text-white/70 leading-relaxed mb-12">
-            AI/ML, computer vision, web development, and systems.
+            Specializing in AI/ML, computer vision, web development, and systems engineering.
           </p>
 
-          {/* Skills Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-            <div className="bg-white/5 rounded-xl p-4 flex items-center gap-3">
-              <span className="text-2xl">🤖</span>
-              <span className="text-white/80">AI/ML</span>
-            </div>
-            <div className="bg-white/5 rounded-xl p-4 flex items-center gap-3">
-              <span className="text-2xl">👁️</span>
-              <span className="text-white/80">Computer Vision</span>
-            </div>
-            <div className="bg-white/5 rounded-xl p-4 flex items-center gap-3">
-              <span className="text-2xl">🌐</span>
-              <span className="text-white/80">Web Development</span>
-            </div>
-            <div className="bg-white/5 rounded-xl p-4 flex items-center gap-3">
-              <span className="text-2xl">⚙️</span>
-              <span className="text-white/80">Systems</span>
-            </div>
-          </div>
-
-          {/* Languages & Tools */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-lg font-medium text-white/60 mb-4">Languages</h3>
-              <div className="flex flex-wrap gap-3">
-                {['Python', 'TypeScript', 'JavaScript', 'C'].map((lang) => (
-                  <span key={lang} className="px-4 py-2 bg-blue-500/10 text-blue-400/90 rounded-lg border border-blue-500/20">
-                    {lang}
-                  </span>
-                ))}
-              </div>
+          {/* Skills Section */}
+          <div className="text-sm space-y-6">
+            {/* Languages */}
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+              <span className="text-white/50">Languages:</span>
+              {['Python', 'TypeScript', 'JavaScript', 'C'].map((lang) => (
+                <span key={lang} className="text-white/80">
+                  {lang}
+                </span>
+              ))}
             </div>
 
-            <div>
-              <h3 className="text-lg font-medium text-white/60 mb-4">Frameworks & Libraries</h3>
-              <div className="flex flex-wrap gap-3">
-                {['PyTorch', 'React', 'Next.js', 'OpenCV', 'Pandas'].map((framework) => (
-                  <span key={framework} className="px-4 py-2 bg-blue-500/10 text-blue-400/90 rounded-lg border border-blue-500/20">
-                    {framework}
-                  </span>
-                ))}
-              </div>
+            {/* Frameworks */}
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+              <span className="text-white/50">Libraries:</span>
+              {['PyTorch', 'React', 'Next.js', 'OpenCV', 'Pandas', 'NumPy', 'TensorFlow'].map((framework) => (
+                <span key={framework} className="text-white/80">
+                  {framework}
+                </span>
+              ))}
             </div>
 
-            <div>
-              <h3 className="text-lg font-medium text-white/60 mb-4">Tools & Technologies</h3>
-              <div className="flex flex-wrap gap-3">
-                {['Docker', 'Git', 'Tailwind CSS', 'Jupyter'].map((tool) => (
-                  <span key={tool} className="px-4 py-2 bg-blue-500/10 text-blue-400/90 rounded-lg border border-blue-500/20">
-                    {tool}
-                  </span>
-                ))}
-              </div>
+            {/* Tools */}
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+              <span className="text-white/50">Tools:</span>
+              {['Docker', 'Git', 'Tailwind', 'Jupyter'].map((tool) => (
+                <span key={tool} className="text-white/80">
+                  {tool}
+                </span>
+              ))}
             </div>
           </div>
         </div>
