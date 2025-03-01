@@ -4,20 +4,31 @@ import React, { useState, useEffect } from 'react';
 import { useDomain } from '../layout/DomainProvider';
 
 export const ScrollIndicator = () => {
-  const [isVisible, setIsVisible] = useState(true);
   const { activeDomain } = useDomain();
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // Show the indicator after a delay
+    const showTimer = setTimeout(() => {
+      setIsVisible(true);
+    }, 2000);
+
+    // Hide the indicator when user scrolls
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 100) {
         setIsVisible(false);
-      } else {
+      } else if (window.scrollY === 0) {
+        // Show it again when back at the top
         setIsVisible(true);
       }
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    return () => {
+      clearTimeout(showTimer);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const getGradientByDomain = () => {
@@ -35,9 +46,9 @@ export const ScrollIndicator = () => {
 
   return (
     <div 
-      className={`fixed bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center
-        transition-all duration-700 z-50 pointer-events-none
-        ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      className={`fixed bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-opacity duration-500 ${
+        isVisible ? 'opacity-100' : 'opacity-0'
+      }`}
     >
       <div className="text-white/50 mb-2 text-sm">Scroll to explore</div>
       <div 

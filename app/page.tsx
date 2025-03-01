@@ -8,8 +8,12 @@ export default function Home() {
   const [isInitialAnimation, setIsInitialAnimation] = useState(true);
   const [fadeOutName, setFadeOutName] = useState(false);
   const [loadingProgress, setLoadingProgress] = useState(0);
+  const [nameVisible, setNameVisible] = useState(false);
 
   useEffect(() => {
+    // Make the name visible immediately
+    setNameVisible(true);
+    
     // Start the loading animation immediately
     const loadingInterval = setInterval(() => {
       setLoadingProgress(prev => {
@@ -62,34 +66,41 @@ export default function Home() {
   if (isInitialAnimation) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-black">
-        <h1 className={`text-5xl md:text-7xl font-medium mb-6 animate-nameEntrance
-          bg-gradient-to-r from-[#FF1493] via-[#7d12ff] to-[#00BFFF]
-          bg-[length:200%_auto] animate-gradient-x
-          bg-clip-text text-transparent
-          transition-all duration-1000
-          ${fadeOutName ? 'opacity-0 transform translate-y-10' : ''}`}
+        <h1 
+          className={`text-5xl md:text-7xl font-medium mb-6
+            bg-gradient-to-r from-[#FF1493] via-[#7d12ff] to-[#00BFFF]
+            bg-[length:200%_auto] animate-gradient-x
+            bg-clip-text text-transparent
+            transition-all duration-1000
+            ${fadeOutName ? 'opacity-0 transform translate-y-10' : ''}`}
+          style={{
+            opacity: nameVisible ? 1 : 0,
+            transform: nameVisible ? 'scale(1.02)' : 'scale(0.98)',
+            transition: 'opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1)'
+          }}
         >
           ADRIEL VIJUAN
         </h1>
-        <div 
-          className={`text-lg md:text-2xl font-light text-center
-            transition-all duration-1000
-            ${fadeOutName ? 'opacity-0 transform translate-y-10' : ''}`}
-        >
-          <div className="animate-typing">
-            UC BERKELEY EECS
-          </div>
-        </div>
         
-        {/* Loading Bar */}
-        <div className="absolute bottom-20 w-48 h-[2px] bg-white/10 overflow-hidden">
+        {/* Loading Bar - Fixed positioning with more spacing */}
+        <div className="relative h-1 w-48 mt-10">
           <div 
-            className="h-full bg-white/50 transition-all duration-300 ease-out"
-            style={{ 
-              width: `${loadingProgress}%`,
-              transition: 'width 0.3s ease-out'
+            className={`absolute top-0 left-1/2 transform -translate-x-1/2 w-48 h-[2px] bg-white/10 overflow-hidden
+              transition-opacity duration-1000
+              ${fadeOutName ? 'opacity-0' : 'opacity-100'}`}
+            style={{
+              opacity: nameVisible ? 1 : 0,
+              transition: 'opacity 0.8s ease-out'
             }}
-          />
+          >
+            <div 
+              className="h-full bg-white/50 transition-all duration-300 ease-out"
+              style={{ 
+                width: `${loadingProgress}%`,
+                transition: 'width 0.3s ease-out'
+              }}
+            />
+          </div>
         </div>
       </div>
     );
