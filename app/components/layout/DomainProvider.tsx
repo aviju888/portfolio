@@ -18,7 +18,7 @@ export const DomainProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const domain = pathname.split('/')[1] as Domain;
-    if (['creative', 'software', 'ui-ux'].includes(domain)) {
+    if (['creative', 'software', 'human'].includes(domain)) {
       setActiveDomain(domain);
     } else {
       setActiveDomain(undefined);

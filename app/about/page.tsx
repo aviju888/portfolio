@@ -41,14 +41,54 @@ export default function About() {
             </p>
           </div>
           
+          {/* Education Section */}
+          <div className="mt-12 pt-8 border-t border-white/10">
+            <h2 className="text-xl font-semibold mb-6 text-white">Education</h2>
+            <div className="bg-white/[0.03] p-6 rounded-lg border border-white/5">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-lg font-medium text-white">University of California, Berkeley</h3>
+                <span className="text-white/60 text-sm">2021 - 2025</span>
+              </div>
+              <p className="text-white/80 mb-2">B.S. Electrical Engineering and Computer Sciences</p>
+              <p className="text-white/80 mb-4">Minor in Data Science</p>
+              
+              <h4 className="text-sm font-medium text-white/70 mb-2">Relevant Coursework:</h4>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-white/70">
+                <li className="flex items-center">
+                  <span className="mr-2 text-white/40">•</span>
+                  <span>CS 61A/B/C: Structure and Interpretation of Computer Programs</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="mr-2 text-white/40">•</span>
+                  <span>CS 70: Discrete Mathematics and Probability Theory</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="mr-2 text-white/40">•</span>
+                  <span>CS 170: Efficient Algorithms and Intractable Problems</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="mr-2 text-white/40">•</span>
+                  <span>CS 188: Introduction to Artificial Intelligence</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="mr-2 text-white/40">•</span>
+                  <span>DATA 100: Principles and Techniques of Data Science</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
           {/* Contact Button */}
-          <div className="flex justify-center pt-4">
+          <div className="flex justify-center pt-8">
             <Button 
               href="mailto:avijuan@berkeley.edu"
-              variant="solid"
+              variant="creative-primary"
               className="text-sm"
+              icon={<svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>}
             >
-              Get in Touch ↗
+              Get in Touch
             </Button>
           </div>
         </div>

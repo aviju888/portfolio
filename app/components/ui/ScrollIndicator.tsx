@@ -3,7 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDomain } from '../layout/DomainProvider';
 
-export const ScrollIndicator = () => {
+interface ScrollIndicatorProps {
+  onClick?: () => void;
+}
+
+export const ScrollIndicator = ({ onClick }: ScrollIndicatorProps) => {
   const { activeDomain } = useDomain();
   const [isVisible, setIsVisible] = useState(false);
 
@@ -37,8 +41,8 @@ export const ScrollIndicator = () => {
         return 'from-pink-500 to-purple-500';
       case 'software':
         return 'from-blue-500 to-cyan-500';
-      case 'ui-ux':
-        return 'from-orange-500 to-yellow-500';
+      case 'human':
+        return 'from-gray-500 to-gray-700';
       default:
         return 'from-white/20 to-white/10';
     }
@@ -49,6 +53,8 @@ export const ScrollIndicator = () => {
       className={`fixed bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-opacity duration-500 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
+      onClick={onClick}
+      style={{ cursor: onClick ? 'pointer' : 'default' }}
     >
       <div className="text-white/50 mb-2 text-sm">Scroll to explore</div>
       <div 

@@ -141,17 +141,26 @@ export const Header = () => {
                 <DomainSwitcher 
                   activeDomain={activeDomain}
                   className="flex"
+                  onDomainSelect={() => setIsMobileMenuOpen(false)}
                 />
               )}
             </nav>
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden relative z-50 p-2 text-2xl"
+              className="md:hidden relative z-50 p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              {isMobileMenuOpen ? '×' : '☰'}
+              {isMobileMenuOpen ? (
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 8h16M4 16h16" />
+                </svg>
+              )}
             </button>
           </div>
         </div>
@@ -183,10 +192,11 @@ export const Header = () => {
           </nav>
 
           {!isHomePage && (
-            <div className="mt-12">
+            <div className="mt-12 w-full">
               <DomainSwitcher 
                 activeDomain={activeDomain}
-                className="flex-col gap-4"
+                className="flex-col gap-4 w-full"
+                onDomainSelect={() => setIsMobileMenuOpen(false)}
               />
             </div>
           )}

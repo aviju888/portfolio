@@ -1,7 +1,8 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Plus_Jakarta_Sans } from 'next/font/google';
+import { Plus_Jakarta_Sans, Caveat } from 'next/font/google';
 import { Header } from './components/layout/Header';
+import { Footer } from './components/layout/Footer';
 import { DomainProvider } from './components/layout/DomainProvider';
 
 const jakarta = Plus_Jakarta_Sans({ 
@@ -12,6 +13,13 @@ const jakarta = Plus_Jakarta_Sans({
   preload: true,
   adjustFontFallback: true,
   variable: '--font-jakarta'
+});
+
+const caveat = Caveat({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  display: 'swap',
+  variable: '--font-handwriting'
 });
 
 export const metadata: Metadata = {
@@ -26,13 +34,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${jakarta.className} ${jakarta.variable} bg-black text-white min-h-screen`}>
+      <body className={`${jakarta.className} ${jakarta.variable} ${caveat.variable} bg-black text-white min-h-screen`}>
         <DomainProvider>
           <Header />
           <main>{children}</main>
-          <footer className="container mx-auto px-6 py-8 text-center text-white/60">
-            © {new Date().getFullYear()} Adriel Vijuan. All rights reserved.
-          </footer>
+          <Footer />
         </DomainProvider>
       </body>
     </html>

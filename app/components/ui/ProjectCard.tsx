@@ -24,16 +24,18 @@ export const ProjectCard = ({
   const { activeDomain } = useDomain();
 
   const getAccentColor = () => {
-    switch (activeDomain) {
-      case 'creative':
-        return 'pink';
-      case 'software':
-        return 'blue';
-      case 'ui-ux':
-        return 'orange';
-      default:
-        return 'white';
+    const pathname = window.location.pathname;
+    
+    if (pathname.includes('/software')) {
+      return 'border-blue-500/20 hover:border-blue-500/30';
+    } else if (pathname.includes('/creative')) {
+      return 'border-pink-500/20 hover:border-pink-500/30';
+    } else if (pathname.includes('/human')) {
+      return 'border-gray-500/20 hover:border-gray-500/30';
     }
+    
+    // Default color
+    return 'border-white/10 hover:border-white/20';
   };
 
   const accentColor = getAccentColor();

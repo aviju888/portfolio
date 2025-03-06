@@ -15,7 +15,7 @@ The site is organized around three primary domains, each with distinct styling a
 - **Header** with conditional styling based on the active domain
 - **Domain Switcher** for navigating between primary sections
 - **Page Navigation** within each domain
-- **Scroll Indicators** for vertical navigation
+- **Scroll Indicator** for vertical navigation (single instance per page to avoid duplication)
 
 ## Typography & Fonts
 
@@ -153,6 +153,8 @@ Features:
 - Hover animations
 - Technology tag display
 
+Note: The project card styling is consistent across domains (software and creative) to maintain visual coherence.
+
 ### Hero Sections
 Each domain has a customized hero section:
 - `SoftwareHero` - Blue gradient, tabbed interface
@@ -163,6 +165,8 @@ Each domain has a customized hero section:
 - Used in domain hero sections
 - Underline style for active tab
 - Consistent styling across domains
+- All tabs are properly clickable with cursor-pointer styling
+- Active tab state is visually distinct with appropriate color coding
 
 ### Tag/Technology Display
 - Software: Blue tags (`bg-blue-900/30 border-blue-500/30 text-blue-300`)
@@ -175,6 +179,14 @@ Each domain has a customized hero section:
 - Appears after initial load
 - Hides on scroll
 - Reappears when back at top
+- Only one instance per page to avoid duplication
+
+### Skills Display
+- **Creative Skills**: Uses simplified bar indicators with color coding by category
+- **Software Skills**: Uses text-based skill level indicators (Expert, Advanced, Intermediate) instead of progress bars
+  - Color-coded by skill category (blue for languages, purple for frameworks, cyan for tools)
+  - Clean, readable format that avoids visual clutter
+  - Consistent card-based layout for better visual organization
 
 ### Accordion Component
 ```typescript

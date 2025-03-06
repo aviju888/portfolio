@@ -15,6 +15,48 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
   {
+    company: 'Tech Company XYZ',
+    role: 'Software Engineering Intern',
+    date: 'May 2023 - August 2023',
+    location: 'San Francisco, CA',
+    description: [
+      'Developed and maintained features for a React-based web application used by over 100,000 users',
+      'Implemented data visualization components using D3.js, increasing user engagement by 40%',
+      'Collaborated with a team of 5 engineers to redesign the authentication system',
+      'Optimized database queries, reducing load times by 30%'
+    ],
+    skills: ['React', 'TypeScript', 'D3.js', 'SQL', 'Git'],
+    icon: '/icons/tech-company.png'
+  },
+  {
+    company: 'AI Research Lab',
+    role: 'Research Assistant',
+    date: 'January 2022 - December 2022',
+    location: 'Berkeley, CA',
+    description: [
+      'Assisted in developing novel computer vision algorithms for object detection',
+      'Implemented and trained neural networks using PyTorch on large datasets',
+      'Co-authored a research paper accepted at a major conference',
+      'Built data processing pipelines that improved training efficiency by 25%'
+    ],
+    skills: ['Python', 'PyTorch', 'Computer Vision', 'Machine Learning', 'Research'],
+    icon: '/icons/ai-lab.png'
+  },
+  {
+    company: 'Student Design Collective',
+    role: 'Lead Designer',
+    date: 'August 2021 - May 2022',
+    location: 'Berkeley, CA',
+    description: [
+      'Led a team of 10 student designers creating marketing materials for campus organizations',
+      'Managed client relationships and project timelines for 15+ simultaneous projects',
+      'Designed brand identities and visual systems for student startups and clubs',
+      'Organized workshops to teach design principles and software to new members'
+    ],
+    skills: ['Leadership', 'Adobe Creative Suite', 'Graphic Design', 'Project Management', 'Mentorship'],
+    icon: '/icons/design-collective.png'
+  },
+  {
     company: 'PASAE',
     role: 'Frontend Developer (Webmaster) & Historian',
     date: 'May 2023 - Present',
@@ -113,51 +155,85 @@ const experiences: ExperienceItem[] = [
 
 export const Experience = () => {
   return (
-    <section className="container mx-auto px-6 py-16" id="experience">
-      <h2 className="text-4xl font-medium mb-16">Experience</h2>
-      <div className="relative border-l-2 border-gray-800 pl-8 ml-6">
-        {experiences.map((exp, index) => (
-          <div key={index} className="mb-12 relative">
-            <div className="absolute -left-[41px] top-2 w-3 h-3 bg-gradient-to-r from-gray-100 to-[#7d12ff] rounded-full" />
-            
-            <div className="flex items-center gap-3">
-              {exp.icon && (
-                <Image 
-                  src={exp.icon} 
-                  alt={`${exp.company} logo`} 
-                  width={30} 
-                  height={30} 
-                  className="opacity-90"
-                />
-              )}
-              <h3 className="text-xl font-bold text-white">{exp.company}</h3>
-              <span className="text-gray-400 italic">{exp.role}</span>
-            </div>
-            
-            <div className="text-sm text-gray-400 mt-1">
-              {exp.location} | {exp.date}
-            </div>
-            
-            <ul className="mt-4 space-y-2">
-              {exp.description.map((desc, i) => (
-                <li key={i} className="text-gray-300">{desc}</li>
-              ))}
-            </ul>
-            
-            {exp.skills && (
-              <div className="flex flex-wrap gap-2 mt-4">
-                {exp.skills.map((skill, i) => (
-                  <span 
-                    key={i}
-                    className="px-3 py-1 text-sm bg-red-900/10 text-red-500 rounded-full"
-                  >
-                    {skill}
-                  </span>
-                ))}
+    <section id="experience" className="py-24 bg-black">
+      <div className="container mx-auto px-6">
+        <div className="mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">Work Experience</h2>
+          <p className="text-white/60 max-w-2xl">
+            My professional journey spans software development, research, and creative direction, 
+            with a focus on building innovative solutions and leading teams.
+          </p>
+        </div>
+
+        <div className="relative">
+          {/* Timeline line */}
+          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-white/10 transform md:-translate-x-1/2"></div>
+
+          {/* Experience items */}
+          <div className="space-y-12">
+            {experiences.map((exp, index) => (
+              <div 
+                key={`${exp.company}-${exp.role}`}
+                className={`relative flex flex-col md:flex-row ${
+                  index % 2 === 0 ? 'md:flex-row-reverse' : ''
+                }`}
+              >
+                {/* Timeline dot */}
+                <div className="absolute left-0 md:left-1/2 top-0 w-5 h-5 rounded-full border-4 border-white/10 bg-black transform -translate-x-1/2"></div>
+
+                {/* Content */}
+                <div className="md:w-1/2 pl-8 md:pl-0 md:px-8">
+                  <div className="bg-white/[0.03] p-6 rounded-lg border border-white/5 hover:border-white/10 transition-all">
+                    <div className="flex items-center mb-4">
+                      {exp.icon && (
+                        <div className="w-10 h-10 mr-4 rounded-full overflow-hidden bg-white/5 flex items-center justify-center">
+                          <Image 
+                            src={exp.icon} 
+                            alt={`${exp.company} logo`} 
+                            width={32} 
+                            height={32}
+                            className="object-contain"
+                          />
+                        </div>
+                      )}
+                      <div>
+                        <h3 className="text-xl font-semibold text-white">{exp.company}</h3>
+                        <p className="text-white/70 text-sm">{exp.role}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex justify-between items-center mb-4 text-sm">
+                      <span className="text-white/60">{exp.date}</span>
+                      <span className="text-white/60">{exp.location}</span>
+                    </div>
+                    
+                    <ul className="space-y-2 mb-4 text-sm text-white/80">
+                      {exp.description.map((item, i) => (
+                        <li key={i} className="flex">
+                          <span className="mr-2 text-white/40">•</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    
+                    {exp.skills && (
+                      <div className="flex flex-wrap gap-2 mt-4">
+                        {exp.skills.map(skill => (
+                          <span 
+                            key={skill} 
+                            className="px-2 py-1 text-xs rounded-full bg-white/5 text-white/70"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
-            )}
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </section>
   );

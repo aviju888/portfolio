@@ -5,7 +5,7 @@ import { useDomain } from '../layout/DomainProvider';
 
 interface ButtonProps {
   children: React.ReactNode;
-  variant?: 'solid' | 'outline' | 'ghost' | 'link';
+  variant?: 'solid' | 'outline' | 'ghost' | 'link' | 'creative-primary' | 'creative-secondary';
   size?: 'sm' | 'md' | 'lg';
   href?: string;
   onClick?: () => void;
@@ -13,6 +13,7 @@ interface ButtonProps {
   type?: 'button' | 'submit' | 'reset';
   target?: string;
   rel?: string;
+  icon?: React.ReactNode;
 }
 
 export const Button = ({
@@ -25,6 +26,7 @@ export const Button = ({
   type = 'button',
   target,
   rel,
+  icon,
 }: ButtonProps) => {
   const { activeDomain } = useDomain();
 
@@ -34,8 +36,8 @@ export const Button = ({
         return 'from-pink-500 to-purple-500';
       case 'software':
         return 'from-blue-500 to-cyan-500';
-      case 'ui-ux':
-        return 'from-orange-500 to-yellow-500';
+      case 'human':
+        return 'from-gray-500 to-gray-700';
       default:
         return 'from-white/20 to-white/10';
     }
@@ -51,7 +53,7 @@ export const Button = ({
     inline-flex items-center justify-center
     font-medium tracking-wide
     transition-all duration-300
-    rounded-lg
+    ${variant === 'creative-primary' || variant === 'creative-secondary' ? 'rounded-full' : 'rounded-lg'}
     ${sizeClasses[size]}
   `;
 
@@ -66,6 +68,10 @@ export const Button = ({
       after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5
       after:bg-current after:transition-all after:duration-300
       hover:after:w-full`,
+    'creative-primary': `bg-pink-500/10 text-pink-400 hover:bg-pink-500/20 
+      transition-all gap-2`,
+    'creative-secondary': `bg-white/5 text-white/80 hover:bg-white/10 
+      transition-all`,
   };
 
   const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${className}`;
@@ -80,6 +86,7 @@ export const Button = ({
         onClick={onClick}
       >
         {children}
+        {icon && <span>{icon}</span>}
       </a>
     );
   }
@@ -91,6 +98,7 @@ export const Button = ({
       className={combinedClasses}
     >
       {children}
+      {icon && <span>{icon}</span>}
     </button>
   );
 }; 

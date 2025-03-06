@@ -1,11 +1,21 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { ScrollIndicator } from '../ui/ScrollIndicator';
+import { motion, useSpring } from 'framer-motion';
+import { Button } from '../ui/Button';
 
 export const SoftwareHero = () => {
   const [isHeroVisible, setIsHeroVisible] = useState(false);
+  const mouseX = useSpring(0, { stiffness: 100, damping: 30 });
+  const mouseY = useSpring(0, { stiffness: 100, damping: 30 });
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
+  // Create derived motion values for parallax effect
+  const moveBackgroundX = useSpring(mouseX, { stiffness: 300, damping: 50 });
+  const moveBackgroundY = useSpring(mouseY, { stiffness: 300, damping: 50 });
+  const springX = useSpring(mouseX, { stiffness: 200, damping: 40 });
+  const springY = useSpring(mouseY, { stiffness: 200, damping: 40 });
+
   // Function to handle smooth scrolling to a section
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -18,6 +28,24 @@ export const SoftwareHero = () => {
   useEffect(() => {
     setIsHeroVisible(true);
   }, []);
+
+  // Mouse movement effect
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      
+      const x = (clientX / innerWidth) - 0.5;
+      const y = (clientY / innerHeight) - 0.5;
+      
+      setMousePosition({ x, y });
+      mouseX.set(x);
+      mouseY.set(y);
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [mouseX, mouseY]);
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center items-center bg-black overflow-hidden">
@@ -75,27 +103,23 @@ export const SoftwareHero = () => {
               isHeroVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
             }`}
           >
-            <button 
-              className="px-6 py-2.5 font-medium rounded-full border border-blue-400 bg-blue-500/10 text-white hover:bg-blue-500/20 hover:shadow-[0_0_15px_rgba(56,189,248,0.3)] transition-all duration-300 hover:-translate-y-1"
+            <Button 
+              variant="creative-primary"
               onClick={() => scrollToSection('projects')}
+              icon={<svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>}
+              className="bg-blue-500/10 text-blue-400 hover:bg-blue-500/20"
             >
-              Projects
-            </button>
-            <button 
-              className="px-6 py-2.5 font-medium rounded-full border border-white/30 bg-white/5 text-white hover:bg-white/10 hover:border-white/50 transition-all duration-300 hover:-translate-y-1"
+              View Projects
+            </Button>
+            <Button 
+              variant="creative-secondary"
               onClick={() => scrollToSection('skills')}
             >
-              Tech Stack
-            </button>
+              Explore Skills
+            </Button>
           </div>
-        </div>
-      </div>
-      
-      {/* Scroll indicator animation */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center opacity-0 animate-fadeIn" style={{ animationDelay: '1.8s', animationFillMode: 'forwards' }}>
-        <span className="text-white/50 text-sm mb-2">Scroll to explore</span>
-        <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center p-1">
-          <div className="w-1 h-1 bg-blue-400 rounded-full animate-scrollBounce"></div>
         </div>
       </div>
     </section>
