@@ -282,7 +282,7 @@ export default function HumanPage() {
               onAnimationComplete={() => setHeroAnimationComplete(true)}
             >
               <motion.h1 
-                className="text-6xl md:text-[10rem] font-extralight mb-4 text-white/80 typewriter-text"
+                className="text-4xl md:text-[8rem] font-extralight mb-8 md:mb-12 text-white/80 typewriter-text"
                 variants={titleVariants}
               >
                 HUMAN
@@ -297,23 +297,6 @@ export default function HumanPage() {
             </motion.div>
           </div>
         </AnimatePresence>
-        
-        <motion.div 
-          className="absolute bottom-12 left-1/2 transform -translate-x-1/2"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ 
-            opacity: heroAnimationComplete ? 0.6 : 0,
-            y: heroAnimationComplete ? 0 : 10
-          }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
-          <div 
-            className="text-xs text-white/60 font-light cursor-pointer tracking-[0.2em]"
-            onClick={() => scrollToSection('intro')}
-          >
-            SCROLL DOWN
-          </div>
-        </motion.div>
       </motion.div>
 
       {/* Section Navigation */}

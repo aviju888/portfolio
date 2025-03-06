@@ -7,7 +7,7 @@ export default function About() {
     <div className="min-h-screen bg-gradient-to-b from-black to-zinc-950 flex flex-col justify-center">
       <section className="container max-w-2xl mx-auto px-6 py-8 md:py-10">
         {/* Header */}
-        <h1 className="text-3xl md:text-5xl font-bold mb-8 md:mb-10 bg-gradient-to-r from-gray-100 to-[#7d12ff] bg-clip-text text-transparent text-center">
+        <h1 className="text-2xl md:text-4xl font-bold mb-8 md:mb-10 bg-gradient-to-r from-gray-100 to-[#7d12ff] bg-clip-text text-transparent text-center pt-12">
           About Me
         </h1>
         

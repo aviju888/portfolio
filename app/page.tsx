@@ -42,18 +42,18 @@ export default function Home() {
 
   const domains = [
     {
-      id: 'software',
-      name: 'SOFTWARE',
-      description: 'Explore my software engineering and machine learning projects',
-      gradient: 'from-blue-500 to-cyan-500 animate-gradient-x',
-      icon: '💻'
-    },
-    {
       id: 'creative',
       name: 'CREATIVE',
       description: 'Discover my photography, videography, and design work',
       gradient: 'from-pink-500 to-purple-500 animate-gradient-x',
       icon: '📷'
+    },
+    {
+      id: 'software',
+      name: 'SOFTWARE',
+      description: 'Explore my software engineering and machine learning projects',
+      gradient: 'from-blue-500 to-cyan-500 animate-gradient-x',
+      icon: '💻'
     },
     {
       id: 'human',

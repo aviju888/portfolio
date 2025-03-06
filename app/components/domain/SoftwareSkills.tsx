@@ -167,6 +167,7 @@ export const SoftwareSkills = () => {
   // Function to render a skill chip
   const renderSkillChip = (name: string, icon: React.ReactNode, delay: number, isVisible: boolean) => (
     <div 
+      key={name}
       className="inline-flex items-center rounded-full px-3 py-1.5 bg-blue-500/10 text-blue-300 m-1 transition-all duration-300"
       style={{ 
         opacity: isVisible ? 1 : 0,
@@ -211,9 +212,11 @@ export const SoftwareSkills = () => {
             Programming Languages
           </h3>
           <div className="flex flex-wrap">
-            {skillsData.languages.map((skill, idx) => 
-              renderSkillChip(skill.name, skill.icon, idx, visibleSections.includes('languages'))
-            )}
+            {skillsData.languages.map((skill, idx) => (
+              <div key={skill.name}>
+                {renderSkillChip(skill.name, skill.icon, idx, visibleSections.includes('languages'))}
+              </div>
+            ))}
           </div>
         </div>
 
@@ -237,9 +240,11 @@ export const SoftwareSkills = () => {
             Frameworks & Libraries
           </h3>
           <div className="flex flex-wrap">
-            {skillsData.frameworks.map((skill, idx) => 
-              renderSkillChip(skill.name, skill.icon, idx, visibleSections.includes('frameworks'))
-            )}
+            {skillsData.frameworks.map((skill, idx) => (
+              <div key={skill.name}>
+                {renderSkillChip(skill.name, skill.icon, idx, visibleSections.includes('frameworks'))}
+              </div>
+            ))}
           </div>
         </div>
 
@@ -261,9 +266,11 @@ export const SoftwareSkills = () => {
             Tools & Technologies
           </h3>
           <div className="flex flex-wrap">
-            {skillsData.tools.map((skill, idx) => 
-              renderSkillChip(skill.name, skill.icon, idx, visibleSections.includes('tools'))
-            )}
+            {skillsData.tools.map((skill, idx) => (
+              <div key={skill.name}>
+                {renderSkillChip(skill.name, skill.icon, idx, visibleSections.includes('tools'))}
+              </div>
+            ))}
           </div>
         </div>
 

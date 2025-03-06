@@ -1,13 +1,15 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, useSpring } from 'framer-motion';
 import { Button } from '../ui/Button';
 
 export const SoftwareHero = () => {
   const [isHeroVisible, setIsHeroVisible] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const mouseX = useSpring(0, { stiffness: 100, damping: 30 });
   const mouseY = useSpring(0, { stiffness: 100, damping: 30 });
+  const particlesContainerRef = useRef<HTMLDivElement>(null);
   
   // Function to handle smooth scrolling to a section
   const scrollToSection = (sectionId: string) => {
@@ -20,6 +22,7 @@ export const SoftwareHero = () => {
   // Hero animation effect on mount
   useEffect(() => {
     setIsHeroVisible(true);
+    setIsMounted(true);
   }, []);
 
   // Mouse movement effect
@@ -39,6 +42,36 @@ export const SoftwareHero = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [mouseX, mouseY]);
 
+  // Generate particles only on client-side after component mounts
+  useEffect(() => {
+    if (!isMounted || !particlesContainerRef.current) return;
+    
+    // Clear any existing particles first
+    particlesContainerRef.current.innerHTML = '';
+    
+    // Create the particles
+    for (let i = 0; i < 20; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'absolute rounded-full bg-blue-400/20';
+      
+      const width = Math.random() * 6 + 2;
+      const height = Math.random() * 6 + 2;
+      const top = Math.random() * 100;
+      const left = Math.random() * 100;
+      const duration = Math.random() * 10 + 15;
+      const delay = Math.random() * 5;
+      
+      particle.style.width = `${width}px`;
+      particle.style.height = `${height}px`;
+      particle.style.top = `${top}%`;
+      particle.style.left = `${left}%`;
+      particle.style.animation = `float ${duration}s infinite ease-in-out alternate`;
+      particle.style.animationDelay = `${delay}s`;
+      
+      particlesContainerRef.current.appendChild(particle);
+    }
+  }, [isMounted]);
+
   return (
     <section className="relative min-h-screen flex flex-col justify-center items-center bg-black overflow-hidden">
       {/* Enhanced gradient overlay with animation */}
@@ -50,23 +83,11 @@ export const SoftwareHero = () => {
            }} />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80" />
       
-      {/* Animated particles (subtle blue dots) */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div 
-            key={i}
-            className="absolute rounded-full bg-blue-400/20"
-            style={{
-              width: Math.random() * 6 + 2 + 'px',
-              height: Math.random() * 6 + 2 + 'px',
-              top: Math.random() * 100 + '%',
-              left: Math.random() * 100 + '%',
-              animation: `float ${Math.random() * 10 + 15}s infinite ease-in-out alternate`,
-              animationDelay: `${Math.random() * 5}s`
-            }}
-          />
-        ))}
-      </div>
+      {/* Animated particles container - now empty and populated by JS after mount */}
+      <div 
+        ref={particlesContainerRef}
+        className="absolute inset-0 overflow-hidden pointer-events-none"
+      />
       
       {/* Content - Centered with staggered animations */}
       <div className="container mx-auto px-6 relative z-10 flex-grow flex flex-col justify-center items-center text-center">

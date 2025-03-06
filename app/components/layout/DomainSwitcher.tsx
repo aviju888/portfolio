@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 export type Domain = 'creative' | 'software' | 'human';
@@ -11,20 +12,27 @@ interface DomainSwitcherProps {
   onDomainSelect?: () => void;
 }
 
+// Define the domain item type for better TypeScript support
+interface DomainItem {
+  id: Domain;
+  name: string;
+  color: string;
+  icon: React.ReactNode;
+}
+
 export const DomainSwitcher = ({ activeDomain, className = '', onDomainSelect }: DomainSwitcherProps) => {
-  const router = useRouter();
-  
   // Check if this is the mobile version based on the className containing "w-full"
   const isMobile = className.includes('w-full');
+  const router = useRouter();
 
-  const domains: { id: Domain; name: string; color: string; icon: React.ReactNode }[] = [
+  const domains: DomainItem[] = [
     { 
       id: 'creative', 
       name: 'Creative', 
       color: 'from-pink-500 to-purple-500', 
       icon: (
         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <path d="M2 12C2 16.714 4.39 19 7 19s3-2.286 3-7M13 5c0 3.286.77 7 3 7s4-2.286 4-7M2 12h20" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       )
     },
@@ -44,26 +52,34 @@ export const DomainSwitcher = ({ activeDomain, className = '', onDomainSelect }:
       color: 'from-gray-500 to-gray-700', 
       icon: (
         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M12 4a4 4 0 100 8 4 4 0 000-8z" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       ) 
     },
   ];
 
-  const handleDomainChange = (domain: Domain) => {
-    router.push(`/${domain}`);
-    if (onDomainSelect) {
-      onDomainSelect();
-    }
-  };
+  // For mobile view, we need to render vertically in the requested order
+  const orderedDomains: DomainItem[] = isMobile ? 
+    [
+      domains.find(d => d.id === 'creative')!, 
+      domains.find(d => d.id === 'software')!, 
+      domains.find(d => d.id === 'human')!
+    ] :
+    domains;
 
   return (
-    <div className={`flex ${isMobile ? '' : 'gap-4'} ${className}`}>
-      {domains.map((domain) => (
+    <div className={`flex ${isMobile ? 'flex-col' : 'gap-4'} ${className}`}>
+      {orderedDomains.map((domain) => (
         <button
           key={domain.id}
-          onClick={() => handleDomainChange(domain.id)}
+          onClick={(e) => {
+            e.preventDefault();
+            router.push(`/${domain.id}`);
+            if (onDomainSelect) {
+              onDomainSelect();
+            }
+          }}
           className={`
             ${isMobile ? 'w-full justify-center py-4 mb-2 rounded-lg' : 'px-4 py-2 rounded-full'} 
             transition-all duration-300 flex items-center gap-2

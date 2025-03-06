@@ -92,11 +92,14 @@ export const ProjectsGrid = <T extends BaseProject>({
     setIsModalOpen(false);
   };
 
-  // Reset visible projects when category changes
+  // Initialize visible projects when category changes
   useEffect(() => {
     // Make first 6 projects visible immediately for a better user experience
     setVisibleProjects(Array.from({ length: Math.min(6, filteredProjects.length) }, (_, i) => i));
-    
+  }, [activeCategory, filteredProjects.length]);
+  
+  // Set up intersection observer for lazy loading
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -123,7 +126,7 @@ export const ProjectsGrid = <T extends BaseProject>({
       observer.disconnect();
       clearTimeout(timer);
     };
-  }, [activeCategory, filteredProjects.length, visibleProjects]);
+  }, [activeCategory, filteredProjects.length]);
 
   return (
     <section id="projects" className="py-20 bg-black">
@@ -179,7 +182,7 @@ export const ProjectsGrid = <T extends BaseProject>({
               {renderProjectCard(
                 project, 
                 index, 
-                true, 
+                visibleProjects.includes(index), 
                 primaryColor,
                 renderModal ? handleProjectClick : undefined
               )}
