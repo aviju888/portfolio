@@ -8,14 +8,7 @@ export const SoftwareHero = () => {
   const [isHeroVisible, setIsHeroVisible] = useState(false);
   const mouseX = useSpring(0, { stiffness: 100, damping: 30 });
   const mouseY = useSpring(0, { stiffness: 100, damping: 30 });
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
-  // Create derived motion values for parallax effect
-  const moveBackgroundX = useSpring(mouseX, { stiffness: 300, damping: 50 });
-  const moveBackgroundY = useSpring(mouseY, { stiffness: 300, damping: 50 });
-  const springX = useSpring(mouseX, { stiffness: 200, damping: 40 });
-  const springY = useSpring(mouseY, { stiffness: 200, damping: 40 });
-
   // Function to handle smooth scrolling to a section
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -38,7 +31,6 @@ export const SoftwareHero = () => {
       const x = (clientX / innerWidth) - 0.5;
       const y = (clientY / innerHeight) - 0.5;
       
-      setMousePosition({ x, y });
       mouseX.set(x);
       mouseY.set(y);
     };

@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { useDomain } from '../layout/DomainProvider';
 
 interface ProjectCardProps {
   title: string;
@@ -21,8 +20,6 @@ export const ProjectCard = ({
   link,
   onClick 
 }: ProjectCardProps) => {
-  const { activeDomain } = useDomain();
-
   const getAccentColor = () => {
     const pathname = window.location.pathname;
     
@@ -115,4 +112,4 @@ export const ProjectCard = ({
       </div>
     </div>
   );
-}; 
+};

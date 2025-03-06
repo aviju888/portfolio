@@ -167,10 +167,7 @@ const categories: Category[] = [
 export const SoftwareProjects = () => {
   // Render a software project card
   const renderSoftwareProjectCard = (
-    project: SoftwareProject, 
-    index: number, 
-    isVisible: boolean, 
-    primaryColor: string
+    project: SoftwareProject
   ) => {
     return (
       <div className={`project-card bg-white/[0.03] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all relative transform border border-blue-500/10 hover:border-blue-500/30`}>

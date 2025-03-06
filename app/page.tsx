@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { type Domain } from './components/layout/DomainSwitcher';
 
 export default function Home() {
   const [isInitialAnimation, setIsInitialAnimation] = useState(true);

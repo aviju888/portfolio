@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ScrollIndicator } from '../ui/ScrollIndicator';
 import { motion, useSpring, useTransform, useMotionValue } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export const CreativeHero = () => {
@@ -24,7 +23,6 @@ export const CreativeHero = () => {
   }, []);
 
   // Mouse movement effect
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   
@@ -45,7 +43,6 @@ export const CreativeHero = () => {
       const x = (clientX / innerWidth) - 0.5;
       const y = (clientY / innerHeight) - 0.5;
       
-      setMousePosition({ x, y });
       mouseX.set(x);
       mouseY.set(y);
     };

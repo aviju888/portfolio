@@ -6,7 +6,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import * as THREE from 'three';
 import { Canvas, useFrame, useThree, RootState } from '@react-three/fiber';
-import { Text } from '@react-three/drei';
 
 // Philosophical content from Markdown already available to use
 const philosophyContent = [
@@ -16,7 +15,7 @@ const philosophyContent = [
     content: `
       I believe that constant learning is the foundation of a fulfilling life. Each day presents countless opportunities to expand our understanding of the world. The moment we stop being curious is the moment we stop truly living.
 
-      Learning isn't just about acquiring knowledge—it's about continuous transformation. When I approach any challenge, I start by asking: "What can this teach me?" This mindset has transformed seemingly mundane experiences into profound lessons.
+      Learning isn't just about acquiring knowledge—it's about continuous transformation. When I approach any challenge, I start by asking: &quot;What can this teach me?&quot; This mindset has transformed seemingly mundane experiences into profound lessons.
 
       My approach to learning blends systematic study with intuitive exploration—structured enough to make progress, flexible enough to follow curiosity. I've found that the most valuable insights often emerge at the intersection of disciplines, where different mental models collide and create new understanding.
     `,
@@ -54,10 +53,8 @@ const philosophyContent = [
     title: 'Elegant Simplicity',
     content: `
       I'm drawn to the philosophy that the most elegant solutions aren't the most complex, but rather those that achieve maximum impact with minimum complexity.
-
-      In both code and life, I strive to reduce problems to their essence. What's essential? What can be eliminated? What remains when unnecessary complexity is stripped away?
-
-      This pursuit of simplicity isn't about oversimplification—it's about finding the elegant core of an idea, solution, or expression. The Japanese concept of "shibui" captures this well: simple, subtle, and unobtrusive beauty.
+      
+      This pursuit of simplicity isn't about oversimplification—it's about finding the elegant core of an idea, solution, or expression. The Japanese concept of &quot;shibui&quot; captures this well: simple, subtle, and unobtrusive beauty.
     `,
     quote: "Simplicity is the ultimate sophistication.",
     author: "Leonardo da Vinci"
@@ -109,89 +106,54 @@ const fragments = [
   }
 ];
 
-// Notebook and polaroid images
-const notebookImages = [
-  {
-    alt: "Open notebook with philosophical notes",
-    src: "/images/notebook-1.jpg"
-  },
-  {
-    alt: "Vintage polaroid of abstract thought experiment",
-    src: "/images/polaroid-1.jpg"
-  },
-  {
-    alt: "Black and white notebook with scribbled thoughts",
-    src: "/images/notebook-2.jpg"
-  }
-];
-
 // Three.js Animations Components
-const FloatingParticles = ({ count = 100 }: { count?: number }) => {
-  const { size, camera } = useThree();
-  const mesh = useRef<THREE.InstancedMesh>(null);
-  const [dpr, setDpr] = useState(1.5);
-
+const FloatingParticles = () => {
+  const meshRef = useRef<THREE.InstancedMesh>(null);
+  const particleCount = 150;
+  const particleSpeed = 0.01;
+  
   useEffect(() => {
+    if (!meshRef.current) return;
+    
+    // Set initial positions
+    const dummy = new THREE.Object3D();
+    const particles = meshRef.current;
+    
     // Create particles at random positions
-    if (mesh.current) {
-      const tempObject = new THREE.Object3D();
-      const positions = new Float32Array(count * 3);
+    const positions = new Float32Array(particleCount * 3);
+    
+    for (let i = 0; i < particleCount; i++) {
+      const x = (Math.random() - 0.5) * 30;
+      const y = (Math.random() - 0.5) * 30;
+      const z = (Math.random() - 0.5) * 15;
       
-      for (let i = 0; i < count; i++) {
-        const x = (Math.random() - 0.5) * 30;
-        const y = (Math.random() - 0.5) * 30;
-        const z = (Math.random() - 0.5) * 15;
-        
-        positions[i * 3] = x;
-        positions[i * 3 + 1] = y;
-        positions[i * 3 + 2] = z;
-        
-        tempObject.position.set(x, y, z);
-        tempObject.updateMatrix();
-        mesh.current.setMatrixAt(i, tempObject.matrix);
-      }
+      positions[i * 3] = x;
+      positions[i * 3 + 1] = y;
+      positions[i * 3 + 2] = z;
       
-      mesh.current.instanceMatrix.needsUpdate = true;
+      dummy.position.set(x, y, z);
+      dummy.updateMatrix();
+      particles.setMatrixAt(i, dummy.matrix);
     }
-  }, [count]);
+    
+    particles.instanceMatrix.needsUpdate = true;
+  }, []);
 
   useFrame((state: RootState) => {
-    if (mesh.current) {
+    if (meshRef.current) {
       const time = state.clock.getElapsedTime();
       
       // Slowly rotate the entire particle system
-      mesh.current.rotation.y = time * 0.03;
-      mesh.current.rotation.x = Math.sin(time * 0.03) * 0.1;
+      meshRef.current.rotation.y = time * particleSpeed;
+      meshRef.current.rotation.x = Math.sin(time * particleSpeed) * 0.1;
     }
   });
   
   return (
-    <instancedMesh ref={mesh} args={[undefined, undefined, count]}>
+    <instancedMesh ref={meshRef} args={[undefined, undefined, particleCount]}>
       <circleGeometry args={[0.05, 8]} />
       <meshBasicMaterial color="#ffffff" opacity={0.15} transparent />
     </instancedMesh>
-  );
-};
-
-// Navigation Link Component
-interface NavLinkProps {
-  section: string;
-  isActive: boolean;
-  onClick: () => void;
-}
-
-const NavLink = ({ section, isActive, onClick }: NavLinkProps) => {
-  return (
-    <button
-      onClick={onClick}
-      className={`text-xs tracking-wider transition-colors duration-300 ${
-        isActive 
-          ? 'text-white font-light' 
-          : 'text-white/50 hover:text-white/80 font-light'
-      }`}
-    >
-      {section.toUpperCase()}
-    </button>
   );
 };
 
@@ -295,7 +257,7 @@ export default function HumanPage() {
       <div className="fixed inset-0 pointer-events-none opacity-70">
         <Canvas camera={{ position: [0, 0, 15], fov: 60 }}>
           <ambientLight intensity={0.1} />
-          <FloatingParticles count={150} />
+          <FloatingParticles />
         </Canvas>
       </div>
       
@@ -430,7 +392,7 @@ export default function HumanPage() {
                     ))}
                     
                     <div className="mt-8 pl-4 border-l border-white/20">
-                      <p className="text-white/50 italic mb-1">"{philosophy.quote}"</p>
+                      <p className="text-white/50 italic mb-1">&quot;{philosophy.quote}&quot;</p>
                       <p className="text-white/40 text-xs">— {philosophy.author}</p>
                     </div>
                   </div>
@@ -501,7 +463,7 @@ export default function HumanPage() {
       <div className="bg-black border-t border-white/5 py-20">
         <div className="container mx-auto px-6 text-center">
           <p className="text-white/30 font-light tracking-widest">
-            "Everything that can be said can be said clearly, but not everything can be said."
+            &quot;Everything that can be said can be said clearly, but not everything can be said.&quot;
           </p>
           <p className="text-white/20 text-sm mt-2">
             — Ludwig Wittgenstein

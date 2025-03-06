@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { ChipIcon, DesktopComputerIcon, CameraIcon, VideoCameraIcon } from '@heroicons/react/outline';
+import { FaCamera, FaVideo, FaMusic, FaPaintBrush } from 'react-icons/fa';
 
 // Define SVG icons for tools
 const icons = {
@@ -390,6 +392,7 @@ export const Tools = () => {
 };
 
 // Helper function to format category names
+/*
 function formatCategoryName(category: string): string {
   switch(category) {
     case 'equipment':
@@ -401,4 +404,5 @@ function formatCategoryName(category: string): string {
     default:
       return category.charAt(0).toUpperCase() + category.slice(1);
   }
-} 
+}
+*/ 

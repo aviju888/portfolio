@@ -7,19 +7,6 @@ import { useDomain } from './DomainProvider';
 export const Footer = () => {
   const { activeDomain } = useDomain();
   
-  const getGradientByDomain = () => {
-    switch (activeDomain) {
-      case 'creative':
-        return 'from-pink-500 to-purple-500';
-      case 'software':
-        return 'from-blue-500 to-cyan-500';
-      case 'human':
-        return 'from-gray-500 to-gray-700';
-      default:
-        return 'from-white/20 to-white/10';
-    }
-  };
-
   return (
     <footer className="bg-black py-16 border-t border-white/5">
       <div className="container mx-auto px-6">

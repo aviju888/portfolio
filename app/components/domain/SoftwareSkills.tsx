@@ -162,7 +162,7 @@ export const SoftwareSkills = () => {
         }
       });
     };
-  }, [visibleSections]);
+  }, [visibleSections, sectionRefs]);
 
   // Function to render a skill chip
   const renderSkillChip = (name: string, icon: React.ReactNode, delay: number, isVisible: boolean) => (

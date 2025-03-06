@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
 
 // Generic project interface that works for both Software and Creative domains
 export interface BaseProject {
@@ -93,7 +92,7 @@ export const ProjectsGrid = <T extends BaseProject>({
     setIsModalOpen(false);
   };
 
-  // Intersection Observer for project cards
+  // Reset visible projects when category changes
   useEffect(() => {
     // Make first 6 projects visible immediately for a better user experience
     setVisibleProjects(Array.from({ length: Math.min(6, filteredProjects.length) }, (_, i) => i));
@@ -124,7 +123,7 @@ export const ProjectsGrid = <T extends BaseProject>({
       observer.disconnect();
       clearTimeout(timer);
     };
-  }, [activeCategory, filteredProjects.length]);
+  }, [activeCategory, filteredProjects.length, visibleProjects]);
 
   return (
     <section id="projects" className="py-20 bg-black">
