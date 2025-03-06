@@ -105,11 +105,63 @@ const projects: SoftwareProject[] = [
 ];
 
 const categories: Category[] = [
-  { id: 'all', name: 'All', icon: '⚡', count: projects.length },
-  { id: 'ai-ml', name: 'AI/ML', icon: '🧠', count: projects.filter(p => p.category === 'ai-ml').length },
-  { id: 'computer-vision', name: 'Computer Vision', icon: '👁️', count: projects.filter(p => p.category === 'computer-vision').length },
-  { id: 'systems', name: 'Systems Architecture', icon: '⚙️', count: projects.filter(p => p.category === 'systems').length },
-  { id: 'web', name: 'Web Development', icon: '🌐', count: projects.filter(p => p.category === 'web').length }
+  { 
+    id: 'all', 
+    name: 'All', 
+    icon: (
+      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5z" />
+        <path d="M4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6z" />
+        <path d="M16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+      </svg>
+    ), 
+    count: projects.length 
+  },
+  { 
+    id: 'ai-ml', 
+    name: 'AI/ML', 
+    icon: (
+      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2v8m0 12v-2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+        <circle cx="12" cy="12" r="3" />
+      </svg>
+    ), 
+    count: projects.filter(p => p.category === 'ai-ml').length 
+  },
+  { 
+    id: 'computer-vision', 
+    name: 'Computer Vision', 
+    icon: (
+      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="3" />
+        <circle cx="12" cy="12" r="9" />
+        <path d="M17.5 6.5L12 12" />
+      </svg>
+    ), 
+    count: projects.filter(p => p.category === 'computer-vision').length 
+  },
+  { 
+    id: 'systems', 
+    name: 'Systems Architecture', 
+    icon: (
+      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="3" />
+        <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" />
+      </svg>
+    ), 
+    count: projects.filter(p => p.category === 'systems').length 
+  },
+  { 
+    id: 'web', 
+    name: 'Web Development', 
+    icon: (
+      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+      </svg>
+    ), 
+    count: projects.filter(p => p.category === 'web').length 
+  }
 ];
 
 export const SoftwareProjects = () => {

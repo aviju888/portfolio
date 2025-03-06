@@ -34,7 +34,7 @@ export interface CreativeProject extends BaseProject {
 export interface Category {
   id: string;
   name: string;
-  icon: string;
+  icon: React.ReactNode;
   count: number;
 }
 

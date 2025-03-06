@@ -42,7 +42,15 @@ export const Navbar = () => {
         className="text-2xl text-white cursor-pointer md:hidden"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
-        ☰
+        {isMenuOpen ? (
+          <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        ) : (
+          <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M4 8h16M4 16h16" />
+          </svg>
+        )}
       </button>
     </nav>
   );

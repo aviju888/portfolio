@@ -1,76 +1,79 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { Button } from '../components/ui/Button';
+import Link from 'next/link';
+import * as THREE from 'three';
+import { Canvas, useFrame, useThree, RootState } from '@react-three/fiber';
+import { Text } from '@react-three/drei';
 
-// Philosophical topics with associated content
-const philosophyTopics = [
+// Philosophical content from Markdown already available to use
+const philosophyContent = [
   {
-    id: 'existence',
-    title: 'On Existence',
+    id: 'perpetual-learner',
+    title: 'The Perpetual Learner',
     content: `
-      Existence is not a static state but a continuous becoming. We find ourselves thrust into consciousness without consent, forced to create meaning in an inherently meaningless universe. This burden of freedom is both our greatest gift and our most profound source of anxiety.
-      
-      I've come to see that authenticity lies not in conforming to external expectations, but in embracing the fundamental absurdity of existence. The truly courageous act is to stare into the void and still choose to live with purpose, to dance on the edge of the abyss.
-      
-      There is no ultimate truth or grand narrative that can save us from ourselves. We are merely brief flashes of consciousness in an indifferent cosmos. And yet in that brevity lies our most profound opportunity—to live fully, to create fiercely, to love deeply in the face of inevitable dissolution.
+      I believe that constant learning is the foundation of a fulfilling life. Each day presents countless opportunities to expand our understanding of the world. The moment we stop being curious is the moment we stop truly living.
+
+      Learning isn't just about acquiring knowledge—it's about continuous transformation. When I approach any challenge, I start by asking: "What can this teach me?" This mindset has transformed seemingly mundane experiences into profound lessons.
+
+      My approach to learning blends systematic study with intuitive exploration—structured enough to make progress, flexible enough to follow curiosity. I've found that the most valuable insights often emerge at the intersection of disciplines, where different mental models collide and create new understanding.
     `,
-    quote: "He who has a why to live for can bear almost any how.",
-    author: "Friedrich Nietzsche"
+    quote: "We don't stop playing because we grow old; we grow old because we stop playing.",
+    author: "George Bernard Shaw"
   },
   {
-    id: 'technology',
-    title: 'The Technological Self',
+    id: 'duality',
+    title: 'The Beauty of Duality',
     content: `
-      Technology is not something external to our humanity but an extension of our consciousness. Each tool we create is an externalization of our desires, fears, and inherent limitations. The smartphone is not separate from us—it is us, projected outward.
-      
-      What we call "AI" is merely a mirror reflecting our own algorithmic nature back at us. It unsettles us precisely because it reveals how mechanical many of our thoughts and behaviors actually are. The fear is not that machines will become like humans, but that we will realize how much we already resemble machines.
-      
-      Yet I believe our salvation lies not in rejecting technology but in transcending our dualistic perception of it. When we recognize that the digital and physical are merely different expressions of the same fundamental reality, we can begin to use technology not as an escape from our humanity but as a vehicle for its expansion.
+      Throughout my journey, I've been fascinated by how seemingly opposite forces often complement and enhance each other. Logic and creativity. Structure and chaos. Technology and humanity.
+
+      Rather than seeing these as contradictions, I view them as essential polarities that create a dynamic balance. My engineering mind delights in logical problem-solving, while my artistic soul craves creative expression through photography and dance.
+
+      This duality extends to how I approach problems—both methodically breaking them down into components and intuitively feeling my way through possibilities. Some of my best work emerges when I allow these approaches to dance together.
     `,
-    quote: "We are the universe experiencing itself.",
-    author: "Alan Watts"
+    quote: "Life is a balance of holding on and letting go.",
+    author: "Rumi"
   },
   {
-    id: 'art',
-    title: 'The Necessity of Art',
+    id: 'human-connection',
+    title: 'Human Connection',
     content: `
-      Art is not a luxury or mere entertainment but an existential necessity. In a world increasingly dominated by instrumental reason and algorithmic thinking, art stands as our last refuge of genuine freedom and ambiguity.
-      
-      When I photograph or create, I'm not simply making aesthetic objects—I'm engaging in an act of resistance against the quantification of human experience. Each image is an assertion that not everything can be reduced to data, that mystery and wonder remain essential to our humanity.
-      
-      The true power of art lies not in what it represents but in what it evokes. A successful photograph doesn't capture reality—it creates a new reality, one that exists in the liminal space between creator and witness. In this co-creation lies the possibility for genuine connection across the void that separates all conscious beings.
+      In an increasingly digital world, authentic human connection remains irreplaceable. Technology should enhance our humanity, not diminish it.
+
+      Through leading dance teams and collaborative projects, I've experienced how shared purpose creates bonds that transcend background and circumstance. Those connections have taught me more than any textbook could.
+
+      I believe that empathy—truly seeking to understand others' perspectives—is both a moral imperative and a practical advantage. The best systems, whether social or technological, are built with deep empathy for those they serve.
     `,
-    quote: "We have art in order not to die of the truth.",
-    author: "Friedrich Nietzsche"
+    quote: "The most basic and powerful way to connect to another person is to listen.",
+    author: "Rachel Naomi Remen"
   },
   {
-    id: 'knowledge',
-    title: 'The Limits of Knowledge',
+    id: 'elegant-simplicity',
+    title: 'Elegant Simplicity',
     content: `
-      Our educational systems are built on the Cartesian fallacy that knowledge is something to be accumulated, categorized, and possessed. But true understanding is not additive—it is transformative. We don't simply learn about reality; we are altered by our encounter with it.
-      
-      I've found that the most profound insights come not from gathering more information but from questioning the fundamental assumptions that structure how we perceive the world. The boundary between the known and unknown is not fixed but permeable, constantly shifting as we expand our consciousness.
-      
-      Perhaps wisdom lies not in certainty but in comfortable uncertainty, in embracing the fundamental incompleteness of all human knowledge. The moment we believe we understand something completely is precisely when we stop thinking about it. Paradoxically, true learning begins with the recognition of how little we actually know.
+      I'm drawn to the philosophy that the most elegant solutions aren't the most complex, but rather those that achieve maximum impact with minimum complexity.
+
+      In both code and life, I strive to reduce problems to their essence. What's essential? What can be eliminated? What remains when unnecessary complexity is stripped away?
+
+      This pursuit of simplicity isn't about oversimplification—it's about finding the elegant core of an idea, solution, or expression. The Japanese concept of "shibui" captures this well: simple, subtle, and unobtrusive beauty.
     `,
-    quote: "The more I learn, the more I realize how much I don't know.",
-    author: "Albert Einstein"
+    quote: "Simplicity is the ultimate sophistication.",
+    author: "Leonardo da Vinci"
   },
   {
-    id: 'love',
-    title: 'Love and Impermanence',
+    id: 'present-awareness',
+    title: 'Present Awareness',
     content: `
-      Love is not the sentimental abstraction we often imagine it to be, but a fierce acknowledgment of the other's separate existence. To truly love is to embrace the fundamental separateness of consciousness—to recognize that we can never fully know another and to cherish them anyway.
-      
-      What makes love profound is not its permanence but its fragility. Like all things, relationships are subject to the law of impermanence. Their beauty and intensity are inseparable from their transience.
-      
-      I've come to believe that genuine love requires abandoning the illusion of possession and control. It is only when we stop trying to grasp and secure love that we become capable of experiencing it in its full intensity—as a momentary convergence of separate trajectories in the vast expanse of being.
+      Photography has taught me the value of being fully present. When I'm behind the camera, I'm completely immersed in the moment—aware of light, composition, emotion, and timing.
+
+      I've come to apply this heightened awareness to other areas of life. Whether writing code, engaging in conversation, or solving problems, there's a quality of attention that transforms ordinary experience into something extraordinary.
+
+      This isn't about constant focus—it's about cultivating the ability to be fully present when it matters, allowing for both intense concentration and creative wandering of the mind.
     `,
-    quote: "Love is wise, hatred is foolish.",
-    author: "Bertrand Russell"
+    quote: "The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.",
+    author: "Marcel Proust"
   }
 ];
 
@@ -106,34 +109,6 @@ const fragments = [
   }
 ];
 
-// Influential philosophers with brief descriptions
-const influences = [
-  {
-    name: "Friedrich Nietzsche",
-    insight: "The will to power and the courage to create one's own values in a world without inherent meaning.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Nietzsche187a.jpg",
-    work: "Thus Spoke Zarathustra"
-  },
-  {
-    name: "Alan Watts",
-    insight: "The wisdom of non-duality and the playful recognition that separation is an illusion.",
-    image: "https://upload.wikimedia.org/wikipedia/en/9/97/Alan_Watts.png",
-    work: "The Way of Zen"
-  },
-  {
-    name: "Simone de Beauvoir",
-    insight: "Existence precedes essence; we must create ourselves through our choices and actions.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/e/e2/Simone_de_Beauvoir.jpg",
-    work: "The Ethics of Ambiguity"
-  },
-  {
-    name: "Marshall McLuhan",
-    insight: "The medium is the message—technology shapes not just what we think but how we think.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/2/23/Marshall_McLuhan.jpg",
-    work: "Understanding Media"
-  }
-];
-
 // Notebook and polaroid images
 const notebookImages = [
   {
@@ -150,12 +125,86 @@ const notebookImages = [
   }
 ];
 
-export default function HumanPage() {
-  const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
-  const [isPageLoaded, setIsPageLoaded] = useState(false);
-  const [hoveredFragment, setHoveredFragment] = useState<number | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+// Three.js Animations Components
+const FloatingParticles = ({ count = 100 }: { count?: number }) => {
+  const { size, camera } = useThree();
+  const mesh = useRef<THREE.InstancedMesh>(null);
+  const [dpr, setDpr] = useState(1.5);
+
+  useEffect(() => {
+    // Create particles at random positions
+    if (mesh.current) {
+      const tempObject = new THREE.Object3D();
+      const positions = new Float32Array(count * 3);
+      
+      for (let i = 0; i < count; i++) {
+        const x = (Math.random() - 0.5) * 30;
+        const y = (Math.random() - 0.5) * 30;
+        const z = (Math.random() - 0.5) * 15;
+        
+        positions[i * 3] = x;
+        positions[i * 3 + 1] = y;
+        positions[i * 3 + 2] = z;
+        
+        tempObject.position.set(x, y, z);
+        tempObject.updateMatrix();
+        mesh.current.setMatrixAt(i, tempObject.matrix);
+      }
+      
+      mesh.current.instanceMatrix.needsUpdate = true;
+    }
+  }, [count]);
+
+  useFrame((state: RootState) => {
+    if (mesh.current) {
+      const time = state.clock.getElapsedTime();
+      
+      // Slowly rotate the entire particle system
+      mesh.current.rotation.y = time * 0.03;
+      mesh.current.rotation.x = Math.sin(time * 0.03) * 0.1;
+    }
+  });
   
+  return (
+    <instancedMesh ref={mesh} args={[undefined, undefined, count]}>
+      <circleGeometry args={[0.05, 8]} />
+      <meshBasicMaterial color="#ffffff" opacity={0.15} transparent />
+    </instancedMesh>
+  );
+};
+
+// Navigation Link Component
+interface NavLinkProps {
+  section: string;
+  isActive: boolean;
+  onClick: () => void;
+}
+
+const NavLink = ({ section, isActive, onClick }: NavLinkProps) => {
+  return (
+    <button
+      onClick={onClick}
+      className={`text-xs tracking-wider transition-colors duration-300 ${
+        isActive 
+          ? 'text-white font-light' 
+          : 'text-white/50 hover:text-white/80 font-light'
+      }`}
+    >
+      {section.toUpperCase()}
+    </button>
+  );
+};
+
+export default function HumanPage() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [hoveredFragment, setHoveredFragment] = useState<number | null>(null);
+  const [activeSection, setActiveSection] = useState('intro');
+  const sectionRefs = {
+    intro: useRef<HTMLElement>(null),
+    philosophy: useRef<HTMLElement>(null),
+    fragments: useRef<HTMLElement>(null)
+  };
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
@@ -163,206 +212,289 @@ export default function HumanPage() {
 
   const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.1], [1, 0.98]);
-  
-  useEffect(() => {
-    setIsPageLoaded(true);
-    
-    // Typewriter effect for page title
-    const title = document.getElementById('page-title');
-    if (title) {
-      title.classList.add('animate-in');
+
+  // Add state for controlling hero animation
+  const [heroAnimationComplete, setHeroAnimationComplete] = useState(false);
+
+  // Scroll to section function
+  const scrollToSection = useCallback((sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
+    setActiveSection(sectionId);
   }, []);
 
-  const handleTopicClick = (topicId: string) => {
-    setSelectedTopic(topicId === selectedTopic ? null : topicId);
+  // Enhanced section detection using scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight * 0.3;
+      
+      // Get all sections and their positions
+      const sections = ['intro', 'philosophy', 'fragments'];
+      
+      // Find which section is currently in view
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { top, bottom } = element.getBoundingClientRect();
+          const elementTop = top + window.scrollY;
+          const elementBottom = bottom + window.scrollY;
+          
+          if (scrollPosition >= elementTop && scrollPosition <= elementBottom) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    // Initial check
+    handleScroll();
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Animation variants for the hero section
+  const titleVariants = {
+    hidden: { 
+      y: 100, 
+      opacity: 0,
+      scale: 0.95
+    },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      scale: 1,
+      transition: { 
+        duration: 1.2,
+        ease: [0.25, 0.1, 0.25, 1.0],
+        delay: 0.3
+      }
+    }
+  };
+
+  const subtitleVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { 
+        duration: 1.0,
+        ease: "easeOut",
+        delay: 1.0
+      }
+    }
   };
 
   return (
     <div ref={containerRef} className="min-h-screen bg-black text-white relative font-light tracking-wider">
-      {/* Floating elements in background */}
-      <div className="fixed inset-0 overflow-hidden opacity-5 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 text-[200px] font-thin opacity-10 transform -rotate-12">?</div>
-        <div className="absolute bottom-1/4 right-1/4 text-[200px] font-thin opacity-10 transform rotate-12">!</div>
-        <div className="absolute top-2/3 left-1/3 text-[120px] font-thin opacity-10 transform rotate-45">&infin;</div>
+      {/* Three.js Background Animation */}
+      <div className="fixed inset-0 pointer-events-none opacity-70">
+        <Canvas camera={{ position: [0, 0, 15], fov: 60 }}>
+          <ambientLight intensity={0.1} />
+          <FloatingParticles count={150} />
+        </Canvas>
       </div>
       
-      {/* Hero Section */}
+      {/* Hero Section - Updated with more dynamic animations */}
       <motion.div 
         style={{ opacity, scale }}
         className="relative h-screen flex items-center justify-center overflow-hidden border-b border-white/10"
       >
-        <div className="container mx-auto px-6 z-10 text-center">
-          <motion.h1 
-            id="page-title"
-            className="text-6xl md:text-[10rem] font-extralight mb-4 text-white/80 typewriter-text"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 2 }}
-          >
-            HUMAN
-          </motion.h1>
-          
-          <motion.p 
-            className="text-sm md:text-base text-white/60 max-w-xl mx-auto font-extralight tracking-widest"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 2, delay: 1 }}
-          >
-            EXISTENCE · CONSCIOUSNESS · BECOMING
-          </motion.p>
-        </div>
+        <AnimatePresence>
+          <div className="container mx-auto px-6 z-10 text-center">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.1
+                  }
+                }
+              }}
+              onAnimationComplete={() => setHeroAnimationComplete(true)}
+            >
+              <motion.h1 
+                className="text-6xl md:text-[10rem] font-extralight mb-4 text-white/80 typewriter-text"
+                variants={titleVariants}
+              >
+                HUMAN
+              </motion.h1>
+              
+              <motion.p 
+                className="text-sm md:text-base text-white/60 max-w-xl mx-auto font-extralight tracking-widest"
+                variants={subtitleVariants}
+              >
+                THOUGHTS · PHILOSOPHY · REFLECTIONS
+              </motion.p>
+            </motion.div>
+          </div>
+        </AnimatePresence>
         
-        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2">
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.6 }}
-            transition={{ duration: 1, delay: 2 }}
+        <motion.div 
+          className="absolute bottom-12 left-1/2 transform -translate-x-1/2"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ 
+            opacity: heroAnimationComplete ? 0.6 : 0,
+            y: heroAnimationComplete ? 0 : 10
+          }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          <div 
             className="text-xs text-white/60 font-light cursor-pointer tracking-[0.2em]"
-            onClick={() => {
-              document.getElementById('content-section')?.scrollIntoView({ behavior: 'smooth' });
-            }}
+            onClick={() => scrollToSection('intro')}
           >
-            DESCEND
-          </motion.div>
-        </div>
+            SCROLL DOWN
+          </div>
+        </motion.div>
       </motion.div>
 
-      {/* Main Content Section */}
-      <div id="content-section" className="bg-black pt-40 pb-40">
+      {/* Section Navigation */}
+      <div className="sticky top-[72px] z-40 bg-black border-b border-white/5">
         <div className="container mx-auto px-6">
-          {/* Section title */}
-          <div className="mb-32 max-w-4xl mx-auto">
-            <h2 className="text-2xl font-extralight mb-6 text-white/80 tracking-widest">THE UNSAYABLE</h2>
-            <p className="text-sm text-white/60 font-light leading-relaxed">
-              These are attempts to articulate what fundamentally resists articulation—the raw experience of being that precedes and exceeds language. Each exploration is incomplete, provisional, a finger pointing at the moon rather than the moon itself.
-            </p>
-          </div>
-
-          {/* Notebook image */}
-          <div className="mb-32 mx-auto max-w-2xl">
-            <div className="aspect-w-4 aspect-h-3 relative">
-              <Image 
-                src="/images/notebook-1.jpg" 
-                alt="Philosophical notebook" 
-                width={800} 
-                height={600}
-                className="object-cover filter grayscale contrast-125"
-              />
-            </div>
-            <p className="text-xs text-white/40 mt-2 text-right italic">from personal archives</p>
-          </div>
-          
-          {/* Philosophical topics */}
-          <div className="max-w-3xl mx-auto mb-40">
-            {philosophyTopics.map((topic) => (
-              <div key={topic.id} className="mb-20 last:mb-0">
-                <button 
-                  className="flex items-center justify-between w-full text-left border-b border-white/10 pb-3 group"
-                  onClick={() => handleTopicClick(topic.id)}
-                >
-                  <h3 className="text-xl font-extralight tracking-wider text-white/90">{topic.title}</h3>
-                  <span className={`text-white/40 transition-transform duration-300 ${selectedTopic === topic.id ? 'rotate-45' : ''}`}>+</span>
-                </button>
-                
-                <AnimatePresence>
-                  {selectedTopic === topic.id && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="pt-6 pb-6 text-sm text-white/70 font-light leading-relaxed">
-                        <p className="whitespace-pre-line">{topic.content}</p>
-                        <div className="mt-6 pl-4 border-l border-white/20">
-                          <p className="text-white/50 italic mb-1">"{topic.quote}"</p>
-                          <p className="text-white/40 text-xs">— {topic.author}</p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ))}
-          </div>
-
-          {/* Polaroid image */}
-          <div className="mb-32 mx-auto max-w-sm">
-            <div className="bg-white/95 p-2 shadow-lg rotate-1">
-              <div className="aspect-w-1 aspect-h-1 relative mb-4">
-                <Image 
-                  src="/images/polaroid-1.jpg" 
-                  alt="Philosophical concept" 
-                  width={400} 
-                  height={400}
-                  className="object-cover filter grayscale"
-                />
-              </div>
-              <p className="text-black text-xs pb-2 font-mono">thought experiment, 23.11</p>
-            </div>
-          </div>
-          
-          {/* Fragments section */}
-          <div className="max-w-4xl mx-auto mb-40">
-            <h2 className="text-2xl font-extralight mb-12 text-white/80 tracking-widest">FRAGMENTS</h2>
+          <div className="flex justify-between items-center py-4">
+            <Link href="/" className="text-white/70 hover:text-white text-sm tracking-wider transition-colors">
+              ← BACK HOME
+            </Link>
             
-            <div className="grid grid-cols-1 gap-12">
-              {fragments.map((fragment, index) => (
-                <motion.div 
-                  key={fragment.id}
-                  className={`text-white/70 border-l-2 border-white/10 pl-4 py-2 transition-all duration-200 ${hoveredFragment === index ? 'border-white/40' : ''}`}
-                  onMouseEnter={() => setHoveredFragment(index)}
-                  onMouseLeave={() => setHoveredFragment(null)}
-                  whileHover={{ x: 5 }}
+            <div className="hidden md:flex items-center justify-center space-x-12">
+              {['intro', 'philosophy', 'fragments'].map((section) => (
+                <button
+                  key={section}
+                  onClick={() => scrollToSection(section)}
+                  className={`text-xs tracking-wider transition-colors ${
+                    activeSection === section ? 'text-white' : 'text-white/50 hover:text-white/80'
+                  }`}
                 >
-                  <p className="text-sm font-light leading-relaxed">{fragment.content}</p>
-                </motion.div>
+                  {section.toUpperCase()}
+                </button>
               ))}
             </div>
-          </div>
-
-          {/* Second notebook image */}
-          <div className="mb-32 mx-auto max-w-2xl">
-            <div className="aspect-w-16 aspect-h-9 relative">
-              <Image 
-                src="/images/notebook-2.jpg" 
-                alt="Notebook with scribbled thoughts" 
-                width={1200} 
-                height={675}
-                className="object-cover filter grayscale"
-              />
-            </div>
-            <p className="text-xs text-white/40 mt-2 text-right italic">pages from the abyss</p>
-          </div>
-          
-          {/* Influences section */}
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-extralight mb-12 text-white/80 tracking-widest">INFLUENCES</h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              {influences.map((philosopher) => (
-                <div key={philosopher.name} className="flex space-x-4">
-                  <div className="w-20 h-20 shrink-0 relative overflow-hidden">
-                    <Image 
-                      src={philosopher.image} 
-                      alt={philosopher.name} 
-                      width={80} 
-                      height={80} 
-                      className="object-cover filter grayscale contrast-125"
-                    />
+            <div className="w-8"></div> {/* Spacer for alignment */}
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content Section */}
+      <div id="content-section">
+        {/* Introduction */}
+        <section id="intro" ref={sectionRefs.intro} className="py-32 border-b border-white/5">
+          <div className="container mx-auto px-6">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-2xl font-extralight mb-6 text-white/80 tracking-widest">INTRODUCTION</h2>
+              <p className="text-white/70 mb-8 leading-relaxed">
+                Welcome to my space for reflection and thought. This page is a digital canvas for the ideas and perspectives that shape my understanding of the world, technology, and humanity itself. Here, I explore the intersections of logic and creativity, technology and consciousness, being and becoming.
+              </p>
+              <p className="text-white/70 leading-relaxed">
+                These writings are not definitive statements but ongoing explorations—thoughts in progress that evolve as I do. They represent my attempt to articulate the inarticulable, to give form to the formless stream of consciousness that constitutes our inner experience.
+              </p>
+              
+              {/* Notebook image */}
+              <div className="mt-16 mx-auto">
+                <div className="aspect-w-4 aspect-h-3 relative">
+                  <Image 
+                    src="/images/notebook-1.jpg" 
+                    alt="Philosophical notebook" 
+                    width={800} 
+                    height={600}
+                    className="object-cover filter grayscale contrast-125"
+                  />
+                </div>
+                <p className="text-xs text-white/40 mt-2 text-right italic">from personal archives</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Philosophy Content */}
+        <section id="philosophy" ref={sectionRefs.philosophy} className="py-32 border-b border-white/5">
+          <div className="container mx-auto px-6">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-2xl font-extralight mb-12 text-white/80 tracking-widest">PHILOSOPHY</h2>
+              
+              {philosophyContent.map((philosophy, index) => (
+                <div key={philosophy.id} className="mb-24 last:mb-0">
+                  <h3 className="text-xl font-extralight tracking-wider text-white/80 mb-8 border-b border-white/10 pb-2">
+                    {philosophy.title}
+                  </h3>
+                  
+                  <div className="text-sm text-white/70 font-light leading-relaxed space-y-4">
+                    {philosophy.content.trim().split('\n\n').map((paragraph, i) => (
+                      <p key={i}>{paragraph.trim()}</p>
+                    ))}
+                    
+                    <div className="mt-8 pl-4 border-l border-white/20">
+                      <p className="text-white/50 italic mb-1">"{philosophy.quote}"</p>
+                      <p className="text-white/40 text-xs">— {philosophy.author}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-sm font-normal text-white/90 mb-1">{philosopher.name}</h3>
-                    <p className="text-xs text-white/60 mb-2 italic">{philosopher.work}</p>
-                    <p className="text-xs text-white/70 font-light">{philosopher.insight}</p>
-                  </div>
+                  
+                  {/* Add an image after some sections */}
+                  {index === 1 && (
+                    <div className="mt-16 mx-auto relative">
+                      <div className="bg-white/95 p-2 shadow-lg rotate-1 max-w-sm mx-auto">
+                        <div className="aspect-w-1 aspect-h-1 relative mb-4">
+                          <Image 
+                            src="/images/polaroid-1.jpg" 
+                            alt="Philosophical concept" 
+                            width={400} 
+                            height={400}
+                            className="object-cover filter grayscale"
+                          />
+                        </div>
+                        <p className="text-black text-xs pb-2 font-mono">thought experiment, 23.11</p>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {index === 3 && (
+                    <div className="mt-16 mx-auto">
+                      <div className="aspect-w-16 aspect-h-9 relative">
+                        <Image 
+                          src="/images/notebook-2.jpg" 
+                          alt="Notebook with scribbled thoughts" 
+                          width={1200} 
+                          height={675}
+                          className="object-cover filter grayscale"
+                        />
+                      </div>
+                      <p className="text-xs text-white/40 mt-2 text-right italic">pages from the abyss</p>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
           </div>
-        </div>
+        </section>
+          
+        {/* Fragments section */}
+        <section id="fragments" ref={sectionRefs.fragments} className="py-32">
+          <div className="container mx-auto px-6">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-2xl font-extralight mb-12 text-white/80 tracking-widest">FRAGMENTS</h2>
+              
+              <div className="grid grid-cols-1 gap-12">
+                {fragments.map((fragment, index) => (
+                  <motion.div 
+                    key={fragment.id}
+                    className={`text-white/70 border-l-2 border-white/10 pl-4 py-2 transition-all duration-200 ${hoveredFragment === index ? 'border-white/40' : ''}`}
+                    onMouseEnter={() => setHoveredFragment(index)}
+                    onMouseLeave={() => setHoveredFragment(null)}
+                    whileHover={{ x: 5 }}
+                  >
+                    <p className="text-sm font-light leading-relaxed">{fragment.content}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
 
       {/* Footer */}

@@ -86,7 +86,7 @@ export const SoftwareHero = () => {
             }`}
           >
             <div className="bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 bg-clip-text text-transparent animate-gradient-x bg-[length:200%_auto]">
-              Building Intelligent Systems
+              Software Development
             </div>
           </h1>
           <p 
@@ -94,7 +94,7 @@ export const SoftwareHero = () => {
               isHeroVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
             }`}
           >
-            Creating innovative software solutions at the intersection of computer vision, AI, and web development.
+            My work at the intersection of AI/ML, Computer Vision, and Web Development.
           </p>
 
           {/* Navigation - Centered with animation */}

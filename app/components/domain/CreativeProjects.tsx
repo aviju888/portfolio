@@ -155,11 +155,61 @@ const projectsData: CreativeProject[] = [
 
 // Define categories with counts for filtering
 const categories: Category[] = [
-  { id: 'all', name: 'All', icon: '🎨', count: projectsData.length },
-  { id: 'photography', name: 'Photography', icon: '📸', count: projectsData.filter(p => p.category === 'photography').length },
-  { id: 'videography', name: 'Videography', icon: '🎥', count: projectsData.filter(p => p.category === 'videography').length },
-  { id: 'leadership', name: 'Leadership', icon: '👥', count: projectsData.filter(p => p.category === 'leadership').length },
-  { id: 'design', name: 'Design', icon: '✏️', count: projectsData.filter(p => p.category === 'design').length }
+  { 
+    id: 'all', 
+    name: 'All', 
+    icon: (
+      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20 7h-3m-2.5 0H12m-8 0H2m18 5h-2m-3 0H7m-5 0H2m18 5h-5m-4 0H2" />
+        <path d="M14 15h1.5a1.5 1.5 0 0 1 1.5 1.5v0a1.5 1.5 0 0 1-1.5 1.5H15v1" />
+      </svg>
+    ), 
+    count: projectsData.length 
+  },
+  { 
+    id: 'photography', 
+    name: 'Photography', 
+    icon: (
+      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+        <path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    ), 
+    count: projectsData.filter(p => p.category === 'photography').length 
+  },
+  { 
+    id: 'videography', 
+    name: 'Videography', 
+    icon: (
+      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+      </svg>
+    ), 
+    count: projectsData.filter(p => p.category === 'videography').length 
+  },
+  { 
+    id: 'leadership', 
+    name: 'Leadership', 
+    icon: (
+      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="8" r="5" />
+        <path d="M20 21v-2a5 5 0 00-5-5H9a5 5 0 00-5 5v2" />
+      </svg>
+    ), 
+    count: projectsData.filter(p => p.category === 'leadership').length 
+  },
+  { 
+    id: 'design', 
+    name: 'Design', 
+    icon: (
+      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 19l7-7 3 3-7 7-3-3z" />
+        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+        <path d="M2 2l7.586 7.586" />
+      </svg>
+    ), 
+    count: projectsData.filter(p => p.category === 'design').length 
+  }
 ];
 
 export const CreativeProjects = () => {

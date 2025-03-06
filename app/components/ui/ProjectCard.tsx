@@ -83,7 +83,18 @@ export const ProjectCard = ({
               onClick={e => e.stopPropagation()}
               className={`text-white/60 hover:text-${accentColor}-400 transition-colors`}
             >
-              ↗
+              <svg 
+                className="w-4 h-4" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="1.5" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              >
+                <path d="M7 17L17 7" />
+                <path d="M7 7h10v10" />
+              </svg>
             </a>
           )}
         </div>
