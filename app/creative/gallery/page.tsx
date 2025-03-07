@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
@@ -214,7 +214,6 @@ const photos = [
 ];
 
 export default function GalleryPage() {
-  const [hoveredPhotoId, setHoveredPhotoId] = useState<number | null>(null);
   const [selectedPhoto, setSelectedPhoto] = useState<typeof photos[0] | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   
@@ -252,7 +251,7 @@ export default function GalleryPage() {
   };
   
   // Navigate to next or previous photo
-  const navigatePhoto = (direction: 'next' | 'prev') => {
+  const navigatePhoto = useCallback((direction: 'next' | 'prev') => {
     if (!selectedPhoto) return;
     
     const currentIndex = photos.findIndex(photo => photo.id === selectedPhoto.id);
@@ -265,7 +264,7 @@ export default function GalleryPage() {
     }
     
     setSelectedPhoto(photos[newIndex]);
-  };
+  }, [selectedPhoto, photos]);
   
   // Handle arrow key navigation
   useEffect(() => {
@@ -283,7 +282,7 @@ export default function GalleryPage() {
     return () => {
       document.removeEventListener('keydown', handleKeyNavigation);
     };
-  }, [selectedPhoto]);
+  }, [selectedPhoto, navigatePhoto]);
   
   // Disable body scroll when modal is open
   useEffect(() => {

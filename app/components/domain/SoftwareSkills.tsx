@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { ScrollIndicator } from '@/app/components/ui/ScrollIndicator';
 
 // Define SVG icons for each skill type
@@ -124,11 +124,17 @@ const skillsData = {
 
 export const SoftwareSkills = () => {
   const [visibleSections, setVisibleSections] = useState<string[]>([]);
-  const sectionRefs = {
-    languages: useRef<HTMLDivElement>(null),
-    frameworks: useRef<HTMLDivElement>(null),
-    tools: useRef<HTMLDivElement>(null)
-  };
+  const languagesRef = useRef<HTMLDivElement>(null);
+  const aimlRef = useRef<HTMLDivElement>(null);
+  const webRef = useRef<HTMLDivElement>(null);
+  const toolsRef = useRef<HTMLDivElement>(null);
+
+  const sectionRefs = useMemo(() => ({
+    languages: languagesRef,
+    aiml: aimlRef,
+    web: webRef,
+    tools: toolsRef,
+  }), []);
 
   // Intersection Observer for animation
   useEffect(() => {
@@ -196,7 +202,7 @@ export const SoftwareSkills = () => {
         {/* Programming Languages */}
         <div 
           id="languages" 
-          ref={sectionRefs.languages}
+          ref={languagesRef}
           className={`mb-16 transition-all duration-1000 ${
             visibleSections.includes('languages') 
               ? 'opacity-100 translate-y-0' 
@@ -223,7 +229,7 @@ export const SoftwareSkills = () => {
         {/* Frameworks & Libraries */}
         <div 
           id="frameworks" 
-          ref={sectionRefs.frameworks}
+          ref={aimlRef}
           className={`mb-16 transition-all duration-1000 ${
             visibleSections.includes('frameworks') 
               ? 'opacity-100 translate-y-0' 
@@ -251,7 +257,7 @@ export const SoftwareSkills = () => {
         {/* Tools & Technologies */}
         <div 
           id="tools" 
-          ref={sectionRefs.tools}
+          ref={toolsRef}
           className={`transition-all duration-1000 ${
             visibleSections.includes('tools') 
               ? 'opacity-100 translate-y-0' 

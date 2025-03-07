@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import Image from 'next/image';
 import Link from 'next/link';
 import * as THREE from 'three';
-import { Canvas, useFrame, useThree, RootState } from '@react-three/fiber';
+import { Canvas, useFrame, RootState } from '@react-three/fiber';
 
 // Philosophical content from Markdown already available to use
 const philosophyContent = [
@@ -175,9 +175,6 @@ export default function HumanPage() {
   const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.1], [1, 0.98]);
 
-  // Add state for controlling hero animation
-  const [heroAnimationComplete, setHeroAnimationComplete] = useState(false);
-
   // Scroll to section function
   const scrollToSection = useCallback((sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -279,7 +276,6 @@ export default function HumanPage() {
                   }
                 }
               }}
-              onAnimationComplete={() => setHeroAnimationComplete(true)}
             >
               <motion.h1 
                 className="text-4xl md:text-[8rem] font-extralight mb-8 md:mb-12 text-white/80 typewriter-text"

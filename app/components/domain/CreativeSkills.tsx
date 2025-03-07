@@ -287,7 +287,7 @@ export const Tools = () => {
             Tools & Equipment
           </h2>
           <p className="text-white/70 max-w-lg mx-auto">
-            The professional tools and equipment I'm experienced with using across
+            The professional tools and equipment I&apos;m experienced with using across
             photography, videography, music production, and design.
           </p>
         </div>

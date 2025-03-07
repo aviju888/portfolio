@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useDomain } from './DomainProvider';
 
 export type Domain = 'creative' | 'software' | 'human';
 

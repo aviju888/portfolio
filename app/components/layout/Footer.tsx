@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useDomain } from './DomainProvider';
 
 export const Footer = () => {
-  const { activeDomain } = useDomain();
+  const { /* activeDomain */ } = useDomain();
   
   return (
     <footer className="bg-black py-16 border-t border-white/5">
