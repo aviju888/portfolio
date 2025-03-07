@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '../ui/Button';
-import { motion, useSpring } from 'framer-motion';
+import { useSpring } from 'framer-motion';
 
 export const SoftwareHero = () => {
   const [isHeroVisible, setIsHeroVisible] = useState(false);

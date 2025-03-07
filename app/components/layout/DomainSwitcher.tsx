@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { useDomain } from './DomainProvider';
 
 export type Domain = 'creative' | 'software' | 'human';
 

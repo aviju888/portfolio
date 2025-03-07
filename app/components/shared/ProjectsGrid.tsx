@@ -126,7 +126,7 @@ export const ProjectsGrid = <T extends BaseProject>({
       observer.disconnect();
       clearTimeout(timer);
     };
-  }, [activeCategory, filteredProjects.length]);
+  }, [activeCategory, filteredProjects.length, visibleProjects]);
 
   return (
     <section id="projects" className="py-20 bg-black">

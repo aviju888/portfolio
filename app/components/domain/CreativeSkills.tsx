@@ -1,9 +1,6 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { ChipIcon, DesktopComputerIcon, CameraIcon, VideoCameraIcon } from '@heroicons/react/outline';
-import { FaCamera, FaVideo, FaMusic, FaPaintBrush } from 'react-icons/fa';
 
 // Define SVG icons for tools
 const icons = {
