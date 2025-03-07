@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 interface ExperienceItem {
   company: string;
@@ -48,7 +49,7 @@ const experiences: ExperienceItem[] = [
     description: [
       'Graduation Photography Portfolio: Captured milestone moments for UC Berkeley graduates including Harmony He (2023), Monica Wang (2024), Grace Luong (2024), Bryan Chen (2024), and Therese Mendoza (2024)',
       'Dance Team Photography: Lead photographer for KOSMOS (Spring/Fall 2023), AFX Dance Camp (Summer 2023), CTRL FX (Spring 2024), and Glamity (Spring 2024)',
-      'Event Coverage: Documented performances, competitions, and special events across the Bay Area dance community'
+      "Event Coverage: Documented performances and special events across UC Berkeley's dance community"
     ],
     skills: ['Photography', 'Adobe Lightroom', 'Adobe Photoshop', 'Event Photography', 'Portrait Photography'],
     icon: '/icons/camera.png'
@@ -98,7 +99,7 @@ const experiences: ExperienceItem[] = [
       'Worked 1-on-1 under LBNL Principal Scientific Engineering Associate'
     ],
     skills: ['Python', 'Large-scale Data Analysis', 'Anaconda', 'Data Science'],
-    icon: '/icons/berkeley-lab.png'
+    icon: '/icons/lbl.png'
   },
   {
     company: 'Berkeley Lab',
@@ -109,7 +110,7 @@ const experiences: ExperienceItem[] = [
       'Developed a gas detection model utilizing an Arduino to analyze toxic gas levels within household environments'
     ],
     skills: ['Python', 'Pandas'],
-    icon: '/icons/berkeley-lab.png'
+    icon: '/icons/lbl.png'
   },
 ];
 
@@ -130,6 +131,28 @@ export default function ExperiencePage() {
     )
   );
 
+  // Add these animation variants
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.3
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-zinc-950">
       <div className="container max-w-5xl mx-auto px-6 py-24">
@@ -143,55 +166,38 @@ export default function ExperiencePage() {
           </p>
         </div>
 
-        {/* Education Section (Moved from About page) */}
+        {/* Education Section */}
         <div className="mb-16 pb-6 border-b border-white/10">
           <h2 className="text-2xl font-semibold mb-6 text-white">Education</h2>
           <div className="bg-white/[0.03] p-6 rounded-lg border border-white/5">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
-              <h3 className="text-lg font-medium text-white">University of California, Berkeley</h3>
-              <span className="text-white/60 text-sm">2021 - 2025</span>
+            <div className="flex flex-col items-center text-center">
+              <Image 
+                src="/icons/cal.svg" 
+                alt="UC Berkeley Logo" 
+                width={64} 
+                height={64} 
+                className="mb-4 opacity-90"
+              />
+              <h3 className="text-xl font-medium text-white mb-1">University of California, Berkeley</h3>
+              <p className="text-white/80">B.S. Electrical Engineering and Computer Sciences</p>
+              <p className="text-white/80 mb-2">Minor in Data Science</p>
+              <span className="text-purple-500/90 text-sm font-medium">2021 - 2025</span>
             </div>
-            <p className="text-white/80 mb-2">B.S. Electrical Engineering and Computer Sciences</p>
-            <p className="text-white/80 mb-4">Minor in Data Science</p>
-            
-            <h4 className="text-sm font-medium text-white/70 mb-2">Relevant Coursework:</h4>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-white/70">
-              <li className="flex items-center">
-                <span className="mr-2 text-white/40">•</span>
-                <span>CS 61A/B/C: Structure and Interpretation of Computer Programs</span>
-              </li>
-              <li className="flex items-center">
-                <span className="mr-2 text-white/40">•</span>
-                <span>CS 70: Discrete Mathematics and Probability Theory</span>
-              </li>
-              <li className="flex items-center">
-                <span className="mr-2 text-white/40">•</span>
-                <span>CS 170: Efficient Algorithms and Intractable Problems</span>
-              </li>
-              <li className="flex items-center">
-                <span className="mr-2 text-white/40">•</span>
-                <span>CS 188: Introduction to Artificial Intelligence</span>
-              </li>
-              <li className="flex items-center">
-                <span className="mr-2 text-white/40">•</span>
-                <span>DATA 100: Principles and Techniques of Data Science</span>
-              </li>
-            </ul>
           </div>
         </div>
 
         {/* Quick Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
           <div className="bg-white/[0.03] rounded-lg p-5 border border-white/[0.05]">
-            <div className="text-2xl font-bold text-[#7d12ff] mb-1">5+ Years</div>
+            <div className="text-2xl font-bold text-purple-500 mb-1">5+ Years</div>
             <div className="text-white/60 text-sm">Working with Code & Design</div>
           </div>
           <div className="bg-white/[0.03] rounded-lg p-5 border border-white/[0.05]">
-            <div className="text-2xl font-bold text-[#7d12ff] mb-1">50+ Projects</div>
+            <div className="text-2xl font-bold text-purple-500 mb-1">50+ Projects</div>
             <div className="text-white/60 text-sm">Across Creative & Technical Domains</div>
           </div>
           <div className="bg-white/[0.03] rounded-lg p-5 border border-white/[0.05]">
-            <div className="text-2xl font-bold text-[#7d12ff] mb-1">200+ People</div>
+            <div className="text-2xl font-bold text-purple-500 mb-1">200+ People</div>
             <div className="text-white/60 text-sm">Leadership & Client-Work</div>
           </div>
         </div>
@@ -202,8 +208,8 @@ export default function ExperiencePage() {
             onClick={() => setActiveFilter('all')}
             className={`px-4 py-1.5 rounded-full text-sm transition-all
               ${activeFilter === 'all' 
-                ? 'bg-[#7d12ff] text-white' 
-                : 'bg-white/[0.03] text-white/60 hover:bg-white/[0.06]'}`}
+                ? 'bg-purple-500 text-white' 
+                : 'bg-zinc-900 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-300'}`}
           >
             All Experiences
           </button>
@@ -213,8 +219,8 @@ export default function ExperiencePage() {
               onClick={() => setActiveFilter(type)}
               className={`px-4 py-1.5 rounded-full text-sm transition-all
                 ${activeFilter === type 
-                  ? 'bg-[#7d12ff] text-white' 
-                  : 'bg-white/[0.03] text-white/60 hover:bg-white/[0.06]'}`}
+                  ? 'bg-purple-500 text-white' 
+                  : 'bg-zinc-900 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-300'}`}
             >
               {type}
             </button>
@@ -222,15 +228,38 @@ export default function ExperiencePage() {
         </div>
 
         {/* Timeline */}
-        <div className="relative border-l border-gray-800 pl-6 ml-4">
+        <motion.div 
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="relative"
+        >
+          {/* Timeline bar - simplified and more subtle */}
+          <div className="absolute left-4 top-0 bottom-0 w-px bg-zinc-800"></div>
+
           {filteredExperiences.map((exp, index) => (
-            <div key={index} className="mb-10 relative">
-              {/* Timeline dot */}
-              <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 bg-gradient-to-r from-gray-100 to-[#7d12ff] rounded-full" />
-              
+            <motion.div 
+              key={index} 
+              variants={item}
+              className="mb-10 relative pl-10"
+            >
+              {/* Simplified timeline dot */}
+              <div 
+                className="absolute left-[14px] top-2 w-2 h-2 bg-purple-500 rounded-full z-10"
+                style={{ marginLeft: '-4px' }}
+              >
+                {/* Inner glow effect */}
+                <div className="absolute inset-0 rounded-full bg-purple-500/20 animate-pulse" 
+                  style={{ transform: 'scale(1.5)' }} 
+                />
+              </div>
+
               {/* Experience card */}
-              <div className="group bg-white/[0.03] hover:bg-white/[0.06] rounded-lg p-6 transition-all duration-300
-                border border-white/[0.05] hover:border-white/[0.1]">
+              <motion.div 
+                whileHover={{ scale: 1.01 }}
+                className="bg-zinc-900/50 rounded-lg p-6 transition-all duration-300
+                  border border-zinc-800 hover:border-purple-500/20"
+              >
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                   <div className="flex items-center gap-3 mb-2 md:mb-0">
@@ -244,21 +273,21 @@ export default function ExperiencePage() {
                       />
                     )}
                     <div>
-                      <h3 className="text-xl font-semibold text-white">{exp.company}</h3>
-                      <div className="text-white/80 text-sm">{exp.role}</div>
+                      <h3 className="text-xl font-semibold text-purple-500">{exp.company}</h3>
+                      <div className="text-purple-500/90 text-sm">{exp.role}</div>
                     </div>
                   </div>
                   <div className="md:text-right">
-                    <div className="text-white/60 text-sm">{exp.location}</div>
-                    <div className="text-white/50 text-xs">{exp.date}</div>
+                    <div className="text-purple-500/80 text-sm">{exp.location}</div>
+                    <div className="text-purple-500/50 text-xs">{exp.date}</div>
                   </div>
                 </div>
                 
                 {/* Key Achievements */}
                 <ul className="space-y-2 mb-4">
                   {exp.description.map((desc, i) => (
-                    <li key={i} className="flex items-start gap-2 text-white/80 text-sm">
-                      <span className="w-1 h-1 rounded-full bg-[#7d12ff] mt-2 flex-shrink-0" />
+                    <li key={i} className="flex items-start gap-2 text-white/90 text-sm">
+                      <span className="w-1.5 h-1.5 rounded-full bg-purple-500/80 mt-1.5 flex-shrink-0" />
                       <span>{desc}</span>
                     </li>
                   ))}
@@ -266,22 +295,22 @@ export default function ExperiencePage() {
                 
                 {/* Skills */}
                 {exp.skills && (
-                  <div className="flex flex-wrap gap-1.5 pt-3 border-t border-white/[0.05]">
+                  <div className="flex flex-wrap gap-1.5 pt-3 border-t border-purple-500/20">
                     {exp.skills.map((skill, i) => (
                       <span 
                         key={i}
-                        className="px-2 py-0.5 text-xs bg-[#7d12ff]/10 text-[#7d12ff]/90 rounded-full
-                          border border-[#7d12ff]/20"
+                        className="px-2 py-0.5 text-xs bg-purple-500/10 text-purple-400 rounded-full
+                          border border-purple-500/20"
                       >
                         {skill}
                       </span>
                     ))}
                   </div>
                 )}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

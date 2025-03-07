@@ -110,7 +110,7 @@ export const CreativeHero = () => {
           className="text-5xl md:text-7xl font-bold mb-6"
         >
           <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-400 bg-clip-text text-transparent animate-gradient-x bg-[length:200%_auto]">
-            Creativity
+            CREATIVITY
           </span>
         </motion.h1>
         

@@ -92,18 +92,18 @@ export const SoftwareHero = () => {
       {/* Content - Centered with staggered animations */}
       <div className="container mx-auto px-6 relative z-10 flex-grow flex flex-col justify-center items-center text-center">
         {/* Header Section */}
-        <div className="max-w-3xl">
+        <div className="w-full max-w-4xl">
           <h1 
             className={`text-4xl md:text-6xl font-bold mb-6 leading-tight transform transition-all duration-1000 ${
               isHeroVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
             }`}
           >
             <div className="bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 bg-clip-text text-transparent animate-gradient-x bg-[length:200%_auto]">
-              Software Development
+              SOFTWARE<br className="md:hidden" /> DEVELOPMENT
             </div>
           </h1>
           <p 
-            className={`text-base md:text-xl text-white/80 leading-relaxed mb-8 transform transition-all duration-1000 delay-300 ${
+            className={`text-sm md:text-xl text-white/80 leading-relaxed mb-8 transform transition-all duration-1000 delay-300 ${
               isHeroVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
             }`}
           >
