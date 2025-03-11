@@ -23,8 +23,8 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: 'Adriel Vijuan - Creative Developer & Designer',
-  description: 'Portfolio showcasing creative, software, and design work by Adriel Vijuan',
+  title: 'Adriel Vijuan | UC Berkeley EECS',
+  description: 'Portfolio showcasing creative and software work by Adriel Vijuan',
 };
 
 export const viewport: Viewport = {
