@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 
 // Define SVG icons for tools
 const icons = {
@@ -220,12 +220,22 @@ const toolsData = {
 
 export const Tools = () => {
   const [visibleSections, setVisibleSections] = useState<string[]>([]);
-  const sectionRefs = {
-    photo: useRef<HTMLDivElement>(null),
-    video: useRef<HTMLDivElement>(null),
-    music: useRef<HTMLDivElement>(null),
-    design: useRef<HTMLDivElement>(null)
-  };
+  
+  type SectionRefKey = 'photo' | 'video' | 'music' | 'design';
+  
+  // Create refs outside of useMemo
+  const photoRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLDivElement>(null);
+  const musicRef = useRef<HTMLDivElement>(null);
+  const designRef = useRef<HTMLDivElement>(null);
+  
+  // Define sectionRefs using the refs created above
+  const sectionRefs = useMemo(() => ({
+    photo: photoRef,
+    video: videoRef,
+    music: musicRef,
+    design: designRef
+  }), []);
 
   // Intersection Observer for animation
   useEffect(() => {
@@ -233,7 +243,7 @@ export const Tools = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('id') || '';
+            const id = entry.target.getAttribute('id');
             if (id && !visibleSections.includes(id)) {
               setVisibleSections(prev => [...prev, id]);
             }
@@ -246,20 +256,21 @@ export const Tools = () => {
       }
     );
 
-    Object.values(sectionRefs).forEach(ref => {
-      if (ref.current) {
-        observer.observe(ref.current);
+    // Type-safe approach to access refs
+    (Object.keys(sectionRefs) as SectionRefKey[]).forEach(key => {
+      if (sectionRefs[key].current) {
+        observer.observe(sectionRefs[key].current!);
       }
     });
 
     return () => {
-      Object.values(sectionRefs).forEach(ref => {
-        if (ref.current) {
-          observer.unobserve(ref.current);
+      (Object.keys(sectionRefs) as SectionRefKey[]).forEach(key => {
+        if (sectionRefs[key].current) {
+          observer.unobserve(sectionRefs[key].current!);
         }
       });
     };
-  }, [visibleSections]);
+  }, [visibleSections, sectionRefs]);
 
   // Function to render a tool chip
   const renderToolChip = (name: string, icon: React.ReactNode, delay: number, isVisible: boolean) => (

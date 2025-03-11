@@ -264,7 +264,7 @@ export default function GalleryPage() {
     }
     
     setSelectedPhoto(photos[newIndex]);
-  }, [selectedPhoto, photos]);
+  }, [selectedPhoto]);
   
   // Handle arrow key navigation
   useEffect(() => {

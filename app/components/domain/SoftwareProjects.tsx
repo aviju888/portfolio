@@ -206,7 +206,10 @@ export const SoftwareProjects = () => {
     project: SoftwareProject,
     index: number,
     isVisible: boolean,
-    primaryColor: string
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _primaryColor: string,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _onClick?: (project: SoftwareProject) => void
   ) => {
     return (
       <div
@@ -220,10 +223,12 @@ export const SoftwareProjects = () => {
           {/* Project image */}
           {project.imageUrl && (
             <div className="relative h-40 overflow-hidden">
-              <img
+              <Image
                 src={project.imageUrl}
                 alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover transition-transform duration-500 hover:scale-110"
               />
             </div>
           )}
