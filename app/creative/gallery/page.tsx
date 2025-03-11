@@ -215,7 +215,18 @@ const photos = [
 
 export default function GalleryPage() {
   const [selectedPhoto, setSelectedPhoto] = useState<typeof photos[0] | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const modalRef = useRef<HTMLDivElement>(null);
+  
+  // Initialize loading state
+  useEffect(() => {
+    // Set loading to false after a short delay
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 600);
+    
+    return () => clearTimeout(timer);
+  }, []);
   
   // Handle click outside to close modal
   useEffect(() => {
@@ -258,15 +269,15 @@ export default function GalleryPage() {
     let newIndex;
     
     if (direction === 'next') {
-      newIndex = currentIndex === photos.length - 1 ? 0 : currentIndex + 1;
+      newIndex = (currentIndex + 1) % photos.length;
     } else {
-      newIndex = currentIndex === 0 ? photos.length - 1 : currentIndex - 1;
+      newIndex = (currentIndex - 1 + photos.length) % photos.length;
     }
     
     setSelectedPhoto(photos[newIndex]);
   }, [selectedPhoto]);
-  
-  // Handle arrow key navigation
+
+  // Handle key navigation
   useEffect(() => {
     function handleKeyNavigation(event: KeyboardEvent) {
       if (!selectedPhoto) return;
@@ -283,7 +294,7 @@ export default function GalleryPage() {
       document.removeEventListener('keydown', handleKeyNavigation);
     };
   }, [selectedPhoto, navigatePhoto]);
-  
+
   // Disable body scroll when modal is open
   useEffect(() => {
     if (selectedPhoto) {
@@ -299,6 +310,13 @@ export default function GalleryPage() {
   
   return (
     <div className="bg-black min-h-screen pb-24">
+      {/* Loading Overlay */}
+      {isLoading && (
+        <div className="fixed inset-0 bg-black z-50 flex items-center justify-center">
+          <div className="w-12 h-12 border-t-4 border-b-4 border-blue-500 rounded-full animate-spin"></div>
+        </div>
+      )}
+      
       {/* Page Title */}
       <div className="pt-28 pb-6 container mx-auto px-4">
         <div className="flex items-center justify-between">
@@ -318,12 +336,12 @@ export default function GalleryPage() {
       {/* Responsive gallery grid with more columns */}
       <div className="container mx-auto px-2 pt-2 pb-16">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2">
-          {photos.map((photo) => (
+          {photos.map((photo, index) => (
             <motion.div 
               key={photo.id}
               className="relative cursor-pointer bg-zinc-900/20 hover:bg-zinc-900/30 rounded overflow-hidden group"
               initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={{ opacity: isLoading ? 0 : 1, y: isLoading ? 10 : 0 }}
               transition={{ duration: 0.3, delay: photo.id * 0.03 }}
               onClick={() => handlePhotoClick(photo)}
             >
@@ -334,7 +352,8 @@ export default function GalleryPage() {
                   layout="fill"
                   objectFit="cover"
                   className="absolute"
-                  unoptimized
+                  priority={index < 12} // Prioritize loading first 12 visible images
+                  quality={85}
                 />
                 
                 {/* Hover overlay with metadata */}
@@ -379,7 +398,7 @@ export default function GalleryPage() {
                   height={800}
                   className="max-h-[65vh] md:max-h-[80vh] w-auto object-contain"
                   priority
-                  unoptimized
+                  quality={90}
                 />
                 
                 {/* Small minimal navigation controls below image */}
