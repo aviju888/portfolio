@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, useSpring } from 'framer-motion';
 
 interface ExperienceItem {
   company: string;
@@ -116,6 +116,11 @@ const experiences: ExperienceItem[] = [
 
 export default function ExperiencePage() {
   const [activeFilter, setActiveFilter] = useState<string>('all');
+  const [isPageVisible, setIsPageVisible] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const mouseX = useSpring(0, { stiffness: 100, damping: 30 });
+  const mouseY = useSpring(0, { stiffness: 100, damping: 30 });
+  const particlesContainerRef = useRef<HTMLDivElement>(null);
 
   // Group experiences by type
   const experienceTypes = {
@@ -153,23 +158,109 @@ export default function ExperiencePage() {
     }
   };
 
+  // Animation effect on mount
+  useEffect(() => {
+    // Set state immediately to trigger animations
+    setIsPageVisible(true);
+    setIsMounted(true);
+    
+    // Force a re-render when the component mounts
+    const timer = setTimeout(() => {
+      setIsPageVisible(state => state);
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Mouse movement effect
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+      
+      const x = (clientX / innerWidth) - 0.5;
+      const y = (clientY / innerHeight) - 0.5;
+      
+      mouseX.set(x);
+      mouseY.set(y);
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [mouseX, mouseY]);
+
+  // Generate particles only on client-side after component mounts
+  useEffect(() => {
+    if (!isMounted || !particlesContainerRef.current) return;
+    
+    // Clear any existing particles first
+    particlesContainerRef.current.innerHTML = '';
+    
+    // Create the particles
+    for (let i = 0; i < 20; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'absolute rounded-full bg-purple-500/20';
+      
+      const width = Math.random() * 5 + 2;
+      const height = Math.random() * 5 + 2;
+      const top = Math.random() * 100;
+      const left = Math.random() * 100;
+      const duration = Math.random() * 15 + 10;
+      const delay = Math.random() * 5;
+      
+      particle.style.width = `${width}px`;
+      particle.style.height = `${height}px`;
+      particle.style.top = `${top}%`;
+      particle.style.left = `${left}%`;
+      particle.style.animation = `float ${duration}s infinite ease-in-out alternate`;
+      particle.style.animationDelay = `${delay}s`;
+      
+      particlesContainerRef.current.appendChild(particle);
+    }
+  }, [isMounted]);
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-zinc-950">
-      <div className="container max-w-5xl mx-auto px-6 py-24">
+    <div className="min-h-screen bg-black relative overflow-hidden">
+      {/* Gradient overlay with animation */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(125,18,255,0.05)_0%,transparent_70%)] opacity-0 animate-pulse" 
+           style={{ 
+             animation: 'pulse 8s infinite alternate', 
+             opacity: isPageVisible ? 1 : 0, 
+             transition: 'opacity 1.5s ease-out'
+           }} />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black to-zinc-950" />
+      
+      {/* Animated particles container */}
+      <div 
+        ref={particlesContainerRef}
+        className="absolute inset-0 overflow-hidden pointer-events-none"
+      />
+
+      <div className="container max-w-5xl mx-auto px-6 py-24 relative z-10">
         {/* Header Section */}
-        <div className="mb-12">
+        <motion.div 
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: isPageVisible ? 0 : 20, opacity: isPageVisible ? 1 : 0 }}
+          transition={{ duration: 0.8 }}
+          className="mb-12"
+        >
           <h1 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-gray-100 to-[#7d12ff] bg-clip-text text-transparent">
             Experience
           </h1>
           <p className="text-lg text-white/80 max-w-3xl">
             A collection of my professional experience across software, research, creative direction, and leadership roles.
           </p>
-        </div>
+        </motion.div>
 
         {/* Education Section */}
-        <div className="mb-16 pb-6 border-b border-white/10">
+        <motion.div 
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: isPageVisible ? 0 : 20, opacity: isPageVisible ? 1 : 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mb-16 pb-6 border-b border-white/10"
+        >
           <h2 className="text-2xl font-semibold mb-6 text-white">Education</h2>
-          <div className="bg-white/[0.03] p-6 rounded-lg border border-white/5">
+          <div className="bg-white/[0.03] p-6 rounded-lg border border-white/5 hover:border-purple-500/30 transition-colors duration-300">
             <div className="flex flex-col items-center text-center">
               <Image 
                 src="/icons/cal.svg" 
@@ -184,48 +275,65 @@ export default function ExperiencePage() {
               <span className="text-purple-500/90 text-sm font-medium">2021 - 2025</span>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Quick Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-          <div className="bg-white/[0.03] rounded-lg p-5 border border-white/[0.05]">
+        <motion.div 
+          variants={container}
+          initial="hidden"
+          animate={isPageVisible ? "show" : "hidden"}
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12"
+        >
+          <motion.div variants={item} className="bg-white/[0.03] rounded-lg p-5 border border-white/[0.05] hover:border-purple-500/30 transition-colors duration-300">
             <div className="text-2xl font-bold text-purple-500 mb-1">5+ Years</div>
             <div className="text-white/60 text-sm">Working with Code & Design</div>
-          </div>
-          <div className="bg-white/[0.03] rounded-lg p-5 border border-white/[0.05]">
+          </motion.div>
+          <motion.div variants={item} className="bg-white/[0.03] rounded-lg p-5 border border-white/[0.05] hover:border-purple-500/30 transition-colors duration-300">
             <div className="text-2xl font-bold text-purple-500 mb-1">50+ Projects</div>
             <div className="text-white/60 text-sm">Across Creative & Technical Domains</div>
-          </div>
-          <div className="bg-white/[0.03] rounded-lg p-5 border border-white/[0.05]">
+          </motion.div>
+          <motion.div variants={item} className="bg-white/[0.03] rounded-lg p-5 border border-white/[0.05] hover:border-purple-500/30 transition-colors duration-300">
             <div className="text-2xl font-bold text-purple-500 mb-1">200+ People</div>
-            <div className="text-white/60 text-sm">Leadership & Client-Work</div>
-          </div>
-        </div>
+            <div className="text-white/60 text-sm">Led in Creative & Technical Teams</div>
+          </motion.div>
+        </motion.div>
 
         {/* Filter Buttons */}
-        <div className="flex flex-wrap gap-3 mb-10">
-          <button
+        <motion.div 
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: isPageVisible ? 0 : 20, opacity: isPageVisible ? 1 : 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="flex flex-wrap gap-3 mb-10"
+        >
+          <motion.button
             onClick={() => setActiveFilter('all')}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             className={`px-4 py-1.5 rounded-full text-sm transition-all
               ${activeFilter === 'all' 
                 ? 'bg-purple-500 text-white' 
                 : 'bg-zinc-900 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-300'}`}
           >
             All Experiences
-          </button>
-          {Object.keys(experienceTypes).map(type => (
-            <button
+          </motion.button>
+          {Object.keys(experienceTypes).map((type, index) => (
+            <motion.button
               key={type}
               onClick={() => setActiveFilter(type)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3, delay: 0.5 + (index * 0.1) }}
               className={`px-4 py-1.5 rounded-full text-sm transition-all
                 ${activeFilter === type 
                   ? 'bg-purple-500 text-white' 
                   : 'bg-zinc-900 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-300'}`}
             >
               {type}
-            </button>
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
 
         {/* Timeline */}
         <motion.div 

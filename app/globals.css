@@ -376,6 +376,12 @@
   100% { transform: translateY(0px); }
 }
 
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.5; }
+}
+
 @keyframes blob {
   0% {
     transform: translate(0px, 0px) scale(1);

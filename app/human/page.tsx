@@ -1,22 +1,33 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 export default function HumanPage() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading delay
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-black px-4 py-16">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-light tracking-wider text-white uppercase">
+      <div className={`text-center mb-8 transition-all duration-700 ${isLoading ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
+        <h1 className="text-1xl sm:text-2xl md:text-3xl font-light tracking-wider text-white uppercase">
           under construction.
         </h1>
       </div>
 
-      {/* 4:3 Image Placeholder */}
-      <div className="w-full max-w-2xl mx-auto relative aspect-[4/3] mb-6 bg-white/5 border border-white/10 rounded-lg overflow-hidden">
+      {/* 4:3 Image Placeholder - Smaller */}
+      <div className={`w-full max-w-lg mx-auto relative aspect-[4/3] mb-6 bg-white/5 border border-white/10 rounded-lg overflow-hidden transition-all duration-700 delay-100 ${isLoading ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
         <div className="absolute inset-0 flex items-center justify-center">
           <svg 
-            className="w-16 h-16 text-white/30" 
+            className="w-12 h-12 text-white/30" 
             xmlns="http://www.w3.org/2000/svg" 
             fill="none" 
             viewBox="0 0 24 24" 
@@ -30,12 +41,6 @@ export default function HumanPage() {
             />
           </svg>
         </div>
-      </div>
-
-      <div className="text-center">
-        <p className="text-2xl sm:text-3xl font-light text-white/80 tracking-widest">
-          divine machinery.
-        </p>
       </div>
     </div>
   );

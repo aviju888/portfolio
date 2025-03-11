@@ -43,7 +43,7 @@ const projectsData: CreativeProject[] = [
     title: "Dance Team Photography",
     description: "Dynamic performance captures and team portraits for UC Berkeley dance organizations",
     category: "photography",
-    thumbnail: "/images/dance-photo.jpg",
+    thumbnail: "/images/creative/afx-unhinged.jpg",
     tools: ["Sony A7III", "Adobe Lightroom", "Adobe Photoshop"],
     features: [
       "Performance documentation",
@@ -57,8 +57,8 @@ const projectsData: CreativeProject[] = [
     title: "Graduation Photography",
     description: "Professional portrait photography for graduation milestones",
     category: "photography",
-    thumbnail: "/images/grad-photo.jpg",
-    tools: ["Sony A7III", "Adobe Lightroom", "Studio Lighting"],
+    thumbnail: "/images/gallery/monicagrad3.png",
+    tools: ["Sony A7IV", "Adobe Lightroom", "Studio Lighting"],
     features: [
       "Location scouting",
       "Professional lighting",
@@ -70,10 +70,10 @@ const projectsData: CreativeProject[] = [
   },
   // Videography projects
   {
-    title: "KOSMOS Dance Videos",
+    title: "[KOSMOS @ Cal] Film Production Lead",
     description: "Lead videographer and editor for dance team performances",
     category: "videography",
-    thumbnail: "/images/kosmos-video.jpg",
+    thumbnail: "/images/creative/kosmos1.png",
     tools: ["Adobe Premiere Pro", "After Effects", "DaVinci Resolve"],
     features: [
       "Multi-camera capture",
@@ -90,7 +90,7 @@ const projectsData: CreativeProject[] = [
     title: "Event Videography",
     description: "Professional video coverage for dance events and competitions",
     category: "videography",
-    thumbnail: "/images/event-video.jpg",
+    thumbnail: "/images/creative/kosmos-rpd.jpg",
     tools: ["Adobe Premiere Pro", "DaVinci Resolve", "DJI RS 3"],
     features: [
       "Live coverage",
@@ -103,10 +103,10 @@ const projectsData: CreativeProject[] = [
   },
   // Leadership projects
   {
-    title: "AFX Dance - Training Team Director",
+    title: "[AFX Dance] Training Team Director",
     description: "Led and coordinated 60+ member dance team",
     category: "leadership",
-    thumbnail: "/images/afx-dance.jpg",
+    thumbnail: "/images/creative/airfx.png",
     tools: ["Choreography", "Team Management", "Event Planning"],
     features: [
       "Choreography development",
@@ -119,10 +119,10 @@ const projectsData: CreativeProject[] = [
     style: "gradient"
   },
   {
-    title: "KOSMOS @ Cal - Design Lead",
+    title: "[KOSMOS @ Cal] Design Lead",
     description: "Brand identity and content creation",
     category: "leadership",
-    thumbnail: "/images/kosmos-design.jpg",
+    thumbnail: "/images/creative/kosmos.png",
     tools: ["Adobe Creative Suite", "Figma", "Canva Pro"],
     features: [
       "Marketing flyers",
@@ -134,23 +134,6 @@ const projectsData: CreativeProject[] = [
     link: "https://instagram.com/kosmoskpop",
     style: "default"
   },
-  // Design projects
-  {
-    title: "Motion Graphics Collection",
-    description: "Animated graphics and transitions for digital content",
-    category: "design",
-    thumbnail: "/images/motion-graphics.jpg",
-    tools: ["After Effects", "Premiere Pro", "Illustrator"],
-    features: [
-      "Custom animations",
-      "Brand motion graphics",
-      "Visual effects",
-      "Typography animation"
-    ],
-    year: "2023",
-    size: "large",
-    style: "minimal"
-  }
 ];
 
 // Define categories with counts for filtering
