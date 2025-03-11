@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { CreativeHero } from '../components/domain/CreativeHero';
 import { CreativeProjects } from '../components/domain/CreativeProjects';
 import { Tools } from '../components/domain/CreativeSkills';
-import Head from 'next/head';
 
 export default function CreativePage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -16,25 +15,20 @@ export default function CreativePage() {
       setIsLoading(false);
     }, 300);
     
-    // Preload key gallery images when browser is idle
-    if ('requestIdleCallback' in window) {
-      // @ts-ignore - TypeScript may not recognize requestIdleCallback
-      window.requestIdleCallback(() => {
-        const imagesToPreload = [
-          '/images/gallery/gracegrad1.png',
-          '/images/gallery/gracegrad2.jpg',
-          '/images/gallery/unhinged1.jpg',
-          '/images/gallery/unhinged2.png',
-          '/images/gallery/unhinged3.png',
-          '/images/gallery/ctrl1.jpg',
-        ];
-        
-        imagesToPreload.forEach(src => {
-          const img = new Image();
-          img.src = src;
-        });
+    // Preload key gallery images
+    setTimeout(() => {
+      const imagesToPreload = [
+        '/images/gallery/gracegrad1.png',
+        '/images/gallery/gracegrad2.jpg',
+        '/images/gallery/gracegrad3.jpg'
+      ];
+      
+      // Preload the first few images
+      imagesToPreload.forEach(src => {
+        const img = new Image();
+        img.src = src;
       });
-    }
+    }, 500);
     
     return () => clearTimeout(timer);
   }, []);
