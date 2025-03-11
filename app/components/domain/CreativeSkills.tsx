@@ -5,6 +5,19 @@ import React, { useState, useEffect, useRef, useMemo } from 'react';
 // Define SVG icons for tools
 const icons = {
   // Photography & Video Tools
+  canva: (
+    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+      <path d="M9 8h6M9 12h6M9 16h6" />
+    </svg>
+  ),
+  procreate: (
+    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v14a2 2 0 01-2 2H7a2 2 0 01-2-2V5z" />
+      <path d="M12 8c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4z" />
+      <path d="M16 5.5l-4 4-4-4" />
+    </svg>
+  ),
   camera: (
     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
@@ -167,7 +180,7 @@ const categoryIcons = {
 const toolsData = {
   photo: [
     { name: 'Sony A7IV', icon: icons.camera },
-    { name: 'Sigma 24-70mm f/2.8', icon: icons.lens },
+    { name: '50mm f/1.8 + 20mm f/1.8', icon: icons.lens },
     { name: 'Godox Lighting', icon: icons.lights },
     { name: 'Adobe Lightroom', icon: icons.lightroom },
     { name: 'Adobe Photoshop', icon: icons.photoshop }
@@ -187,7 +200,7 @@ const toolsData = {
         <path d="M5 11v3M9 11v3M13 11v3M17 11v3M21 11v3" />
       </svg>
     ) },
-    { name: 'Logic Pro X', icon: (
+    { name: 'FL Studio', icon: (
       <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 18l3.5-6 4.5 7.5M9 15h6M3 8l3-4 1.5 6" />
         <circle cx="12" cy="12" r="10" />
@@ -210,8 +223,9 @@ const toolsData = {
   ],
   design: [
     { name: 'Adobe Illustrator', icon: icons.illustrator },
-    { name: 'Adobe XD', icon: icons.xd },
     { name: 'Figma', icon: icons.figma },
+    { name: 'Canva', icon: icons.canva },
+    { name: 'Procreate', icon: icons.procreate },
     { name: 'HTML/CSS', icon: icons.html },
     { name: 'JavaScript', icon: icons.js },
     { name: 'React', icon: icons.react }

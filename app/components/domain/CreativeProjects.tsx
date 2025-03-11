@@ -82,7 +82,7 @@ const projectsData: CreativeProject[] = [
       "Sound design"
     ],
     year: "2022-Present",
-    link: "https://youtube.com/@kosmoskpop",
+    link: "https://youtube.com/playlist?list=PLkU2ISCXGJxisfy-wTkYTaF-Z44t-3UUS&si=-VNjpZuqT51-IVTE",
     size: "large",
     style: "dark"
   },
@@ -115,6 +115,7 @@ const projectsData: CreativeProject[] = [
       "Music selection"
     ],
     year: "August 2024-December 2024",
+    link: 'https://www.youtube.com/watch?v=bQH3FsdGZmQ&t=11s&pp=ygUNYWlyZnggYmFsY29ueQ%3D%3D',
     size: "regular",
     style: "gradient"
   },
@@ -181,18 +182,18 @@ const categories: Category[] = [
     ), 
     count: projectsData.filter(p => p.category === 'leadership').length 
   },
-  { 
-    id: 'design', 
-    name: 'Design', 
-    icon: (
-      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 19l7-7 3 3-7 7-3-3z" />
-        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
-        <path d="M2 2l7.586 7.586" />
-      </svg>
-    ), 
-    count: projectsData.filter(p => p.category === 'design').length 
-  }
+  // { 
+  //   id: 'design', 
+  //   name: 'Design', 
+  //   icon: (
+  //     <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  //       <path d="M12 19l7-7 3 3-7 7-3-3z" />
+  //       <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+  //       <path d="M2 2l7.586 7.586" />
+  //     </svg>
+  //   ), 
+  //   count: projectsData.filter(p => p.category === 'design').length 
+  // }
 ];
 
 export const CreativeProjects = () => {
