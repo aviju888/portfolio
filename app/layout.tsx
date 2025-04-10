@@ -2,7 +2,6 @@
 
 import './globals.css';
 import { Plus_Jakarta_Sans, Caveat, Inter } from 'next/font/google';
-import { usePathname } from 'next/navigation';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { DomainProvider } from './components/layout/DomainProvider';
@@ -36,8 +35,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const pathname = usePathname();
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
