@@ -2,6 +2,9 @@
 
 ## The Perpetual Learner
 
+
+test. 
+
 I believe that constant learning is the foundation of a fulfilling life. Each day presents countless opportunities to expand our understanding of the world. The moment we stop being curious is the moment we stop truly living.
 
 Learning isn't just about acquiring knowledge—it's about continuous transformation. When I approach any challenge, I start by asking: "What can this teach me?" This mindset has transformed seemingly mundane experiences into profound lessons.
