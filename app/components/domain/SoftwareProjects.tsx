@@ -165,7 +165,7 @@ const categories: Category[] = [
   { 
     id: 'all', 
     name: 'All', 
-    icon: <span className="mr-1">🔍</span>, 
+    icon: <span className="mr-1 px-1">🔍</span>, 
     count: projects.length 
   },
   { 

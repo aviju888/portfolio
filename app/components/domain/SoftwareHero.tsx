@@ -99,7 +99,7 @@ export const SoftwareHero = () => {
             }`}
           >
             <div className="bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 bg-clip-text text-transparent animate-gradient-x bg-[length:200%_auto]">
-              SOFTWARE<br className="md:hidden" /> DEVELOPMENT
+              SOFTWARE<br className="md:hidden" /> 
             </div>
           </h1>
           <p 
