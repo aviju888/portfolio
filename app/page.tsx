@@ -45,21 +45,21 @@ export default function Home() {
       id: 'creative',
       name: 'CREATIVE',
       description: 'Discover my photography, videography, and design work',
-      gradient: 'from-pink-500 to-purple-500 animate-gradient-x',
+      gradient: 'from-pink-500 to-purple-500',
       icon: '📷'
     },
     {
       id: 'software',
       name: 'SOFTWARE',
       description: 'Explore my software engineering and machine learning projects',
-      gradient: 'from-blue-500 to-cyan-500 animate-gradient-x',
+      gradient: 'from-blue-500 to-cyan-500',
       icon: '💻'
     },
     {
       id: 'human',
       name: 'HUMAN',
       description: 'Explore my thoughts, philosophies, and personal journey',
-      gradient: 'from-gray-500 to-gray-700 animate-gradient-x',
+      gradient: 'from-gray-500 to-gray-700',
       icon: '🧠'
     }
   ];
@@ -107,20 +107,20 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center gap-4 sm:gap-5 p-4 sm:p-6">
+    <div className="min-h-screen flex flex-col items-center justify-center gap-6 p-4 sm:p-6">
       {domains.map((domain, index) => (
         <Link
           key={domain.id}
           href={`/${domain.id}`}
           className={`group relative text-2xl sm:text-3xl md:text-4xl font-medium tracking-wide
-            transition-all duration-300 hover:tracking-wider active:scale-95
-            animate-fadeIn opacity-0 w-full text-center sm:w-auto py-2 px-4 rounded-md hover:bg-white/[0.03]`}
+            transition-all duration-500 hover:tracking-wider active:scale-95
+            opacity-0 w-full text-center sm:w-auto py-4 px-6 rounded-2xl hover:bg-white/5 backdrop-blur-sm border border-white/15 hover:border-white/25`}
           style={{
-            animationDelay: `${index * 150}ms`
+            animation: `fadeIn 0.6s ease-out ${index * 0.2}s forwards`
           }}
         >
           <span className={`bg-gradient-to-r ${domain.gradient} bg-clip-text text-transparent
-            opacity-80 group-hover:opacity-100 transition-opacity`}>
+            opacity-90 group-hover:opacity-100 transition-all duration-300`}>
             {domain.name}
           </span>
         </Link>

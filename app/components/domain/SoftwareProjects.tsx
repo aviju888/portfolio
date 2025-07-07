@@ -201,7 +201,24 @@ const categories: Category[] = [
 ];
 
 export const SoftwareProjects = () => {
-  // Render a software project card
+  // Get category color based on category name
+  const getCategoryColor = (category: string) => {
+    switch (category) {
+      case 'AI/ML':
+        return 'blue';
+      case 'Computer Vision':
+        return 'cyan';
+      case 'Systems':
+        return 'teal';
+      case 'Data Science':
+        return 'indigo';
+      case 'Web Development':
+        return 'sky';
+      default:
+        return 'blue';
+    }
+  };
+
   const renderSoftwareProjectCard = (
     project: SoftwareProject,
     index: number,
@@ -211,94 +228,188 @@ export const SoftwareProjects = () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _onClick?: (project: SoftwareProject) => void
   ) => {
+    const categoryColor = getCategoryColor(project.category);
+    
     return (
-      <div
-        className={`project-card-container transform transition-all duration-700 ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-        }`}
-        style={{ transitionDelay: `${index * 100}ms` }}
-        data-index={index}
+      <div 
+        onClick={() => _onClick && _onClick(project)}
+        className={`group relative bg-gradient-to-br from-white/[0.03] to-white/[0.01] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-1 cursor-pointer h-full border border-white/[0.05] hover:border-${categoryColor}-500/30 backdrop-blur-sm`}
       >
-        <div className="bg-black/30 border border-blue-500/10 hover:border-blue-500/30 rounded-xl overflow-hidden transition-all duration-300 h-full">
-          {/* Project image */}
-          {project.imageUrl && (
-            <div className="relative h-40 overflow-hidden">
-              <Image
-                src={project.imageUrl}
-                alt={project.title}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover transition-transform duration-500 hover:scale-110"
-              />
+        {/* Project Image with modern hover effects */}
+        <div className="h-56 relative overflow-hidden">
+          <Image
+            src={project.imageUrl}
+            alt={project.title}
+            fill
+            className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
+          />
+          {/* Modern gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500"></div>
+          
+          {/* Category badge */}
+          <div className="absolute top-4 left-4">
+            <span className={`px-3 py-1.5 rounded-full text-xs font-medium bg-${categoryColor}-500/20 text-${categoryColor}-300 border border-${categoryColor}-500/30 backdrop-blur-sm`}>
+              {project.category}
+            </span>
+          </div>
+          
+          {/* External link indicator */}
+          {project.link && (
+            <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
+                <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </div>
             </div>
           )}
-          
-          {/* Project content */}
-          <div className="p-6">
-            <div className="flex justify-between items-start mb-4">
-              <h3 className="text-xl font-bold text-white">{project.title}</h3>
-              {project.githubUrl && (
-                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">
-                  <div className="flex items-center gap-1">
-                    <span className="text-xs font-medium">GitHub</span>
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                </a>
-              )}
-              {project.link && !project.githubUrl && (
-                <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">
-                  <div className="flex items-center gap-1">
-                    <span className="text-xs font-medium">View</span>
-                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                      <polyline points="15 3 21 3 21 9"></polyline>
-                      <line x1="10" y1="14" x2="21" y2="3"></line>
-                    </svg>
-                  </div>
-                </a>
-              )}
-              {project.githubUrl && project.link && (
-                <div className="flex gap-2">
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300" onClick={e => e.stopPropagation()}>
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
-                    </svg>
-                  </a>
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300" onClick={e => e.stopPropagation()}>
-                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                      <polyline points="15 3 21 3 21 9"></polyline>
-                      <line x1="10" y1="14" x2="21" y2="3"></line>
-                    </svg>
-                  </a>
-                </div>
-              )}
-            </div>
-            
-            <ul className="list-disc ml-5 mb-4 text-white/80 space-y-1">
-              {project.description.map((desc, i) => (
-                <li key={i}>{desc}</li>
-              ))}
-            </ul>
-            
-            <div className="flex flex-wrap gap-2 mt-4">
-              {project.technologies.map((tech, i) => (
-                <span 
-                  key={i}
-                  className="text-xs bg-blue-900/30 border border-blue-500/30 px-2 py-1 rounded-full text-blue-300 hover:bg-blue-800/40 transition-colors duration-300"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-            
-            {project.year && (
-              <div className="mt-4 text-xs text-blue-400">
-                {project.year}
+        </div>
+
+        {/* Project Content with modern typography */}
+        <div className="p-6 space-y-4">
+          <div className="space-y-2">
+            <h3 className="text-xl font-semibold text-white group-hover:text-white transition-colors leading-tight">
+              {project.title}
+            </h3>
+          </div>
+
+          {/* Modern feature list */}
+          <div className="space-y-2">
+            {project.description.slice(0, 2).map((feature, i) => (
+              <div key={i} className="flex items-start gap-2 text-white/60 text-sm">
+                <div className={`w-1.5 h-1.5 rounded-full bg-${categoryColor}-400 mt-2 flex-shrink-0`}></div>
+                <span className="leading-relaxed">{feature}</span>
               </div>
+            ))}
+          </div>
+          
+          {/* Modern technologies display */}
+          <div className="flex flex-wrap gap-2 pt-2">
+            {project.technologies.slice(0, 3).map((tech, i) => (
+              <span
+                key={i}
+                className={`text-${categoryColor}-300 text-xs px-3 py-1.5 rounded-lg bg-${categoryColor}-500/10 border border-${categoryColor}-500/20 transition-all duration-300 hover:bg-${categoryColor}-500/20 font-medium`}
+              >
+                {tech}
+              </span>
+            ))}
+            {project.technologies.length > 3 && (
+              <span className="text-white/40 text-xs px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
+                +{project.technologies.length - 3} more
+              </span>
             )}
+          </div>
+
+          {/* Year and link */}
+          <div className="flex items-center justify-between pt-2 border-t border-white/5">
+            <span className="text-xs text-white/40 font-medium">
+              {project.year}
+            </span>
+            
+            {project.link && (
+              <a 
+                href={project.link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className={`text-${categoryColor}-400 hover:text-${categoryColor}-300 transition-colors duration-300 text-xs font-medium flex items-center gap-1 group/link`}
+              >
+                <span>View Project</span>
+                <svg className="w-3 h-3 group-hover/link:translate-x-0.5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  // Render modern modal content for a project
+  const renderSoftwareModal = (project: SoftwareProject, onClose: () => void) => {
+    const categoryColor = getCategoryColor(project.category);
+    
+    return (
+      <div className="bg-gradient-to-br from-black/95 to-black/90 border border-white/10 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto backdrop-blur-xl">
+        <div className="p-6 sm:p-8">
+          {/* Modal header */}
+          <div className="flex justify-between items-start mb-6">
+            <div className="space-y-2">
+              <div className="flex items-center gap-3">
+                <span className={`px-3 py-1.5 rounded-full text-sm font-medium bg-${categoryColor}-500/20 text-${categoryColor}-300 border border-${categoryColor}-500/30`}>
+                  {project.category}
+                </span>
+                <span className="text-white/40 text-sm">{project.year}</span>
+              </div>
+              <h3 className="text-3xl font-bold text-white leading-tight">{project.title}</h3>
+            </div>
+            <button 
+              onClick={onClose}
+              className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300 hover:scale-110"
+            >
+              <svg className="w-5 h-5 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          
+          {/* Modal content with modern layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Image section */}
+            <div className="space-y-4">
+              <div className="aspect-video relative rounded-xl overflow-hidden">
+                <Image
+                  src={project.imageUrl}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              
+              {project.link && (
+                <a 
+                  href={project.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-${categoryColor}-500/10 text-${categoryColor}-300 border border-${categoryColor}-500/30 hover:bg-${categoryColor}-500/20 transition-all duration-300 font-medium`}
+                >
+                  <span>Visit Project</span>
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              )}
+            </div>
+            
+            {/* Content section */}
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-semibold text-white mb-3">Technologies</h4>
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.map((tech, i) => (
+                    <span
+                      key={i}
+                      className={`text-${categoryColor}-300 text-sm px-3 py-2 rounded-lg bg-${categoryColor}-500/10 border border-${categoryColor}-500/20 font-medium`}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              
+              <div>
+                <h4 className="text-lg font-semibold text-white mb-3">Key Features</h4>
+                <ul className="space-y-2">
+                  {project.description.map((feature, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <div className={`w-2 h-2 rounded-full bg-${categoryColor}-400 mt-2 flex-shrink-0`} />
+                      <span className="text-white/70 leading-relaxed">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -307,12 +418,13 @@ export const SoftwareProjects = () => {
 
   return (
     <ProjectsGrid
-      title="Projects"
-      description="Selected projects showcasing my work in AI/ML, Computer Vision, Systems Architecture, Data Science, and Web Development."
+      title="Software Projects"
+      description="A collection of my software projects spanning AI/ML, Computer Vision, Systems, Data Science, and Web Development."
       projects={projects}
       categories={categories}
       domain="software"
       renderProjectCard={renderSoftwareProjectCard}
+      renderModal={renderSoftwareModal}
     />
   );
 }; 

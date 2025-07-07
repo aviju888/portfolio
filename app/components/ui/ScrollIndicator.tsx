@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useDomain } from '../layout/DomainProvider';
+import { motion } from 'framer-motion';
 
 interface ScrollIndicatorProps {
   onClick?: () => void;
@@ -44,26 +45,72 @@ export const ScrollIndicator = ({ onClick }: ScrollIndicatorProps) => {
       case 'human':
         return 'from-gray-500 to-gray-700';
       default:
-        return 'from-white/20 to-white/10';
+        return 'from-white/50 to-white/30';
     }
   };
 
   return (
-    <div 
-      className={`fixed bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center z-50 transition-opacity duration-500 ${
-        isVisible ? 'opacity-100' : 'opacity-0'
-      }`}
+    <motion.div 
+      className={`fixed bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center z-50 cursor-pointer`}
       onClick={onClick}
-      style={{ cursor: onClick ? 'pointer' : 'default' }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ 
+        opacity: isVisible ? 1 : 0, 
+        y: isVisible ? 0 : 20 
+      }}
+      transition={{ 
+        duration: 0.5, 
+        ease: [0.25, 0.46, 0.45, 0.94] 
+      }}
+      whileHover={{ y: -5 }}
+      whileTap={{ scale: 0.95 }}
     >
-      <div className="text-white/50 mb-2 text-sm">Scroll to explore</div>
-      <div 
-        className={`w-6 h-12 rounded-full border-2 border-white/20 relative
-          before:absolute before:w-1 before:h-1 before:rounded-full
-          before:bg-gradient-to-b ${getGradientByDomain()}
-          before:left-1/2 before:-translate-x-1/2 before:top-2
-          before:animate-scrollBounce`}
+      {/* Modern text label */}
+      <motion.div 
+        className="text-white/60 mb-3 text-sm font-medium tracking-wide"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isVisible ? 1 : 0 }}
+        transition={{ delay: 0.3, duration: 0.5 }}
+      >
+        Scroll to explore
+      </motion.div>
+      
+      {/* Modern scroll indicator */}
+      <motion.div 
+        className={`relative w-6 h-12 rounded-full border-2 border-white/20 overflow-hidden backdrop-blur-sm bg-white/5`}
+        whileHover={{ scale: 1.1 }}
+        transition={{ duration: 0.2 }}
+      >
+        {/* Animated scroll ball */}
+        <motion.div 
+          className={`absolute w-1.5 h-1.5 rounded-full bg-gradient-to-b ${getGradientByDomain()} left-1/2 -translate-x-1/2`}
+          animate={{
+            y: [8, 32, 8]
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        
+        {/* Glow effect */}
+        <div className={`absolute inset-0 rounded-full bg-gradient-to-b ${getGradientByDomain()} opacity-20 blur-sm`} />
+      </motion.div>
+      
+      {/* Subtle pulse animation */}
+      <motion.div
+        className={`absolute w-6 h-12 rounded-full border border-white/10`}
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.5, 0, 0.5]
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
       />
-    </div>
+    </motion.div>
   );
 }; 

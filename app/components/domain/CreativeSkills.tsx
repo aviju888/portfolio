@@ -199,232 +199,184 @@ const toolsData = {
         <path d="M7 4v16M17 4v16M2 11h20M2 17h20" />
         <path d="M5 11v3M9 11v3M13 11v3M17 11v3M21 11v3" />
       </svg>
-    ) },
-    { name: 'FL Studio', icon: (
+    )},
+    { name: 'GarageBand', icon: (
       <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 18l3.5-6 4.5 7.5M9 15h6M3 8l3-4 1.5 6" />
-        <circle cx="12" cy="12" r="10" />
+        <path d="M9 18V5l12-2v13" />
+        <circle cx="6" cy="18" r="3" />
+        <circle cx="18" cy="16" r="3" />
       </svg>
-    ) },
-    { name: 'Ableton Live', icon: (
+    )},
+    { name: 'Logic Pro', icon: (
       <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="4" y="4" width="16" height="16" rx="2" />
-        <path d="M8 8v8M12 8v8M16 8v8" />
+        <path d="M9 18V5l12-2v13" />
+        <circle cx="6" cy="18" r="3" />
+        <circle cx="18" cy="16" r="3" />
       </svg>
-    ) },
-    { name: 'Audio Interface', icon: (
-      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="6" width="20" height="12" rx="2" />
-        <circle cx="6" cy="12" r="2" />
-        <circle cx="12" cy="12" r="2" />
-        <circle cx="18" cy="12" r="2" />
-      </svg>
-    ) }
+    )}
   ],
   design: [
     { name: 'Adobe Illustrator', icon: icons.illustrator },
     { name: 'Figma', icon: icons.figma },
-    { name: 'Canva', icon: icons.canva },
+    { name: 'Canva Pro', icon: icons.canva },
     { name: 'Procreate', icon: icons.procreate },
-    { name: 'HTML/CSS', icon: icons.html },
-    { name: 'JavaScript', icon: icons.js },
-    { name: 'React', icon: icons.react }
+    { name: 'Adobe XD', icon: icons.xd }
   ]
 };
 
 export const Tools = () => {
-  const [visibleSections, setVisibleSections] = useState<string[]>([]);
-  
-  type SectionRefKey = 'photo' | 'video' | 'music' | 'design';
-  
-  // Create refs outside of useMemo
-  const photoRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLDivElement>(null);
-  const musicRef = useRef<HTMLDivElement>(null);
-  const designRef = useRef<HTMLDivElement>(null);
-  
-  // Define sectionRefs using the refs created above
-  const sectionRefs = useMemo(() => ({
-    photo: photoRef,
-    video: videoRef,
-    music: musicRef,
-    design: designRef
-  }), []);
+  const [activeSection, setActiveSection] = useState<'photo' | 'video' | 'music' | 'design'>('photo');
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
-  // Intersection Observer for animation
+  type SectionRefKey = 'photo' | 'video' | 'music' | 'design';
+
+  // Intersection Observer for animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('id');
-            if (id && !visibleSections.includes(id)) {
-              setVisibleSections(prev => [...prev, id]);
-            }
+            setIsVisible(true);
           }
         });
       },
-      { 
-        threshold: 0.1,
-        rootMargin: '0px 0px -10% 0px'
-      }
+      { threshold: 0.1 }
     );
 
-    // Type-safe approach to access refs
-    (Object.keys(sectionRefs) as SectionRefKey[]).forEach(key => {
-      if (sectionRefs[key].current) {
-        observer.observe(sectionRefs[key].current!);
-      }
-    });
+    const currentRef = sectionRefs.current[activeSection];
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
 
-    return () => {
-      (Object.keys(sectionRefs) as SectionRefKey[]).forEach(key => {
-        if (sectionRefs[key].current) {
-          observer.unobserve(sectionRefs[key].current!);
-        }
-      });
-    };
-  }, [visibleSections, sectionRefs]);
+    return () => observer.disconnect();
+  }, [activeSection]);
 
-  // Function to render a tool chip
+  // Smooth scroll to section
+  const scrollToSection = (sectionId: SectionRefKey) => {
+    setActiveSection(sectionId);
+    const element = sectionRefs.current[sectionId];
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  // Modern tool chip component
   const renderToolChip = (name: string, icon: React.ReactNode, delay: number, isVisible: boolean) => (
-    <div 
-      className="inline-flex items-center rounded-full px-3 py-1.5 bg-pink-500/10 text-pink-300 m-1 transition-all duration-300"
-      style={{ 
-        opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'scale(1)' : 'scale(0.9)',
-        transitionDelay: `${delay * 0.05}s`
-      }}
+    <div
+      className={`group relative bg-gradient-to-br from-pink-500/10 to-purple-500/10 border border-pink-500/20 rounded-xl p-4 transition-all duration-500 transform hover:scale-105 hover:border-pink-500/40 backdrop-blur-sm ${
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+      }`}
+      style={{ transitionDelay: `${delay}ms` }}
     >
-      <span className="mr-2">{icon}</span>
-      {name}
+      <div className="flex items-center gap-3">
+        <div className="w-10 h-10 rounded-lg bg-pink-500/20 flex items-center justify-center text-pink-300 group-hover:bg-pink-500/30 transition-colors duration-300">
+          {icon}
+        </div>
+        <div>
+          <h4 className="text-sm font-medium text-white group-hover:text-white transition-colors">
+            {name}
+          </h4>
+        </div>
+      </div>
     </div>
   );
 
   return (
-    <section id="tools" className="py-24 bg-black">
-      <div className="container mx-auto px-6">
-        <div className="mb-16 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">
-            Tools & Equipment
+    <section id="skills" className="py-20 bg-black relative overflow-hidden">
+      {/* Modern gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-pink-900/5 via-purple-900/5 to-transparent"></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Modern header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-400 bg-clip-text text-transparent">
+              Creative Tools & Skills
+            </span>
           </h2>
-          <p className="text-white/70 max-w-lg mx-auto">
-            The professional tools and equipment I&apos;m experienced with using across
-            photography, videography, music production, and design.
+          <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+            Professional equipment and software I use to bring creative visions to life
           </p>
         </div>
 
-        {/* Photography */}
-        <div 
-          id="photo" 
-          ref={sectionRefs.photo}
-          className={`mb-16 transition-all duration-1000 ${
-            visibleSections.includes('photo') 
-              ? 'opacity-100 translate-y-0' 
-              : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <h3 className="text-xl font-semibold mb-6 text-white inline-flex items-center">
-            <span className="text-pink-400 mr-2 text-xl">
-              {categoryIcons.photo}
-            </span>
-            Photography
-          </h3>
-          <div className="flex flex-wrap">
-            {toolsData.photo.map((tool, idx) => 
-              renderToolChip(tool.name, tool.icon, idx, visibleSections.includes('photo'))
-            )}
-          </div>
+        {/* Modern navigation tabs */}
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
+          {Object.entries(toolsData).map(([key, tools]) => (
+            <button
+              key={key}
+              onClick={() => scrollToSection(key as SectionRefKey)}
+              className={`group px-6 py-3 rounded-xl font-medium transition-all duration-300 flex items-center gap-2 ${
+                activeSection === key
+                  ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-lg shadow-pink-500/25'
+                  : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white border border-white/10'
+              }`}
+            >
+              <span className="group-hover:scale-110 transition-transform duration-300">
+                {categoryIcons[key as keyof typeof categoryIcons]}
+              </span>
+              <span className="capitalize">{key}</span>
+              <span className="text-xs bg-white/20 px-2 py-1 rounded-full">
+                {tools.length}
+              </span>
+            </button>
+          ))}
         </div>
 
-        {/* Video */}
-        <div 
-          id="video" 
-          ref={sectionRefs.video}
-          className={`mb-16 transition-all duration-1000 ${
-            visibleSections.includes('video') 
-              ? 'opacity-100 translate-y-0' 
-              : 'opacity-0 translate-y-10'
-          }`}
-          style={{ transitionDelay: '0.2s' }}
-        >
-          <h3 className="text-xl font-semibold mb-6 text-white inline-flex items-center">
-            <span className="text-pink-400 mr-2 text-xl">
-              {categoryIcons.video}
-            </span>
-            Video
-          </h3>
-          <div className="flex flex-wrap">
-            {toolsData.video.map((tool, idx) => 
-              renderToolChip(tool.name, tool.icon, idx, visibleSections.includes('video'))
-            )}
-          </div>
+        {/* Modern bento-style grid layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {Object.entries(toolsData).map(([category, tools]) => (
+            <div
+              key={category}
+              ref={(el) => {
+                sectionRefs.current[category] = el;
+              }}
+              className={`space-y-4 ${
+                activeSection === category ? 'block' : 'hidden'
+              }`}
+            >
+              {/* Category header */}
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-pink-500/20 to-purple-500/20 border border-pink-500/30">
+                  <span className="text-pink-300">
+                    {categoryIcons[category as keyof typeof categoryIcons]}
+                  </span>
+                  <h3 className="text-lg font-semibold text-white capitalize">
+                    {category}
+                  </h3>
+                </div>
+              </div>
+
+              {/* Tools grid */}
+              <div className="grid gap-4">
+                {tools.map((tool, index) =>
+                  renderToolChip(tool.name, tool.icon, index * 100, isVisible)
+                )}
+              </div>
+            </div>
+          ))}
         </div>
 
-        {/* Music */}
-        <div 
-          id="music" 
-          ref={sectionRefs.music}
-          className={`mb-16 transition-all duration-1000 ${
-            visibleSections.includes('music') 
-              ? 'opacity-100 translate-y-0' 
-              : 'opacity-0 translate-y-10'
-          }`}
-          style={{ transitionDelay: '0.3s' }}
-        >
-          <h3 className="text-xl font-semibold mb-6 text-white inline-flex items-center">
-            <span className="text-pink-400 mr-2 text-xl">
-              {categoryIcons.music}
-            </span>
-            Music
-          </h3>
-          <div className="flex flex-wrap">
-            {toolsData.music.map((tool, idx) => 
-              renderToolChip(tool.name, tool.icon, idx, visibleSections.includes('music'))
-            )}
+        {/* Modern stats section */}
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-pink-500/10 to-purple-500/10 border border-pink-500/20 backdrop-blur-sm">
+            <div className="text-3xl font-bold text-pink-400 mb-2">5+</div>
+            <div className="text-sm text-white/70">Years Experience</div>
           </div>
-        </div>
-
-        {/* Design */}
-        <div 
-          id="design" 
-          ref={sectionRefs.design}
-          className={`transition-all duration-1000 ${
-            visibleSections.includes('design') 
-              ? 'opacity-100 translate-y-0' 
-              : 'opacity-0 translate-y-10'
-          }`}
-          style={{ transitionDelay: '0.4s' }}
-        >
-          <h3 className="text-xl font-semibold mb-6 text-white inline-flex items-center">
-            <span className="text-pink-400 mr-2 text-xl">
-              {categoryIcons.design}
-            </span>
-            Design
-          </h3>
-          <div className="flex flex-wrap">
-            {toolsData.design.map((tool, idx) => 
-              renderToolChip(tool.name, tool.icon, idx, visibleSections.includes('design'))
-            )}
+          <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-purple-500/20 backdrop-blur-sm">
+            <div className="text-3xl font-bold text-purple-400 mb-2">15+</div>
+            <div className="text-sm text-white/70">Tools Mastered</div>
+          </div>
+          <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20 backdrop-blur-sm">
+            <div className="text-3xl font-bold text-blue-400 mb-2">100+</div>
+            <div className="text-sm text-white/70">Projects Completed</div>
+          </div>
+          <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-cyan-500/10 to-pink-500/10 border border-cyan-500/20 backdrop-blur-sm">
+            <div className="text-3xl font-bold text-cyan-400 mb-2">4</div>
+            <div className="text-sm text-white/70">Creative Domains</div>
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-// Helper function to format category names
-/*
-function formatCategoryName(category: string): string {
-  switch(category) {
-    case 'equipment':
-      return 'Photography & Video Equipment';
-    case 'software':
-      return 'Editing & Design Software';
-    case 'webdev':
-      return 'Web Development';
-    default:
-      return category.charAt(0).toUpperCase() + category.slice(1);
-  }
-}
-*/ 
+}; 
