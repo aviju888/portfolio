@@ -3,217 +3,159 @@
 import React from 'react';
 import Link from 'next/link';
 import { useDomain } from './DomainProvider';
-import { motion } from 'framer-motion';
 
 export const Footer = () => {
   const { activeDomain } = useDomain();
   
-  const getGradientByDomain = () => {
-    switch (activeDomain) {
-      case 'creative':
-        return 'from-pink-500 to-purple-500';
-      case 'software':
-        return 'from-blue-500 to-cyan-500';
-      case 'human':
-        return 'from-gray-500 to-gray-700';
-      default:
-        return 'from-white/20 to-white/10';
-    }
-  };
-  
   return (
-    <footer className="relative bg-black border-t border-white/5 overflow-hidden">
-      {/* Modern gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent"></div>
-      
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="py-16">
-          {/* Main footer content */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-            {/* Brand section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="lg:col-span-1"
-            >
-              <div className="mb-6">
-                <Link 
-                  href="/"
-                  className="group inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white/5 border border-white/15 hover:border-white/25 transition-all duration-300 backdrop-blur-sm"
-                >
-                  <span className="text-xl font-bold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent group-hover:from-white group-hover:to-white transition-all duration-300">
-                    AV
-                  </span>
-                </Link>
-              </div>
-              <p className="text-white/60 text-sm leading-relaxed max-w-xs">
-                Exploring the intersection of creativity and technology through photography, 
-                videography, and software development.
-              </p>
-            </motion.div>
-            
-            {/* Contact Info */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <h3 className="text-lg font-semibold mb-6 text-white flex items-center gap-2">
-                <span className="w-1 h-6 bg-gradient-to-b from-white/50 to-white/20 rounded-full"></span>
-                Contact
-              </h3>
-              <ul className="space-y-3 text-white/60">
-                <li>
-                  <a 
-                    href="mailto:avijuan@berkeley.edu" 
-                    className="group flex items-center gap-2 hover:text-white transition-all duration-300"
-                  >
-                    <div className="w-5 h-5 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-all duration-300">
-                      <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                        <polyline points="22,6 12,13 2,6" />
-                      </svg>
-                    </div>
-                    <span className="text-sm">avijuan@berkeley.edu</span>
-                  </a>
-                </li>
-                <li className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded-lg bg-white/5 flex items-center justify-center">
-                    <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                      <circle cx="12" cy="10" r="3" />
-                    </svg>
-                  </div>
-                  <span className="text-sm">Berkeley, CA</span>
-                </li>
-              </ul>
-            </motion.div>
-            
-            {/* Quick Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <h3 className="text-lg font-semibold mb-6 text-white flex items-center gap-2">
-                <span className="w-1 h-6 bg-gradient-to-b from-white/50 to-white/20 rounded-full"></span>
-                Quick Links
-              </h3>
-              <ul className="space-y-3 text-white/60">
-                <li>
-                  <Link 
-                    href="/software" 
-                    className="group flex items-center gap-2 hover:text-white transition-all duration-300"
-                  >
-                    <div className="w-5 h-5 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-all duration-300">
-                      <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <path d="M8 9l3 3-3 3M16 9l-3 3 3 3M7 4h10c1.105 0 2 .895 2 2v12c0 1.105-.895 2-2 2H7c-1.105 0-2-.895-2-2V6c0-1.105.895-2 2-2z" />
-                      </svg>
-                    </div>
-                    <span className="text-sm">Software</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link 
-                    href="/creative" 
-                    className="group flex items-center gap-2 hover:text-white transition-all duration-300"
-                  >
-                    <div className="w-5 h-5 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-all duration-300">
-                      <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <path d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
-                      </svg>
-                    </div>
-                    <span className="text-sm">Creative</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link 
-                    href="/about" 
-                    className="group flex items-center gap-2 hover:text-white transition-all duration-300"
-                  >
-                    <div className="w-5 h-5 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-all duration-300">
-                      <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <path d="M12 4a4 4 0 100 8 4 4 0 000-8z" />
-                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
-                      </svg>
-                    </div>
-                    <span className="text-sm">About</span>
-                  </Link>
-                </li>
-              </ul>
-            </motion.div>
-            
-            {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              <h3 className="text-lg font-semibold mb-6 text-white flex items-center gap-2">
-                <span className="w-1 h-6 bg-gradient-to-b from-white/50 to-white/20 rounded-full"></span>
-                Connect
-              </h3>
-              <div className="flex gap-3">
-                <motion.a
-                  href="https://github.com/aviju888"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group w-10 h-10 rounded-xl bg-white/5 border border-white/15 hover:border-white/25 flex items-center justify-center transition-all duration-300 backdrop-blur-sm"
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <svg className="w-5 h-5 text-white/60 group-hover:text-white transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                  </svg>
-                </motion.a>
-                
-                <motion.a
-                  href="https://linkedin.com/in/adriel-vijuan"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group w-10 h-10 rounded-xl bg-white/5 border border-white/15 hover:border-white/25 flex items-center justify-center transition-all duration-300 backdrop-blur-sm"
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <svg className="w-5 h-5 text-white/60 group-hover:text-white transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                    <rect x="2" y="9" width="4" height="12" />
-                    <circle cx="4" cy="4" r="2" />
-                  </svg>
-                </motion.a>
-                
-                <motion.a
-                  href="mailto:avijuan@berkeley.edu"
-                  className="group w-10 h-10 rounded-xl bg-white/5 border border-white/15 hover:border-white/25 flex items-center justify-center transition-all duration-300 backdrop-blur-sm"
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <svg className="w-5 h-5 text-white/60 group-hover:text-white transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                    <polyline points="22,6 12,13 2,6" />
-                  </svg>
-                </motion.a>
-              </div>
-            </motion.div>
+    <footer className="bg-black border-t border-white/10">
+      <div className="container mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Brand section */}
+          <div className="lg:col-span-1">
+            <div className="mb-6">
+              <Link 
+                href="/"
+                className="group inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/10 border border-white/20 hover:border-white/40 hover:bg-white/20 transition-all duration-300 hover:scale-105"
+              >
+                <span className="text-2xl font-bold text-white group-hover:text-white/90 transition-colors">
+                  AV
+                </span>
+              </Link>
+            </div>
+            <p className="text-white/60 text-base leading-relaxed max-w-xs">
+              Exploring the intersection of creativity and technology through photography, 
+              videography, and software development with a focus on intentional design.
+            </p>
           </div>
           
-          {/* Bottom section */}
-          <motion.div 
-            className="pt-8 border-t border-white/5"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-white/40 text-sm">
-                © 2024 Adriel Vijuan. All rights reserved.
-              </p>
-              <p className="text-white/40 text-sm">
-                Built with Next.js & Tailwind CSS
-              </p>
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-xl font-semibold mb-6 text-white">
+              Contact
+            </h3>
+            <ul className="space-y-4 text-white/60">
+              <li>
+                <a 
+                  href="mailto:avijuan@berkeley.edu" 
+                  className="group flex items-center gap-3 hover:text-white transition-all duration-300 hover:scale-105"
+                >
+                  <div className="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <span className="text-sm">avijuan@berkeley.edu</span>
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <span className="text-sm">Berkeley, CA</span>
+              </li>
+            </ul>
+          </div>
+          
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-xl font-semibold mb-6 text-white">
+              Quick Links
+            </h3>
+            <ul className="space-y-4 text-white/60">
+              <li>
+                <Link 
+                  href="/software" 
+                  className="group flex items-center gap-3 hover:text-white transition-all duration-300 hover:scale-105"
+                >
+                  <div className="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                  </div>
+                  <span className="text-sm">Software</span>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/creative" 
+                  className="group flex items-center gap-3 hover:text-white transition-all duration-300 hover:scale-105"
+                >
+                  <div className="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
+                    </svg>
+                  </div>
+                  <span className="text-sm">Creative</span>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/about" 
+                  className="group flex items-center gap-3 hover:text-white transition-all duration-300 hover:scale-105"
+                >
+                  <div className="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  </div>
+                  <span className="text-sm">About</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+          
+          {/* Social Links */}
+          <div>
+            <h3 className="text-xl font-semibold mb-6 text-white">
+              Connect
+            </h3>
+            <div className="flex gap-4">
+              <a
+                href="https://github.com/aviju888"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group w-12 h-12 rounded-2xl bg-white/10 border border-white/20 hover:border-white/40 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-105"
+              >
+                <svg className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+              </a>
+              <a
+                href="https://linkedin.com/in/adriel-vijuan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group w-12 h-12 rounded-2xl bg-white/10 border border-white/20 hover:border-white/40 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-105"
+              >
+                <svg className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+              <a
+                href="mailto:avijuan@berkeley.edu"
+                className="group w-12 h-12 rounded-2xl bg-white/10 border border-white/20 hover:border-white/40 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-105"
+              >
+                <svg className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </a>
             </div>
-          </motion.div>
+          </div>
+        </div>
+        
+        {/* Bottom section */}
+        <div className="pt-12 border-t border-white/10 mt-12">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="text-white/40 text-sm">
+              © 2024 Adriel Vijuan. All rights reserved.
+            </p>
+            <p className="text-white/40 text-sm">
+              Built with Next.js & Tailwind CSS
+            </p>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,11 +1,12 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { useDomain } from '../layout/DomainProvider';
 
 interface ButtonProps {
   children: React.ReactNode;
-  variant?: 'solid' | 'outline' | 'ghost' | 'link' | 'creative-primary' | 'creative-secondary';
+  variant?: 'solid' | 'outline' | 'ghost' | 'link';
   size?: 'sm' | 'md' | 'lg';
   href?: string;
   onClick?: () => void;
@@ -33,72 +34,64 @@ export const Button = ({
   const getGradientByDomain = () => {
     switch (activeDomain) {
       case 'creative':
-        return 'from-pink-500 to-purple-500';
+        return 'from-pink-500 via-purple-500 to-pink-600';
       case 'software':
-        return 'from-blue-500 to-cyan-500';
+        return 'from-blue-500 via-cyan-500 to-blue-600';
       case 'human':
-        return 'from-gray-500 to-gray-700';
+        return 'from-gray-500 via-slate-600 to-gray-700';
       default:
-        return 'from-white/20 to-white/10';
+        return 'from-white/20 via-white/10 to-white/5';
     }
   };
 
   const sizeClasses = {
-    sm: 'px-4 py-2 text-sm',
-    md: 'px-6 py-3 text-base',
-    lg: 'px-8 py-4 text-lg',
+    sm: 'px-6 py-3 text-sm font-medium',
+    md: 'px-8 py-4 text-base font-semibold',
+    lg: 'px-12 py-5 text-lg font-semibold',
   };
 
   const baseClasses = `
     inline-flex items-center justify-center
-    font-medium tracking-wide
-    transition-all duration-300
-    ${variant === 'creative-primary' || variant === 'creative-secondary' ? 'rounded-full' : 'rounded-lg'}
+    transition-all duration-300 ease-out
+    rounded-2xl
     ${sizeClasses[size]}
   `;
 
   const variantClasses = {
     solid: `bg-gradient-to-r ${getGradientByDomain()} text-white 
-      hover:opacity-90 hover:-translate-y-0.5`,
+      hover:scale-105 hover:shadow-xl hover:shadow-black/20`,
     outline: `border-2 border-white/20 hover:border-white/40 
-      hover:bg-white/5 text-white hover:-translate-y-0.5`,
+      hover:bg-white/5 text-white hover:scale-105`,
     ghost: `text-white/70 hover:text-white hover:bg-white/5 
-      hover:-translate-y-0.5`,
-    link: `text-white/70 hover:text-white relative overflow-hidden
-      after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5
-      after:bg-current after:transition-all after:duration-300
-      hover:after:w-full`,
-    'creative-primary': `bg-pink-500/10 text-pink-400 hover:bg-pink-500/20 
-      transition-all gap-2`,
-    'creative-secondary': `bg-white/5 text-white/80 hover:bg-white/10 
-      transition-all`,
+      hover:scale-105 rounded-2xl`,
+    link: `text-white/70 hover:text-white underline-offset-4 hover:underline`,
   };
 
   const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${className}`;
 
   if (href) {
     return (
-      <a 
+      <Link
         href={href}
-        className={combinedClasses}
         target={target}
         rel={rel}
+        className={combinedClasses}
         onClick={onClick}
       >
+        {icon && <span className="mr-3">{icon}</span>}
         {children}
-        {icon && <span>{icon}</span>}
-      </a>
+      </Link>
     );
   }
 
   return (
     <button
       type={type}
-      onClick={onClick}
       className={combinedClasses}
+      onClick={onClick}
     >
+      {icon && <span className="mr-3">{icon}</span>}
       {children}
-      {icon && <span>{icon}</span>}
     </button>
   );
 }; 
