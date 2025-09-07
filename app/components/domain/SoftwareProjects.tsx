@@ -8,13 +8,24 @@ import { CodeBracketIcon, CpuChipIcon, ServerIcon, ChartBarIcon, GlobeAltIcon } 
 // Define project data
 const projects: SoftwareProject[] = [
   {
+    title: 'DocuLawAI',
+    category: 'Web Development',
+    description: [
+      'Frontend concept for a legal AI assistant',
+      'Cal Hacks 11.0 Project',
+      'Backend in-progress*'
+    ],
+    technologies: ['React', 'Next.js', 'Tailwind CSS', 'TypeScript'],
+    imageUrl: '/images/projects/doculaw-ai.png',
+    year: 'June 2025',
+    link: 'https://doculaw-ai.vercel.app/'
+  },
+  {
     title: 'KOSMOS Website',
     category: 'Web Development',
     description: [
-      'Promotional and archival branding site',
-      'Interactive biographies',
-      'Event management',
-      'Media galleries'
+      'Promotional and archival branding site for student organization',
+      'Media galleries, event management, and biographies'
     ],
     technologies: ['React', 'Next.js'],
     imageUrl: '/images/projects/kosmos-site.png',
