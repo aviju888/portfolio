@@ -1,51 +1,21 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { CreativeHero } from '../components/domain/CreativeHero';
-import { CreativeProjects } from '../components/domain/CreativeProjects';
-import { Tools } from '../components/domain/CreativeSkills';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
-export default function CreativePage() {
-  const [isLoading, setIsLoading] = useState(true);
+export default function CreativeRedirect() {
+  const router = useRouter();
 
-  // Gallery image preloading - preload first few gallery images
   useEffect(() => {
-    // Set loading to false after a short delay
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 300);
-    
-    // Preload key gallery images
-    setTimeout(() => {
-      const imagesToPreload = [
-        '/images/gallery/gracegrad1.png',
-        '/images/gallery/gracegrad2.jpg',
-        '/images/gallery/gracegrad3.jpg'
-      ];
-      
-      // Preload the first few images
-      imagesToPreload.forEach(src => {
-        const img = new Image();
-        img.src = src;
-      });
-    }, 500);
-    
-    return () => clearTimeout(timer);
-  }, []);
+    router.replace('/#projects');
+  }, [router]);
 
   return (
-    <>
-      {isLoading && (
-        <div className="fixed inset-0 bg-black z-50 flex items-center justify-center">
-          <div className="w-12 h-12 border-t-4 border-b-4 border-blue-500 rounded-full animate-spin"></div>
-        </div>
-      )}
-      
-      <div className="bg-black min-h-screen">
-        <CreativeHero />
-        <CreativeProjects />
-        <Tools />
+    <div className="min-h-screen bg-black flex items-center justify-center">
+      <div className="text-white text-center">
+        <div className="animate-spin w-8 h-8 border-2 border-purple-600 border-t-transparent rounded-full mx-auto mb-4"></div>
+        <p>Redirecting to Projects section...</p>
       </div>
-    </>
+    </div>
   );
-} 
+}

@@ -1,16 +1,21 @@
 'use client';
 
-import React from 'react';
-import { SoftwareHero } from '../components/domain/SoftwareHero';
-import { SoftwareProjects } from '../components/domain/SoftwareProjects';
-import { SoftwareSkills } from '../components/domain/SoftwareSkills';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
-export default function SoftwarePage() {
+export default function SoftwareRedirect() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace('/#projects');
+  }, [router]);
+
   return (
-    <div className="bg-black min-h-screen">
-      <SoftwareHero />
-      <SoftwareProjects />
-      <SoftwareSkills />
+    <div className="min-h-screen bg-black flex items-center justify-center">
+      <div className="text-white text-center">
+        <div className="animate-spin w-8 h-8 border-2 border-purple-600 border-t-transparent rounded-full mx-auto mb-4"></div>
+        <p>Redirecting to Projects section...</p>
+      </div>
     </div>
   );
-} 
+}

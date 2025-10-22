@@ -2,9 +2,7 @@
 
 import './globals.css';
 import { Plus_Jakarta_Sans, Caveat, Inter } from 'next/font/google';
-import { Header } from './components/layout/Header';
-import { Footer } from './components/layout/Footer';
-import { DomainProvider } from './components/layout/DomainProvider';
+// Removed complex header/footer for simplified one-page design
 
 const jakarta = Plus_Jakarta_Sans({ 
   subsets: ['latin'],
@@ -38,8 +36,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <title>Adriel Vijuan | UC Berkeley EECS</title>
-        <meta name="description" content="Portfolio showcasing creative and software work by Adriel Vijuan" />
+        <title>Adriel Vijuan | Software Engineer & Creative Director</title>
+        <meta name="description" content="UC Berkeley EECS student specializing in AI/ML, software development, and creative direction. Showcasing projects in computer vision, web development, and visual storytelling." />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
 
         <link rel="icon" href="/images/av-circle-logo-small.png" />
@@ -49,11 +47,7 @@ export default function RootLayout({
         <link rel="prefetch" href="/error" as="document" />
       </head>
       <body className={`${jakarta.className} ${jakarta.variable} ${caveat.variable} ${inter.variable} bg-black text-white min-h-screen`}>
-        <DomainProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </DomainProvider>
+        <main>{children}</main>
       </body>
     </html>
   );
