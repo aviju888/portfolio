@@ -1,0 +1,62 @@
+[
+  {
+    "company": "Apex Agent Labs",
+    "role": "Frontend Engineer",
+    "start": "2024-11",
+    "end": null,
+    "location": "San Mateo, CA (hybrid)",
+    "type": "Full-time",
+    "summary": "Shipped CRO dashboard, Supabase RLS, Stripe billing.",
+    "highlights": [
+      "Implemented RLS across 12+ tables; zero client service_role exposure",
+      "Built Product Page Reviewer MVP; 50+ UX heuristics; Supabase-backed"
+    ],
+    "stack": ["Next.js", "Tailwind", "Supabase", "FastAPI", "Stripe"],
+    "links": { 
+      "site": "", 
+      "repo": "", 
+      "caseStudy": "/code/userapproved-cro" 
+    },
+    "logo": "/images/logos/apex.svg"
+  },
+  {
+    "company": "UC Berkeley",
+    "role": "Research Assistant",
+    "start": "2024-06",
+    "end": "2024-08",
+    "location": "Berkeley, CA",
+    "type": "Internship",
+    "summary": "Computer vision research on colorization and diffusion models.",
+    "highlights": [
+      "Developed hybrid image generation pipeline using OpenCV and PyTorch",
+      "Published findings on colorization techniques for historical imagery"
+    ],
+    "stack": ["Python", "PyTorch", "OpenCV", "NumPy", "Jupyter"],
+    "links": { 
+      "site": "", 
+      "repo": "https://github.com/aviju888/colorization-research", 
+      "caseStudy": "/code/colorizing-imagery" 
+    },
+    "logo": "/images/logos/berkeley.svg"
+  },
+  {
+    "company": "Lawrence Berkeley Lab",
+    "role": "Software Engineering Intern",
+    "start": "2023-06",
+    "end": "2023-08",
+    "location": "Berkeley, CA",
+    "type": "Internship",
+    "summary": "Built solar water heating system monitoring dashboard.",
+    "highlights": [
+      "Created real-time data visualization for 50+ sensor nodes",
+      "Implemented automated alert system for system anomalies"
+    ],
+    "stack": ["React", "D3.js", "Node.js", "MongoDB", "WebSocket"],
+    "links": { 
+      "site": "", 
+      "repo": "https://github.com/aviju888/solar-monitoring", 
+      "caseStudy": "/code/solar-water-heating" 
+    },
+    "logo": "/images/logos/lbl.svg"
+  }
+]

@@ -1,13 +1,17 @@
 import Link from 'next/link';
-import { profile, getFeaturedProjects, getFeaturedPhotos, getFeaturedMedia } from '@/lib/data';
+import { profile, getFeaturedProjects, getFeaturedPhotos, getFeaturedMedia, getCurrentExperiences, getRecentExperiences } from '@/lib/data';
 import SpotlightRow from './components/SpotlightRow';
 import Card from './components/Card';
 import Tag from './components/Tag';
+import ExperienceCard from './components/ExperienceCard';
 
 export default function Home() {
   const featuredProjects = getFeaturedProjects().slice(0, 2);
   const featuredPhotos = getFeaturedPhotos().slice(0, 2);
   const featuredMedia = getFeaturedMedia().slice(0, 1);
+  const currentExperiences = getCurrentExperiences();
+  const recentExperiences = getRecentExperiences(2);
+  const displayExperiences = [...currentExperiences, ...recentExperiences].slice(0, 3);
 
   return (
     <div className="min-h-screen">
@@ -74,6 +78,27 @@ export default function Home() {
           </SpotlightRow>
         </div>
       </section>
+
+      {/* Experience Strip */}
+      {displayExperiences.length > 0 && (
+        <section className="py-24">
+          <div className="max-w-7xl mx-auto px-6 md:px-8">
+            <SpotlightRow 
+              eyebrow="EXPERIENCE" 
+              title="Current & Recent Work"
+              description="My journey through software engineering, research, and creative work"
+              viewAllHref="/experience"
+            >
+              {displayExperiences.map((experience, index) => (
+                <ExperienceCard
+                  key={`${experience.company}-${experience.start}`}
+                  experience={experience}
+                />
+              ))}
+            </SpotlightRow>
+          </div>
+        </section>
+      )}
 
       {/* Featured Photos */}
       <section className="py-24">

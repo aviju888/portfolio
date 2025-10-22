@@ -73,3 +73,21 @@ export interface Tldr {
     links: string[];
   };
 }
+
+export interface Experience {
+  company: string;
+  role: string;
+  start: string;
+  end: string | null;
+  location: string;
+  type: 'Full-time' | 'Contract' | 'Internship';
+  summary: string;
+  highlights: string[];
+  stack: string[];
+  links: {
+    site: string;
+    repo: string;
+    caseStudy: string;
+  };
+  logo: string;
+}

@@ -1,8 +1,12 @@
-import { tldr, getProjectBySlug } from '@/lib/data';
+import { tldr, getProjectBySlug, getCurrentExperiences, getRecentExperiences, formatDateRange } from '@/lib/data';
 import Section from '../components/Section';
 import Link from 'next/link';
 
 export default function TldrPage() {
+  const currentExperiences = getCurrentExperiences();
+  const recentExperiences = getRecentExperiences(2);
+  const displayExperiences = [...currentExperiences, ...recentExperiences].slice(0, 3);
+
   return (
     <Section 
       title="TLDR" 
@@ -23,6 +27,41 @@ export default function TldrPage() {
             ))}
           </ul>
         </div>
+
+        {/* Experience Summary */}
+        {displayExperiences.length > 0 && (
+          <div>
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Current & Recent Work
+            </h3>
+            <ul className="space-y-3">
+              {displayExperiences.map((experience, index) => (
+                <li key={`${experience.company}-${experience.start}`} className="flex items-start">
+                  <span className="text-accent mr-3">•</span>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-medium text-white">{experience.role}</span>
+                      <span className="text-gray-400">@</span>
+                      <span className="text-accent">{experience.company}</span>
+                      <span className="text-gray-500 text-sm">
+                        ({formatDateRange(experience.start, experience.end)})
+                      </span>
+                    </div>
+                    <p className="text-gray-300 text-sm">{experience.summary}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-4">
+              <Link 
+                href="/experience"
+                className="text-accent hover:text-accent-hover transition-colors duration-200 text-sm"
+              >
+                View full experience →
+              </Link>
+            </div>
+          </div>
+        )}
 
         {/* Top Projects */}
         <div>
