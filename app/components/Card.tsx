@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface CardProps {
   title: string;
@@ -21,30 +22,43 @@ export default function Card({
   className = '' 
 }: CardProps) {
   const cardContent = (
-    <div className={`bg-gray-800 rounded-lg border border-gray-700 p-6 hover:border-gray-600 transition-colors duration-200 ${className}`}>
+    <div className={`group relative bg-white/[0.02] rounded-2xl border border-white/[0.1] p-6 
+                    transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]
+                    hover:-translate-y-1.5 hover:shadow-[0_20px_60px_rgba(0,0,0,.35)] hover:border-white/[0.15]
+                    hover:ring-1 hover:ring-white/[0.1]
+                    ${className}`}>
+      
+      {/* Highlight overlay - top-right shimmer on hover */}
+      <div className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition duration-300
+                      bg-[radial-gradient(120px_120px_at_85%_15%,rgba(255,255,255,0.06),transparent_60%)]" />
+      
+      {/* Image with glass frame */}
       {image && (
-        <div className="mb-4">
-          <img
+        <div className="relative overflow-hidden rounded-xl border border-white/[0.1] bg-black aspect-[16/9] mb-5">
+          <Image
             src={image}
             alt={title}
-            className="w-full h-48 object-cover rounded-md"
+            width={800}
+            height={450}
+            className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-[1.03]"
+            priority={false}
           />
         </div>
       )}
       
-      <div>
-        <h3 className="text-xl font-semibold text-white mb-2">
+      <div className="relative">
+        <h3 className="text-xl md:text-2xl font-semibold tracking-tighter text-white mb-2">
           {title}
         </h3>
         
         {subtitle && (
-          <p className="text-accent text-sm mb-2">
+          <p className="text-sm text-sky-400 mb-2">
             {subtitle}
           </p>
         )}
         
         {description && (
-          <p className="text-gray-400 text-sm mb-4">
+          <p className="text-sm text-white/60 mb-4 leading-relaxed">
             {description}
           </p>
         )}

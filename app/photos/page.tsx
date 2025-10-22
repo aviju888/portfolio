@@ -13,7 +13,7 @@ export default function PhotosPage() {
         <h3 className="text-2xl font-bold text-white mb-6">
           Selected Shots
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
           {photos.featured.map((photo, index) => (
             <Card
               key={index}
@@ -31,7 +31,7 @@ export default function PhotosPage() {
         <h3 className="text-2xl font-bold text-white mb-6">
           Albums
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
           {photos.albums.map((album, index) => (
             <Card
               key={index}

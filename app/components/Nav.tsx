@@ -16,27 +16,30 @@ export default function Nav() {
   const pathname = usePathname();
 
   return (
-    <nav className="bg-gray-900 border-b border-gray-800">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="sticky top-0 z-50 bg-gray-900/70 supports-[backdrop-filter]:bg-gray-900/60 backdrop-blur border-b border-white/[0.1]">
+      <div className="max-w-6xl mx-auto px-6">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="text-white text-xl font-semibold">
+            <Link href="/" className="text-white text-h3 font-semibold">
               Adriel Vijuan
             </Link>
           </div>
           
-          <div className="flex items-center space-x-8">
+          <div className="flex items-center space-x-6 md:space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.path}
-                className={`text-sm font-medium transition-colors duration-200 ${
+                className={`relative text-small font-medium transition-colors duration-200 ${
                   pathname === item.path
-                    ? 'text-accent'
-                    : 'text-gray-300 hover:text-white'
+                    ? 'text-white'
+                    : 'text-white/80 hover:text-white'
                 }`}
               >
                 {item.name}
+                {pathname === item.path && (
+                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-[2px] w-6 bg-sky-400 rounded-full" />
+                )}
               </Link>
             ))}
           </div>

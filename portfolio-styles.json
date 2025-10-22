@@ -1,0 +1,176 @@
+{
+  "portfolio_styles": {
+    "design_system": {
+      "typography": {
+        "font_family": "Space Grotesk",
+        "font_weights": ["400", "500", "700"],
+        "font_scale": {
+          "display": "5rem (80px) - line-height: 1.05",
+          "display-sm": "3.75rem (60px) - line-height: 1.05",
+          "h1": "3.25rem (52px) - line-height: 1.15",
+          "h1-sm": "2.75rem (44px) - line-height: 1.18",
+          "h2": "2.25rem (36px) - line-height: 1.25",
+          "h3": "1.375rem (22px) - line-height: 1.4",
+          "body": "1.125rem (18px) - line-height: 1.65",
+          "body-sm": "1rem (16px) - line-height: 1.6",
+          "small": "0.875rem (14px) - line-height: 1.5"
+        }
+      },
+      "colors": {
+        "accent": {
+          "primary": "#60a5fa (sky-400)",
+          "hover": "#3b82f6 (sky-500)"
+        },
+        "surface": {
+          "base": "#111827 (gray-900)",
+          "raised": "#1f2937 (gray-800)", 
+          "overlay": "rgba(31, 41, 55, 0.5) (gray-800/50)"
+        },
+        "text": {
+          "primary": "white",
+          "secondary": "#e5e7eb (gray-200)",
+          "muted": "#9ca3af (gray-400)"
+        },
+        "borders": {
+          "default": "rgba(255, 255, 255, 0.08)",
+          "hover": "rgba(255, 255, 255, 0.14)"
+        },
+        "decor": {
+          "grid_glow": "bg-[radial-gradient(ellipse_at_top,rgba(96,165,250,0.12),rgba(59,130,246,0.06)_45%,transparent_60%)]",
+          "panel_tint": "bg-white/[0.02]"
+        }
+      },
+      "spacing": {
+        "section_padding": "py-24 (96px)",
+        "hero_padding": "py-32 (128px)",
+        "card_gaps": "gap-8 (32px)",
+        "horizontal_padding": "px-6 (24px)",
+        "custom_spacing": {
+          "18": "4.5rem (72px)",
+          "22": "5.5rem (88px)", 
+          "26": "6.5rem (104px)",
+          "30": "7.5rem (120px)"
+        }
+      },
+      "radii": {
+        "sm": "rounded-md",
+        "md": "rounded-lg",
+        "lg": "rounded-xl",
+        "xl": "rounded-2xl",
+        "full": "rounded-full"
+      },
+      "shadows": {
+        "card": "shadow-[0_2px_12px_rgba(0,0,0,0.18)]",
+        "card_hover": "shadow-[0_12px_40px_rgba(0,0,0,0.25)]",
+        "button": "shadow-md hover:shadow-lg"
+      }
+    },
+    "components": {
+      "buttons": {
+        "btn_primary": {
+          "classes": "bg-sky-500 hover:bg-sky-400 text-white px-7 py-3.5 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] focus:outline-none focus:ring-2 focus:ring-sky-400/30 focus:ring-offset-2 focus:ring-offset-gray-900 min-h-[44px] min-w-[44px]",
+          "purpose": "Primary call-to-action buttons"
+        },
+        "btn_secondary": {
+          "classes": "bg-white/5 hover:bg-white/8 border border-white/10 text-white px-7 py-3.5 rounded-full font-medium transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] focus:outline-none focus:ring-2 focus:ring-white/20 focus:ring-offset-2 focus:ring-offset-gray-900 min-h-[44px] min-w-[44px]",
+          "purpose": "Secondary action buttons"
+        }
+      },
+      "card": {
+        "base_classes": "bg-white/[0.02] rounded-2xl border border-white/10 p-6",
+        "hover_effects": "hover:-translate-y-1.5 shadow-[0_12px_40px_rgba(0,0,0,0.25)] hover:border-white/15 transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]",
+        "accessibility": "focus-within:outline-none focus-within:ring-2 focus-within:ring-accent focus-within:ring-offset-2 focus-within:ring-offset-gray-900",
+        "image_handling": "Next.js Image component with hover:scale-105 transition",
+        "typography": {
+          "title": "text-h3 font-semibold text-white mb-2",
+          "subtitle": "text-accent text-small mb-2", 
+          "description": "text-gray-400 text-small mb-4"
+        }
+      },
+      "section": {
+        "container": "py-24 max-w-7xl mx-auto px-6 md:px-8",
+        "title": "text-h1-sm md:text-h1 font-bold text-white tracking-tight mb-4",
+        "description": "text-body text-gray-400 max-w-2xl mx-auto"
+      },
+      "navigation": {
+        "container": "sticky top-0 z-50 bg-gray-900/70 supports-[backdrop-filter]:bg-gray-900/60 backdrop-blur border-b border-white/10",
+        "brand": "text-white text-h3 font-semibold",
+        "nav_links": "text-small font-medium transition-colors duration-200",
+        "active_state": "text-accent",
+        "inactive_state": "text-gray-300 hover:text-white",
+        "spacing": "space-x-6 md:space-x-8"
+      },
+      "spotlight_row": {
+        "container": "mb-16",
+        "header": "flex justify-between items-center mb-6",
+        "title": "text-2xl font-bold text-white",
+        "view_all": "text-accent hover:text-accent-hover transition-colors duration-200",
+        "grid": "grid grid-cols-1 md:grid-cols-2 gap-8"
+      }
+    },
+    "layouts": {
+      "hero_section": {
+        "container": "py-28 md:py-36 max-w-3xl mx-auto px-6 text-center",
+        "title": "text-display-sm md:text-display font-bold text-white mb-8 leading-tight",
+        "headline": "text-h2-sm md:text-h2 text-gray-300 mb-8 max-w-3xl mx-auto",
+        "bio": "text-body text-gray-400 mb-16 max-w-2xl mx-auto",
+        "cta_container": "flex flex-col sm:flex-row gap-6 justify-center"
+      },
+      "featured_sections": {
+        "container": "relative py-24 max-w-7xl mx-auto px-6 md:px-8 before:content-[''] before:absolute before:inset-x-0 before:-top-10 before:h-64 before:bg-[radial-gradient(ellipse_at_top,rgba(96,165,250,0.12),transparent_60%)] before:pointer-events-none",
+        "alternating": "py-24 max-w-6xl mx-auto px-6"
+      },
+      "grid_systems": {
+        "uniform_grid": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10",
+        "featured_grid": "grid grid-cols-1 md:grid-cols-2 gap-8"
+      }
+    },
+    "responsive_breakpoints": {
+      "mobile": "default (no prefix)",
+      "tablet": "md: (768px+)",
+      "desktop": "lg: (1024px+)",
+      "typography_scaling": {
+        "hero": "text-display-sm → text-display",
+        "section_titles": "text-h1-sm → text-h1", 
+        "headlines": "text-h2-sm → text-h2"
+      }
+    },
+    "accessibility": {
+      "focus_states": "focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-gray-900",
+      "touch_targets": "min-h-[44px] min-w-[44px]",
+      "color_scheme": "dark",
+      "contrast": "WCAG AA compliant"
+    },
+    "animations": {
+      "transitions": "transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]",
+      "hover_lifts": "hover:-translate-y-1.5",
+      "image_zoom": "hover:scale-[1.03]",
+      "color_transitions": "transition-colors duration-150"
+    },
+    "file_structure": {
+      "core_config": [
+        "tailwind.config.ts - design system tokens, typography, colors, shadows",
+        "app/globals.css - button components, base styles, utilities",
+        "app/layout.tsx - font imports, global HTML structure"
+      ],
+      "components": [
+        "app/components/Card.tsx - card styling, hover effects, images",
+        "app/components/Section.tsx - section containers and typography", 
+        "app/components/Nav.tsx - navigation styling",
+        "app/components/SpotlightRow.tsx - featured content grids"
+      ],
+      "pages": [
+        "app/page.tsx - homepage hero and sections",
+        "app/code/page.tsx - code projects grid",
+        "app/photos/page.tsx - photo gallery grid"
+      ]
+    },
+    "design_philosophy": {
+      "style": "Clean, structured minimalism with Space Grotesk + soft glass surfaces",
+      "approach": "Generous whitespace, sophisticated shadows, subtle micro-interactions",
+      "brand": "Engineer-creative balance - technical but human",
+      "performance": "Mobile-first, optimized images, smooth transitions",
+      "accessibility": "WCAG AA compliant with proper focus states and touch targets"
+    }
+  }
+}
