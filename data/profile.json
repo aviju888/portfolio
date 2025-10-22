@@ -1,0 +1,12 @@
+{
+  "name": "Adriel Vijuan",
+  "headline": "Engineer × Creative — building useful, beautiful things.",
+  "bioShort": "EECS + DS @ Berkeley. Frontend, CV/ML, CRO tools.",
+  "email": "avijuan@berkeley.edu",
+  "socials": {
+    "github": "https://github.com/aviju888",
+    "linkedin": "https://linkedin.com/in/adriel-vijuan",
+    "instagram": "https://instagram.com/adrielvijuan"
+  },
+  "domain": "avijuan.vercel.app"
+}

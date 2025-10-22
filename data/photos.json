@@ -1,0 +1,52 @@
+{
+  "featured": [
+    {
+      "src": "/images/gallery/gracegrad1.png",
+      "alt": "UC Berkeley Grad Shoot",
+      "description": "Client-Shoot for Grace L.",
+      "dateTaken": "Spring 2024",
+      "rank": 1
+    },
+    {
+      "src": "/images/gallery/monicagrad1.png",
+      "alt": "Monica Graduation",
+      "description": "Graduation photoshoot for Monica",
+      "dateTaken": "Spring 2024",
+      "rank": 2
+    },
+    {
+      "src": "/images/gallery/unhinged1.jpg",
+      "alt": "AFX unhiNGed",
+      "description": "AFX Dance - Project Team Performance",
+      "dateTaken": "Spring 2024",
+      "rank": 3
+    },
+    {
+      "src": "/images/gallery/kosmos1.png",
+      "alt": "KOSMOS Dance Team",
+      "description": "KOSMOS @ Cal - Performance Series",
+      "dateTaken": "Spring 2024",
+      "rank": 4
+    }
+  ],
+  "albums": [
+    {
+      "title": "Graduation Photography",
+      "slug": "graduation",
+      "count": 6,
+      "thumb": "/images/gallery/gracegrad1.png"
+    },
+    {
+      "title": "Dance Performances",
+      "slug": "dance",
+      "count": 15,
+      "thumb": "/images/gallery/kosmos1.png"
+    },
+    {
+      "title": "Travel & Events",
+      "slug": "travel",
+      "count": 8,
+      "thumb": "/images/gallery/canada1.png"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "now": [
+    "Training Team Director at AFX Dance (60+ members)",
+    "EECS + Data Science @ UC Berkeley (2021-2025)",
+    "Building CRO tools and AI/ML projects"
+  ],
+  "topProjects": [
+    "doculaw-ai",
+    "kosmos-website", 
+    "diffusion-models",
+    "hybrid-images"
+  ],
+  "selectedPhotos": [
+    "/images/gallery/gracegrad1.png",
+    "/images/gallery/monicagrad1.png"
+  ],
+  "recentMedia": [
+    "KOSMOS Brand Identity",
+    "2025 Start"
+  ],
+  "contact": {
+    "email": "avijuan@berkeley.edu",
+    "links": ["github", "linkedin"]
+  }
+}
