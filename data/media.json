@@ -1,0 +1,36 @@
+{
+  "design": [
+    {
+      "title": "KOSMOS Brand Identity",
+      "desc": "Lead designer for dance team branding and social media content",
+      "link": "https://instagram.com/kosmoskpop",
+      "featured": true,
+      "rank": 1
+    },
+    {
+      "title": "AFX Dance Marketing",
+      "desc": "Training team director and creative direction",
+      "link": "https://www.youtube.com/watch?v=bQH3FsdGZmQ",
+      "featured": false,
+      "rank": 2
+    }
+  ],
+  "music": [],
+  "writing": [
+    {
+      "title": "2025 Start",
+      "desc": "Personal journal entry on new year goals",
+      "link": "",
+      "featured": true,
+      "rank": 1
+    },
+    {
+      "title": "Identity & Ability",
+      "desc": "Thoughts on self-identity and goal achievement",
+      "link": "",
+      "featured": true,
+      "rank": 2
+    }
+  ]
+}
+

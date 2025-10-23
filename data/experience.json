@@ -1,0 +1,182 @@
+[
+  {
+    "company": "Apex Agent Labs",
+    "role": "Software Engineer",
+    "start": "2025-09",
+    "end": null,
+    "location": "San Mateo, CA",
+    "type": "Contract",
+    "summary": "Agentic AI, UX/CRO - Building AI tools for businesses.",
+    "highlights": [
+      "Developing agentic AI systems for automated UX analysis",
+      "Implementing CRO tools and data-driven design improvements"
+    ],
+    "stack": ["Next.js", "Python", "AI/ML", "UX Research"],
+    "links": { 
+      "site": "", 
+      "repo": "", 
+      "caseStudy": "" 
+    },
+    "logo": "/images/icons/apex.png"
+  },
+  {
+    "company": "Self-Employed",
+    "role": "Photographer",
+    "start": "2022-01",
+    "end": null,
+    "location": "SF Bay Area",
+    "type": "Freelance",
+    "summary": "Freelance photographer for 200+ individuals and 5+ organizations.",
+    "highlights": [
+      "Portrait photography for 200+ individuals",
+      "End-to-end shoot logistics and client management"
+    ],
+    "stack": ["Adobe Lightroom", "Adobe Photoshop", "Event Photography"],
+    "links": { 
+      "site": "", 
+      "repo": "", 
+      "caseStudy": "/photos" 
+    },
+    "logo": "/images/icons/camera_inverted.png"
+  },
+  {
+    "company": "KOSMOS @ Cal",
+    "role": "Web Developer",
+    "start": "2024-11",
+    "end": "2025-07",
+    "location": "Berkeley, CA",
+    "type": "Student Organization",
+    "summary": "Developed promotional website with React/Next.js for dance organization.",
+    "highlights": [
+      "Built interactive website with organizational histories and member bios",
+      "Collaborated on project timelines and deployment workflows"
+    ],
+    "stack": ["React", "Next.js", "Frontend Development"],
+    "links": { 
+      "site": "", 
+      "repo": "", 
+      "caseStudy": "/code/kosmos-website" 
+    },
+    "logo": "/images/icons/kosmos_inverted.png"
+  },
+  {
+    "company": "KOSMOS @ Cal",
+    "role": "Design Team Lead",
+    "start": "2022-03",
+    "end": "2025-08",
+    "location": "Berkeley, CA",
+    "type": "Internship",
+    "summary": "Led design team, increased engagement by 200% (150k+ views).",
+    "highlights": [
+      "Increased multi-platform content engagement by 200%",
+      "Led promotional/graphic design for social media platforms"
+    ],
+    "stack": ["Adobe Creative Suite", "Graphic Design", "Social Media Marketing"],
+    "links": { 
+      "site": "", 
+      "repo": "", 
+      "caseStudy": "" 
+    },
+    "logo": "/images/icons/kosmos_inverted.png"
+  },
+  {
+    "company": "PASAE",
+    "role": "Web Developer",
+    "start": "2023-05",
+    "end": "2025-05",
+    "location": "Berkeley, CA",
+    "type": "Student Organization",
+    "summary": "Website redesign lead, improved UX and performance.",
+    "highlights": [
+      "Redesigned website with modern, user-friendly design",
+      "Optimized site performance and navigation"
+    ],
+    "stack": ["HTML", "JavaScript", "CSS", "Web Design"],
+    "links": { 
+      "site": "", 
+      "repo": "", 
+      "caseStudy": "/code/pasae-website" 
+    },
+    "logo": "/images/icons/pasae_inverted.png"
+  },
+  {
+    "company": "AFX Dance",
+    "role": "Training Team Director",
+    "start": "2024-08",
+    "end": "2024-12",
+    "location": "Berkeley, CA",
+    "type": "Student Organization",
+    "summary": "Directed 60+ dancers, led choreography and production.",
+    "highlights": [
+      "Led group of 60+ dancers in choreography and production",
+      "Oversaw music selection, casting, and performance scheduling"
+    ],
+    "stack": ["Leadership", "Choreography", "Event Management"],
+    "links": { 
+      "site": "", 
+      "repo": "", 
+      "caseStudy": "" 
+    },
+    "logo": "/images/icons/afx_inverted.png"
+  },
+  {
+    "company": "Dowork Technologies",
+    "role": "Machine Learning Engineer Intern",
+    "start": "2023-05",
+    "end": "2023-09",
+    "location": "Remote",
+    "type": "Internship",
+    "summary": "Designed evaluation framework for AI agent accuracy across foundation models.",
+    "highlights": [
+      "Gained hands-on ML system architecture experience",
+      "Built evaluation framework for AI agent performance analysis"
+    ],
+    "stack": ["Python", "LLMs", "AI", "Prompt Engineering"],
+    "links": { 
+      "site": "", 
+      "repo": "", 
+      "caseStudy": "" 
+    },
+    "logo": "/images/icons/dowork.png"
+  },
+  {
+    "company": "Amazon",
+    "role": "Customer Experience Operations",
+    "start": "2023-06",
+    "end": "2023-08",
+    "location": "Berkeley, CA",
+    "type": "Part-time",
+    "summary": "Customer experience operations and process optimization.",
+    "highlights": [
+      "Worked on customer experience operations",
+      "Process optimization and data analysis"
+    ],
+    "stack": ["Operations", "Data Analysis", "Customer Service"],
+    "links": { 
+      "site": "", 
+      "repo": "", 
+      "caseStudy": "" 
+    },
+    "logo": "/images/icons/amazon.png"
+  },
+  {
+    "company": "Lawrence Berkeley Lab",
+    "role": "Data Science Intern",
+    "start": "2021-06",
+    "end": "2021-07",
+    "location": "Berkeley, CA",
+    "type": "Internship",
+    "summary": "Modeled solar water heating system using weather data and algorithms.",
+    "highlights": [
+      "Utilized LBNL weather database for solar water heating modeling",
+      "Analyzed heatmaps to maximize system efficiency"
+    ],
+    "stack": ["Python", "Data Analysis", "Anaconda", "Data Science"],
+    "links": { 
+      "site": "", 
+      "repo": "", 
+      "caseStudy": "/code/solar-water-heating" 
+    },
+    "logo": "/images/icons/lbl.png"
+  }
+]

@@ -1,0 +1,264 @@
+[
+  {
+    "slug": "doculaw-ai",
+    "title": "DocuLawAI",
+    "role": "Frontend Developer",
+    "summary": "Frontend concept for a legal AI assistant at Cal Hacks 11.0",
+    "description": [
+      "Frontend concept for a legal AI assistant",
+      "Cal Hacks 11.0 Project",
+      "Backend in-progress*"
+    ],
+    "tags": ["React", "Next.js", "Tailwind CSS", "TypeScript"],
+    "links": {
+      "repo": "https://github.com/aviju888/doculaw-ai",
+      "demo": "https://doculaw-ai.vercel.app/"
+    },
+    "images": ["/images/projects/doculaw-ai.png"],
+    "featured": true,
+    "rank": 1,
+    "status": "live",
+    "year": "June 2025"
+  },
+  {
+    "slug": "kosmos-website",
+    "title": "KOSMOS Website",
+    "role": "Full Stack Developer",
+    "summary": "Promotional and archival branding site for student organization",
+    "description": [
+      "Promotional and archival branding site for student organization",
+      "Media galleries, event management, and biographies"
+    ],
+    "tags": ["React", "Next.js", "JavaScript"],
+    "links": {
+      "repo": "https://github.com/kosmosucb/kosmosucb.github.io",
+      "demo": "https://kosmosucb.github.io/"
+    },
+    "images": ["/images/projects/kosmos-site.png"],
+    "featured": true,
+    "rank": 2,
+    "status": "live",
+    "year": "January 2025"
+  },
+  {
+    "slug": "diffusion-models",
+    "title": "Diffusion Models",
+    "role": "AI/ML Engineer",
+    "summary": "Implementation of custom diffusion sampling loops with inpainting capabilities",
+    "description": [
+      "Implementation of custom diffusion sampling loops",
+      "Inpainting capabilities",
+      "Text-conditional image translation",
+      "Classifier-free guidance"
+    ],
+    "tags": ["Python", "PyTorch", "Hugging Face"],
+    "links": {
+      "repo": "https://github.com/aviju888/computer-vision",
+      "demo": "https://aviju888.github.io/computer-vision/old_1/web/proj5.html"
+    },
+    "images": ["/images/projects/diffusion-models.png"],
+    "featured": true,
+    "rank": 3,
+    "status": "live",
+    "year": "November 2024"
+  },
+  {
+    "slug": "hybrid-images",
+    "title": "Hybrid Images",
+    "role": "CS180",
+    "summary": "Created images combining low and high-frequency content using Gaussian and Laplacian filtering",
+    "description": [
+      "Created images combining low and high-frequency content",
+      "Gaussian and Laplacian filtering",
+      "Multiresolution blending",
+      "Fourier Transform analysis"
+    ],
+    "tags": ["Python", "OpenCV", "NumPy", "SciPy", "Matplotlib"],
+    "links": {
+      "repo": "https://github.com/aviju888/computer-vision",
+      "demo": "https://aviju888.github.io/computer-vision/old_1/web/proj2.html"
+    },
+    "images": ["/images/projects/hybrid-images.png"],
+    "featured": true,
+    "rank": 4,
+    "status": "live",
+    "year": "October 2024"
+  },
+  {
+    "slug": "colorizing-imagery",
+    "title": "Colorizing Historical Imagery",
+    "role": "CS180",
+    "summary": "Automated system for aligning and colorizing Prokudin-Gorskii collection",
+    "description": [
+      "Automated system for aligning and colorizing Prokudin-Gorskii collection",
+      "L2 norm alignment",
+      "Multi-scale pyramid alignment",
+      "Automated contrast optimization"
+    ],
+    "tags": ["Python", "NumPy", "SciPy", "scikit-learn", "Matplotlib"],
+    "links": {
+      "repo": "https://github.com/aviju888/computer-vision",
+      "demo": "https://aviju888.github.io/computer-vision/old_1/web/proj1.html"
+    },
+    "images": ["/images/projects/colorizing-imagery.png"],
+    "featured": false,
+    "rank": 5,
+    "status": "live",
+    "year": "September 2024"
+  },
+  {
+    "slug": "asthma-aqi-analysis",
+    "title": "Asthma & AQI Analysis",
+    "role": "Data Scientist",
+    "summary": "Research on correlation between air quality and asthma rates",
+    "description": [
+      "Research on correlation between air quality and asthma rates",
+      "Linear regression analysis",
+      "Statistical modeling",
+      "Data visualization"
+    ],
+    "tags": ["R", "R Markdown", "Statistics"],
+    "links": {
+      "repo": "",
+      "demo": "/images/projects/ph142-final.pdf"
+    },
+    "images": ["/images/projects/asthma-aqi.png"],
+    "featured": false,
+    "rank": 6,
+    "status": "live",
+    "year": "May 2024"
+  },
+  {
+    "slug": "pasae-website",
+    "title": "PASAE Website",
+    "role": "Frontend Developer",
+    "summary": "Organization website redesign with modern UI/UX",
+    "description": [
+      "Organization website redesign",
+      "Modern UI/UX",
+      "Mobile responsiveness",
+      "Performance optimization"
+    ],
+    "tags": ["React.js", "HTML", "CSS", "JavaScript"],
+    "links": {
+      "repo": "",
+      "demo": "https://pasae.studentorg.berkeley.edu/"
+    },
+    "images": ["/images/projects/pasae-site.png"],
+    "featured": false,
+    "rank": 7,
+    "status": "live",
+    "year": "Fall 2023-Spring 2024"
+  },
+  {
+    "slug": "toxic-speech-detection",
+    "title": "TERF Toxic Speech Detection",
+    "role": "ML Engineer",
+    "summary": "ML model to detect and classify toxic speech through Twitter API",
+    "description": [
+      "ML model to detect and classify toxic speech through Twitter API",
+      "Data collection and preprocessing",
+      "Feature engineering"
+    ],
+    "tags": ["Python", "NLTK", "scikit-learn", "TensorFlow/PyTorch"],
+    "links": {
+      "repo": "",
+      "demo": ""
+    },
+    "images": ["/images/projects/detect-toxic-speech.png"],
+    "featured": false,
+    "rank": 8,
+    "status": "live",
+    "year": "Fall 2023"
+  },
+  {
+    "slug": "pacman-ai",
+    "title": "Pacman AI Agent",
+    "role": "AI Engineer",
+    "summary": "Built AI algorithms for Pacman simulation with strategic decision-making",
+    "description": [
+      "Built AI algorithms for Pacman simulation with strategic decision-making",
+      "Implemented search strategies (DFS, BFS, A* Search)",
+      "Developed Minimax and Expectimax algorithms",
+      "Applied Q-Learning and Value Iteration",
+      "Fine-tuned reward functions"
+    ],
+    "tags": ["Python", "NumPy", "Matplotlib"],
+    "links": {
+      "repo": "",
+      "demo": ""
+    },
+    "images": ["/images/projects/pacman.png"],
+    "featured": false,
+    "rank": 9,
+    "status": "live",
+    "year": "April 2023"
+  },
+  {
+    "slug": "cs61cpu",
+    "title": "61CPU Project",
+    "role": "Systems Engineer",
+    "summary": "5-stage pipelined RISC-V CPU implementation",
+    "description": [
+      "5-stage pipelined RISC-V CPU implementation",
+      "Complete datapath implementation",
+      "Hazard detection and forwarding",
+      "Pipeline optimization"
+    ],
+    "tags": ["Logisim", "Assembly", "Git"],
+    "links": {
+      "repo": "",
+      "demo": ""
+    },
+    "images": ["/images/projects/cs61cpu.png"],
+    "featured": false,
+    "rank": 10,
+    "status": "live",
+    "year": "Spring 2023"
+  },
+  {
+    "slug": "gitlet",
+    "title": "Gitlet Version Control",
+    "role": "Systems Engineer",
+    "summary": "Mini version of Git version control system",
+    "description": [
+      "Mini version of Git version control system",
+      "Core Git commands implementation",
+      "Persistent storage system",
+      "Conflict resolution"
+    ],
+    "tags": ["Java", "JUnit"],
+    "links": {
+      "repo": "",
+      "demo": ""
+    },
+    "images": ["/images/projects/gitlet.png"],
+    "featured": false,
+    "rank": 11,
+    "status": "live",
+    "year": "Spring 2022"
+  },
+  {
+    "slug": "solar-water-heating",
+    "title": "Solar Water Heating Optimization",
+    "role": "Data Scientist",
+    "summary": "Analysis of solar water heating system performance",
+    "description": [
+      "Analysis of solar water heating system performance",
+      "Time-series analysis",
+      "Performance prediction",
+      "System optimization"
+    ],
+    "tags": ["Python", "Pandas", "NumPy", "Matplotlib", "Jupyter"],
+    "links": {
+      "repo": "",
+      "demo": "https://docs.google.com/presentation/d/1ckUw_FGskqT6gWPi_v5Z3NdMZqIRxGN9/edit?usp=sharing&ouid=103769897949865466045&rtpof=true&sd=true"
+    },
+    "images": ["/images/projects/lbl-swhs.png"],
+    "featured": false,
+    "rank": 12,
+    "status": "live",
+    "year": "July 2021"
+  }
+]
+

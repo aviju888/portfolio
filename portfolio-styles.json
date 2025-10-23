@@ -1,0 +1,252 @@
+{
+  "portfolio_styles": {
+    "design_system": {
+      "typography": {
+        "font_family": "Space Grotesk",
+        "font_weights": ["400", "500", "700"],
+        "font_scale": {
+          "display": "5rem (80px) - line-height: 1.05",
+          "display-sm": "3.75rem (60px) - line-height: 1.05",
+          "h1": "3.25rem (52px) - line-height: 1.15",
+          "h1-sm": "2.75rem (44px) - line-height: 1.18",
+          "h2": "2.25rem (36px) - line-height: 1.25",
+          "h3": "1.375rem (22px) - line-height: 1.4",
+          "body": "1.125rem (18px) - line-height: 1.65",
+          "body-sm": "1rem (16px) - line-height: 1.6",
+          "small": "0.875rem (14px) - line-height: 1.5"
+        }
+      },
+      "colors": {
+        "accent": {
+          "primary": "#00d9ff (cyan)",
+          "hover": "#00b8e6 (cyan hover)",
+          "secondary": "#0ea5e9 (blue)",
+          "tertiary": "#8b5cf6 (purple)",
+          "white": "#ffffff (white)",
+          "white_hover": "#e5e5e5 (white/90)"
+        },
+        "surface": {
+          "base": "#ffffff (white)",
+          "raised": "#f9fafb (gray-50)", 
+          "overlay": "rgba(255, 255, 255, 0.8) (white/80)"
+        },
+        "text": {
+          "primary": "#111827 (gray-900)",
+          "secondary": "#374151 (gray-700)",
+          "muted": "#6b7280 (gray-500)"
+        },
+        "borders": {
+          "default": "rgba(0, 0, 0, 0.08)",
+          "hover": "rgba(0, 0, 0, 0.15)",
+          "accent": "rgba(0, 0, 0, 0.2)"
+        },
+        "decor": {
+          "grid_glow": "bg-[radial-gradient(ellipse_at_top,rgba(0,217,255,0.12),rgba(14,165,233,0.06)_45%,transparent_60%)]",
+          "panel_tint": "bg-cyan-500/[0.02]",
+          "ambient_mesh": "bg-accent/10, bg-accent-secondary/8, bg-accent-tertiary/5 for animated depth",
+          "mesh_cyan": "bg-[radial-gradient(ellipse_at_top,rgba(0,217,255,0.15),transparent_60%)]",
+          "mesh_blue": "bg-[radial-gradient(ellipse_at_top,rgba(14,165,233,0.1),transparent_50%)]",
+          "mesh_purple": "bg-[radial-gradient(ellipse_at_top,rgba(139,92,246,0.08),transparent_50%)]"
+        }
+      },
+      "spacing": {
+        "section_padding": "py-24 (96px)",
+        "hero_padding": "py-32 (128px)",
+        "card_gaps": "gap-8 (32px)",
+        "horizontal_padding": "px-6 (24px)",
+        "custom_spacing": {
+          "18": "4.5rem (72px)",
+          "22": "5.5rem (88px)", 
+          "26": "6.5rem (104px)",
+          "30": "7.5rem (120px)"
+        }
+      },
+      "radii": {
+        "sm": "rounded-md",
+        "md": "rounded-lg",
+        "lg": "rounded-xl",
+        "xl": "rounded-2xl",
+        "full": "rounded-full"
+      },
+      "shadows": {
+        "card": "shadow-[0_2px_12px_rgba(0,0,0,0.18)]",
+        "card_hover": "shadow-[0_12px_40px_rgba(0,0,0,0.25)]",
+        "button": "shadow-md hover:shadow-lg"
+      }
+    },
+    "components": {
+      "buttons": {
+        "btn_primary": {
+          "classes": "bg-white hover:bg-white/90 text-gray-900 px-7 py-3.5 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] focus:outline-none focus:ring-2 focus:ring-white/30 focus:ring-offset-2 focus:ring-offset-black min-h-[44px] min-w-[44px]",
+          "purpose": "Primary call-to-action buttons with ripple effects"
+        },
+        "btn_secondary": {
+          "classes": "bg-white/[0.05] hover:bg-white/[0.08] border border-white/[0.1] text-white px-7 py-3.5 rounded-full font-medium transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] focus:outline-none focus:ring-2 focus:ring-accent/30 focus:ring-offset-2 focus:ring-offset-black min-h-[44px] min-w-[44px]",
+          "purpose": "Secondary action buttons with cyan accent focus"
+        },
+        "btn_ghost": {
+          "classes": "bg-white/0 hover:bg-white/[0.04] border border-white/[0.1] text-white/90 hover:text-white px-7 py-3.5 rounded-full font-medium transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] focus:outline-none focus:ring-2 focus:ring-accent/30 focus:ring-offset-2 focus:ring-offset-black min-h-[44px] min-w-[44px]",
+          "purpose": "Tertiary/ghost action buttons with cyan accent focus"
+        }
+      },
+      "card": {
+        "base_classes": "bg-white/[0.02] rounded-2xl border border-white/10 p-6",
+        "hover_effects": "hover:-translate-y-2 hover:shadow-[0_25px_80px_rgba(0,217,255,0.15)] hover:border-accent/30 hover:ring-1 hover:ring-accent/20 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
+        "3d_effects": "hover:scale-102 hover:rotate-x-2 hover:rotate-y-2 transform-style-preserve-3d perspective-1000px",
+        "accessibility": "focus-within:outline-none focus-within:ring-2 focus-within:ring-accent focus-within:ring-offset-2 focus-within:ring-offset-black",
+        "image_handling": "Next.js Image component with hover:scale-105 transition duration-500",
+        "typography": {
+          "title": "text-xl md:text-2xl font-semibold tracking-tighter text-white mb-2 group-hover:text-accent transition-colors duration-300",
+          "subtitle": "text-white/80 group-hover:text-white/90 text-small mb-2 transition-colors duration-300", 
+          "description": "text-white/60 group-hover:text-white/70 text-small mb-4 transition-colors duration-300"
+        },
+        "image_frame": "overflow-hidden rounded-xl border border-white/[0.1] bg-black aspect-[16/9] group/image",
+        "highlight_overlay": "absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition duration-300 bg-[radial-gradient(120px_120px_at_85%_15%,rgba(0,217,255,0.08),transparent_60%)]",
+        "cyan_glow": "absolute -inset-1 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-r from-accent/20 via-accent-secondary/20 to-accent-tertiary/20 blur-sm",
+        "ripple_effect": "absolute pointer-events-none rounded-full bg-accent/20 scale-0 opacity-1 animate-scale-4-opacity-0 duration-600 ease-out"
+      },
+      "section": {
+        "container": "py-24 max-w-7xl mx-auto px-6 md:px-8",
+        "title": "text-h1-sm md:text-h1 font-bold text-white tracking-tight mb-4",
+        "description": "text-body text-gray-400 max-w-2xl mx-auto"
+      },
+      "navigation": {
+        "container": "fixed top-0 left-0 right-0 z-50 bg-black/80 supports-[backdrop-filter]:bg-black/70 backdrop-blur-md border-b border-white/10 shadow-lg shadow-black/20",
+        "brand": "text-white text-h3 font-semibold hover:text-accent transition-colors duration-200",
+        "nav_links": "text-small font-medium transition-colors duration-200 group relative",
+        "active_state": "text-accent with animated gradient underline",
+        "inactive_state": "text-white/80 hover:text-white",
+        "spacing": "space-x-6 md:space-x-8",
+        "underline": "absolute -bottom-2 left-1/2 -translate-x-1/2 h-[2px] bg-gradient-to-r from-accent to-accent-secondary rounded-full",
+        "hover_glow": "absolute -inset-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-accent/10 blur-sm",
+        "scroll_behavior": "hide on scroll down, show on scroll up with smooth transitions"
+      },
+      "spotlight_row": {
+        "container": "mb-16",
+        "header": "flex justify-between items-center mb-6",
+        "title": "text-2xl font-bold text-white",
+        "view_all": "text-white/80 hover:text-white transition-colors duration-200",
+        "grid": "grid grid-cols-1 md:grid-cols-2 gap-8"
+      },
+      "experience_card": {
+        "base_classes": "bg-white/[0.02] rounded-2xl border border-white/[0.1] p-6",
+        "hover_effects": "hover:-translate-y-2 hover:shadow-[0_25px_80px_rgba(0,217,255,0.15)] hover:border-accent/30 hover:ring-1 hover:ring-accent/20 transition-all duration-300",
+        "current_highlight": "ring-1 ring-accent/30 bg-accent/5",
+        "current_badge": "bg-gradient-to-r from-accent to-accent-secondary text-black text-xs font-medium px-3 py-1 rounded-full shadow-lg shadow-accent/25",
+        "company_color": "text-white/80",
+        "bullet_color": "text-white/60",
+        "highlight_overlay": "absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition duration-300 bg-[radial-gradient(120px_120px_at_85%_15%,rgba(0,217,255,0.08),transparent_60%)]",
+        "cyan_glow": "absolute -inset-1 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-r from-accent/20 via-accent-secondary/20 to-accent-tertiary/20 blur-sm"
+      },
+      "form_elements": {
+        "input": "w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/[0.1] text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-200",
+        "textarea": "w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/[0.1] text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-200 resize-none"
+      },
+      "loading_states": {
+        "image_skeleton": "relative overflow-hidden bg-white/[0.05] with cyan-tinted gradient shimmer and pulsing effect",
+        "shimmer_animation": "absolute inset-0 bg-gradient-to-r from-transparent via-accent/10 to-transparent animate-x-slide duration-1500 repeat-infinite ease-in-out",
+        "pulse_overlay": "absolute inset-0 bg-gradient-to-r from-accent-secondary/5 via-accent-tertiary/8 to-accent/5 animate-opacity-pulse duration-2000 repeat-infinite ease-in-out",
+        "smooth_transitions": "transition-all duration-300 with opacity fade-in"
+      }
+    },
+    "layouts": {
+      "hero_section": {
+        "container": "py-28 md:py-36 max-w-3xl mx-auto px-6 text-center",
+        "title": "text-display-sm md:text-display font-bold text-white mb-8 leading-tight",
+        "headline": "text-h2-sm md:text-h2 text-gray-300 mb-8 max-w-3xl mx-auto",
+        "bio": "text-body text-gray-400 mb-16 max-w-2xl mx-auto",
+        "cta_container": "flex flex-col sm:flex-row gap-6 justify-center"
+      },
+      "featured_sections": {
+        "container": "relative py-24 max-w-7xl mx-auto px-6 md:px-8 before:content-[''] before:absolute before:inset-x-0 before:-top-10 before:h-64 before:bg-[radial-gradient(ellipse_at_top,rgba(96,165,250,0.12),transparent_60%)] before:pointer-events-none",
+        "alternating": "py-24 max-w-6xl mx-auto px-6"
+      },
+      "grid_systems": {
+        "uniform_grid": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10",
+        "featured_grid": "grid grid-cols-1 md:grid-cols-2 gap-8"
+      }
+    },
+    "responsive_breakpoints": {
+      "mobile": "default (no prefix)",
+      "tablet": "md: (768px+)",
+      "desktop": "lg: (1024px+)",
+      "typography_scaling": {
+        "hero": "text-display-sm → text-display",
+        "section_titles": "text-h1-sm → text-h1", 
+        "headlines": "text-h2-sm → text-h2"
+      }
+    },
+    "accessibility": {
+      "focus_states": "focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-black",
+      "touch_targets": "min-h-[44px] min-w-[44px]",
+      "color_scheme": "dark",
+      "contrast": "WCAG AA compliant",
+      "reduced_motion": "prefers-reduced-motion media query support with simplified animations",
+      "mobile_optimization": "reduced animation complexity on mobile devices and touch interfaces",
+      "keyboard_navigation": "full keyboard accessibility with proper focus management",
+      "screen_readers": "proper ARIA labels and semantic HTML structure"
+    },
+    "animations": {
+      "transitions": "transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]",
+      "hover_lifts": "hover:-translate-y-2",
+      "image_zoom": "hover:scale-[1.05]",
+      "color_transitions": "transition-colors duration-300",
+      "3d_effects": "hover:scale-102 hover:rotate-x-2 hover:rotate-y-2",
+      "ripple_effects": "scale-0 opacity-1 animate-scale-4-opacity-0 duration-600 ease-out",
+      "text_animations": "per-word, per-line, per-character entrance effects with stagger",
+      "scroll_animations": "fade-in, slide-up on scroll with intersection observer",
+      "floating_elements": "y-[-20,20,-20] x-[-10,10,-10] scale-[1,1.1,1] opacity-[0.3,0.6,0.3]",
+      "gradient_meshes": "animate-pulse with varying durations (8s, 12s, 15s)",
+      "filter_tabs": "morphing background with spring physics and layout animations",
+      "custom_cursor": "gradient circle with position tracking, hover scaling, and color changes"
+    },
+    "file_structure": {
+      "core_config": [
+        "tailwind.config.ts - design system tokens, typography, colors, shadows",
+        "app/globals.css - button components, base styles, utilities",
+        "app/layout.tsx - font imports, global HTML structure"
+      ],
+      "components": [
+        "app/components/Card.tsx - card styling, hover effects, images, loading states",
+        "app/components/Section.tsx - section containers and typography", 
+        "app/components/Nav.tsx - navigation styling with active states",
+        "app/components/SpotlightRow.tsx - featured content grids",
+        "app/components/ExperienceCard.tsx - experience cards with current role highlighting",
+        "app/components/ImageSkeleton.tsx - loading state component",
+        "app/components/OrganicDivider.tsx - SVG wave and blob dividers",
+        "app/components/ParallaxPhoto.tsx - scroll-based parallax effects"
+      ],
+      "pages": [
+        "app/page.tsx - homepage hero and sections with organic dividers",
+        "app/code/page.tsx - code projects grid",
+        "app/code/[slug]/page.tsx - dynamic project case study pages",
+        "app/photos/page.tsx - photo gallery with parallax and lightbox",
+        "app/experience/page.tsx - experience timeline with filtering",
+        "app/resume/page.tsx - structured resume with timeline layout",
+        "app/contact/page.tsx - contact form with glass styling",
+        "app/tldr/page.tsx - quick summary with experience integration",
+        "app/media/page.tsx - media showcase"
+      ]
+    },
+    "design_philosophy": {
+      "style": "High-energy Framer-style minimalism with Space Grotesk + enhanced glass surfaces in true black theme with cyan/blue/purple accents",
+      "approach": "Generous whitespace, sophisticated shadows, dynamic micro-interactions, gradient accent colors, 3D effects",
+      "brand": "Engineer-creative balance - technical but human with modern, interactive aesthetic",
+      "performance": "Mobile-first, optimized images, smooth transitions, loading states, reduced motion support",
+      "accessibility": "WCAG AA compliant with proper focus states, touch targets, and motion preferences",
+      "v3_0_features": "Framer-style animations, custom cursor, tech badges, floating elements, enhanced glassmorphism, scroll-triggered effects"
+    },
+    "v3_0_enhancements": {
+      "framer_style_animations": "Scroll-triggered animations, staggered text effects, 3D card interactions",
+      "custom_cursor": "Gradient circle cursor with position tracking and hover interactions",
+      "tech_badge_system": "Categorized gradient badges with icons and pop-in animations",
+      "enhanced_glassmorphism": "Stronger backdrop-blur effects with cyan accent tints",
+      "floating_elements": "Animated gradient blobs and organic dividers with multiple variants",
+      "interactive_filters": "Morphing background tabs with spring physics animations",
+      "advanced_hover_effects": "Ripple effects, magnetic hover, 3D tilt, and enhanced shadows",
+      "ambient_mesh_backgrounds": "Multi-layer animated gradient meshes with cursor interaction",
+      "accessibility_improvements": "Reduced motion support and mobile-optimized animations",
+      "performance_optimization": "Lazy loading, will-change hints, and intersection observer usage"
+    }
+  }
+}

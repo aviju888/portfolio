@@ -1,34 +1,25 @@
-'use client';
-
+import type { Metadata } from 'next';
+import { Space_Grotesk } from 'next/font/google';
 import './globals.css';
-import { Plus_Jakarta_Sans, Caveat, Inter } from 'next/font/google';
-import { Header } from './components/layout/Header';
-import { Footer } from './components/layout/Footer';
-import { DomainProvider } from './components/layout/DomainProvider';
+import Nav from './components/Nav';
+import Footer from './components/Footer';
+import { profile } from '@/lib/data';
 
-const jakarta = Plus_Jakarta_Sans({ 
+const spaceGrotesk = Space_Grotesk({ 
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  display: 'swap',
-  fallback: ['system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Arial', 'sans-serif'],
-  preload: true,
-  adjustFontFallback: true,
-  variable: '--font-jakarta'
+  weight: ['400', '500', '700'],
+  variable: '--font-space-grotesk'
 });
 
-const caveat = Caveat({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  display: 'swap',
-  variable: '--font-handwriting'
-});
-
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  display: 'swap',
-  variable: '--font-inter'
-});
+export const metadata: Metadata = {
+  title: profile.name,
+  description: profile.bioShort,
+  openGraph: {
+    title: profile.name,
+    description: profile.bioShort,
+    type: 'website',
+  },
+};
 
 export default function RootLayout({
   children,
@@ -36,24 +27,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <title>Adriel Vijuan | UC Berkeley EECS</title>
-        <meta name="description" content="Portfolio showcasing creative and software work by Adriel Vijuan" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
-
-        <link rel="icon" href="/images/av-circle-logo-small.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="prefetch" href="/not-found" as="document" />
-        <link rel="prefetch" href="/error" as="document" />
-      </head>
-      <body className={`${jakarta.className} ${jakarta.variable} ${caveat.variable} ${inter.variable} bg-black text-white min-h-screen`}>
-        <DomainProvider>
-          <Header />
-          <main>{children}</main>
+    <html lang="en">
+      <body className={`${spaceGrotesk.variable} font-sans bg-white text-gray-900 min-h-screen relative`}>
+            {/* Subtle background gradient */}
+            <div className="fixed inset-0 pointer-events-none">
+              <div className="absolute inset-0 bg-white" />
+            </div>
+        
+        <div className="relative z-10">
+          <Nav />
+          <main className="min-h-screen">
+            {children}
+          </main>
           <Footer />
-        </DomainProvider>
+        </div>
       </body>
     </html>
   );
