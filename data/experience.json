@@ -6,7 +6,7 @@
     "end": null,
     "location": "San Mateo, CA",
     "type": "Contract",
-    "summary": "Agentic AI, UX/CRO - Building next-gen AI tools for user experience optimization.",
+    "summary": "Agentic AI, UX/CRO - Building AI tools for businesses.",
     "highlights": [
       "Developing agentic AI systems for automated UX analysis",
       "Implementing CRO tools and data-driven design improvements"
@@ -17,7 +17,7 @@
       "repo": "", 
       "caseStudy": "" 
     },
-    "logo": "/images/logos/apex.svg"
+    "logo": "/images/icons/apex.png"
   },
   {
     "company": "Self-Employed",
@@ -26,7 +26,7 @@
     "end": null,
     "location": "SF Bay Area",
     "type": "Freelance",
-    "summary": "Self-managed photography for 200+ individuals and organizations.",
+    "summary": "Freelance photographer for 200+ individuals and 5+ organizations.",
     "highlights": [
       "Portrait photography for 200+ individuals",
       "End-to-end shoot logistics and client management"
@@ -37,7 +37,7 @@
       "repo": "", 
       "caseStudy": "/photos" 
     },
-    "logo": "/images/logos/photography.svg"
+    "logo": "/images/icons/camera_inverted.png"
   },
   {
     "company": "KOSMOS @ Cal",
@@ -57,7 +57,7 @@
       "repo": "", 
       "caseStudy": "/code/kosmos-website" 
     },
-    "logo": "/images/logos/kosmos.svg"
+    "logo": "/images/icons/kosmos_inverted.png"
   },
   {
     "company": "KOSMOS @ Cal",
@@ -66,9 +66,9 @@
     "end": "2025-08",
     "location": "Berkeley, CA",
     "type": "Internship",
-    "summary": "Led design team, increased engagement by 300% (150k+ views).",
+    "summary": "Led design team, increased engagement by 200% (150k+ views).",
     "highlights": [
-      "Increased multi-platform content engagement by 300%",
+      "Increased multi-platform content engagement by 200%",
       "Led promotional/graphic design for social media platforms"
     ],
     "stack": ["Adobe Creative Suite", "Graphic Design", "Social Media Marketing"],
@@ -77,7 +77,7 @@
       "repo": "", 
       "caseStudy": "" 
     },
-    "logo": "/images/logos/kosmos.svg"
+    "logo": "/images/icons/kosmos_inverted.png"
   },
   {
     "company": "PASAE",
@@ -97,7 +97,7 @@
       "repo": "", 
       "caseStudy": "/code/pasae-website" 
     },
-    "logo": "/images/logos/pasae.svg"
+    "logo": "/images/icons/pasae_inverted.png"
   },
   {
     "company": "AFX Dance",
@@ -117,7 +117,7 @@
       "repo": "", 
       "caseStudy": "" 
     },
-    "logo": "/images/logos/afx.svg"
+    "logo": "/images/icons/afx_inverted.png"
   },
   {
     "company": "Dowork Technologies",
@@ -137,7 +137,7 @@
       "repo": "", 
       "caseStudy": "" 
     },
-    "logo": "/images/logos/dowork.svg"
+    "logo": "/images/icons/dowork.png"
   },
   {
     "company": "Amazon",
@@ -157,7 +157,7 @@
       "repo": "", 
       "caseStudy": "" 
     },
-    "logo": "/images/logos/amazon.svg"
+    "logo": "/images/icons/amazon.png"
   },
   {
     "company": "Lawrence Berkeley Lab",
@@ -177,6 +177,6 @@
       "repo": "", 
       "caseStudy": "/code/solar-water-heating" 
     },
-    "logo": "/images/logos/lbl.svg"
+    "logo": "/images/icons/lbl.png"
   }
 ]

@@ -1,12 +1,20 @@
 {
   "name": "Adriel Vijuan",
-  "headline": "Building useful, beautiful things.",
+  "headline": "",
   "bioShort": "Current: SWE @ Apex Agent Labs",
   "email": "avijuan@berkeley.edu",
+  "education": {
+    "school": "UC Berkeley",
+    "degree": "B.S. Electrical Engineering & Computer Sciences",
+    "minor": "Data Science Minor",
+    "start": "2021",
+    "end": "2025",
+    "location": "Berkeley, CA"
+  },
   "socials": {
     "github": "https://github.com/aviju888",
     "linkedin": "https://linkedin.com/in/adriel-vijuan",
-    "instagram": "https://instagram.com/adrielvijuan"
+    "x": "https://x.com/aviju888"
   },
   "domain": "avijuan.vercel.app"
 }

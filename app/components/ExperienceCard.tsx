@@ -32,13 +32,17 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
       {/* Header with logo and role info */}
       <div className="flex items-start gap-4 mb-4">
         {experience.logo && (
-          <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gray-100 border border-gray-200 flex items-center justify-center">
+          <div className={`flex-shrink-0 w-12 h-12 rounded-lg border border-gray-200 flex items-center justify-center ${
+            ['KOSMOS @ Cal', 'Self-Employed', 'AFX Dance', 'PASAE', 'Apex Agent Labs'].includes(experience.company) 
+              ? 'bg-gray-900' 
+              : 'bg-gray-100'
+          }`}>
             <Image
               src={experience.logo}
               alt={`${experience.company} logo`}
               width={32}
               height={32}
-              className="opacity-70 hover:opacity-90 transition-opacity"
+              className="opacity-90 transition-opacity"
             />
           </div>
         )}
@@ -80,9 +84,9 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
         <div className="mb-4">
           <ul className="space-y-1">
             {experience.highlights.map((highlight, index) => (
-              <li key={index} className="text-sm text-gray-600 flex items-start">
-                <span className="text-gray-600 mr-2 mt-1">•</span>
-                <span>{highlight}</span>
+              <li key={index} className="text-sm text-gray-600 flex items-start gap-2">
+                <span className="text-gray-600 mt-0.5 flex-shrink-0">•</span>
+                <span className="flex-1">{highlight}</span>
               </li>
             ))}
           </ul>

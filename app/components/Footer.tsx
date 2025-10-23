@@ -32,12 +32,12 @@ export default function Footer() {
               LinkedIn
             </Link>
             <Link
-              href={profile.socials.instagram}
+              href={profile.socials.x}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 hover:text-gray-900 transition-colors duration-200"
             >
-              Instagram
+              X
             </Link>
           </div>
         </div>

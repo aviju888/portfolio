@@ -3,10 +3,18 @@ export interface Profile {
   headline: string;
   bioShort: string;
   email: string;
+  education: {
+    school: string;
+    degree: string;
+    minor: string;
+    start: string;
+    end: string;
+    location: string;
+  };
   socials: {
     github: string;
     linkedin: string;
-    instagram: string;
+    x: string;
   };
   domain: string;
 }

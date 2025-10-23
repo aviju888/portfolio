@@ -29,11 +29,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         
         {/* Meta info */}
         <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-6">
-          <span>{project.role}</span>
-          <span>•</span>
           <span>{project.year}</span>
-          <span>•</span>
-          <span>{project.status}</span>
         </div>
         
         {/* Tags */}
@@ -86,12 +82,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <div className="flex gap-4 mt-12">
         {project.links.demo && (
           <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="btn-primary">
-            View Live Demo →
+            View →
           </a>
         )}
         {project.links.repo && (
           <a href={project.links.repo} target="_blank" rel="noopener noreferrer" className="btn-secondary">
-            View Source Code →
+            Github →
           </a>
         )}
       </div>

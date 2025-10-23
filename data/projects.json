@@ -64,8 +64,8 @@
   },
   {
     "slug": "hybrid-images",
-    "title": "Hybrid Images Project",
-    "role": "Computer Vision Engineer",
+    "title": "Hybrid Images",
+    "role": "CS180",
     "summary": "Created images combining low and high-frequency content using Gaussian and Laplacian filtering",
     "description": [
       "Created images combining low and high-frequency content",
@@ -87,7 +87,7 @@
   {
     "slug": "colorizing-imagery",
     "title": "Colorizing Historical Imagery",
-    "role": "Computer Vision Engineer",
+    "role": "CS180",
     "summary": "Automated system for aligning and colorizing Prokudin-Gorskii collection",
     "description": [
       "Automated system for aligning and colorizing Prokudin-Gorskii collection",

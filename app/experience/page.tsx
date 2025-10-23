@@ -2,28 +2,90 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { getExperiencesByType } from '@/lib/data';
+import { getExperiencesByType, profile } from '@/lib/data';
 import ExperienceCard from '../components/ExperienceCard';
 import Section from '../components/Section';
+import Tag from '../components/Tag';
 
 export default function ExperiencePage() {
-  const [activeTab, setActiveTab] = useState<'all' | 'Full-time' | 'Contract' | 'Internship'>('all');
+  const [activeTab, setActiveTab] = useState<'all' | 'Software' | 'Web' | 'Misc'>('all');
   const displayExperiences = getExperiencesByType(activeTab);
 
   return (
     <Section 
-      eyebrow="EXPERIENCE" 
-      title="Work & Research" 
-      description="My journey through software engineering, research, and creative work"
+      // eyebrow="EXPERIENCE" 
+      title="Experience" 
+      description="My education, skills, and teams"
     >
-      {/* Filter Tabs */}
+      {/* Education and Skills Side by Side */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        {/* Education Module */}
+        <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow">
+          {/* Date in top right */}
+          <div className="flex justify-end mb-4">
+            <span className="text-sm text-gray-500">{profile.education.start}–{profile.education.end}</span>
+          </div>
+          
+          {/* Centered Berkeley Logo */}
+          <div className="flex justify-center mb-4">
+            <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center">
+              <img 
+                src="/images/icons/cal.svg" 
+                alt="UC Berkeley" 
+                className="w-10 h-10"
+              />
+            </div>
+          </div>
+          
+          {/* Education Details */}
+          <div className="text-center">
+            <h3 className="text-lg font-bold text-gray-900 mb-2">{profile.education.school}</h3>
+            <p className="text-gray-700 font-medium text-sm mb-1">{profile.education.degree}</p>
+            <p className="text-gray-500 text-sm mb-3">{profile.education.minor}</p>
+            <p className="text-sm text-gray-500">{profile.education.location}</p>
+          </div>
+        </div>
+
+        {/* Skills Module */}
+        <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow">
+          <h3 className="text-xl font-bold text-gray-900 mb-6">Skills & Technologies</h3>
+          <div className="space-y-4">
+            <div>
+              <h4 className="text-sm font-medium text-gray-700 mb-2">Frontend</h4>
+              <div className="flex flex-wrap gap-2">
+                {['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'].map(skill => (
+                  <Tag key={skill}>{skill}</Tag>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h4 className="text-sm font-medium text-gray-700 mb-2">Backend & Tools</h4>
+              <div className="flex flex-wrap gap-2">
+                {['Python', 'FastAPI', 'Supabase', 'PostgreSQL', 'Git'].map(skill => (
+                  <Tag key={skill}>{skill}</Tag>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h4 className="text-sm font-medium text-gray-700 mb-2">ML & CV</h4>
+              <div className="flex flex-wrap gap-2">
+                {['PyTorch', 'OpenCV', 'NumPy', 'scikit-learn', 'Jupyter'].map(skill => (
+                  <Tag key={skill}>{skill}</Tag>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Work Experience Filter Tabs */}
       <div className="relative flex flex-wrap gap-2 mb-8 p-1 bg-gray-50 rounded-2xl glass-border">
         
         {[
           { key: 'all', label: 'All' },
-          { key: 'Full-time', label: 'Full-time' },
-          { key: 'Contract', label: 'Contract' },
-          { key: 'Internship', label: 'Internship' }
+          { key: 'Software', label: 'Software' },
+          { key: 'Web', label: 'Web' },
+          { key: 'Misc', label: 'Misc' }
         ].map((tab) => (
           <motion.button
             key={tab.key}

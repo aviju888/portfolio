@@ -10,9 +10,8 @@ import { motion, AnimatePresence } from 'framer-motion';
     { name: 'Code', path: '/code' },
     { name: 'Experience', path: '/experience' },
     { name: 'Photos', path: '/photos' },
-    { name: 'Media', path: '/media' },
+    // { name: 'Media', path: '/media' },
     { name: 'TLDR', path: '/tldr' },
-    { name: 'Resume', path: '/resume' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -64,7 +63,7 @@ export default function Nav() {
             <div className="flex justify-between h-16">
               <div className="flex items-center">
                 <Link href="/" className="text-gray-900 text-h3 font-semibold hover:text-gray-700 transition-colors duration-200">
-                  Adriel Vijuan
+                  AV
                 </Link>
               </div>
               

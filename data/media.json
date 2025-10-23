@@ -13,24 +13,9 @@
       "link": "https://www.youtube.com/watch?v=bQH3FsdGZmQ",
       "featured": false,
       "rank": 2
-    },
-    {
-      "title": "Coming Soon",
-      "desc": "More design work in progress",
-      "link": "",
-      "featured": false,
-      "rank": 3
     }
   ],
-  "music": [
-    {
-      "title": "Coming Soon",
-      "desc": "Music production work in progress",
-      "link": "",
-      "featured": false,
-      "rank": 1
-    }
-  ],
+  "music": [],
   "writing": [
     {
       "title": "2025 Start",
@@ -45,13 +30,6 @@
       "link": "",
       "featured": true,
       "rank": 2
-    },
-    {
-      "title": "Coming Soon",
-      "desc": "More writing in progress",
-      "link": "",
-      "featured": false,
-      "rank": 3
     }
   ]
 }
