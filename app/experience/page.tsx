@@ -28,7 +28,7 @@ export default function ExperiencePage() {
             onClick={() => setActiveTab(tab.key as any)}
             className={`px-4 py-2 rounded-full font-medium transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] ${
               activeTab === tab.key
-                ? 'bg-sky-500 text-white shadow-md'
+                ? 'bg-white text-gray-900 shadow-md'
                 : 'bg-white/5 hover:bg-white/8 border border-white/[0.1] text-white/80 hover:text-white'
             }`}
           >

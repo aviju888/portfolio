@@ -120,29 +120,36 @@ export default function TldrPage() {
           </ul>
         </div>
 
-        {/* Contact */}
-        <div>
-          <h3 className="text-2xl font-bold text-white mb-4">
-            Contact
-          </h3>
-          <div className="space-y-2">
-            <p className="text-gray-300">
-              <span className="font-medium text-white">Email:</span> {tldr.contact.email}
-            </p>
-            <div className="flex space-x-4">
-              {tldr.contact.links.map((link, index) => (
-                <Link
-                  key={index}
-                  href={`/${link}`}
-                  className="text-accent hover:text-accent-hover transition-colors duration-200 capitalize"
-                >
-                  {link}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </Section>
-  );
-}
+                {/* Contact */}
+                <div>
+                  <h3 className="text-2xl font-bold text-white mb-4">
+                    Contact
+                  </h3>
+                  <div className="space-y-2">
+                    <p className="text-gray-300">
+                      <span className="font-medium text-white">Email:</span> {tldr.contact.email}
+                    </p>
+                    <div className="flex space-x-4">
+                      {tldr.contact.links.map((link, index) => (
+                        <Link
+                          key={index}
+                          href={`/${link}`}
+                          className="text-accent hover:text-accent-hover transition-colors duration-200 capitalize"
+                        >
+                          {link}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Resume CTA */}
+                <div className="text-center pt-8 border-t border-white/[0.1]">
+                  <Link href="/resume" className="btn-secondary inline-block">
+                    View Full Resume →
+                  </Link>
+                </div>
+              </div>
+            </Section>
+          );
+        }

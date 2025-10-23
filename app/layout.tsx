@@ -28,12 +28,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${spaceGrotesk.variable} font-sans bg-gray-900 text-white min-h-screen`}>
-        <Nav />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
+      <body className={`${spaceGrotesk.variable} font-sans bg-gray-900 text-white min-h-screen relative`}>
+        {/* Ambient background mesh */}
+        <div className="fixed inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute -top-40 -right-40 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
+          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-white/3 rounded-full blur-3xl" />
+        </div>
+        
+        <div className="relative z-10">
+          <Nav />
+          <main className="min-h-screen">
+            {children}
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

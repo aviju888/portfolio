@@ -1,6 +1,9 @@
-import { ReactNode } from 'react';
+'use client';
+
+import { ReactNode, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import ImageSkeleton from './ImageSkeleton';
 
 interface CardProps {
   title: string;
@@ -10,17 +13,20 @@ interface CardProps {
   href?: string;
   children?: ReactNode;
   className?: string;
+  loading?: boolean;
 }
 
-export default function Card({ 
-  title, 
-  subtitle, 
-  description, 
-  image, 
-  href, 
-  children, 
-  className = '' 
+export default function Card({
+  title,
+  subtitle,
+  description,
+  image,
+  href,
+  children,
+  className = '',
+  loading = false
 }: CardProps) {
+  const [imageLoaded, setImageLoaded] = useState(false);
   const cardContent = (
     <div className={`group relative bg-white/[0.02] rounded-2xl border border-white/[0.1] p-6 
                     transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]
@@ -32,19 +38,23 @@ export default function Card({
       <div className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition duration-300
                       bg-[radial-gradient(120px_120px_at_85%_15%,rgba(255,255,255,0.06),transparent_60%)]" />
       
-      {/* Image with glass frame */}
-      {image && (
-        <div className="relative overflow-hidden rounded-xl border border-white/[0.1] bg-black aspect-[16/9] mb-5">
-          <Image
-            src={image}
-            alt={title}
-            width={800}
-            height={450}
-            className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-[1.03]"
-            priority={false}
-          />
-        </div>
-      )}
+              {/* Image with glass frame */}
+              {image && (
+                <div className="relative overflow-hidden rounded-xl border border-white/[0.1] bg-black aspect-[16/9] mb-5">
+                  {!imageLoaded && <ImageSkeleton className="absolute inset-0" />}
+                  <Image
+                    src={image}
+                    alt={title}
+                    width={800}
+                    height={450}
+                    className={`w-full h-full object-cover object-center transition-all duration-300 group-hover:scale-[1.03] ${
+                      imageLoaded ? 'opacity-100' : 'opacity-0'
+                    }`}
+                    onLoad={() => setImageLoaded(true)}
+                    priority={false}
+                  />
+                </div>
+              )}
       
       <div className="relative">
         <h3 className="text-xl md:text-2xl font-semibold tracking-tighter text-white mb-2">
@@ -52,7 +62,7 @@ export default function Card({
         </h3>
         
         {subtitle && (
-          <p className="text-sm text-sky-400 mb-2">
+          <p className="text-sm text-white/80 mb-2">
             {subtitle}
           </p>
         )}

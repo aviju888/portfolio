@@ -3,15 +3,16 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-const navItems = [
-  { name: 'Home', path: '/' },
-  { name: 'Code', path: '/code' },
-  { name: 'Experience', path: '/experience' },
-  { name: 'Photos', path: '/photos' },
-  { name: 'Media', path: '/media' },
-  { name: 'TLDR', path: '/tldr' },
-  { name: 'Contact', path: '/contact' },
-];
+  const navItems = [
+    { name: 'Home', path: '/' },
+    { name: 'Code', path: '/code' },
+    { name: 'Experience', path: '/experience' },
+    { name: 'Photos', path: '/photos' },
+    { name: 'Media', path: '/media' },
+    { name: 'TLDR', path: '/tldr' },
+    { name: 'Resume', path: '/resume' },
+    { name: 'Contact', path: '/contact' },
+  ];
 
 export default function Nav() {
   const pathname = usePathname();
@@ -39,7 +40,7 @@ export default function Nav() {
               >
                 {item.name}
                 {pathname === item.path && (
-                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-[2px] w-6 bg-sky-400 rounded-full" />
+                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-[2px] w-6 bg-white rounded-full" />
                 )}
               </Link>
             ))}

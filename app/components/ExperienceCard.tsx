@@ -19,7 +19,7 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
                     transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]
                     hover:-translate-y-1.5 hover:shadow-[0_20px_60px_rgba(0,0,0,.35)] hover:border-white/[0.15]
                     hover:ring-1 hover:ring-white/[0.1]
-                    ${isCurrent ? 'ring-1 ring-sky-400/20' : ''}
+                    ${isCurrent ? 'ring-1 ring-white/20' : ''}
                     ${className}`}>
       
       {/* Highlight overlay - top-right shimmer on hover */}
@@ -28,7 +28,7 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
       
       {/* Current role badge */}
       {isCurrent && (
-        <div className="absolute -top-2 -right-2 bg-sky-400 text-white text-xs font-medium px-2 py-1 rounded-full">
+        <div className="absolute -top-2 -right-2 bg-white text-gray-900 text-xs font-medium px-2 py-1 rounded-full">
           Current
         </div>
       )}
@@ -53,7 +53,7 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
               <h3 className="text-xl font-semibold tracking-tighter text-white mb-1">
                 {experience.role}
               </h3>
-              <p className="text-sky-400 font-medium">
+              <p className="text-white/80 font-medium">
                 {experience.company}
               </p>
             </div>
@@ -85,7 +85,7 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
           <ul className="space-y-1">
             {experience.highlights.map((highlight, index) => (
               <li key={index} className="text-sm text-white/60 flex items-start">
-                <span className="text-sky-400 mr-2 mt-1">•</span>
+                <span className="text-white/60 mr-2 mt-1">•</span>
                 <span>{highlight}</span>
               </li>
             ))}
@@ -111,7 +111,7 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
         {experience.links.caseStudy && (
           <Link 
             href={experience.links.caseStudy}
-            className="text-sm text-sky-400 hover:text-sky-300 transition-colors"
+            className="text-sm text-white/80 hover:text-white transition-colors"
           >
             View Case Study →
           </Link>

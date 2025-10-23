@@ -1,81 +1,95 @@
-import { profile } from '@/lib/data';
+'use client';
+
+import { useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 import Section from '../components/Section';
-import Link from 'next/link';
 
 export default function ContactPage() {
+  const [state, handleSubmit] = useForm("YOUR_FORMSPREE_ID"); // Replace with actual ID
+  
+  if (state.succeeded) {
+    return (
+      <Section 
+        title="Thanks for reaching out!" 
+        description="I'll get back to you as soon as possible."
+      >
+        <div className="text-center">
+          <a href="/" className="btn-primary">
+            Back to Home
+          </a>
+        </div>
+      </Section>
+    );
+  }
+  
   return (
     <Section 
-      title="Contact" 
-      description="Let's connect and work together"
+      title="Get in Touch" 
+      description="Have a project in mind? Let's talk about it."
     >
-      <div className="max-w-2xl mx-auto text-center">
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            Get in touch
-          </h2>
-          <p className="text-lg text-gray-400 mb-8">
-            I'm always interested in new opportunities, collaborations, and conversations about technology and creativity.
-          </p>
-        </div>
-
+      <form onSubmit={handleSubmit} className="max-w-2xl mx-auto">
         <div className="space-y-6">
-          {/* Email */}
-          <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-            <h3 className="text-xl font-semibold text-white mb-2">
+          {/* Name field */}
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-white/80 mb-2">
+              Name
+            </label>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              required
+              className="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/[0.1] text-white
+                         focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50
+                         transition-all duration-200"
+            />
+            <ValidationError prefix="Name" field="name" errors={state.errors} />
+          </div>
+          
+          {/* Email field */}
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-white/80 mb-2">
               Email
-            </h3>
-            <Link
-              href={`mailto:${profile.email}`}
-              className="text-accent hover:text-accent-hover transition-colors duration-200 text-lg"
-            >
-              {profile.email}
-            </Link>
+            </label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              required
+              className="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/[0.1] text-white
+                         focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50
+                         transition-all duration-200"
+            />
+            <ValidationError prefix="Email" field="email" errors={state.errors} />
           </div>
-
-          {/* Social Links */}
-          <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-            <h3 className="text-xl font-semibold text-white mb-4">
-              Social
-            </h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href={profile.socials.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary"
-              >
-                GitHub
-              </Link>
-              <Link
-                href={profile.socials.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary"
-              >
-                LinkedIn
-              </Link>
-              <Link
-                href={profile.socials.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary"
-              >
-                Instagram
-              </Link>
-            </div>
+          
+          {/* Message field */}
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium text-white/80 mb-2">
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={6}
+              required
+              className="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/[0.1] text-white
+                         focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50
+                         transition-all duration-200 resize-none"
+            />
+            <ValidationError prefix="Message" field="message" errors={state.errors} />
           </div>
-
-          {/* Quick Response */}
-          <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
-            <h3 className="text-xl font-semibold text-white mb-2">
-              Response Time
-            </h3>
-            <p className="text-gray-400">
-              I typically respond within 24 hours. For urgent matters, feel free to mention it in your email.
-            </p>
-          </div>
+          
+          {/* Submit button */}
+          <button
+            type="submit"
+            disabled={state.submitting}
+            className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {state.submitting ? 'Sending...' : 'Send Message'}
+          </button>
         </div>
-      </div>
+      </form>
     </Section>
   );
 }

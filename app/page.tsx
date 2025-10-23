@@ -4,6 +4,7 @@ import SpotlightRow from './components/SpotlightRow';
 import Card from './components/Card';
 import Tag from './components/Tag';
 import ExperienceCard from './components/ExperienceCard';
+import OrganicDivider from './components/OrganicDivider';
 
 export default function Home() {
   const featuredProjects = getFeaturedProjects().slice(0, 2);
@@ -16,8 +17,13 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-28 md:py-36">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_40%_at_50%_-20%,rgba(96,165,250,.12),transparent_60%)]" />
+      <section className="relative py-28 md:py-36 overflow-hidden">
+        {/* Multi-layer mesh gradient */}
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-0 bg-[radial-gradient(70%_40%_at_50%_-20%,rgba(96,165,250,.12),transparent_60%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(60%_50%_at_80%_10%,rgba(147,51,234,.08),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(50%_60%_at_20%_80%,rgba(59,130,246,.06),transparent_40%)]" />
+        </div>
         <div className="relative max-w-3xl mx-auto px-6 text-center">
           <p className="text-xs uppercase tracking-[0.2em] text-white/40 mb-4">
             Software Engineer & Creative
@@ -47,11 +53,12 @@ export default function Home() {
       </section>
 
       {/* Featured Projects */}
-      <section className="relative pt-20 md:pt-24 pb-28 
-                          before:content-[''] before:absolute before:inset-x-0 before:-top-10 before:h-64 
-                          before:bg-[radial-gradient(ellipse_at_top,rgba(96,165,250,0.12),transparent_60%)] before:pointer-events-none
-                          after:content-[''] after:absolute after:inset-0 
-                          after:bg-[radial-gradient(80%_60%_at_50%_120%,rgba(0,0,0,.25),transparent_60%)] after:pointer-events-none">
+      <section className="relative pt-20 md:pt-24 pb-28 overflow-hidden">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-x-0 -top-10 h-64 bg-[radial-gradient(ellipse_at_top,rgba(96,165,250,0.12),transparent_60%)]" />
+          <div className="absolute inset-x-0 top-20 h-64 bg-[radial-gradient(ellipse_at_top_right,rgba(147,51,234,0.06),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(80%_60%_at_50%_120%,rgba(0,0,0,.25),transparent_60%)]" />
+        </div>
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SpotlightRow 
             eyebrow="CODE" 
@@ -79,6 +86,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Organic Divider */}
+      <OrganicDivider className="text-white/60" />
+
       {/* Experience Strip */}
       {displayExperiences.length > 0 && (
         <section className="py-24">
@@ -99,6 +109,9 @@ export default function Home() {
           </div>
         </section>
       )}
+
+      {/* Organic Divider */}
+      <OrganicDivider variant="blob" className="text-white/40 rotate-180" />
 
       {/* Featured Photos */}
       <section className="py-24">

@@ -31,8 +31,8 @@ const config: Config = {
       },
       colors: {
         accent: {
-          DEFAULT: '#60a5fa', // sky-400
-          hover: '#3b82f6', // sky-500
+          DEFAULT: '#ffffff', // white
+          hover: '#e5e5e5', // white/90
         },
         surface: {
           base: '#111827', // gray-900
@@ -63,6 +63,12 @@ const config: Config = {
       letterSpacing: {
         tightest: '-0.02em',
         tighter: '-0.01em',
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-mesh-1': 'radial-gradient(at 40% 20%, rgba(96,165,250,0.15) 0, transparent 50%), radial-gradient(at 80% 0%, rgba(147,51,234,0.1) 0, transparent 50%)',
+        'gradient-mesh-2': 'radial-gradient(at 0% 50%, rgba(59,130,246,0.1) 0, transparent 50%), radial-gradient(at 100% 50%, rgba(96,165,250,0.08) 0, transparent 50%)',
+        'gradient-mesh-3': 'radial-gradient(at 20% 80%, rgba(59,130,246,0.06) 0, transparent 40%), radial-gradient(at 60% 20%, rgba(96,165,250,0.08) 0, transparent 50%)',
       }
     },
   },

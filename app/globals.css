@@ -14,9 +14,9 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-sky-500 hover:bg-sky-400 text-white px-7 py-3.5 rounded-full font-medium 
+    @apply bg-white hover:bg-white/90 text-gray-900 px-7 py-3.5 rounded-full font-medium 
            shadow-md hover:shadow-lg transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]
-           focus:outline-none focus:ring-2 focus:ring-sky-400/30 focus:ring-offset-2 focus:ring-offset-gray-900
+           focus:outline-none focus:ring-2 focus:ring-white/30 focus:ring-offset-2 focus:ring-offset-gray-900
            min-h-[44px] min-w-[44px];
   }
   
@@ -32,5 +32,15 @@
            transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]
            focus:outline-none focus:ring-2 focus:ring-white/[0.2] focus:ring-offset-2 focus:ring-offset-gray-900
            min-h-[44px] min-w-[44px];
+  }
+}
+
+@layer utilities {
+  .text-gradient-sky {
+    @apply bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-subtle {
+    @apply bg-gradient-to-r from-white via-white/95 to-white/90 bg-clip-text text-transparent;
   }
 }
