@@ -6,7 +6,6 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -30,28 +29,20 @@ const config: Config = {
         '30': '7.5rem', // 120px
       },
       colors: {
-        accent: {
-          DEFAULT: '#ffffff', // white
-          hover: '#e5e5e5', // white/90
-        },
         surface: {
-          base: '#111827', // gray-900
-          raised: '#1f2937', // gray-800
-          overlay: 'rgba(31, 41, 55, 0.5)', // gray-800/50
+          base: '#ffffff', // white
+          raised: '#f9fafb', // gray-50
+          overlay: 'rgba(0, 0, 0, 0.5)', // black/50
         },
         text: {
-          primary: 'white',
-          secondary: '#e5e7eb', // gray-200
-          muted: '#9ca3af', // gray-400
+          primary: '#111827', // gray-900
+          secondary: '#374151', // gray-700
+          muted: '#6b7280', // gray-500
         },
         borders: {
-          default: 'rgba(255, 255, 255, 0.08)',
-          hover: 'rgba(255, 255, 255, 0.14)',
+          default: 'rgba(0, 0, 0, 0.08)',
+          hover: 'rgba(0, 0, 0, 0.14)',
         },
-        decor: {
-          grid_glow: 'bg-[radial-gradient(ellipse_at_top,rgba(96,165,250,0.12),rgba(59,130,246,0.06)_45%,transparent_60%)]',
-          panel_tint: 'bg-white/[0.02]',
-        }
       },
       boxShadow: {
         'card': '0 2px 12px rgba(0, 0, 0, 0.18)',
@@ -74,4 +65,5 @@ const config: Config = {
   },
   plugins: [],
 }
+
 export default config

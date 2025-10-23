@@ -1,12 +1,13 @@
+import TechBadge from './TechBadge';
+
 interface TagProps {
   children: string;
   className?: string;
+  category?: 'language' | 'framework' | 'tool' | 'other';
 }
 
-export default function Tag({ children, className = '' }: TagProps) {
+export default function Tag({ children, className = '', category = 'other' }: TagProps) {
   return (
-    <span className={`inline-block px-2.5 py-1 text-xs font-medium bg-white/5 border border-white/[0.1] text-white/80 rounded-full ${className}`}>
-      {children}
-    </span>
+    <TechBadge name={children} category={category} className={className} />
   );
 }

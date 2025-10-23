@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { projects, getProjectsByCategory } from '@/lib/data';
 import Card from '../components/Card';
 import Tag from '../components/Tag';
@@ -13,27 +14,50 @@ export default function CodePage() {
   return (
     <Section title="Code" description="My work in software development, AI/ML, and computer vision">
       {/* Tabs */}
-      <div className="flex space-x-1 mb-8">
-        <button
+      <div className="relative flex space-x-1 mb-8 p-1 bg-gray-50 rounded-2xl glass-border w-fit">
+        
+        <motion.button
           onClick={() => setActiveTab('featured')}
-          className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
+          className={`relative px-4 py-2 rounded-xl font-semibold transition-colors duration-200 ${
             activeTab === 'featured'
-              ? 'bg-accent text-white'
-              : 'text-gray-400 hover:text-white'
+              ? 'text-gray-900 font-bold'
+              : 'text-gray-500 hover:text-gray-900'
           }`}
         >
+          {activeTab === 'featured' && (
+            <motion.div
+              layoutId="activeTab"
+              className="absolute inset-0 bg-white rounded-xl"
+              style={{
+                zIndex: -1,
+                boxShadow: '0 2px 8px 0 rgba(0, 0, 0, 0.15), inset 0 1px 0 0 rgba(0, 0, 0, 0.05)'
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            />
+          )}
           Featured
-        </button>
-        <button
+        </motion.button>
+        <motion.button
           onClick={() => setActiveTab('all')}
-          className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
+          className={`relative px-4 py-2 rounded-xl font-semibold transition-colors duration-200 ${
             activeTab === 'all'
-              ? 'bg-accent text-white'
-              : 'text-gray-400 hover:text-white'
+              ? 'text-gray-900 font-bold'
+              : 'text-gray-600 hover:text-gray-900'
           }`}
         >
+          {activeTab === 'all' && (
+            <motion.div
+              layoutId="activeTab"
+              className="absolute inset-0 bg-white rounded-xl"
+              style={{
+                zIndex: -1,
+                boxShadow: '0 2px 8px 0 rgba(0, 0, 0, 0.15), inset 0 1px 0 0 rgba(0, 0, 0, 0.05)'
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            />
+          )}
           All
-        </button>
+        </motion.button>
       </div>
 
       {/* Projects Grid */}

@@ -30,22 +30,30 @@ export interface Project {
 }
 
 export interface Photo {
-  src: string;
+  id: string;
+  album: string;
+  srcThumb: string;
+  srcFull: string;
+  title: string;
   alt: string;
   description: string;
+  orientation: 'portrait' | 'landscape';
+  featured: boolean;
   dateTaken: string;
   rank: number;
 }
 
 export interface Album {
-  title: string;
   slug: string;
+  title: string;
+  category: string;
+  cover: string;
   count: number;
-  thumb: string;
+  description: string;
 }
 
 export interface Photos {
-  featured: Photo[];
+  photos: Photo[];
   albums: Album[];
 }
 

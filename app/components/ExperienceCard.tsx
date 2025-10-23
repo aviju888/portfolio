@@ -15,28 +15,24 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
   const dateRange = formatDateRange(experience.start, experience.end);
 
   return (
-    <div className={`group relative bg-white/[0.02] rounded-2xl border border-white/[0.1] p-6 
-                    transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]
-                    hover:-translate-y-1.5 hover:shadow-[0_20px_60px_rgba(0,0,0,.35)] hover:border-white/[0.15]
-                    hover:ring-1 hover:ring-white/[0.1]
-                    ${isCurrent ? 'ring-1 ring-white/20' : ''}
-                    ${className}`}>
+        <div className={`group relative bg-white rounded-2xl glass-border p-6 
+                        transition-colors duration-200 ease-out
+                        hover:bg-gray-50
+                        ${isCurrent ? 'ring-1 ring-gray-300 bg-gray-50' : ''}
+                        ${className}`}>
       
-      {/* Highlight overlay - top-right shimmer on hover */}
-      <div className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition duration-300
-                      bg-[radial-gradient(120px_120px_at_85%_15%,rgba(255,255,255,0.06),transparent_60%)]" />
       
-      {/* Current role badge */}
-      {isCurrent && (
-        <div className="absolute -top-2 -right-2 bg-white text-gray-900 text-xs font-medium px-2 py-1 rounded-full">
-          Current
-        </div>
-      )}
+          {/* Current role badge */}
+          {isCurrent && (
+            <div className="absolute -top-2 -right-2 bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-full shadow-md">
+              Current
+            </div>
+          )}
       
       {/* Header with logo and role info */}
       <div className="flex items-start gap-4 mb-4">
         {experience.logo && (
-          <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-white/[0.05] border border-white/[0.1] flex items-center justify-center">
+          <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gray-100 border border-gray-200 flex items-center justify-center">
             <Image
               src={experience.logo}
               alt={`${experience.company} logo`}
@@ -48,24 +44,24 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
         )}
         
         <div className="flex-1 min-w-0">
-          <div className="flex items-start justify-between mb-2">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-2 gap-2">
             <div>
-              <h3 className="text-xl font-semibold tracking-tighter text-white mb-1">
+              <h3 className="text-xl font-semibold tracking-tighter text-gray-900 mb-1">
                 {experience.role}
               </h3>
-              <p className="text-white/80 font-medium">
+              <p className="text-gray-700 font-medium">
                 {experience.company}
               </p>
             </div>
-            <div className="text-right">
-              <p className="text-sm text-white/50 mb-1">
+            <div className="sm:text-right">
+              <p className="text-sm text-gray-500 mb-1">
                 {dateRange}
               </p>
-              <div className="flex gap-2">
+              <div className="flex gap-2 sm:justify-end">
                 <Tag className="text-xs">
                   {experience.type}
                 </Tag>
-                <span className="text-xs text-white/40">
+                <span className="text-xs text-gray-400">
                   {experience.location}
                 </span>
               </div>
@@ -75,7 +71,7 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
       </div>
       
       {/* Summary */}
-      <p className="text-sm text-white/70 mb-4 leading-relaxed">
+      <p className="text-sm text-gray-700 mb-4 leading-relaxed">
         {experience.summary}
       </p>
       
@@ -84,8 +80,8 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
         <div className="mb-4">
           <ul className="space-y-1">
             {experience.highlights.map((highlight, index) => (
-              <li key={index} className="text-sm text-white/60 flex items-start">
-                <span className="text-white/60 mr-2 mt-1">•</span>
+              <li key={index} className="text-sm text-gray-600 flex items-start">
+                <span className="text-gray-600 mr-2 mt-1">•</span>
                 <span>{highlight}</span>
               </li>
             ))}
@@ -111,7 +107,7 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
         {experience.links.caseStudy && (
           <Link 
             href={experience.links.caseStudy}
-            className="text-sm text-white/80 hover:text-white transition-colors"
+            className="text-sm text-gray-700 hover:text-gray-900 transition-colors"
           >
             View Case Study →
           </Link>
@@ -119,7 +115,7 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
         {experience.links.repo && (
           <Link 
             href={experience.links.repo}
-            className="text-sm text-white/60 hover:text-white/80 transition-colors"
+            className="text-sm text-gray-600 hover:text-gray-800 transition-colors"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -129,7 +125,7 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
         {experience.links.site && (
           <Link 
             href={experience.links.site}
-            className="text-sm text-white/60 hover:text-white/80 transition-colors"
+            className="text-sm text-gray-600 hover:text-gray-800 transition-colors"
             target="_blank"
             rel="noopener noreferrer"
           >

@@ -5,7 +5,7 @@ import { useForm, ValidationError } from '@formspree/react';
 import Section from '../components/Section';
 
 export default function ContactPage() {
-  const [state, handleSubmit] = useForm("YOUR_FORMSPREE_ID"); // Replace with actual ID
+  const [state, handleSubmit] = useForm("YOUR_FORMSPREE_ID"); // TODO: Replace with actual Formspree form ID for production
   
   if (state.succeeded) {
     return (
@@ -31,7 +31,7 @@ export default function ContactPage() {
         <div className="space-y-6">
           {/* Name field */}
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-white/80 mb-2">
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
               Name
             </label>
             <input
@@ -39,8 +39,8 @@ export default function ContactPage() {
               type="text"
               name="name"
               required
-              className="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/[0.1] text-white
-                         focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50
+              className="w-full px-4 py-3 rounded-xl bg-white border border-gray-300 text-gray-900
+                         focus:outline-none focus:ring-2 focus:ring-gray-900/50 focus:border-gray-900/50
                          transition-all duration-200"
             />
             <ValidationError prefix="Name" field="name" errors={state.errors} />
@@ -48,7 +48,7 @@ export default function ContactPage() {
           
           {/* Email field */}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-white/80 mb-2">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
               Email
             </label>
             <input
@@ -56,8 +56,8 @@ export default function ContactPage() {
               type="email"
               name="email"
               required
-              className="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/[0.1] text-white
-                         focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50
+              className="w-full px-4 py-3 rounded-xl bg-white border border-gray-300 text-gray-900
+                         focus:outline-none focus:ring-2 focus:ring-gray-900/50 focus:border-gray-900/50
                          transition-all duration-200"
             />
             <ValidationError prefix="Email" field="email" errors={state.errors} />
@@ -65,7 +65,7 @@ export default function ContactPage() {
           
           {/* Message field */}
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-white/80 mb-2">
+            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
               Message
             </label>
             <textarea
@@ -73,8 +73,8 @@ export default function ContactPage() {
               name="message"
               rows={6}
               required
-              className="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-white/[0.1] text-white
-                         focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50
+              className="w-full px-4 py-3 rounded-xl bg-white border border-gray-300 text-gray-900
+                         focus:outline-none focus:ring-2 focus:ring-gray-900/50 focus:border-gray-900/50
                          transition-all duration-200 resize-none"
             />
             <ValidationError prefix="Message" field="message" errors={state.errors} />

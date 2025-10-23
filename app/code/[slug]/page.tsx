@@ -16,19 +16,19 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   return (
     <Section>
       {/* Back link */}
-      <Link href="/code" className="inline-flex items-center text-white/80 hover:text-white mb-8 transition-colors">
+      <Link href="/code" className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-8 transition-colors">
         ← Back to Projects
       </Link>
       
       {/* Project header */}
       <div className="mb-12">
-        <h1 className="text-h1-sm md:text-h1 font-bold text-white tracking-tight mb-4">
+        <h1 className="text-h1-sm md:text-h1 font-bold text-gray-900 tracking-tight mb-4">
           {project.title}
         </h1>
-        <p className="text-xl text-white/70 mb-6">{project.summary}</p>
+        <p className="text-xl text-gray-600 mb-6">{project.summary}</p>
         
         {/* Meta info */}
-        <div className="flex flex-wrap gap-4 text-sm text-white/60 mb-6">
+        <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-6">
           <span>{project.role}</span>
           <span>•</span>
           <span>{project.year}</span>
@@ -46,7 +46,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       
       {/* Main image */}
       {project.images[0] && (
-        <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/[0.1] bg-black mb-12">
+        <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-gray-200 bg-gray-100 mb-12">
           <Image
             src={project.images[0]}
             alt={project.title}
@@ -58,9 +58,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       )}
       
       {/* Description sections */}
-      <div className="prose prose-invert max-w-3xl">
+      <div className="prose prose-lg max-w-3xl">
         {project.description.map((paragraph, index) => (
-          <p key={index} className="text-lg text-white/70 leading-relaxed mb-6">
+          <p key={index} className="text-lg text-gray-700 leading-relaxed mb-6">
             {paragraph}
           </p>
         ))}
@@ -70,7 +70,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       {project.images.length > 1 && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
           {project.images.slice(1).map((image, index) => (
-            <div key={index} className="relative aspect-video rounded-xl overflow-hidden border border-white/[0.1] bg-black">
+            <div key={index} className="relative aspect-video rounded-xl overflow-hidden border border-gray-200 bg-gray-100">
               <Image
                 src={image}
                 alt={`${project.title} - Image ${index + 2}`}

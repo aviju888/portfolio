@@ -3,10 +3,14 @@ import { profile } from '@/lib/data';
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 border-t border-gray-800">
+    <footer className="bg-white relative"
+            style={{
+              borderTop: '1px solid rgba(0, 0, 0, 0.08)',
+              boxShadow: 'inset 0 1px 0 0 rgba(0, 0, 0, 0.05)'
+            }}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="text-gray-400 text-sm">
+          <div className="text-gray-600 text-sm">
             © 2025 {profile.name}. All rights reserved.
           </div>
           
@@ -15,7 +19,7 @@ export default function Footer() {
               href={profile.socials.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-accent transition-colors duration-200"
+              className="text-gray-600 hover:text-gray-900 transition-colors duration-200"
             >
               GitHub
             </Link>
@@ -23,7 +27,7 @@ export default function Footer() {
               href={profile.socials.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-accent transition-colors duration-200"
+              className="text-gray-600 hover:text-gray-900 transition-colors duration-200"
             >
               LinkedIn
             </Link>
@@ -31,7 +35,7 @@ export default function Footer() {
               href={profile.socials.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-accent transition-colors duration-200"
+              className="text-gray-600 hover:text-gray-900 transition-colors duration-200"
             >
               Instagram
             </Link>

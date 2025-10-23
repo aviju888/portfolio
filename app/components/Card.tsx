@@ -27,48 +27,43 @@ export default function Card({
   loading = false
 }: CardProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
+
   const cardContent = (
-    <div className={`group relative bg-white/[0.02] rounded-2xl border border-white/[0.1] p-6 
-                    transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]
-                    hover:-translate-y-1.5 hover:shadow-[0_20px_60px_rgba(0,0,0,.35)] hover:border-white/[0.15]
-                    hover:ring-1 hover:ring-white/[0.1]
-                    ${className}`}>
+    <div 
+      className={`group relative bg-white rounded-2xl glass-border p-6 
+                  transition-colors duration-200 ease-out
+                  hover:bg-gray-50
+                  ${className}`}
+    >
+      {/* Image with inset frame */}
+      {image && (
+        <div className="relative overflow-hidden rounded-lg bg-gray-100 aspect-[16/9] mb-4 p-1">
+          {!imageLoaded && <ImageSkeleton />}
+          <Image
+            src={image}
+            alt={`${title}${subtitle ? ` - ${subtitle}` : ''}${description ? `: ${description}` : ''}`}
+            fill
+            className={`object-cover transition-opacity duration-300 ${
+              imageLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
+            onLoad={() => setImageLoaded(true)}
+          />
+        </div>
+      )}
       
-      {/* Highlight overlay - top-right shimmer on hover */}
-      <div className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition duration-300
-                      bg-[radial-gradient(120px_120px_at_85%_15%,rgba(255,255,255,0.06),transparent_60%)]" />
-      
-              {/* Image with glass frame */}
-              {image && (
-                <div className="relative overflow-hidden rounded-xl border border-white/[0.1] bg-black aspect-[16/9] mb-5">
-                  {!imageLoaded && <ImageSkeleton className="absolute inset-0" />}
-                  <Image
-                    src={image}
-                    alt={title}
-                    width={800}
-                    height={450}
-                    className={`w-full h-full object-cover object-center transition-all duration-300 group-hover:scale-[1.03] ${
-                      imageLoaded ? 'opacity-100' : 'opacity-0'
-                    }`}
-                    onLoad={() => setImageLoaded(true)}
-                    priority={false}
-                  />
-                </div>
-              )}
-      
-      <div className="relative">
-        <h3 className="text-xl md:text-2xl font-semibold tracking-tighter text-white mb-2">
+      <div className="space-y-2">
+        <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-700 transition-colors">
           {title}
         </h3>
         
         {subtitle && (
-          <p className="text-sm text-white/80 mb-2">
+          <p className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors">
             {subtitle}
           </p>
         )}
         
         {description && (
-          <p className="text-sm text-white/60 mb-4 leading-relaxed">
+          <p className="text-sm text-gray-700 group-hover:text-gray-800 transition-colors leading-relaxed">
             {description}
           </p>
         )}

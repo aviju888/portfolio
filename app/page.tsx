@@ -5,6 +5,8 @@ import Card from './components/Card';
 import Tag from './components/Tag';
 import ExperienceCard from './components/ExperienceCard';
 import OrganicDivider from './components/OrganicDivider';
+import AnimatedSection from './components/AnimatedSection';
+import AnimatedText from './components/AnimatedText';
 
 export default function Home() {
   const featuredProjects = getFeaturedProjects().slice(0, 2);
@@ -18,47 +20,68 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative py-28 md:py-36 overflow-hidden">
-        {/* Multi-layer mesh gradient */}
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(70%_40%_at_50%_-20%,rgba(96,165,250,.12),transparent_60%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(60%_50%_at_80%_10%,rgba(147,51,234,.08),transparent_50%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(50%_60%_at_20%_80%,rgba(59,130,246,.06),transparent_40%)]" />
-        </div>
+            {/* Subtle background gradient */}
+            <div className="pointer-events-none absolute inset-0">
+              <div className="absolute inset-0 bg-white" />
+            </div>
+        
+        
         <div className="relative max-w-3xl mx-auto px-6 text-center">
-          <p className="text-xs uppercase tracking-[0.2em] text-white/40 mb-4">
+          <AnimatedText 
+            className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-4"
+            delay={0}
+            stagger={0.05}
+          >
             Software Engineer & Creative
-          </p>
-          <h1 className="text-[clamp(40px,7vw,80px)] leading-[1.05] tracking-tight font-semibold text-white mb-8">
-            {profile.name}
-          </h1>
-          <p className="text-[clamp(18px,2.2vw,24px)] text-white/70 leading-relaxed mb-3 max-w-3xl mx-auto">
-            {profile.headline}
-          </p>
-          <p className="text-base md:text-lg text-white/50 mb-16 max-w-2xl mx-auto">
-            {profile.bioShort}
-          </p>
+          </AnimatedText>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <AnimatedText 
+            className="text-[clamp(40px,7vw,80px)] leading-[1.05] tracking-tight font-semibold text-gray-900 mb-8"
+            delay={0.2}
+            stagger={0.1}
+            splitBy="word"
+          >
+            {profile.name}
+          </AnimatedText>
+          
+          <AnimatedText 
+            className="text-[clamp(18px,2.2vw,24px)] text-gray-600 leading-relaxed mb-3 max-w-3xl mx-auto"
+            delay={0.4}
+            stagger={0.05}
+          >
+            {profile.headline}
+          </AnimatedText>
+          
+          <AnimatedText 
+            className="text-base md:text-lg text-gray-500 mb-16 max-w-2xl mx-auto"
+            delay={0.6}
+            stagger={0.02}
+          >
+            {profile.bioShort}
+          </AnimatedText>
+          
+          <AnimatedSection 
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            delay={0.0}
+          >
             <Link href="/code" className="btn-primary">
               View Code
             </Link>
             <Link href="/photos" className="btn-ghost">
               See Photos
             </Link>
-            <Link href="/tldr" className="mt-2 text-sm text-white/60 hover:text-white/90 transition-colors">
+            <Link href="/tldr" className="text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200">
               Quick TLDR →
             </Link>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="w-full glass-divider" />
+
       {/* Featured Projects */}
-      <section className="relative pt-20 md:pt-24 pb-28 overflow-hidden">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute inset-x-0 -top-10 h-64 bg-[radial-gradient(ellipse_at_top,rgba(96,165,250,0.12),transparent_60%)]" />
-          <div className="absolute inset-x-0 top-20 h-64 bg-[radial-gradient(ellipse_at_top_right,rgba(147,51,234,0.06),transparent_50%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(80%_60%_at_50%_120%,rgba(0,0,0,.25),transparent_60%)]" />
-        </div>
+          <AnimatedSection className="relative py-24">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SpotlightRow 
             eyebrow="CODE" 
@@ -77,21 +100,21 @@ export default function Home() {
               >
                 <div className="flex flex-wrap gap-2">
                   {project.tags.slice(0, 3).map((tag) => (
-                    <Tag key={tag}>{tag}</Tag>
+                    <Tag key={tag} category="framework">{tag}</Tag>
                   ))}
                 </div>
               </Card>
             ))}
           </SpotlightRow>
         </div>
-      </section>
+      </AnimatedSection>
 
-      {/* Organic Divider */}
-      <OrganicDivider className="text-white/60" />
+      {/* Divider */}
+      <div className="w-full glass-divider" />
 
       {/* Experience Strip */}
       {displayExperiences.length > 0 && (
-        <section className="py-24">
+        <AnimatedSection className="py-24">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
             <SpotlightRow 
               eyebrow="EXPERIENCE" 
@@ -107,14 +130,14 @@ export default function Home() {
               ))}
             </SpotlightRow>
           </div>
-        </section>
+        </AnimatedSection>
       )}
 
-      {/* Organic Divider */}
-      <OrganicDivider variant="blob" className="text-white/40 rotate-180" />
+      {/* Divider */}
+      <div className="w-full glass-divider" />
 
       {/* Featured Photos */}
-      <section className="py-24">
+      <AnimatedSection className="py-24">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SpotlightRow 
             eyebrow="PHOTOGRAPHY" 
@@ -128,21 +151,20 @@ export default function Home() {
                 title={photo.alt}
                 subtitle={photo.dateTaken}
                 description={photo.description}
-                image={photo.src}
+                image={photo.srcThumb}
                 href="/photos"
               />
             ))}
           </SpotlightRow>
         </div>
-      </section>
+      </AnimatedSection>
+
+      {/* Divider */}
+      <div className="w-full glass-divider" />
 
       {/* Featured Media */}
       {featuredMedia.length > 0 && (
-        <section className="relative pt-20 md:pt-24 pb-28 
-                            before:content-[''] before:absolute before:inset-x-0 before:-top-10 before:h-64 
-                            before:bg-[radial-gradient(ellipse_at_top,rgba(96,165,250,0.12),transparent_60%)] before:pointer-events-none
-                            after:content-[''] after:absolute after:inset-0 
-                            after:bg-[radial-gradient(80%_60%_at_50%_120%,rgba(0,0,0,.25),transparent_60%)] after:pointer-events-none">
+        <section className="relative py-24">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
             <SpotlightRow 
               eyebrow="CREATIVE WORK" 
@@ -162,13 +184,16 @@ export default function Home() {
         </section>
       )}
 
+      {/* Divider */}
+      <div className="w-full glass-divider" />
+
       {/* CTA Section */}
       <section className="py-24">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-h1-sm md:text-h1 font-bold text-white mb-6">
+          <h2 className="text-h1-sm md:text-h1 font-bold text-gray-900 mb-6">
             Let's work together
           </h2>
-          <p className="text-body text-gray-400 mb-12">
+          <p className="text-body text-gray-600 mb-12">
             I'm always interested in new opportunities and collaborations.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">

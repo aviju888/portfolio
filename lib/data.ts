@@ -1,4 +1,4 @@
-import { Profile, Project, Photos, Media, Tldr, Photo, MediaItem, Experience } from './types';
+import { Profile, Project, Photos, Media, Tldr, Photo, Album, MediaItem, Experience } from './types';
 
 // Import JSON data
 import profileData from '../data/profile.json';
@@ -23,8 +23,26 @@ export function getFeaturedProjects(): Project[] {
 }
 
 export function getFeaturedPhotos(): Photo[] {
-  return photos.featured
+  return photos.photos
+    .filter(photo => photo.featured)
     .sort((a, b) => a.rank - b.rank);
+}
+
+export function getPhotosByAlbum(slug: string): Photo[] {
+  return photos.photos
+    .filter(photo => photo.album === slug)
+    .sort((a, b) => a.rank - b.rank);
+}
+
+export function getAlbumBySlug(slug: string): Album | undefined {
+  return photos.albums.find(album => album.slug === slug);
+}
+
+export function getAlbumsByCategory(category: string): Album[] {
+  if (category === 'All') {
+    return photos.albums;
+  }
+  return photos.albums.filter(album => album.category === category);
 }
 
 export function getFeaturedMedia(): MediaItem[] {
@@ -77,14 +95,30 @@ export function getExperiencesByType(type: 'all' | 'Full-time' | 'Contract' | 'I
 }
 
 export function formatDateRange(start: string, end: string | null): string {
-  const startDate = new Date(start);
-  const startFormatted = startDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  // Handle YYYY-MM format by parsing year and month directly
+  let startFormatted: string;
+  if (start.includes('-') && start.split('-').length === 2) {
+    const [year, month] = start.split('-');
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    startFormatted = `${monthNames[parseInt(month) - 1]} ${year}`;
+  } else {
+    const startDate = new Date(start);
+    startFormatted = startDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  }
   
   if (end === null) {
     return `${startFormatted} — Present`;
   }
   
-  const endDate = new Date(end);
-  const endFormatted = endDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  let endFormatted: string;
+  if (end.includes('-') && end.split('-').length === 2) {
+    const [year, month] = end.split('-');
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    endFormatted = `${monthNames[parseInt(month) - 1]} ${year}`;
+  } else {
+    const endDate = new Date(end);
+    endFormatted = endDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  }
+  
   return `${startFormatted} — ${endFormatted}`;
 }
