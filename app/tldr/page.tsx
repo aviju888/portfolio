@@ -4,6 +4,7 @@ import { tldr, getProjectBySlug, getCurrentExperiences, getRecentExperiences, fo
 import Section from '../components/Section';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import FadeIn from '../components/FadeIn';
 
 export default function TldrPage() {
   const currentExperiences = getCurrentExperiences();
@@ -22,7 +23,8 @@ export default function TldrPage() {
   }, [showPopup]);
 
   return (
-    <Section 
+    <FadeIn>
+      <Section 
       title="TLDR" 
       description="A quick summary if you're in a time crunch"
     >
@@ -188,5 +190,6 @@ export default function TldrPage() {
                 </div>
               )}
             </Section>
-          );
-        }
+    </FadeIn>
+  );
+}

@@ -6,6 +6,7 @@ import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import { getPhotosByCategory } from '@/lib/data';
 import Section from '../components/Section';
+import FadeIn from '../components/FadeIn';
 
 export default function PhotosPage() {
   const [activeTab, setActiveTab] = useState<'All' | 'Graduation' | 'Dance' | 'Travel' | 'Events'>('All');
@@ -26,10 +27,11 @@ export default function PhotosPage() {
   };
 
   return (
-    <Section 
-      title="Photos" 
-      description="Graduation portraits, dance organizations, travel, and more"
-    >
+    <FadeIn>
+      <Section 
+        title="Photos" 
+        description="Graduation portraits, dance organizations, travel, and more"
+      >
       {/* Filter Tabs */}
       <div className="relative flex flex-wrap gap-2 mb-8 p-1 bg-gray-50 rounded-2xl glass-border">
         {['All', 'Graduation', 'Dance', 'Travel', 'Events'].map((category) => (
@@ -95,5 +97,6 @@ export default function PhotosPage() {
         }}
       />
     </Section>
+    </FadeIn>
   );
 }

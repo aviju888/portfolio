@@ -6,13 +6,15 @@ import { projects, getProjectsByType } from '@/lib/data';
 import Card from '../components/Card';
 import Tag from '../components/Tag';
 import Section from '../components/Section';
+import FadeIn from '../components/FadeIn';
 
 export default function CodePage() {
   const [activeTab, setActiveTab] = useState<string>('All');
   const displayProjects = getProjectsByType(activeTab);
 
   return (
-    <Section title="Code" description="AI/ML, frontend, web development, and more">
+    <FadeIn>
+      <Section title="Code" description="AI/ML, frontend, web development, and more">
       {/* Filter Tabs */}
       <div className="relative flex flex-wrap gap-2 mb-8 p-1 bg-gray-50 rounded-2xl glass-border">
         {['All', 'AI/ML', 'Computer Vision', 'Web Development', 'Data Science', 'Systems'].map((category) => (
@@ -63,5 +65,6 @@ export default function CodePage() {
         ))}
       </div>
     </Section>
+    </FadeIn>
   );
 }

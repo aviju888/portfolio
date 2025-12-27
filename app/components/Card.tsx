@@ -28,6 +28,13 @@ export default function Card({
 }: CardProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
 
+  const handleClick = () => {
+    // Save scroll position if navigating to a case study from projects page
+    if (href && href.startsWith('/code/') && typeof window !== 'undefined') {
+      sessionStorage.setItem('codePageScrollPosition', window.scrollY.toString());
+    }
+  };
+
   const cardContent = (
     <div 
       className={`group relative bg-white rounded-2xl glass-border p-6 
@@ -75,7 +82,7 @@ export default function Card({
 
   if (href) {
     return (
-      <Link href={href} className="block">
+      <Link href={href} className="block" onClick={handleClick}>
         {cardContent}
       </Link>
     );

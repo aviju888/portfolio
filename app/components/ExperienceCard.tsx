@@ -15,24 +15,26 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
   const dateRange = formatDateRange(experience.start, experience.end);
 
   return (
-        <div className={`group relative bg-white rounded-2xl glass-border p-6 
-                        transition-colors duration-200 ease-out
-                        hover:bg-gray-50
-                        ${isCurrent ? 'ring-1 ring-gray-300 bg-gray-50' : ''}
+        <div className={`group relative rounded-2xl glass-border p-6 
+                        transition-all duration-200 ease-out
+                        ${isCurrent 
+                          ? 'bg-gradient-to-br from-blue-50/50 via-indigo-50/30 to-purple-50/50 hover:from-blue-100/60 hover:via-indigo-100/45 hover:to-purple-100/60 hover:shadow-sm' 
+                          : 'bg-white hover:bg-gray-50 hover:shadow-sm'
+                        }
                         ${className}`}>
       
       
-          {/* Current role badge */}
-          {isCurrent && (
-            <div className="absolute -top-2 -right-2 bg-gray-900 text-white text-xs font-medium px-3 py-1 rounded-full shadow-md">
-              Current
-            </div>
-          )}
+      {/* Current role badge */}
+      {isCurrent && (
+        <div className="absolute -top-2.5 -right-2.5 bg-gray-900 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg z-10">
+          Current
+        </div>
+      )}
       
       {/* Header with logo and role info */}
       <div className="flex items-start gap-4 mb-4">
         {experience.logo && (
-          <div className={`flex-shrink-0 w-12 h-12 rounded-lg border border-gray-200 flex items-center justify-center ${
+          <div className={`flex-shrink-0 w-14 h-14 rounded-xl border border-gray-200 flex items-center justify-center ${
             ['KOSMOS @ Cal', 'Self-Employed', 'AFX Dance', 'PASAE', 'Apex Agent Labs'].includes(experience.company) 
               ? 'bg-gray-900' 
               : 'bg-gray-100'
@@ -40,53 +42,53 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
             <Image
               src={experience.logo}
               alt={`${experience.company} logo`}
-              width={32}
-              height={32}
+              width={36}
+              height={36}
               className="opacity-90 transition-opacity"
             />
           </div>
         )}
         
         <div className="flex-1 min-w-0">
-          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-2 gap-2">
-            <div>
-              <h3 className="text-xl font-semibold tracking-tighter text-gray-900 mb-1">
-                {experience.role}
-              </h3>
-              <p className="text-gray-700 font-medium">
-                {experience.company}
-              </p>
-            </div>
-            <div className="sm:text-right">
-              <p className="text-sm text-gray-500 mb-1">
-                {dateRange}
-              </p>
-              <div className="flex gap-2 sm:justify-end">
-                <Tag className="text-xs">
-                  {experience.type}
-                </Tag>
-                <span className="text-xs text-gray-400">
-                  {experience.location}
-                </span>
-              </div>
-            </div>
+          {/* Role Title - Most Prominent */}
+          <h3 className="text-2xl font-bold tracking-tight text-gray-900 mb-0">
+            {experience.role}
+          </h3>
+          
+          {/* Company and Type */}
+          <div className="flex items-center gap-2 flex-wrap mb-0.5">
+            <p className="text-base font-semibold text-gray-800">
+              {experience.company}
+            </p>
+            <span className="text-gray-300">•</span>
+            <span className="text-sm text-gray-600">
+              {experience.type}
+            </span>
+          </div>
+          
+          {/* Date and Location */}
+          <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600">
+            <span className="font-medium">{dateRange}</span>
+            <span className="text-gray-400">•</span>
+            <span>{experience.location}</span>
           </div>
         </div>
       </div>
       
-      {/* Summary */}
-      <p className="text-sm text-gray-700 mb-4 leading-relaxed">
-        {experience.summary}
-      </p>
-      
-      {/* Highlights */}
-      {experience.highlights.length > 0 && (
-        <div className="mb-4">
+      {/* Summary and Highlights */}
+      {(experience.summary || experience.highlights.length > 0) && (
+        <div className="mb-2">
           <ul className="space-y-1">
+            {experience.summary && (
+              <li className="text-sm text-gray-700 flex items-start gap-2">
+                <span className="text-gray-400 mt-0.5 flex-shrink-0 text-xs">▸</span>
+                <span className="flex-1 leading-relaxed">{experience.summary}</span>
+              </li>
+            )}
             {experience.highlights.map((highlight, index) => (
-              <li key={index} className="text-sm text-gray-600 flex items-start gap-2">
-                <span className="text-gray-600 mt-0.5 flex-shrink-0">•</span>
-                <span className="flex-1">{highlight}</span>
+              <li key={index} className="text-sm text-gray-700 flex items-start gap-2">
+                <span className="text-gray-400 mt-0.5 flex-shrink-0 text-xs">▸</span>
+                <span className="flex-1 leading-relaxed">{highlight}</span>
               </li>
             ))}
           </ul>
@@ -95,8 +97,8 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
       
       {/* Tech Stack */}
       {experience.stack.length > 0 && (
-        <div className="mb-4">
-          <div className="flex flex-wrap gap-1.5">
+        <div className="mb-3 mt-[5px]">
+          <div className="flex flex-wrap gap-2">
             {experience.stack.map((tech) => (
               <Tag key={tech} className="text-xs">
                 {tech}
@@ -107,36 +109,30 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
       )}
       
       {/* Links */}
-      <div className="flex gap-3">
-        {experience.links.caseStudy && (
-          <Link 
-            href={experience.links.caseStudy}
-            className="text-sm text-gray-700 hover:text-gray-900 transition-colors"
-          >
-            View Case Study →
-          </Link>
-        )}
-        {experience.links.repo && (
-          <Link 
-            href={experience.links.repo}
-            className="text-sm text-gray-600 hover:text-gray-800 transition-colors"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Repository →
-          </Link>
-        )}
-        {experience.links.site && (
-          <Link 
-            href={experience.links.site}
-            className="text-sm text-gray-600 hover:text-gray-800 transition-colors"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Company Site →
-          </Link>
-        )}
-      </div>
+      {(experience.links.repo || experience.links.site) && (
+        <div className="flex flex-wrap gap-4 pt-4 border-t border-gray-100">
+          {experience.links.repo && (
+            <Link 
+              href={experience.links.repo}
+              className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Repository →
+            </Link>
+          )}
+          {experience.links.site && (
+            <Link 
+              href={experience.links.site}
+              className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Company Site →
+            </Link>
+          )}
+        </div>
+      )}
     </div>
   );
 }

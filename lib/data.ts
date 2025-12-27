@@ -63,46 +63,61 @@ export function getProjectsByCategory(category: 'featured' | 'all'): Project[] {
   return projects.sort((a, b) => a.rank - b.rank);
 }
 
+function projectMatchesType(project: Project, type: string): boolean {
+  const tags = project.tags.map(tag => tag.toLowerCase());
+  const role = project.role.toLowerCase();
+  const summary = project.summary.toLowerCase();
+  
+  switch (type) {
+    case 'AI/ML':
+      return tags.some(tag => 
+        ['pytorch', 'tensorflow', 'ai', 'ml', 'machine learning', 'artificial intelligence', 'hugging face'].includes(tag)
+      ) || role.includes('ai') || role.includes('ml') || summary.includes('ai') || summary.includes('ml');
+    
+    case 'Computer Vision':
+      return tags.some(tag => 
+        ['opencv', 'computer vision', 'cv', 'image processing'].includes(tag)
+      ) || role.toLowerCase().includes('computer vision') || summary.includes('computer vision');
+    
+    case 'Web Development':
+      return tags.some(tag => 
+        ['react', 'next.js', 'javascript', 'typescript', 'html', 'css', 'tailwind css', 'frontend', 'backend'].includes(tag)
+      ) || role.toLowerCase().includes('web') || role.toLowerCase().includes('frontend') || role.toLowerCase().includes('backend');
+    
+    case 'Data Science':
+      return tags.some(tag => 
+        ['r', 'pandas', 'numpy', 'matplotlib', 'jupyter', 'statistics', 'data science'].includes(tag)
+      ) || role.toLowerCase().includes('data') || summary.includes('data');
+    
+    case 'Systems':
+      return tags.some(tag => 
+        ['java', 'logisim', 'assembly', 'git', 'systems'].includes(tag)
+      ) || role.toLowerCase().includes('systems') || summary.includes('systems');
+    
+    default:
+      return false;
+  }
+}
+
+export function getProjectCategory(project: Project): string {
+  const categories = ['AI/ML', 'Computer Vision', 'Web Development', 'Data Science', 'Systems'];
+  
+  for (const category of categories) {
+    if (projectMatchesType(project, category)) {
+      return category;
+    }
+  }
+  
+  return 'Web Development'; // Default fallback
+}
+
 export function getProjectsByType(type: string): Project[] {
   if (type === 'All') {
     return projects.sort((a, b) => a.rank - b.rank);
   }
   
-  return projects.filter(project => {
-    const tags = project.tags.map(tag => tag.toLowerCase());
-    const role = project.role.toLowerCase();
-    const summary = project.summary.toLowerCase();
-    
-    switch (type) {
-      case 'AI/ML':
-        return tags.some(tag => 
-          ['pytorch', 'tensorflow', 'ai', 'ml', 'machine learning', 'artificial intelligence', 'hugging face'].includes(tag)
-        ) || role.includes('ai') || role.includes('ml') || summary.includes('ai') || summary.includes('ml');
-      
-      case 'Computer Vision':
-        return tags.some(tag => 
-          ['opencv', 'computer vision', 'cv', 'image processing'].includes(tag)
-        ) || role.toLowerCase().includes('computer vision') || summary.includes('computer vision');
-      
-      case 'Web Development':
-        return tags.some(tag => 
-          ['react', 'next.js', 'javascript', 'typescript', 'html', 'css', 'tailwind css', 'frontend', 'backend'].includes(tag)
-        ) || role.toLowerCase().includes('web') || role.toLowerCase().includes('frontend') || role.toLowerCase().includes('backend');
-      
-      case 'Data Science':
-        return tags.some(tag => 
-          ['r', 'pandas', 'numpy', 'matplotlib', 'jupyter', 'statistics', 'data science'].includes(tag)
-        ) || role.toLowerCase().includes('data') || summary.includes('data');
-      
-      case 'Systems':
-        return tags.some(tag => 
-          ['java', 'logisim', 'assembly', 'git', 'systems'].includes(tag)
-        ) || role.toLowerCase().includes('systems') || summary.includes('systems');
-      
-      default:
-        return false;
-    }
-  }).sort((a, b) => a.rank - b.rank);
+  return projects.filter(project => projectMatchesType(project, type))
+    .sort((a, b) => a.rank - b.rank);
 }
 
 export function getPhotosByCategory(category: string): Photo[] {

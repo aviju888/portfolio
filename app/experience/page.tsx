@@ -6,13 +6,15 @@ import { getExperiencesByType, profile } from '@/lib/data';
 import ExperienceCard from '../components/ExperienceCard';
 import Section from '../components/Section';
 import Tag from '../components/Tag';
+import FadeIn from '../components/FadeIn';
 
 export default function ExperiencePage() {
   const [activeTab, setActiveTab] = useState<'all' | 'Software' | 'Web' | 'Misc'>('all');
   const displayExperiences = getExperiencesByType(activeTab);
 
   return (
-    <Section 
+    <FadeIn>
+      <Section 
       // eyebrow="EXPERIENCE" 
       title="Experience" 
       description="My education, skills, and teams"
@@ -129,5 +131,6 @@ export default function ExperiencePage() {
         </div>
       )}
     </Section>
+    </FadeIn>
   );
 }

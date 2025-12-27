@@ -80,6 +80,58 @@
            focus:outline-none focus:ring-2 focus:ring-gray-900/50 focus:ring-offset-2 focus:ring-offset-white
            min-h-[44px] min-w-[44px];
   }
+
+  /* Cascade fade-in animation - children fade in top to bottom */
+  .fade-in-cascade > * {
+    animation: fadeIn 0.3s ease-out;
+    animation-fill-mode: both;
+    opacity: 0;
+  }
+
+  .fade-in-cascade > *:nth-child(1) {
+    animation-delay: calc(var(--cascade-delay, 0ms) + 0ms);
+  }
+
+  .fade-in-cascade > *:nth-child(2) {
+    animation-delay: calc(var(--cascade-delay, 0ms) + 50ms);
+  }
+
+  .fade-in-cascade > *:nth-child(3) {
+    animation-delay: calc(var(--cascade-delay, 0ms) + 100ms);
+  }
+
+  .fade-in-cascade > *:nth-child(4) {
+    animation-delay: calc(var(--cascade-delay, 0ms) + 150ms);
+  }
+
+  .fade-in-cascade > *:nth-child(5) {
+    animation-delay: calc(var(--cascade-delay, 0ms) + 200ms);
+  }
+
+  .fade-in-cascade > *:nth-child(6) {
+    animation-delay: calc(var(--cascade-delay, 0ms) + 250ms);
+  }
+
+  .fade-in-cascade > *:nth-child(7) {
+    animation-delay: calc(var(--cascade-delay, 0ms) + 300ms);
+  }
+
+  .fade-in-cascade > *:nth-child(8) {
+    animation-delay: calc(var(--cascade-delay, 0ms) + 350ms);
+  }
+
+  .fade-in-cascade > *:nth-child(n+9) {
+    animation-delay: calc(var(--cascade-delay, 0ms) + 400ms);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }
 
 @layer utilities {

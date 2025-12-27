@@ -1,8 +1,10 @@
 import Section from '../components/Section';
+import FadeIn from '../components/FadeIn';
 
 export default function ContactPage() {
   return (
-    <Section 
+    <FadeIn>
+      <Section 
       title="Contact" 
       description="Feel free to reach out!"
     >
@@ -71,5 +73,6 @@ export default function ContactPage() {
         </div>
       </div>
     </Section>
+    </FadeIn>
   );
 }

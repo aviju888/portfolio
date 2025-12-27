@@ -60,6 +60,19 @@ const config: Config = {
         'gradient-mesh-1': 'radial-gradient(at 40% 20%, rgba(96,165,250,0.15) 0, transparent 50%), radial-gradient(at 80% 0%, rgba(147,51,234,0.1) 0, transparent 50%)',
         'gradient-mesh-2': 'radial-gradient(at 0% 50%, rgba(59,130,246,0.1) 0, transparent 50%), radial-gradient(at 100% 50%, rgba(96,165,250,0.08) 0, transparent 50%)',
         'gradient-mesh-3': 'radial-gradient(at 20% 80%, rgba(59,130,246,0.06) 0, transparent 40%), radial-gradient(at 60% 20%, rgba(96,165,250,0.08) 0, transparent 50%)',
+      },
+      keyframes: {
+        aurora: {
+          from: {
+            backgroundPosition: '50% 50%, 50% 50%',
+          },
+          to: {
+            backgroundPosition: '350% 50%, 350% 50%',
+          },
+        },
+      },
+      animation: {
+        aurora: 'aurora 60s linear infinite',
       }
     },
   },

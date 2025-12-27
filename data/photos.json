@@ -347,9 +347,9 @@
       "alt": "Canada Trip 3",
       "description": "Travel photography from Canada",
       "orientation": "landscape",
-      "featured": false,
+      "featured": true,
       "dateTaken": "Summer 2024",
-      "rank": 27
+      "rank": 3
     },
     {
       "id": "sf-001",
