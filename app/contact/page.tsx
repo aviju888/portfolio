@@ -11,7 +11,7 @@ export default function ContactPage() {
       <div className="max-w-4xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Email Card */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm hover:shadow-md transition-shadow">
+          <div className="bg-white rounded-2xl border border-gray-200 p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow">
             <div className="text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -19,7 +19,7 @@ export default function ContactPage() {
                 </svg>
               </div>
               
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Email</h3>
+              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3">Email</h3>
               <p className="text-gray-600 mb-6">
                 Send me a message!
               </p>
@@ -37,7 +37,7 @@ export default function ContactPage() {
           </div>
 
           {/* LinkedIn Card */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm hover:shadow-md transition-shadow">
+          <div className="bg-white rounded-2xl border border-gray-200 p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow">
             <div className="text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg className="w-8 h-8 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
@@ -45,7 +45,7 @@ export default function ContactPage() {
                 </svg>
               </div>
               
-              <h3 className="text-xl font-bold text-gray-900 mb-3">LinkedIn</h3>
+              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3">LinkedIn</h3>
               <p className="text-gray-600 mb-6">
                 Let's connect!
               </p>

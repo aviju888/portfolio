@@ -28,7 +28,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       </div>
       
       {/* Main content: Image left, Description right */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 mb-12">
         {/* Image column */}
         <div>
           {project.images[0] && (
@@ -57,7 +57,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <div className="flex flex-col justify-center">
           <div className="prose prose-lg">
             {project.description.map((paragraph, index) => (
-              <p key={index} className="text-lg text-gray-700 leading-relaxed mb-6">
+              <p key={index} className="text-base md:text-lg text-gray-700 leading-relaxed mb-6">
                 {paragraph}
               </p>
             ))}
@@ -81,7 +81,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       
       {/* Additional images */}
       {project.images.length > 1 && (
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-6 mt-12">
           {project.images.slice(1).map((image, index) => (
             <div key={index} className="relative aspect-video rounded-xl overflow-hidden border border-gray-200 bg-gray-100">
               <Image

@@ -20,7 +20,7 @@ export default function ExperiencePage() {
       description="My education, skills, and teams"
     >
       {/* Education and Skills Side by Side */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+      <div className="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-8 mb-12">
         {/* Education Module */}
         <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow">
           {/* Date in top right */}
@@ -81,37 +81,38 @@ export default function ExperiencePage() {
       </div>
 
       {/* Work Experience Filter Tabs */}
-      <div className="relative flex flex-wrap gap-2 mb-8 p-1 bg-gray-50 rounded-2xl glass-border">
-        
-        {[
-          { key: 'all', label: 'All' },
-          { key: 'Software', label: 'Software' },
-          { key: 'Web', label: 'Web' },
-          { key: 'Misc', label: 'Misc' }
-        ].map((tab) => (
-          <motion.button
-            key={tab.key}
-            onClick={() => setActiveTab(tab.key as any)}
-            className={`relative px-4 py-2 rounded-xl font-semibold transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-              activeTab === tab.key
-                ? 'text-gray-900 font-bold'
-                : 'text-gray-500 hover:text-gray-900'
-            }`}
-          >
-            {activeTab === tab.key && (
-              <motion.div
-                layoutId="activeTabExperience"
-                className="absolute inset-0 bg-white rounded-xl"
-                style={{
-                  zIndex: -1,
-                  boxShadow: '0 2px 8px 0 rgba(0, 0, 0, 0.15), inset 0 1px 0 0 rgba(0, 0, 0, 0.05)'
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              />
-            )}
-            {tab.label}
-          </motion.button>
-        ))}
+      <div className="relative overflow-x-auto md:overflow-visible mb-8 -mx-6 md:mx-0 px-6 md:px-0">
+        <div className="flex gap-3 md:flex-wrap md:gap-2 md:p-1 md:bg-gray-50 md:rounded-2xl md:glass-border min-w-max md:min-w-0">
+          {[
+            { key: 'all', label: 'All' },
+            { key: 'Software', label: 'Software' },
+            { key: 'Web', label: 'Web' },
+            { key: 'Misc', label: 'Misc' }
+          ].map((tab) => (
+            <motion.button
+              key={tab.key}
+              onClick={() => setActiveTab(tab.key as any)}
+              className={`relative flex-shrink-0 px-6 py-3.5 md:px-4 md:py-2 rounded-full md:rounded-xl font-semibold text-base md:text-sm transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                activeTab === tab.key
+                  ? 'bg-gray-900 text-white md:bg-transparent md:text-gray-900 md:font-bold'
+                  : 'bg-gray-100 text-gray-700 md:bg-transparent md:text-gray-500 md:hover:text-gray-900'
+              }`}
+            >
+              {activeTab === tab.key && (
+                <motion.div
+                  layoutId="activeTabExperience"
+                  className="hidden md:block absolute inset-0 bg-white rounded-xl"
+                  style={{
+                    zIndex: -1,
+                    boxShadow: '0 2px 8px 0 rgba(0, 0, 0, 0.15), inset 0 1px 0 0 rgba(0, 0, 0, 0.05)'
+                  }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
+              )}
+              {tab.label}
+            </motion.button>
+          ))}
+        </div>
       </div>
 
       {/* Experiences Grid */}

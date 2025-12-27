@@ -35,31 +35,31 @@ export default function Home() {
     <FadeIn>
       <div className="min-h-screen">
         {/* Hero Section */}
-        <section className="relative overflow-hidden py-36 md:py-48">
+        <section className="relative overflow-hidden py-32 md:py-48">
           {/* Code dropping animation */}
           <CodeDroppingAnimation />
           
-          <div className="relative z-10 max-w-3xl mx-auto px-6 text-center" style={{ marginTop: '20px' }}>
-            <div className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-4">
+          <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
+            <div className="text-xs md:text-xs uppercase tracking-[0.2em] text-gray-500 mb-6 md:mb-4">
               Software Engineer & Creative
             </div>
             
-            <h1 className="text-[clamp(40px,7vw,80px)] leading-[1.05] tracking-tight font-semibold text-gray-900 mb-8">
+            <h1 className="text-[clamp(56px,10vw,80px)] md:text-[clamp(40px,7vw,80px)] leading-[1.05] tracking-tight font-semibold text-gray-900 mb-10 md:mb-8">
               {profile.name}
             </h1>
             
-            <p className="text-[clamp(18px,2.2vw,24px)] text-gray-600 leading-relaxed mb-3 max-w-3xl mx-auto">
+            <p className="text-[clamp(20px,4vw,24px)] md:text-[clamp(18px,2.2vw,24px)] text-gray-600 leading-relaxed mb-8 md:mb-3 max-w-3xl mx-auto">
               {profile.headline}
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="/code" className="text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200 group">
+            <div className="flex flex-col gap-4 md:flex-row md:gap-4 justify-center items-center">
+              <Link href="/code" className="w-full md:w-auto px-6 py-3.5 md:px-0 md:py-0 text-base md:text-sm text-center md:text-left text-gray-900 md:text-gray-600 md:hover:text-gray-900 bg-gray-100 md:bg-transparent rounded-full md:rounded-none font-medium md:font-normal transition-all duration-200 group">
                 View Code <span className="inline-block opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200">→</span>
               </Link>
-              <Link href="/photos" className="text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200 group">
+              <Link href="/photos" className="w-full md:w-auto px-6 py-3.5 md:px-0 md:py-0 text-base md:text-sm text-center md:text-left text-gray-900 md:text-gray-600 md:hover:text-gray-900 bg-gray-100 md:bg-transparent rounded-full md:rounded-none font-medium md:font-normal transition-all duration-200 group">
                 See Photos <span className="inline-block opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200">→</span>
               </Link>
-              <Link href="/tldr" className="text-sm text-gray-600 hover:text-gray-900 transition-colors duration-200 group">
+              <Link href="/tldr" className="w-full md:w-auto px-6 py-3.5 md:px-0 md:py-0 text-base md:text-sm text-center md:text-left text-gray-900 md:text-gray-600 md:hover:text-gray-900 bg-gray-100 md:bg-transparent rounded-full md:rounded-none font-medium md:font-normal transition-all duration-200 group">
                 Read TLDR <span className="inline-block opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200">→</span>
               </Link>
             </div>
@@ -71,7 +71,7 @@ export default function Home() {
 
         {/* Experience Strip */}
         {displayExperiences.length > 0 && (
-          <section className="py-24">
+          <section className="py-16 md:py-24">
             <div className="max-w-7xl mx-auto px-6 md:px-8">
               <SpotlightRow 
                 eyebrow="EXPERIENCE" 
@@ -94,7 +94,7 @@ export default function Home() {
       <div className="w-full glass-divider" />
 
         {/* Featured Projects */}
-        <section className="relative py-24">
+        <section className="relative py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
             <SpotlightRow 
               eyebrow="CODE" 
@@ -126,16 +126,16 @@ export default function Home() {
       <div className="w-full glass-divider" />
 
         {/* Featured Photos */}
-        <section className="py-24">
+        <section className="py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
             <div className="mb-16">
               <div className="mb-8">
                 <div className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-3">
                   PHOTOGRAPHY
                 </div>
-                <div className="flex justify-between items-end">
+                <div className="flex flex-col md:flex-row md:justify-between md:items-end">
                   <div>
-                    <h2 className="text-2xl md:text-4xl font-semibold tracking-tight text-gray-900 mb-2">
+                    <h2 className="text-h1-sm md:text-4xl font-semibold tracking-tight text-gray-900 mb-2">
                       Selected Shots
                     </h2>
                     <div className="w-12 h-[1px] bg-gray-300 mb-4" />
@@ -145,7 +145,7 @@ export default function Home() {
                   </div>
                   <a
                     href="/photos"
-                    className="text-xs text-gray-600 hover:text-gray-900 transition-colors duration-200 flex items-center gap-1"
+                    className="text-xs text-gray-600 hover:text-gray-900 transition-colors duration-200 flex items-center gap-1 mt-3 md:mt-0"
                   >
                     View All
                     <span className="text-xs">→</span>
@@ -164,7 +164,7 @@ export default function Home() {
       <div className="w-full glass-divider" />
 
       {/* CTA Section */}
-      <section className="py-24">
+      <section className="py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-h1-sm md:text-h1 font-bold text-gray-900 mb-6">
             Let's work together

@@ -122,7 +122,7 @@ export default function Nav() {
                   transition={{ duration: 0.2, ease: "easeOut" }}
                   className="md:hidden border-t border-gray-200 bg-white/90 backdrop-blur-md"
                 >
-                  <div className="py-4 space-y-2">
+                  <div className="py-3 md:py-4 space-y-2">
                     {navItems.map((item) => {
                       // Check if pathname matches exactly or starts with the item path (for nested routes)
                       const isActive = pathname === item.path || (item.path !== '/' && pathname.startsWith(item.path));

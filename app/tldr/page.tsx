@@ -41,7 +41,7 @@ export default function TldrPage() {
       <div className="max-w-4xl mx-auto space-y-12">
         {/* Now Section */}
         <div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
             What I'm doing now
           </h3>
           <ul className="space-y-2">
@@ -56,7 +56,7 @@ export default function TldrPage() {
 
         {/* Education */}
         <div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
             Education
           </h3>
           <ul className="space-y-2">
@@ -72,17 +72,17 @@ export default function TldrPage() {
         {/* Experience Summary */}
         {displayExperiences.length > 0 && (
           <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
               Current & Recent Work
             </h3>
             <ul className="space-y-3">
               {displayExperiences.map((experience, index) => (
                 <li key={`${experience.company}-${experience.start}`} className="flex items-start">
-                  <span className="text-gray-400 mr-3">•</span>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
+                  <span className="text-gray-400 mr-3 flex-shrink-0">•</span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-2 mb-1">
                       <span className="font-medium text-gray-900">{experience.role}</span>
-                      <span className="text-gray-400">@</span>
+                      <span className="hidden md:inline text-gray-400">@</span>
                       <span className="text-gray-600">{experience.company}</span>
                       <span className="text-gray-500 text-sm">
                         ({formatDateRange(experience.start, experience.end)})
@@ -106,7 +106,7 @@ export default function TldrPage() {
 
         {/* Featured Projects */}
         <div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
             Featured Projects
           </h3>
           <ul className="space-y-3">
@@ -140,7 +140,7 @@ export default function TldrPage() {
 
                 {/* Contact */}
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
                     Contact
                   </h3>
                   <div className="space-y-2">

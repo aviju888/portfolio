@@ -10,7 +10,7 @@ interface SectionProps {
 
 export default function Section({ eyebrow, title, description, children, className = '' }: SectionProps) {
   return (
-    <section className={`py-24 ${className}`}>
+    <section className={`py-16 md:py-24 ${className}`}>
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         {(eyebrow || title || description) && (
           <div className="text-center mb-12">

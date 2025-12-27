@@ -109,31 +109,33 @@ export default function PhotosPage() {
         description="Graduation portraits, dance organizations, travel, and more"
       >
       {/* Filter Tabs */}
-      <div className="relative flex flex-wrap gap-2 mb-8 p-1 bg-gray-50 rounded-2xl glass-border">
-        {['All', 'Graduation', 'Dance', 'Travel', 'Events'].map((category) => (
-          <motion.button
-            key={category}
-            onClick={() => setActiveTab(category as any)}
-            className={`relative px-4 py-2 rounded-xl font-semibold transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-              activeTab === category
-                ? 'text-gray-900 font-bold'
-                : 'text-gray-500 hover:text-gray-900'
-            }`}
-          >
-            {activeTab === category && (
-              <motion.div
-                layoutId="activeTabPhotos"
-                className="absolute inset-0 bg-white rounded-xl"
-                style={{
-                  zIndex: -1,
-                  boxShadow: '0 2px 8px 0 rgba(0, 0, 0, 0.15), inset 0 1px 0 0 rgba(0, 0, 0, 0.05)'
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              />
-            )}
-            {category}
-          </motion.button>
-        ))}
+      <div className="relative overflow-x-auto md:overflow-visible mb-8 -mx-6 md:mx-0 px-6 md:px-0">
+        <div className="flex gap-3 md:flex-wrap md:gap-2 md:p-1 md:bg-gray-50 md:rounded-2xl md:glass-border min-w-max md:min-w-0">
+          {['All', 'Graduation', 'Dance', 'Travel', 'Events'].map((category) => (
+            <motion.button
+              key={category}
+              onClick={() => setActiveTab(category as any)}
+              className={`relative flex-shrink-0 px-6 py-3.5 md:px-4 md:py-2 rounded-full md:rounded-xl font-semibold text-base md:text-sm transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                activeTab === category
+                  ? 'bg-gray-900 text-white md:bg-transparent md:text-gray-900 md:font-bold'
+                  : 'bg-gray-100 text-gray-700 md:bg-transparent md:text-gray-500 md:hover:text-gray-900'
+              }`}
+            >
+              {activeTab === category && (
+                <motion.div
+                  layoutId="activeTabPhotos"
+                  className="hidden md:block absolute inset-0 bg-white rounded-xl"
+                  style={{
+                    zIndex: -1,
+                    boxShadow: '0 2px 8px 0 rgba(0, 0, 0, 0.15), inset 0 1px 0 0 rgba(0, 0, 0, 0.05)'
+                  }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
+              )}
+              {category}
+            </motion.button>
+          ))}
+        </div>
       </div>
 
       {/* Photos Grid */}

@@ -8,7 +8,7 @@ export default function Footer() {
               borderTop: '1px solid rgba(0, 0, 0, 0.08)',
               boxShadow: 'inset 0 1px 0 0 rgba(0, 0, 0, 0.05)'
             }}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray-600 text-sm">
             © 2025 {profile.name}. All rights reserved.

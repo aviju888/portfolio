@@ -37,7 +37,7 @@ export default function Card({
 
   const cardContent = (
     <div 
-      className={`group relative bg-white rounded-2xl glass-border p-6 
+      className={`group relative bg-white rounded-2xl glass-border p-4 md:p-6 
                   transition-colors duration-200 ease-out
                   hover:bg-gray-50
                   ${className}`}
