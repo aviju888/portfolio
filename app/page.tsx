@@ -41,29 +41,7 @@ export default function Home() {
           
           <div className="relative z-10 max-w-3xl mx-auto px-6 text-center" style={{ marginTop: '20px' }}>
             <div className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-4">
-              <span className="inline-block relative group/engineer">
-                <span className="relative z-10 inline-block cursor-help transition-all duration-300 hover:scale-105 hover:text-blue-600 hover:drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]">
-                  Software Engineer
-                </span>
-                <span className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover/engineer:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap z-20">
-                  <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-[10px] px-3 py-1.5 rounded-full font-medium shadow-lg border-2 border-white/20 backdrop-blur-sm">
-                    Current software engineer at Apex Agent Labs
-                  </span>
-                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rotate-45 border-r border-b border-white/20"></span>
-                </span>
-              </span>
-              <span className="mx-2"> & </span>
-              <span className="inline-block relative group/creative">
-                <span className="relative z-10 inline-block cursor-help transition-all duration-300 hover:scale-105 hover:text-pink-600 hover:drop-shadow-[0_0_8px_rgba(236,72,153,0.5)]">
-                  Creative
-                </span>
-                <span className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover/creative:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap z-20">
-                  <span className="bg-gradient-to-r from-pink-500 to-rose-500 text-white text-[10px] px-3 py-1.5 rounded-full font-medium shadow-lg border-2 border-white/20 backdrop-blur-sm">
-                    Freelance photographer
-                  </span>
-                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gradient-to-r from-pink-500 to-rose-500 rotate-45 border-r border-b border-white/20"></span>
-                </span>
-              </span>
+              Software Engineer & Creative
             </div>
             
             <h1 className="text-[clamp(40px,7vw,80px)] leading-[1.05] tracking-tight font-semibold text-gray-900 mb-8">
