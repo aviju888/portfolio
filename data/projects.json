@@ -3,10 +3,9 @@
     "slug": "doculaw-ai",
     "title": "DocuLawAI",
     "role": "Frontend Developer",
-    "summary": "Frontend concept for a legal AI assistant at Cal Hacks 11.0",
+    "summary": "Frontend concept for a legal AI assistant",
     "description": [
       "Frontend concept for a legal AI assistant",
-      "Cal Hacks 11.0 Project",
       "Backend in-progress*"
     ],
     "tags": ["React", "Next.js", "Tailwind CSS", "TypeScript"],
@@ -259,6 +258,30 @@
     "rank": 12,
     "status": "live",
     "year": "July 2021"
+  },
+  {
+    "slug": "product-page-reviewer",
+    "title": "Product Page Reviewer",
+    "role": "AI/ML Full Stack Developer",
+    "summary": "Conversion optimization tool that analyzes product pages and provides UI/UX feedback",
+    "description": [
+      "Conversion optimization tool that analyzes product pages and provides UI/UX feedback",
+      "50+ conversion heuristics across 8 categories (pricing, CTAs, trust signals, imagery, etc.)",
+      "Context-based scoring for different site types (Ecommerce, SaaS, B2B, Service)",
+      "AI-powered analysis using OpenAI API for detailed suggestions",
+      "FastAPI backend with BeautifulSoup for web scraping and analysis",
+      "React frontend with TypeScript and shadcn/ui components"
+    ],
+    "tags": ["Python", "TypeScript", "React", "FastAPI", "OpenAI", "BeautifulSoup"],
+    "links": {
+      "repo": "https://github.com/aviju888/product-page-reviewer",
+      "demo": ""
+    },
+    "images": ["/images/projects/product-page-reviewer.png"],
+    "featured": false,
+    "rank": 0,
+    "status": "live",
+    "year": "September 2025"
   }
 ]
 

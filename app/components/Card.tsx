@@ -4,12 +4,15 @@ import { ReactNode, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import ImageSkeleton from './ImageSkeleton';
+import OptimizedImage from './OptimizedImage';
+import { OptimizedImage as OptimizedImageType } from '@/lib/types';
 
 interface CardProps {
   title: string;
   subtitle?: string;
   description?: string;
   image?: string;
+  optimized?: OptimizedImageType;
   href?: string;
   children?: ReactNode;
   className?: string;
@@ -21,6 +24,7 @@ export default function Card({
   subtitle,
   description,
   image,
+  optimized,
   href,
   children,
   className = '',
@@ -36,8 +40,8 @@ export default function Card({
   };
 
   const cardContent = (
-    <div 
-      className={`group relative bg-white rounded-2xl glass-border p-4 md:p-6 
+    <div
+      className={`group relative bg-white rounded-2xl glass-border p-4 md:p-6
                   transition-colors duration-200 ease-out
                   hover:bg-gray-50
                   ${className}`}
@@ -46,15 +50,28 @@ export default function Card({
       {image && (
         <div className="relative overflow-hidden rounded-lg bg-gray-100 aspect-[16/9] mb-4 p-1">
           {!imageLoaded && <ImageSkeleton />}
-          <Image
-            src={image}
-            alt={`${title}${subtitle ? ` - ${subtitle}` : ''}${description ? `: ${description}` : ''}`}
-            fill
-            className={`object-cover transition-opacity duration-300 ${
-              imageLoaded ? 'opacity-100' : 'opacity-0'
-            }`}
-            onLoad={() => setImageLoaded(true)}
-          />
+          {optimized ? (
+            <OptimizedImage
+              optimized={optimized}
+              fallbackSrc={image}
+              alt={`${title}${subtitle ? ` - ${subtitle}` : ''}${description ? `: ${description}` : ''}`}
+              className={`w-full h-full object-cover transition-opacity duration-300 ${
+                imageLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
+              type="card"
+              loading="lazy"
+            />
+          ) : (
+            <Image
+              src={image}
+              alt={`${title}${subtitle ? ` - ${subtitle}` : ''}${description ? `: ${description}` : ''}`}
+              fill
+              className={`object-cover transition-opacity duration-300 ${
+                imageLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
+              onLoad={() => setImageLoaded(true)}
+            />
+          )}
         </div>
       )}
       

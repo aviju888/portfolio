@@ -19,6 +19,20 @@ export interface Profile {
   domain: string;
 }
 
+export interface ImageVariants {
+  thumb_400?: string;
+  thumb_800?: string;
+  full_1200?: string;
+  full_1920?: string;
+  full_2400?: string;
+}
+
+export interface OptimizedImage {
+  avif: ImageVariants;
+  webp: ImageVariants;
+  jpeg: ImageVariants;
+}
+
 export interface Project {
   slug: string;
   title: string;
@@ -31,6 +45,7 @@ export interface Project {
     demo: string;
   };
   images: string[];
+  optimized?: Record<string, OptimizedImage>; // Key is original filename
   featured: boolean;
   rank: number;
   status: string;
@@ -49,6 +64,7 @@ export interface Photo {
   featured: boolean;
   dateTaken: string;
   rank: number;
+  optimized?: OptimizedImage;
 }
 
 export interface Album {

@@ -1,4 +1,4 @@
-import { Profile, Project, Photos, Media, Tldr, Photo, Album, MediaItem, Experience } from './types';
+import { Profile, Project, Photos, Media, Tldr, Photo, Album, MediaItem, Experience, OptimizedImage } from './types';
 
 // Import JSON data
 import profileData from '../data/profile.json';
@@ -8,12 +8,59 @@ import mediaData from '../data/media.json';
 import tldrData from '../data/tldr.json';
 import experienceData from '../data/experience.json';
 
+// Load optimization manifest (server-side only)
+let optimizationManifest: any = null;
+if (typeof window === 'undefined') {
+  try {
+    // Dynamic import to avoid bundling fs in client
+    const fs = require('fs');
+    const path = require('path');
+    const manifestPath = path.join(process.cwd(), 'public/images/optimization-manifest.json');
+    if (fs.existsSync(manifestPath)) {
+      optimizationManifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+    }
+  } catch (error) {
+    console.warn('Optimization manifest not found. Using original images.');
+  }
+}
+
 export const profile: Profile = profileData as Profile;
 export const projects: Project[] = projectsData as Project[];
 export const photos: Photos = photosData as Photos;
 export const media: Media = mediaData as Media;
 export const tldr: Tldr = tldrData as Tldr;
 export const experiences: Experience[] = experienceData as Experience[];
+
+// Helper function to get optimized image data from manifest
+function getOptimizedImageFromManifest(filename: string, category: 'gallery' | 'projects'): OptimizedImage | undefined {
+  if (!optimizationManifest) return undefined;
+
+  const items = category === 'gallery' ? optimizationManifest.gallery : optimizationManifest.projects;
+  const item = items?.find((i: any) => i.filename === filename);
+
+  if (!item || !item.variants) return undefined;
+
+  // Convert variants structure to OptimizedImage format
+  const optimized: OptimizedImage = {
+    avif: {},
+    webp: {},
+    jpeg: {}
+  };
+
+  Object.entries(item.variants).forEach(([sizeKey, formats]: [string, any]) => {
+    optimized.avif[sizeKey as keyof typeof optimized.avif] = formats.avif;
+    optimized.webp[sizeKey as keyof typeof optimized.webp] = formats.webp;
+    optimized.jpeg[sizeKey as keyof typeof optimized.jpeg] = formats.jpeg;
+  });
+
+  return optimized;
+}
+
+// Helper function to get filename from path
+function getFilenameFromPath(imagePath: string): string {
+  const filename = imagePath.split('/').pop() || imagePath;
+  return filename.replace(/\.[^/.]+$/, ''); // Remove extension
+}
 
 // Helper functions
 export function getFeaturedProjects(): Project[] {
@@ -25,13 +72,43 @@ export function getFeaturedProjects(): Project[] {
 export function getFeaturedPhotos(): Photo[] {
   return photos.photos
     .filter(photo => photo.featured)
-    .sort((a, b) => a.rank - b.rank);
+    .sort((a, b) => a.rank - b.rank)
+    .map(photo => ({
+      ...photo,
+      optimized: getOptimizedImageFromManifest(getFilenameFromPath(photo.srcThumb), 'gallery')
+    }));
+}
+
+export function getCategoryPreviewImage(category: 'All' | 'Graduation' | 'Dance' | 'Travel'): string {
+  // Map categories to specific photo titles
+  const categoryPhotoMap: Record<string, string> = {
+    'All': 'Travel-03',
+    'Graduation': 'Grad-01',
+    'Dance': 'KOSMOS-04',
+    'Travel': 'Travel-04',
+  };
+  
+  const targetTitle = categoryPhotoMap[category];
+  if (targetTitle) {
+    const photo = photos.photos.find(p => p.title === targetTitle);
+    if (photo) {
+      return photo.srcThumb;
+    }
+  }
+  
+  // Fallback: get first photo in category
+  const categoryPhotos = getPhotosByCategory(category);
+  return categoryPhotos.length > 0 ? categoryPhotos[0].srcThumb : '';
 }
 
 export function getPhotosByAlbum(slug: string): Photo[] {
   return photos.photos
     .filter(photo => photo.album === slug)
-    .sort((a, b) => a.rank - b.rank);
+    .sort((a, b) => a.rank - b.rank)
+    .map(photo => ({
+      ...photo,
+      optimized: getOptimizedImageFromManifest(getFilenameFromPath(photo.srcThumb), 'gallery')
+    }));
 }
 
 export function getAlbumBySlug(slug: string): Album | undefined {
@@ -121,13 +198,16 @@ export function getProjectsByType(type: string): Project[] {
 }
 
 export function getPhotosByCategory(category: string): Photo[] {
-  if (category === 'All') {
-    return photos.photos.sort((a, b) => a.rank - b.rank);
-  }
-  
-  return photos.photos
-    .filter(photo => photo.album === category.toLowerCase())
-    .sort((a, b) => a.rank - b.rank);
+  const filteredPhotos = category === 'All'
+    ? photos.photos
+    : photos.photos.filter(photo => photo.album === category.toLowerCase());
+
+  return filteredPhotos
+    .sort((a, b) => a.rank - b.rank)
+    .map(photo => ({
+      ...photo,
+      optimized: getOptimizedImageFromManifest(getFilenameFromPath(photo.srcThumb), 'gallery')
+    }));
 }
 
 // Experience helper functions

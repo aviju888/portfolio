@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import { Photo } from '@/lib/types';
+import OptimizedImage from './OptimizedImage';
+import { getBestImageUrl } from '@/lib/imageUtils';
 
 interface PhotoGalleryProps {
   photos: Photo[];
@@ -13,13 +15,14 @@ interface PhotoGalleryProps {
 export default function PhotoGallery({ photos }: PhotoGalleryProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
-  
+
+  // Use optimized full-size images for lightbox if available
   const slides = photos.map(photo => ({
-    src: photo.srcFull,
+    src: getBestImageUrl(photo.optimized, photo.srcFull, 'full_1920'),
     alt: photo.alt,
     description: photo.description,
   }));
-  
+
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
     setLightboxOpen(true);
@@ -36,11 +39,13 @@ export default function PhotoGallery({ photos }: PhotoGalleryProps) {
             className="cursor-pointer group break-inside-avoid mb-4 md:mb-6"
           >
             <div className="w-full overflow-hidden rounded-lg">
-              <img
-                src={photo.srcThumb}
+              <OptimizedImage
+                optimized={photo.optimized}
+                fallbackSrc={photo.srcThumb}
                 alt={photo.alt}
                 className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
+                type="thumbnail"
               />
             </div>
           </div>

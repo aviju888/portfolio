@@ -44,3 +44,8 @@ next-env.d.ts
 
 /migration
 .env*.local
+
+# optimized images (generated at build time)
+/public/images/*-optimized/
+/public/images/optimization-manifest.json
+.image-cache/
