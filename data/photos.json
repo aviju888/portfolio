@@ -11,7 +11,27 @@
       "orientation": "portrait",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 1
+      "rank": 1,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/gracegrad1-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/gracegrad1-800w.avif",
+          "full_1200": "/images/gallery-optimized/avif/gracegrad1-1200w.avif",
+          "full_1920": "/images/gallery-optimized/avif/gracegrad1-1920w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/gracegrad1-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/gracegrad1-800w.webp",
+          "full_1200": "/images/gallery-optimized/webp/gracegrad1-1200w.webp",
+          "full_1920": "/images/gallery-optimized/webp/gracegrad1-1920w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/gracegrad1-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/gracegrad1-800w.jpg",
+          "full_1200": "/images/gallery-optimized/jpeg/gracegrad1-1200w.jpg",
+          "full_1920": "/images/gallery-optimized/jpeg/gracegrad1-1920w.jpg"
+        }
+      }
     },
     {
       "id": "monica-grad-001",
@@ -24,7 +44,21 @@
       "orientation": "portrait",
       "featured": true,
       "dateTaken": "Spring 2024",
-      "rank": 1
+      "rank": 1,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/monicagrad1-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/monicagrad1-800w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/monicagrad1-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/monicagrad1-800w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/monicagrad1-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/monicagrad1-800w.jpg"
+        }
+      }
     },
     {
       "id": "grace-grad-002",
@@ -37,7 +71,27 @@
       "orientation": "portrait",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 3
+      "rank": 3,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/gracegrad2-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/gracegrad2-800w.avif",
+          "full_1200": "/images/gallery-optimized/avif/gracegrad2-1200w.avif",
+          "full_1920": "/images/gallery-optimized/avif/gracegrad2-1920w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/gracegrad2-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/gracegrad2-800w.webp",
+          "full_1200": "/images/gallery-optimized/webp/gracegrad2-1200w.webp",
+          "full_1920": "/images/gallery-optimized/webp/gracegrad2-1920w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/gracegrad2-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/gracegrad2-800w.jpg",
+          "full_1200": "/images/gallery-optimized/jpeg/gracegrad2-1200w.jpg",
+          "full_1920": "/images/gallery-optimized/jpeg/gracegrad2-1920w.jpg"
+        }
+      }
     },
     {
       "id": "monica-grad-002",
@@ -50,7 +104,21 @@
       "orientation": "portrait",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 4
+      "rank": 4,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/monicagrad2-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/monicagrad2-800w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/monicagrad2-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/monicagrad2-800w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/monicagrad2-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/monicagrad2-800w.jpg"
+        }
+      }
     },
     {
       "id": "monica-grad-003",
@@ -63,7 +131,21 @@
       "orientation": "portrait",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 5
+      "rank": 5,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/monicagrad3-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/monicagrad3-800w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/monicagrad3-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/monicagrad3-800w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/monicagrad3-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/monicagrad3-800w.jpg"
+        }
+      }
     },
     {
       "id": "unhinged-001",
@@ -76,7 +158,30 @@
       "orientation": "landscape",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 6
+      "rank": 6,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/unhinged1-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/unhinged1-800w.avif",
+          "full_1200": "/images/gallery-optimized/avif/unhinged1-1200w.avif",
+          "full_1920": "/images/gallery-optimized/avif/unhinged1-1920w.avif",
+          "full_2400": "/images/gallery-optimized/avif/unhinged1-2400w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/unhinged1-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/unhinged1-800w.webp",
+          "full_1200": "/images/gallery-optimized/webp/unhinged1-1200w.webp",
+          "full_1920": "/images/gallery-optimized/webp/unhinged1-1920w.webp",
+          "full_2400": "/images/gallery-optimized/webp/unhinged1-2400w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/unhinged1-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/unhinged1-800w.jpg",
+          "full_1200": "/images/gallery-optimized/jpeg/unhinged1-1200w.jpg",
+          "full_1920": "/images/gallery-optimized/jpeg/unhinged1-1920w.jpg",
+          "full_2400": "/images/gallery-optimized/jpeg/unhinged1-2400w.jpg"
+        }
+      }
     },
     {
       "id": "kosmos-001",
@@ -89,7 +194,21 @@
       "orientation": "landscape",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 7
+      "rank": 7,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/kosmos1-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/kosmos1-800w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/kosmos1-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/kosmos1-800w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/kosmos1-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/kosmos1-800w.jpg"
+        }
+      }
     },
     {
       "id": "kosmos-002",
@@ -102,7 +221,21 @@
       "orientation": "landscape",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 8
+      "rank": 8,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/kosmos2-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/kosmos2-800w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/kosmos2-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/kosmos2-800w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/kosmos2-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/kosmos2-800w.jpg"
+        }
+      }
     },
     {
       "id": "kosmos-003",
@@ -115,7 +248,21 @@
       "orientation": "landscape",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 9
+      "rank": 9,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/kosmos3-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/kosmos3-800w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/kosmos3-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/kosmos3-800w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/kosmos3-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/kosmos3-800w.jpg"
+        }
+      }
     },
     {
       "id": "kosmos-004",
@@ -128,7 +275,30 @@
       "orientation": "landscape",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 10
+      "rank": 10,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/kosmos4-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/kosmos4-800w.avif",
+          "full_1200": "/images/gallery-optimized/avif/kosmos4-1200w.avif",
+          "full_1920": "/images/gallery-optimized/avif/kosmos4-1920w.avif",
+          "full_2400": "/images/gallery-optimized/avif/kosmos4-2400w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/kosmos4-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/kosmos4-800w.webp",
+          "full_1200": "/images/gallery-optimized/webp/kosmos4-1200w.webp",
+          "full_1920": "/images/gallery-optimized/webp/kosmos4-1920w.webp",
+          "full_2400": "/images/gallery-optimized/webp/kosmos4-2400w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/kosmos4-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/kosmos4-800w.jpg",
+          "full_1200": "/images/gallery-optimized/jpeg/kosmos4-1200w.jpg",
+          "full_1920": "/images/gallery-optimized/jpeg/kosmos4-1920w.jpg",
+          "full_2400": "/images/gallery-optimized/jpeg/kosmos4-2400w.jpg"
+        }
+      }
     },
     {
       "id": "kosmos-005",
@@ -141,7 +311,21 @@
       "orientation": "landscape",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 11
+      "rank": 11,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/kosmos5-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/kosmos5-800w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/kosmos5-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/kosmos5-800w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/kosmos5-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/kosmos5-800w.jpg"
+        }
+      }
     },
     {
       "id": "kosmos-006",
@@ -154,7 +338,21 @@
       "orientation": "landscape",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 12
+      "rank": 12,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/kosmos6-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/kosmos6-800w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/kosmos6-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/kosmos6-800w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/kosmos6-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/kosmos6-800w.jpg"
+        }
+      }
     },
     {
       "id": "unhinged-002",
@@ -167,7 +365,21 @@
       "orientation": "landscape",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 13
+      "rank": 13,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/unhinged2-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/unhinged2-800w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/unhinged2-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/unhinged2-800w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/unhinged2-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/unhinged2-800w.jpg"
+        }
+      }
     },
     {
       "id": "unhinged-003",
@@ -180,7 +392,21 @@
       "orientation": "landscape",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 14
+      "rank": 14,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/unhinged3-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/unhinged3-800w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/unhinged3-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/unhinged3-800w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/unhinged3-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/unhinged3-800w.jpg"
+        }
+      }
     },
     {
       "id": "afx-camp-001",
@@ -193,7 +419,21 @@
       "orientation": "landscape",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 15
+      "rank": 15,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/afxdancecamp1-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/afxdancecamp1-800w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/afxdancecamp1-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/afxdancecamp1-800w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/afxdancecamp1-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/afxdancecamp1-800w.jpg"
+        }
+      }
     },
     {
       "id": "afx-camp-002",
@@ -206,7 +446,21 @@
       "orientation": "landscape",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 16
+      "rank": 16,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/afxdancecamp2-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/afxdancecamp2-800w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/afxdancecamp2-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/afxdancecamp2-800w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/afxdancecamp2-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/afxdancecamp2-800w.jpg"
+        }
+      }
     },
     {
       "id": "afx-camp-003",
@@ -219,7 +473,21 @@
       "orientation": "landscape",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 17
+      "rank": 17,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/afxdancecamp3-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/afxdancecamp3-800w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/afxdancecamp3-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/afxdancecamp3-800w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/afxdancecamp3-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/afxdancecamp3-800w.jpg"
+        }
+      }
     },
     {
       "id": "ctrl-001",
@@ -232,7 +500,30 @@
       "orientation": "landscape",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 18
+      "rank": 18,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/ctrl1-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/ctrl1-800w.avif",
+          "full_1200": "/images/gallery-optimized/avif/ctrl1-1200w.avif",
+          "full_1920": "/images/gallery-optimized/avif/ctrl1-1920w.avif",
+          "full_2400": "/images/gallery-optimized/avif/ctrl1-2400w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/ctrl1-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/ctrl1-800w.webp",
+          "full_1200": "/images/gallery-optimized/webp/ctrl1-1200w.webp",
+          "full_1920": "/images/gallery-optimized/webp/ctrl1-1920w.webp",
+          "full_2400": "/images/gallery-optimized/webp/ctrl1-2400w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/ctrl1-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/ctrl1-800w.jpg",
+          "full_1200": "/images/gallery-optimized/jpeg/ctrl1-1200w.jpg",
+          "full_1920": "/images/gallery-optimized/jpeg/ctrl1-1920w.jpg",
+          "full_2400": "/images/gallery-optimized/jpeg/ctrl1-2400w.jpg"
+        }
+      }
     },
     {
       "id": "ctrl-002",
@@ -245,7 +536,21 @@
       "orientation": "landscape",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 19
+      "rank": 19,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/ctrl2-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/ctrl2-800w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/ctrl2-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/ctrl2-800w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/ctrl2-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/ctrl2-800w.jpg"
+        }
+      }
     },
     {
       "id": "ctrl-003",
@@ -258,7 +563,21 @@
       "orientation": "landscape",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 20
+      "rank": 20,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/ctrl3-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/ctrl3-800w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/ctrl3-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/ctrl3-800w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/ctrl3-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/ctrl3-800w.jpg"
+        }
+      }
     },
     {
       "id": "ctrl-004",
@@ -271,7 +590,21 @@
       "orientation": "landscape",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 21
+      "rank": 21,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/ctrl4-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/ctrl4-800w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/ctrl4-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/ctrl4-800w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/ctrl4-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/ctrl4-800w.jpg"
+        }
+      }
     },
     {
       "id": "glamity-001",
@@ -284,7 +617,21 @@
       "orientation": "landscape",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 22
+      "rank": 22,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/glamity1-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/glamity1-800w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/glamity1-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/glamity1-800w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/glamity1-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/glamity1-800w.jpg"
+        }
+      }
     },
     {
       "id": "glamity-002",
@@ -297,7 +644,21 @@
       "orientation": "landscape",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 23
+      "rank": 23,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/glamity2-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/glamity2-800w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/glamity2-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/glamity2-800w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/glamity2-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/glamity2-800w.jpg"
+        }
+      }
     },
     {
       "id": "glamity-003",
@@ -310,7 +671,21 @@
       "orientation": "landscape",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 24
+      "rank": 24,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/glamity3-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/glamity3-800w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/glamity3-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/glamity3-800w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/glamity3-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/glamity3-800w.jpg"
+        }
+      }
     },
     {
       "id": "canada-001",
@@ -323,7 +698,24 @@
       "orientation": "landscape",
       "featured": false,
       "dateTaken": "Summer 2024",
-      "rank": 25
+      "rank": 25,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/canada1-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/canada1-800w.avif",
+          "full_1200": "/images/gallery-optimized/avif/canada1-1200w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/canada1-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/canada1-800w.webp",
+          "full_1200": "/images/gallery-optimized/webp/canada1-1200w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/canada1-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/canada1-800w.jpg",
+          "full_1200": "/images/gallery-optimized/jpeg/canada1-1200w.jpg"
+        }
+      }
     },
     {
       "id": "canada-002",
@@ -336,7 +728,24 @@
       "orientation": "landscape",
       "featured": true,
       "dateTaken": "Summer 2024",
-      "rank": 2
+      "rank": 2,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/canada2-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/canada2-800w.avif",
+          "full_1200": "/images/gallery-optimized/avif/canada2-1200w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/canada2-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/canada2-800w.webp",
+          "full_1200": "/images/gallery-optimized/webp/canada2-1200w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/canada2-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/canada2-800w.jpg",
+          "full_1200": "/images/gallery-optimized/jpeg/canada2-1200w.jpg"
+        }
+      }
     },
     {
       "id": "canada-003",
@@ -349,7 +758,24 @@
       "orientation": "landscape",
       "featured": true,
       "dateTaken": "Summer 2024",
-      "rank": 3
+      "rank": 3,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/canada3-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/canada3-800w.avif",
+          "full_1200": "/images/gallery-optimized/avif/canada3-1200w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/canada3-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/canada3-800w.webp",
+          "full_1200": "/images/gallery-optimized/webp/canada3-1200w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/canada3-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/canada3-800w.jpg",
+          "full_1200": "/images/gallery-optimized/jpeg/canada3-1200w.jpg"
+        }
+      }
     },
     {
       "id": "sf-001",
@@ -362,7 +788,21 @@
       "orientation": "landscape",
       "featured": false,
       "dateTaken": "Summer 2024",
-      "rank": 28
+      "rank": 28,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/sf1-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/sf1-800w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/sf1-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/sf1-800w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/sf1-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/sf1-800w.jpg"
+        }
+      }
     },
     {
       "id": "allen-001",
@@ -375,42 +815,30 @@
       "orientation": "landscape",
       "featured": false,
       "dateTaken": "Spring 2024",
-      "rank": 29
-    }
-  ],
-  "albums": [
-    {
-      "slug": "graduation",
-      "title": "Graduation Photography",
-      "category": "Graduation",
-      "cover": "/images/gallery/gracegrad1.png",
-      "count": 5,
-      "description": "Client shoots and graduation portraits"
-    },
-    {
-      "slug": "dance",
-      "title": "Dance Performances",
-      "category": "Dance",
-      "cover": "/images/gallery/kosmos1.png",
-      "count": 20,
-      "description": "Dance team performances and showcases"
-    },
-    {
-      "slug": "travel",
-      "title": "Travel & Events",
-      "category": "Travel",
-      "cover": "/images/gallery/canada1.png",
-      "count": 4,
-      "description": "Travel photography and city exploration"
-    },
-    {
-      "slug": "events",
-      "title": "Events",
-      "category": "Events",
-      "cover": "/images/gallery/allen1.png",
-      "count": 1,
-      "description": "Event photography and special occasions"
+      "rank": 29,
+      "optimized": {
+        "avif": {
+          "thumb_400": "/images/gallery-optimized/avif/allen1-400w.avif",
+          "thumb_800": "/images/gallery-optimized/avif/allen1-800w.avif",
+          "full_1200": "/images/gallery-optimized/avif/allen1-1200w.avif",
+          "full_1920": "/images/gallery-optimized/avif/allen1-1920w.avif",
+          "full_2400": "/images/gallery-optimized/avif/allen1-2400w.avif"
+        },
+        "webp": {
+          "thumb_400": "/images/gallery-optimized/webp/allen1-400w.webp",
+          "thumb_800": "/images/gallery-optimized/webp/allen1-800w.webp",
+          "full_1200": "/images/gallery-optimized/webp/allen1-1200w.webp",
+          "full_1920": "/images/gallery-optimized/webp/allen1-1920w.webp",
+          "full_2400": "/images/gallery-optimized/webp/allen1-2400w.webp"
+        },
+        "jpeg": {
+          "thumb_400": "/images/gallery-optimized/jpeg/allen1-400w.jpg",
+          "thumb_800": "/images/gallery-optimized/jpeg/allen1-800w.jpg",
+          "full_1200": "/images/gallery-optimized/jpeg/allen1-1200w.jpg",
+          "full_1920": "/images/gallery-optimized/jpeg/allen1-1920w.jpg",
+          "full_2400": "/images/gallery-optimized/jpeg/allen1-2400w.jpg"
+        }
+      }
     }
   ]
 }
-
