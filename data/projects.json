@@ -1,12 +1,35 @@
 [
   {
-    "slug": "doculaw-ai",
-    "title": "DocuLawAI",
-    "role": "Frontend Developer",
-    "summary": "Frontend concept for a legal AI assistant",
+    "slug": "chronos",
+    "title": "Chronos",
+    "role": "Full Stack Developer",
+    "summary": "Generate interactive timelines for any region in history with AI-powered research",
     "description": [
-      "Frontend concept for a legal AI assistant",
-      "Backend in-progress*"
+      "Natural language queries like 'Roman Empire 27 BCE - 476 CE' generate comprehensive timelines",
+      "Multi-source pipeline: Groq LLM for narrative, Wikidata SPARQL for structured data, Wikipedia for enrichment",
+      "Interactive map view with event markers, animated timeline playback, and citation-backed event cards",
+      "Real-time streaming generation with deduplication across 3 data sources"
+    ],
+    "tags": ["React", "TypeScript", "Tailwind CSS", "Groq API", "Wikidata SPARQL"],
+    "links": {
+      "repo": "https://github.com/aviju888/chronos",
+      "demo": "https://chronos-history.vercel.app"
+    },
+    "images": ["/images/projects/chronos.png"],
+    "featured": true,
+    "rank": 0,
+    "status": "live",
+    "year": "January 2026"
+  },
+  {
+    "slug": "doculaw-ai",
+    "title": "DocuLaw AI",
+    "role": "Frontend Developer",
+    "summary": "Translate dense legal contracts into plain English with side-by-side comparison",
+    "description": [
+      "Upload legal documents and get plain-English explanations of complex clauses",
+      "Side-by-side diff viewer showing original legalese vs. simplified translation",
+      "AI chat interface for asking follow-up questions about specific sections"
     ],
     "tags": ["React", "Next.js", "Tailwind CSS", "TypeScript"],
     "links": {
@@ -20,13 +43,36 @@
     "year": "June 2025"
   },
   {
+    "slug": "product-page-reviewer",
+    "title": "Product Page Reviewer",
+    "role": "Full Stack Developer",
+    "summary": "Analyze any product page for conversion optimization with 50+ UX heuristics",
+    "description": [
+      "Paste a URL and get a structured UX/conversion audit with actionable recommendations",
+      "Scores 50+ signals: CTA placement, pricing visibility, trust badges, social proof, accessibility",
+      "Context-aware scoring adapts weights for Ecommerce vs. SaaS vs. B2B vs. Service sites",
+      "FastAPI backend with BeautifulSoup scraping, React frontend with detailed breakdowns"
+    ],
+    "tags": ["Python", "TypeScript", "React", "FastAPI", "OpenAI", "BeautifulSoup"],
+    "links": {
+      "repo": "https://github.com/aviju888/product-page-reviewer",
+      "demo": ""
+    },
+    "images": ["/images/projects/product-page-reviewer.png"],
+    "featured": true,
+    "rank": 2,
+    "status": "live",
+    "year": "September 2025"
+  },
+  {
     "slug": "kosmos-website",
     "title": "KOSMOS Website",
     "role": "Full Stack Developer",
-    "summary": "Promotional and archival branding site for student organization",
+    "summary": "Archive of 10+ years of dance org history with member bios and performance galleries",
     "description": [
-      "Promotional and archival branding site for student organization",
-      "Media galleries, event management, and biographies"
+      "Componentized gallery system for photos, videos, and performance archives",
+      "Dynamic roster pages with member bios across multiple generations",
+      "Mobile-responsive design with optimized image loading for large galleries"
     ],
     "tags": ["React", "Next.js", "JavaScript"],
     "links": {
@@ -35,7 +81,7 @@
     },
     "images": ["/images/projects/kosmos-site.png"],
     "featured": true,
-    "rank": 2,
+    "rank": 3,
     "status": "live",
     "year": "January 2025"
   },
@@ -43,12 +89,12 @@
     "slug": "diffusion-models",
     "title": "Diffusion Models",
     "role": "AI/ML Engineer",
-    "summary": "Implementation of custom diffusion sampling loops with inpainting capabilities",
+    "summary": "Custom diffusion sampling with inpainting, text-conditioning, and classifier-free guidance",
     "description": [
-      "Implementation of custom diffusion sampling loops",
-      "Inpainting capabilities",
-      "Text-conditional image translation",
-      "Classifier-free guidance"
+      "Implemented DDPM sampling loops from scratch with configurable noise schedules",
+      "Built inpainting pipeline for masked image completion using pretrained models",
+      "Text-to-image generation with CLIP embeddings and classifier-free guidance",
+      "Explored latent space interpolation and style transfer between prompts"
     ],
     "tags": ["Python", "PyTorch", "Hugging Face"],
     "links": {
@@ -56,8 +102,8 @@
       "demo": "https://aviju888.github.io/computer-vision/old_1/web/proj5.html"
     },
     "images": ["/images/projects/diffusion-models.png"],
-    "featured": true,
-    "rank": 3,
+    "featured": false,
+    "rank": 4,
     "status": "live",
     "year": "November 2024"
   },
@@ -65,12 +111,12 @@
     "slug": "hybrid-images",
     "title": "Hybrid Images",
     "role": "CS180",
-    "summary": "Created images combining low and high-frequency content using Gaussian and Laplacian filtering",
+    "summary": "Images that change appearance at different viewing distances using frequency separation",
     "description": [
-      "Created images combining low and high-frequency content",
-      "Gaussian and Laplacian filtering",
-      "Multiresolution blending",
-      "Fourier Transform analysis"
+      "Gaussian low-pass filtering to extract coarse structure, Laplacian high-pass for fine detail",
+      "Blended frequency bands to create images that morph when you squint or step back",
+      "Multiresolution blending for seamless composites using Laplacian pyramids",
+      "FFT analysis to visualize and tune frequency cutoffs"
     ],
     "tags": ["Python", "OpenCV", "NumPy", "SciPy", "Matplotlib"],
     "links": {
@@ -78,8 +124,8 @@
       "demo": "https://aviju888.github.io/computer-vision/old_1/web/proj2.html"
     },
     "images": ["/images/projects/hybrid-images.png"],
-    "featured": true,
-    "rank": 4,
+    "featured": false,
+    "rank": 5,
     "status": "live",
     "year": "October 2024"
   },
@@ -87,21 +133,21 @@
     "slug": "colorizing-imagery",
     "title": "Colorizing Historical Imagery",
     "role": "CS180",
-    "summary": "Automated system for aligning and colorizing Prokudin-Gorskii collection",
+    "summary": "Automated alignment and colorization of Prokudin-Gorskii glass plate photographs",
     "description": [
-      "Automated system for aligning and colorizing Prokudin-Gorskii collection",
-      "L2 norm alignment",
-      "Multi-scale pyramid alignment",
-      "Automated contrast optimization"
+      "Aligned RGB glass plate negatives from 1900s Russian photography archives",
+      "Multi-scale image pyramid for efficient alignment of high-resolution scans",
+      "Normalized cross-correlation and L2 matching to handle exposure differences",
+      "Automatic border cropping and contrast optimization for final output"
     ],
-    "tags": ["Python", "NumPy", "SciPy", "scikit-learn", "Matplotlib"],
+    "tags": ["Python", "NumPy", "SciPy", "scikit-image", "Matplotlib"],
     "links": {
       "repo": "https://github.com/aviju888/computer-vision",
       "demo": "https://aviju888.github.io/computer-vision/old_1/web/proj1.html"
     },
     "images": ["/images/projects/colorizing-imagery.png"],
     "featured": false,
-    "rank": 5,
+    "rank": 6,
     "status": "live",
     "year": "September 2024"
   },
@@ -109,12 +155,12 @@
     "slug": "asthma-aqi-analysis",
     "title": "Asthma & AQI Analysis",
     "role": "Data Scientist",
-    "summary": "Research on correlation between air quality and asthma rates",
+    "summary": "Statistical analysis of air quality impact on asthma hospitalization rates",
     "description": [
-      "Research on correlation between air quality and asthma rates",
-      "Linear regression analysis",
-      "Statistical modeling",
-      "Data visualization"
+      "Analyzed correlation between county-level AQI data and asthma ER visit rates",
+      "Linear regression modeling with confidence intervals and hypothesis testing",
+      "Data cleaning and merging across EPA air quality and CA health datasets",
+      "Visualizations showing geographic and temporal patterns in respiratory health"
     ],
     "tags": ["R", "R Markdown", "Statistics"],
     "links": {
@@ -123,7 +169,7 @@
     },
     "images": ["/images/projects/asthma-aqi.png"],
     "featured": false,
-    "rank": 6,
+    "rank": 7,
     "status": "live",
     "year": "May 2024"
   },
@@ -131,12 +177,11 @@
     "slug": "pasae-website",
     "title": "PASAE Website",
     "role": "Frontend Developer",
-    "summary": "Organization website redesign with modern UI/UX",
+    "summary": "Redesigned student org website with modern UI and improved navigation",
     "description": [
-      "Organization website redesign",
-      "Modern UI/UX",
-      "Mobile responsiveness",
-      "Performance optimization"
+      "Led website redesign for Philippine American engineering student organization",
+      "Restructured information architecture for easier event discovery",
+      "Mobile-first responsive design with improved load times"
     ],
     "tags": ["React.js", "HTML", "CSS", "JavaScript"],
     "links": {
@@ -145,28 +190,28 @@
     },
     "images": ["/images/projects/pasae-site.png"],
     "featured": false,
-    "rank": 7,
+    "rank": 8,
     "status": "live",
     "year": "Fall 2023-Spring 2024"
   },
   {
     "slug": "toxic-speech-detection",
-    "title": "TERF Toxic Speech Detection",
+    "title": "Toxic Speech Detection",
     "role": "ML Engineer",
-    "summary": "ML model to detect and classify toxic speech through Twitter API",
+    "summary": "NLP classifier for detecting and categorizing toxic speech patterns on Twitter",
     "description": [
-      "ML model to detect and classify toxic speech through Twitter API",
-      "Data collection and preprocessing",
-      "Feature engineering"
+      "Built text classification pipeline using NLTK for preprocessing and feature extraction",
+      "Experimented with TF-IDF, word embeddings, and transformer-based approaches",
+      "Explored dataset bias and class imbalance challenges in hate speech detection"
     ],
-    "tags": ["Python", "NLTK", "scikit-learn", "TensorFlow/PyTorch"],
+    "tags": ["Python", "NLTK", "scikit-learn", "NLP"],
     "links": {
       "repo": "",
       "demo": ""
     },
     "images": ["/images/projects/detect-toxic-speech.png"],
     "featured": false,
-    "rank": 8,
+    "rank": 9,
     "status": "live",
     "year": "Fall 2023"
   },
@@ -174,13 +219,12 @@
     "slug": "pacman-ai",
     "title": "Pacman AI Agent",
     "role": "AI Engineer",
-    "summary": "Built AI algorithms for Pacman simulation with strategic decision-making",
+    "summary": "Search algorithms and reinforcement learning for game-playing AI agents",
     "description": [
-      "Built AI algorithms for Pacman simulation with strategic decision-making",
-      "Implemented search strategies (DFS, BFS, A* Search)",
-      "Developed Minimax and Expectimax algorithms",
-      "Applied Q-Learning and Value Iteration",
-      "Fine-tuned reward functions"
+      "Implemented DFS, BFS, UCS, and A* search for pathfinding in maze environments",
+      "Built Minimax and Expectimax agents for adversarial ghost avoidance",
+      "Applied Q-Learning and Value Iteration for learned decision-making policies",
+      "Achieved >90% win rate on benchmark mazes through heuristic tuning"
     ],
     "tags": ["Python", "NumPy", "Matplotlib"],
     "links": {
@@ -189,64 +233,64 @@
     },
     "images": ["/images/projects/pacman.png"],
     "featured": false,
-    "rank": 9,
+    "rank": 10,
     "status": "live",
     "year": "April 2023"
   },
   {
     "slug": "cs61cpu",
-    "title": "61CPU Project",
+    "title": "RISC-V CPU",
     "role": "Systems Engineer",
-    "summary": "5-stage pipelined RISC-V CPU implementation",
+    "summary": "5-stage pipelined processor with hazard detection and forwarding",
     "description": [
-      "5-stage pipelined RISC-V CPU implementation",
-      "Complete datapath implementation",
-      "Hazard detection and forwarding",
-      "Pipeline optimization"
+      "Designed complete RISC-V datapath: IF, ID, EX, MEM, WB stages",
+      "Implemented data hazard detection with register forwarding to minimize stalls",
+      "Built control hazard handling with branch prediction and pipeline flushing",
+      "Simulated and debugged in Logisim with comprehensive test coverage"
     ],
-    "tags": ["Logisim", "Assembly", "Git"],
+    "tags": ["Logisim", "RISC-V", "Computer Architecture"],
     "links": {
       "repo": "",
       "demo": ""
     },
     "images": ["/images/projects/cs61cpu.png"],
     "featured": false,
-    "rank": 10,
+    "rank": 11,
     "status": "live",
     "year": "Spring 2023"
   },
   {
     "slug": "gitlet",
-    "title": "Gitlet Version Control",
+    "title": "Gitlet",
     "role": "Systems Engineer",
-    "summary": "Mini version of Git version control system",
+    "summary": "Git clone with commits, branches, merging, and persistent storage",
     "description": [
-      "Mini version of Git version control system",
-      "Core Git commands implementation",
-      "Persistent storage system",
-      "Conflict resolution"
+      "Implemented core Git commands: init, add, commit, checkout, branch, merge",
+      "SHA-1 content addressing for blob and commit deduplication",
+      "Persistent object storage with serialization to .gitlet directory",
+      "Three-way merge with automatic conflict detection and marking"
     ],
-    "tags": ["Java", "JUnit"],
+    "tags": ["Java", "JUnit", "Data Structures"],
     "links": {
       "repo": "",
       "demo": ""
     },
     "images": ["/images/projects/gitlet.png"],
     "featured": false,
-    "rank": 11,
+    "rank": 12,
     "status": "live",
     "year": "Spring 2022"
   },
   {
     "slug": "solar-water-heating",
-    "title": "Solar Water Heating Optimization",
+    "title": "Solar Water Heating Analysis",
     "role": "Data Scientist",
-    "summary": "Analysis of solar water heating system performance",
+    "summary": "Performance modeling of solar thermal systems using LBNL weather data",
     "description": [
-      "Analysis of solar water heating system performance",
-      "Time-series analysis",
-      "Performance prediction",
-      "System optimization"
+      "Analyzed LBNL's Multiscale Solar Water Heating simulation outputs",
+      "Visualized energy consumption vs. solar fraction tradeoffs across climates",
+      "Generated heatmaps to identify optimal system configurations",
+      "Presented findings to research team for residential deployment decisions"
     ],
     "tags": ["Python", "Pandas", "NumPy", "Matplotlib", "Jupyter"],
     "links": {
@@ -255,33 +299,8 @@
     },
     "images": ["/images/projects/lbl-swhs.png"],
     "featured": false,
-    "rank": 12,
+    "rank": 13,
     "status": "live",
     "year": "July 2021"
-  },
-  {
-    "slug": "product-page-reviewer",
-    "title": "Product Page Reviewer",
-    "role": "AI/ML Full Stack Developer",
-    "summary": "Conversion optimization tool that analyzes product pages and provides UI/UX feedback",
-    "description": [
-      "Conversion optimization tool that analyzes product pages and provides UI/UX feedback",
-      "50+ conversion heuristics across 8 categories (pricing, CTAs, trust signals, imagery, etc.)",
-      "Context-based scoring for different site types (Ecommerce, SaaS, B2B, Service)",
-      "AI-powered analysis using OpenAI API for detailed suggestions",
-      "FastAPI backend with BeautifulSoup for web scraping and analysis",
-      "React frontend with TypeScript and shadcn/ui components"
-    ],
-    "tags": ["Python", "TypeScript", "React", "FastAPI", "OpenAI", "BeautifulSoup"],
-    "links": {
-      "repo": "https://github.com/aviju888/product-page-reviewer",
-      "demo": ""
-    },
-    "images": ["/images/projects/product-page-reviewer.png"],
-    "featured": false,
-    "rank": 0,
-    "status": "live",
-    "year": "September 2025"
   }
 ]
-

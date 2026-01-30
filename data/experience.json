@@ -6,16 +6,17 @@
     "end": null,
     "location": "San Mateo, CA",
     "type": "Contract",
-    "summary": "Agentic AI, UX/CRO - Building AI tools for businesses.",
+    "summary": "Building AI-powered CRO tools that analyze e-commerce conversion funnels",
     "highlights": [
-      "Developing agentic AI systems for automated UX analysis",
-      "Implementing CRO tools and data-driven design improvements"
+      "Developed AI Data Analyst Agent through 20+ iterations with financial impact analysis and persistent memory",
+      "Built 50+ React/TypeScript components: real-time analytics dashboards, subscription billing, OAuth flows",
+      "Architected parallel data pipelines with multi-agent orchestration and security hardening (XSS, input validation)"
     ],
-    "stack": ["Next.js", "Python", "AI/ML", "UX Research"],
-    "links": { 
-      "site": "", 
-      "repo": "", 
-      "caseStudy": "" 
+    "stack": ["React", "TypeScript", "Python", "AI/ML", "OAuth"],
+    "links": {
+      "site": "",
+      "repo": "",
+      "caseStudy": ""
     },
     "logo": "/images/icons/apex-agent-labs.png"
   },
@@ -26,16 +27,16 @@
     "end": null,
     "location": "SF Bay Area",
     "type": "Freelance",
-    "summary": "Freelance photographer for 200+ individuals and 5+ organizations.",
+    "summary": "Portrait and event photography for 200+ clients and 5+ organizations",
     "highlights": [
-      "Portrait photography for 200+ individuals",
-      "End-to-end shoot logistics and client management"
+      "Shot graduation portraits, dance performances, and corporate events",
+      "End-to-end client management: booking, shoots, editing, delivery"
     ],
-    "stack": ["Adobe Lightroom", "Adobe Photoshop", "Event Photography"],
-    "links": { 
-      "site": "", 
-      "repo": "", 
-      "caseStudy": "/photos" 
+    "stack": ["Adobe Lightroom", "Adobe Photoshop", "Portrait Photography"],
+    "links": {
+      "site": "",
+      "repo": "",
+      "caseStudy": "/photos"
     },
     "logo": "/images/icons/camera_inverted.png"
   },
@@ -46,16 +47,16 @@
     "end": "2025-07",
     "location": "Berkeley, CA",
     "type": "Student Organization",
-    "summary": "Developed promotional website with React/Next.js for dance organization.",
+    "summary": "Built and maintained the org's React/Next.js website with galleries and member archives",
     "highlights": [
-      "Built interactive website with organizational histories and member bios",
-      "Collaborated on project timelines and deployment workflows"
+      "Componentized photo/video galleries with lazy loading for 1000+ media files",
+      "Dynamic roster system with member bios spanning 10+ years of org history"
     ],
-    "stack": ["React", "Next.js", "Frontend Development"],
-    "links": { 
-      "site": "", 
-      "repo": "", 
-      "caseStudy": "/code/kosmos-website" 
+    "stack": ["React", "Next.js", "Vercel"],
+    "links": {
+      "site": "",
+      "repo": "",
+      "caseStudy": "/code/kosmos-website"
     },
     "logo": "/images/icons/kosmos_inverted.png"
   },
@@ -65,17 +66,17 @@
     "start": "2022-03",
     "end": "2025-08",
     "location": "Berkeley, CA",
-    "type": "Internship",
-    "summary": "Led design team, increased engagement by 200% (150k+ views).",
+    "type": "Student Organization",
+    "summary": "Led visual direction and grew social media engagement by 200% (150k+ views)",
     "highlights": [
-      "Increased multi-platform content engagement by 200%",
-      "Led promotional/graphic design for social media platforms"
+      "Directed promotional graphics, typography, and branding across Instagram/YouTube/TikTok",
+      "Led production for 40+ YouTube videos and coordinated with videography team"
     ],
-    "stack": ["Adobe Creative Suite", "Graphic Design", "Social Media Marketing"],
-    "links": { 
-      "site": "", 
-      "repo": "", 
-      "caseStudy": "" 
+    "stack": ["Adobe Creative Suite", "Figma", "Social Media Marketing"],
+    "links": {
+      "site": "",
+      "repo": "",
+      "caseStudy": ""
     },
     "logo": "/images/icons/kosmos_inverted.png"
   },
@@ -86,16 +87,16 @@
     "end": "2025-05",
     "location": "Berkeley, CA",
     "type": "Student Organization",
-    "summary": "Website redesign lead, improved UX and performance.",
+    "summary": "Led website redesign with improved UX, navigation, and mobile responsiveness",
     "highlights": [
-      "Redesigned website with modern, user-friendly design",
-      "Optimized site performance and navigation"
+      "Restructured site architecture for clearer event discovery and member resources",
+      "Implemented mobile-first responsive design with faster page loads"
     ],
-    "stack": ["HTML", "JavaScript", "CSS", "Web Design"],
-    "links": { 
-      "site": "", 
-      "repo": "", 
-      "caseStudy": "/code/pasae-website" 
+    "stack": ["HTML", "CSS", "JavaScript", "Web Design"],
+    "links": {
+      "site": "",
+      "repo": "",
+      "caseStudy": "/code/pasae-website"
     },
     "logo": "/images/icons/pasae_inverted.png"
   },
@@ -106,36 +107,36 @@
     "end": "2024-12",
     "location": "Berkeley, CA",
     "type": "Student Organization",
-    "summary": "Directed 60+ dancers, led choreography and production.",
+    "summary": "Directed choreography, blocking, and artistic vision for 60+ dancers",
     "highlights": [
-      "Led group of 60+ dancers in choreography and production",
-      "Oversaw music selection, casting, and performance scheduling"
+      "Led weekly rehearsals and coordinated performance scheduling across 3 showcases",
+      "Managed music selection, formations, and dancer casting decisions"
     ],
-    "stack": ["Leadership", "Choreography", "Event Management"],
-    "links": { 
-      "site": "", 
-      "repo": "", 
-      "caseStudy": "" 
+    "stack": ["Leadership", "Choreography", "Event Production"],
+    "links": {
+      "site": "",
+      "repo": "",
+      "caseStudy": ""
     },
     "logo": "/images/icons/afx_inverted.png"
   },
   {
-    "company": "Dowork Technologies",
-    "role": "Machine Learning Engineer Intern",
+    "company": "Dowork.ai",
+    "role": "ML Engineer Intern",
     "start": "2023-05",
     "end": "2023-09",
     "location": "Remote",
     "type": "Internship",
-    "summary": "Designed evaluation framework for AI agent accuracy across foundation models.",
+    "summary": "Worked on prompt engineering and LLM evaluation for AI agent accuracy",
     "highlights": [
-      "Gained hands-on ML system architecture experience",
-      "Built evaluation framework for AI agent performance analysis"
+      "Tuned temperature, top-p, and max-token settings across AWS SageMaker and Azure ML endpoints",
+      "Shadowed CTO on production ML architecture and inference deployment patterns"
     ],
-    "stack": ["Python", "LLMs", "AI", "Prompt Engineering"],
-    "links": { 
-      "site": "", 
-      "repo": "", 
-      "caseStudy": "" 
+    "stack": ["Python", "LLMs", "AWS SageMaker", "Prompt Engineering"],
+    "links": {
+      "site": "",
+      "repo": "",
+      "caseStudy": ""
     },
     "logo": "/images/icons/dowork.png"
   },
@@ -146,16 +147,16 @@
     "end": "2023-08",
     "location": "Berkeley, CA",
     "type": "Part-time",
-    "summary": "Customer experience operations and process optimization.",
+    "summary": "Warehouse operations and process optimization during peak season",
     "highlights": [
-      "Worked on customer experience operations",
-      "Process optimization and data analysis"
+      "Managed package sorting and delivery logistics during high-volume periods",
+      "Identified bottlenecks in fulfillment workflows"
     ],
-    "stack": ["Operations", "Data Analysis", "Customer Service"],
-    "links": { 
-      "site": "", 
-      "repo": "", 
-      "caseStudy": "" 
+    "stack": ["Operations", "Logistics"],
+    "links": {
+      "site": "",
+      "repo": "",
+      "caseStudy": ""
     },
     "logo": "/images/icons/amazon.png"
   },
@@ -166,16 +167,17 @@
     "end": "2021-07",
     "location": "Berkeley, CA",
     "type": "Internship",
-    "summary": "Modeled solar water heating system using weather data and algorithms.",
+    "summary": "Analyzed solar water heating simulations to optimize system performance",
     "highlights": [
-      "Utilized LBNL weather database for solar water heating modeling",
-      "Analyzed heatmaps to maximize system efficiency"
+      "Built Python scripts to process LBNL weather data and simulation outputs",
+      "Created heatmaps visualizing energy consumption vs. solar fraction tradeoffs",
+      "Presented optimization recommendations to research team"
     ],
-    "stack": ["Python", "Data Analysis", "Anaconda", "Data Science"],
-    "links": { 
-      "site": "", 
-      "repo": "", 
-      "caseStudy": "/code/solar-water-heating" 
+    "stack": ["Python", "Pandas", "Matplotlib", "Data Visualization"],
+    "links": {
+      "site": "",
+      "repo": "",
+      "caseStudy": "/code/solar-water-heating"
     },
     "logo": "/images/icons/lbl.png"
   }
