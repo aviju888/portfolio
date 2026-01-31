@@ -1,12 +1,52 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import { Photo } from '@/lib/types';
-import OptimizedImage from './OptimizedImage';
 import { getBestImageUrl } from '@/lib/imageUtils';
+
+interface PhotoCardProps {
+  photo: Photo;
+  onClick: () => void;
+  priority?: boolean;
+}
+
+function PhotoCard({ photo, onClick, priority = false }: PhotoCardProps) {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const src = getBestImageUrl(photo.optimized, photo.srcThumb, 'thumb_800');
+
+  return (
+    <div
+      onClick={onClick}
+      className="cursor-pointer group break-inside-avoid mb-4 md:mb-6"
+    >
+      <div className="relative w-full overflow-hidden rounded-lg shadow-md group-hover:shadow-xl transition-shadow duration-300">
+        {/* Blur placeholder */}
+        {photo.blurDataURL && !isLoaded && (
+          <div
+            className="absolute inset-0 scale-110 blur-lg"
+            style={{
+              backgroundImage: `url(${photo.blurDataURL})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          />
+        )}
+        {/* Natural aspect ratio image */}
+        <img
+          src={src}
+          alt={photo.alt}
+          className={`w-full h-auto transition-all duration-500 group-hover:scale-105 ${
+            isLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          onLoad={() => setIsLoaded(true)}
+          loading={priority ? 'eager' : 'lazy'}
+        />
+      </div>
+    </div>
+  );
+}
 
 interface PhotoGalleryProps {
   photos: Photo[];
@@ -16,8 +56,11 @@ export default function PhotoGallery({ photos }: PhotoGalleryProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
+  // Only show visible photos
+  const visiblePhotos = photos.filter(p => p.visible !== false);
+
   // Use optimized full-size images for lightbox if available
-  const slides = photos.map(photo => ({
+  const slides = visiblePhotos.map(photo => ({
     src: getBestImageUrl(photo.optimized, photo.srcFull, 'full_1920'),
     alt: photo.alt,
     description: photo.description,
@@ -30,28 +73,18 @@ export default function PhotoGallery({ photos }: PhotoGalleryProps) {
 
   return (
     <>
-      {/* Photos Grid */}
-      <div className="columns-2 md:columns-3 gap-4 md:gap-6">
-        {photos.map((photo, index) => (
-          <div
+      {/* Pinterest-style masonry grid */}
+      <div className="columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6">
+        {visiblePhotos.map((photo, index) => (
+          <PhotoCard
             key={photo.id}
+            photo={photo}
             onClick={() => openLightbox(index)}
-            className="cursor-pointer group break-inside-avoid mb-4 md:mb-6"
-          >
-            <div className="w-full overflow-hidden rounded-lg">
-              <OptimizedImage
-                optimized={photo.optimized}
-                fallbackSrc={photo.srcThumb}
-                alt={photo.alt}
-                className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
-                loading="lazy"
-                type="thumbnail"
-              />
-            </div>
-          </div>
+            priority={index < 4}
+          />
         ))}
       </div>
-      
+
       {/* Lightbox */}
       <Lightbox
         open={lightboxOpen}

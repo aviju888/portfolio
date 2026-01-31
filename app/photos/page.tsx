@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import { photos } from '@/lib/data';
@@ -48,36 +47,27 @@ function PhotoCard({ photo, onClick, priority = false }: PhotoCardProps) {
       className="cursor-pointer group break-inside-avoid mb-4"
     >
       <div className="relative w-full overflow-hidden rounded-xl shadow-md group-hover:shadow-xl transition-shadow duration-300">
-        <div className={`relative ${photo.orientation === 'portrait' ? 'aspect-[3/4]' : 'aspect-[4/3]'}`}>
-          {/* Blur placeholder background */}
-          {photo.blurDataURL && !isLoaded && (
-            <div
-              className="absolute inset-0 scale-110 blur-lg"
-              style={{
-                backgroundImage: `url(${photo.blurDataURL})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }}
-            />
-          )}
-          <Image
-            src={src}
-            alt={photo.alt}
-            fill
-            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            className={`object-cover transition-all duration-500 group-hover:scale-105 ${
-              isLoaded ? 'opacity-100' : 'opacity-0'
-            }`}
-            onLoad={() => setIsLoaded(true)}
-            priority={priority}
+        {/* Blur placeholder background */}
+        {photo.blurDataURL && !isLoaded && (
+          <div
+            className="absolute inset-0 scale-110 blur-lg"
+            style={{
+              backgroundImage: `url(${photo.blurDataURL})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
           />
-        </div>
-      </div>
-      <div className="mt-2 px-1">
-        <h4 className="font-medium text-gray-900 text-sm group-hover:text-gray-700 transition-colors truncate">
-          {photo.title}
-        </h4>
-        <p className="text-xs text-gray-500">{photo.dateTaken}</p>
+        )}
+        {/* Pinterest-style: natural aspect ratio, no forced dimensions */}
+        <img
+          src={src}
+          alt={photo.alt}
+          className={`w-full h-auto object-cover transition-all duration-500 group-hover:scale-105 ${
+            isLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          onLoad={() => setIsLoaded(true)}
+          loading={priority ? 'eager' : 'lazy'}
+        />
       </div>
     </div>
   );
@@ -87,9 +77,10 @@ export default function PhotosPage() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
-  const allPhotos = photos.photos;
+  // Only show visible photos
+  const visiblePhotos = photos.photos.filter(p => p.visible !== false);
 
-  const slides = allPhotos.map(photo => ({
+  const slides = visiblePhotos.map(photo => ({
     src: getFullSrc(photo),
     alt: photo.alt,
   }));
@@ -105,9 +96,9 @@ export default function PhotosPage() {
         title="Photos"
         description="Graduation portraits, dance performances, travel, and more"
       >
-        {/* Photo Grid - Masonry */}
+        {/* Pinterest-style masonry grid */}
         <div className="columns-2 md:columns-3 lg:columns-4 gap-4">
-          {allPhotos.map((photo, index) => (
+          {visiblePhotos.map((photo, index) => (
             <PhotoCard
               key={photo.id}
               photo={photo}
@@ -117,7 +108,7 @@ export default function PhotosPage() {
           ))}
         </div>
 
-        {allPhotos.length === 0 && (
+        {visiblePhotos.length === 0 && (
           <div className="text-center py-16">
             <p className="text-gray-500">No photos yet.</p>
           </div>
