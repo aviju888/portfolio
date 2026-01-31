@@ -65,6 +65,7 @@ export interface Photo {
   dateTaken: string;
   rank: number;
   optimized?: OptimizedImage;
+  blurDataURL?: string;
 }
 
 export interface Album {

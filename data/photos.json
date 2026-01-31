@@ -9,9 +9,9 @@
       "alt": "Grad-02",
       "description": "Graduation portrait",
       "orientation": "portrait",
-      "featured": false,
+      "featured": true,
       "dateTaken": "Spring 2024",
-      "rank": 1,
+      "rank": 4,
       "optimized": {
         "avif": {
           "thumb_400": "/images/gallery-optimized/avif/gracegrad1-400w.avif",
@@ -31,7 +31,8 @@
           "full_1200": "/images/gallery-optimized/jpeg/gracegrad1-1200w.jpg",
           "full_1920": "/images/gallery-optimized/jpeg/gracegrad1-1920w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAYAAAD68A/GAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA2ElEQVR4nBXLPUvDQACA4fz0IKZpTJNcPu4u5kPspY0Q1BRBqdROIkgQpNiti9C6OIqg2ys++2OZ5Za0WeLENW5ao5oF3WpgvdkzvH/xevhh8/GLVfdPeLrlyM/w4gJVzTlrF3R3jzy87Bh2n7wdvrHkeY/tZdijAD+SSFUikhxZGObX99ysB1bPWyyhDLYrOB4L/CBFCIUz8nHcgDirqKcd7eUtVqqnTKKcMNKEYYaIFOOT/5QRpyUqN+hihlXWF+hTg5IVidDEkWISSJKsoqxaTHOFmfX8AXvQrc6CrG7xAAAAAElFTkSuQmCC"
     },
     {
       "id": "monica-grad-001",
@@ -58,7 +59,8 @@
           "thumb_400": "/images/gallery-optimized/jpeg/monicagrad1-400w.jpg",
           "thumb_800": "/images/gallery-optimized/jpeg/monicagrad1-800w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAKCAYAAAB4zEQNAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA8klEQVR4nAXB2VKCUACA4XPbbemoaBq4oiFuBxHcgGO4gOLo1PQIltX7X/19nxilvxgy40mXPDwa5OsuDfeCPP0hJsk3HWdHVe9SyuV5afTpugnO8Y6YpjeGsxjbbGNVc9g9i6F/wD1+IeanG6FKiL0xu0GNYCqZBymL7IYIL3f2hyvZJiDz+mzXEVH8TnT9QczUB5FK2KuYcxSyVSnB5oIffyJM22fsrJn7CrXe4nlvjGSANV4hipqOablMFwnL6Io1WlEzepSfm4iCZtDqOgzkBnsSUmvY5Es6xXITUay0qXckpr2k9eqj6RY5rUmh0uEfgBlzeQFCYoMAAAAASUVORK5CYII="
     },
     {
       "id": "grace-grad-002",
@@ -91,7 +93,8 @@
           "full_1200": "/images/gallery-optimized/jpeg/gracegrad2-1200w.jpg",
           "full_1920": "/images/gallery-optimized/jpeg/gracegrad2-1920w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAKAAcDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUG/8QAHhAAAgIBBQEAAAAAAAAAAAAAAQIAAwQGERIUIXH/xAAUAQEAAAAAAAAAAAAAAAAAAAAE/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECAwQFQf/aAAwDAQACEQMRAD8AsZGrcVaufQuVXPgWJnLnYOAGO32IJbu+PEGePBn/2Q=="
     },
     {
       "id": "monica-grad-002",
@@ -118,7 +121,8 @@
           "thumb_400": "/images/gallery-optimized/jpeg/monicagrad2-400w.jpg",
           "thumb_800": "/images/gallery-optimized/jpeg/monicagrad2-800w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAKCAYAAAB4zEQNAAAACXBIWXMAABYlAAAWJQFJUiTwAAABAUlEQVR4nAXBW0vCYACA4e8ydXMNtCzESZlSBh4ymjNdGx42t+VpnlAqo6AwAqkuu+x3vz2PKLcH6MGa3uM33dUH/dmK+9mCh7cdwpq+EGy+mH/+Eb7/0l884U6WhJstouktGa63zF9/GD3vaPljGh0Hyx8hdMvH7g2x3TFGN6BomFRNm/YwRBwea2SzOYqVGiWjScW0uW6ZWK6DkGQVRU2QyV9wqTeoOx5mMKA7XSD2IjJRSSGt5ajd1HFch8Dv4XkdRCQqE4vJpBJJSoUcbb1K2DFYObeISCyOJMVJqSrF9BF356f45QKTqzwiKu0TkxSSisLJQYJSJo2e02ieafwDW0F1CmFT0zUAAAAASUVORK5CYII="
     },
     {
       "id": "monica-grad-003",
@@ -145,7 +149,8 @@
           "thumb_400": "/images/gallery-optimized/jpeg/monicagrad3-400w.jpg",
           "thumb_800": "/images/gallery-optimized/jpeg/monicagrad3-800w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAKCAYAAACXDi8zAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA30lEQVR4nAXBW0vCYACA4e++fe7sNseW0+bMxQ6mCaGQRUjUVVSrWWAQ0UVXyfwFEUQ/+u15hOOVOJ0C20mRms+edFCki1D1EN3qoZldpOahtNpI1UMo0kRpWUjVQtcdNM1F1TyEbYcYhotpOIR+jygYsO8fIKJohB9E9PsJs/Epi+kZ03yGSIuSYZYyXy65u13zdL9hdXGFSE9SynlBtXlh23yz2/3yWL8jkklMucioXp/5an7YNn88rD8RwWGH4XHM+fUlVf1GVX+wuqkQ7a5FkPgM8phsUnA0zknylH+2U12oaZYYTQAAAABJRU5ErkJggg=="
     },
     {
       "id": "unhinged-001",
@@ -156,9 +161,9 @@
       "alt": "AFX-01",
       "description": "AFX Dance performance",
       "orientation": "landscape",
-      "featured": false,
+      "featured": true,
       "dateTaken": "Spring 2024",
-      "rank": 6,
+      "rank": 5,
       "optimized": {
         "avif": {
           "thumb_400": "/images/gallery-optimized/avif/unhinged1-400w.avif",
@@ -181,7 +186,8 @@
           "full_1920": "/images/gallery-optimized/jpeg/unhinged1-1920w.jpg",
           "full_2400": "/images/gallery-optimized/jpeg/unhinged1-2400w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAKAAgDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAQI/8QAHhAAAQQCAwEAAAAAAAAAAAAAAQACAwQREgUTIUH/xAAUAQEAAAAAAAAAAAAAAAAAAAAD/8QAFxEBAAMAAAAAAAAAAAAAAAAAAQACIf/aAAwDAQACEQMRAD8AzryVOJlSKas4O281+opIiexoycIhqpjHsC5P/9k="
     },
     {
       "id": "kosmos-001",
@@ -208,7 +214,8 @@
           "thumb_400": "/images/gallery-optimized/jpeg/kosmos1-400w.jpg",
           "thumb_800": "/images/gallery-optimized/jpeg/kosmos1-800w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAKCAYAAAB4zEQNAAAACXBIWXMAABYlAAAWJQFJUiTwAAABC0lEQVR4nB3LT0vCYADA4fdDtOk7J1qSRoYbzrm9s4n2x4XToLwEZSWVHaJDBFoYVBZ46dCtbh2DDn2IPkZf5hf03B/hrLgEtqJZWaXl1Ym8Om3VYEs1EV27SrvsE9lVYsenV2vQjzocxruIYUVxokKGnuLSV4xaEdPTc14mD4gnx+XGDxi5LmPH4TYMmfWPeZ/cIz6Ux1tN8Vqt8GiVuLAsrjYiZocDxM9Bl88o5NkuMsjM05Ama2aGnVwe8Ts94ntvnXGpQJw0sRIGViJFIE3E13WPu05AnF+gqEmyuqSgG5STJuJs02HbXqKcTpOdS5LS5P9syTRiUZcs6wYFTZLTJKYmCRIm+0aGP902ezyVmbJBAAAAAElFTkSuQmCC"
     },
     {
       "id": "kosmos-002",
@@ -235,7 +242,8 @@
           "thumb_400": "/images/gallery-optimized/jpeg/kosmos2-400w.jpg",
           "thumb_800": "/images/gallery-optimized/jpeg/kosmos2-800w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAKCAYAAAB4zEQNAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA9klEQVR4nB3Ky07CQABA0VnwmLYU2mHKsyVgW6SKaBWs0ECwGBNcuHEhAQ0L/f9fuCae9RFVaSANE8O0MAwTKSXlcoVSqYyw7AaW7eC1ugwGI4K+j9Nw/oMw64paQzOOE4pNQbHeMA5jpDQQQRjRCYbM0wXnzxM/x2/W+QZHacTdYsb1bMr6acX58MXv8cS+2DEZXiCW+ZwseyR7WLDbvvC6feZtuWI/vUGktynp7J5JnBDFV4SjiDwe85EkiMC/xO9H6GYXV7Voupqs1+UwDBBeJ8RRfYyaom67tB1F1mry3tOIqt1G2h4VS+HWFaH22PU8Dr7mDx6WYw3MObP9AAAAAElFTkSuQmCC"
     },
     {
       "id": "kosmos-003",
@@ -262,7 +270,8 @@
           "thumb_400": "/images/gallery-optimized/jpeg/kosmos3-400w.jpg",
           "thumb_800": "/images/gallery-optimized/jpeg/kosmos3-800w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAKCAYAAAB4zEQNAAAACXBIWXMAABYlAAAWJQFJUiTwAAABIElEQVR4nAXBuUtCcQDA8d8/IxZEdugrUasXFV5olyIdopZpBxQpNJhdGLTV4PgIJKEyyAhqaMktgpCSB0GD2quhlg5p//b5CEXJEo1NY7Q002nTIclNdFj1tJp0iPTGKr6AmzaTHqNVT7fchHnAgCQbEZHoBHaXjCS10NffjjxooNfRgcUhIULxEE6vnSHZzLjLit9rwTHcRY9HQoxO+nF4nUz5PKwvzbCdjDMXG8MdsCF8wTEi82F2t1IUcwrXJ0cc7O+wkAgiwrERMnspiucFnp9U1PIjZ4U8m5kkIrE2S/5YQVUr/Hz9or1qlEo3HOayiFR6hfOLU2q1Kj/fDer1Knf3txQvDxHLy4sUCqdo2huNxh8fn++8VMs8VK74BxE6qvFAoLJvAAAAAElFTkSuQmCC"
     },
     {
       "id": "kosmos-004",
@@ -273,9 +282,9 @@
       "alt": "KOSMOS Performance 4",
       "description": "KOSMOS dance performance",
       "orientation": "landscape",
-      "featured": false,
+      "featured": true,
       "dateTaken": "Spring 2024",
-      "rank": 10,
+      "rank": 6,
       "optimized": {
         "avif": {
           "thumb_400": "/images/gallery-optimized/avif/kosmos4-400w.avif",
@@ -298,7 +307,8 @@
           "full_1920": "/images/gallery-optimized/jpeg/kosmos4-1920w.jpg",
           "full_2400": "/images/gallery-optimized/jpeg/kosmos4-2400w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAHCAYAAAAxrNxjAAAACXBIWXMAABYlAAAWJQFJUiTwAAABGklEQVR4nB3IyUoCAQCA4XkIm9KD0IxJaeYl1JFoeQIPpQQdLLBDZSVoQZfCQsRbGBFhEIFmSgsRoS0u2LijQkQe6l3+oO/4CUNakUGtyICowWAyY7U5sdoVJKOEVqdBqxMRRQ3CqGkMg3EESZZwzszhci/icnuwK3Zkgx5J0iPLwwiTNgc2h5Op6Vk8S178gR3820HmF9woih3LhAXTuBlhbX2Dza0Aod099g+OiERiRKMxwuFDgqEgvlUfyytehLPTE64uL8hm0mRv0qSSSTLXKe5us/+XSJwTjx8jvOUfqRRzNKtFmrUSjWqZVr1Ct12l21apqUVKhRzC00Oa9/w9TfWFr57Kz3eH336H/meDXqtM/eOVUuGZP5ffpj8hPXWLAAAAAElFTkSuQmCC"
     },
     {
       "id": "kosmos-005",
@@ -325,7 +335,8 @@
           "thumb_400": "/images/gallery-optimized/jpeg/kosmos5-400w.jpg",
           "thumb_800": "/images/gallery-optimized/jpeg/kosmos5-800w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAKCAYAAACXDi8zAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA7klEQVR4nAXBTUvCYADA8ef7dKlTQS9EIEbiIaqJbpjPnMvanmlMqL0QTZpSYMkO4TpEh+qQER2COgYVfqx/v58oFVc4sut0XYt2a5/1tSUW5ucQ2nYBXzUJfQfv0GSruMHq8iLC2NvkREli36HnttB2ypRLBYR3oKOsGm1poGyJJQ3qxi5ikAQ4doO6XqN33CE87dH1bMTD/R2ectEqVYIw4upySHIWIN7fXomjiGpVJ4xibq5HZOMR4uvzg0F6gaZVUKpDmqbkk1vE7883WTZG1w1M0yJJ+jw/PSJmsz/yfIKUJg3Z5DzpM52+8A8uHIvi9OW7RAAAAABJRU5ErkJggg=="
     },
     {
       "id": "kosmos-006",
@@ -352,7 +363,8 @@
           "thumb_400": "/images/gallery-optimized/jpeg/kosmos6-400w.jpg",
           "thumb_800": "/images/gallery-optimized/jpeg/kosmos6-800w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAKCAYAAAB4zEQNAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA9klEQVR4nAXB21KCUABA0fPTvTVND2lDymSiAmJqlEVRKo1pJWqg3L1MKf7Obi2RrDLMjoOuvWJZE+L0l3R3xM9yROTHqNUOpYJC1+gRhmvi7ZF5nCMCL8SoNJHPrmjftFjMIsLsiJccENEq5qn9SK3YoF56YPAW4AU5290BsVhk2L1PlHKf4sU7Witk9P3Hfp8jBk6C3pxyXhhzcjpGqq54GWTstntE9z5E1eZI8hRJGlFvuPRtj3W0Qei3Pqrxw6U8oSz3URQHx3ZJlylCM1zuzBkVZYhae0av20yGLqmXIDT9A9P8oixbVK571BSL6dgjCzb8A6XT1Md56FgLAAAAAElFTkSuQmCC"
     },
     {
       "id": "unhinged-002",
@@ -379,7 +391,8 @@
           "thumb_400": "/images/gallery-optimized/jpeg/unhinged2-400w.jpg",
           "thumb_800": "/images/gallery-optimized/jpeg/unhinged2-800w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAKCAYAAAB4zEQNAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA1ElEQVR4nFWOv6tGcBjFvysiyu8f9x3EJHqVhE0sBlF6bwYLmawmo3/83B63bt3hdJ7z6dRzmCAI4HkeHMf9c+JMlmWIovgHSJQlSQIzTRO6roPcsiw4jgPDMB4x13Xh+z7e7zeyLEMcxyBGRUZNAl3XYRgGVFUF27ahaRpYEARo2xbbtmFZFhRFAVVVf3/WdY1933GeJ74/H0RRBEVRHrF5nnFdF+77Bt1JkjxjaCDr+x7ruuI4DkzThDzP8fV6PaNYmqYoyxJUGscRTdMgDEN4nocfGElq1Zb8i0IAAAAASUVORK5CYII="
     },
     {
       "id": "unhinged-003",
@@ -406,7 +419,8 @@
           "thumb_400": "/images/gallery-optimized/jpeg/unhinged3-400w.jpg",
           "thumb_800": "/images/gallery-optimized/jpeg/unhinged3-800w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAKCAYAAAB4zEQNAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA6ElEQVR4nCWOu6qDUBRETynEoIXvZxBEJCm0FUEstBH0FyxugqYQ7KxFiZ1NbPRj5+JJsWE2w8wacr1ewbIsGIaBpmnwPA/3+x2qqoLwPA+O43C5XCAIAmzbhuu6sCwLRJIknHcaoihCURToug7DMEBOYZomHMehidvtBlVRIMsyyFnj+z6iKEKapgjDkCZPHAmCAFmWoa5rvF4vVFWFx+NBMaQsS7Rti3meMU0T3u83kiT5Deq6Dp/PB8dx4Pv9YhgGFEVB+aTveyzLgn3fsa4rzj/P85/ZNA3GccS2bbTh+fdEHMd09T8y1nimx01lOQAAAABJRU5ErkJggg=="
     },
     {
       "id": "afx-camp-001",
@@ -433,7 +447,8 @@
           "thumb_400": "/images/gallery-optimized/jpeg/afxdancecamp1-400w.jpg",
           "thumb_800": "/images/gallery-optimized/jpeg/afxdancecamp1-800w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAKCAYAAAB4zEQNAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA+UlEQVR4nAXBTU+CcADA4f9XqVkrlxpqDQQRReT9ZSkKNMSog4fWMpunLnnp0qVOfdtfzyMG8Rk9r0ln1kZJTOwyJXqqcNcZQg4bXNuXtKwO/UBDS22MPERf+oj2+JSmfo407aFFOqO5iRwbdP0hotE9oaU0Mf0h8yJkuU6w5jayqyEupAtu1D5x4lCWKfVjQbKKGLoGoqtdoU5kbM8iCAOy+wWrKiYpp4hBYKI4M24nNpJiojse7iohqlOEkT2gRBnSOKKjeqjuHX5Zk7/uEKPig0lxwMpfcPJnompPuv2kfPtBaMsj7ubIYnuk3H1R7b/ZvP9SH/74By94hENI0iC7AAAAAElFTkSuQmCC"
     },
     {
       "id": "afx-camp-002",
@@ -460,7 +475,8 @@
           "thumb_400": "/images/gallery-optimized/jpeg/afxdancecamp2-400w.jpg",
           "thumb_800": "/images/gallery-optimized/jpeg/afxdancecamp2-800w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAKCAYAAAB4zEQNAAAACXBIWXMAABYlAAAWJQFJUiTwAAABDElEQVR4nAXB3UrCYACA4e/euoAOjSg1BhaVYEPQMq3Zhjrzd87hz6xMDTJQMpyaEmQaSNFBB3XWpbw9j8gNHmmt3uh9v9IYX6E1NGTdz4HmRVxclzH6derDEkbnnFQ1iGoeErckxFkphFYJoFk7qPktkgUv+aqPQtOLUM19TvRtZGWdUHyDuC6hZX3EMi5EJO1Bjm7iD7pQEjLpYpSkeUwsJyFOkx6OQm5299xEFYVLy8LoNDC6JYRxE6ZQiZHKJrDsNrXulOZsRWu+Qrx82owWTbrOA7f9CbX+B1XnF3P0h5j/OIy/ZgwWS+6cd4qdOWFjiqQ6iN5yhD2cULl/Jmc/EdHbuAJl1rwZ/gH+wr4DXuueIAAAAABJRU5ErkJggg=="
     },
     {
       "id": "afx-camp-003",
@@ -487,7 +503,8 @@
           "thumb_400": "/images/gallery-optimized/jpeg/afxdancecamp3-400w.jpg",
           "thumb_800": "/images/gallery-optimized/jpeg/afxdancecamp3-800w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAKCAYAAAB4zEQNAAAACXBIWXMAABYlAAAWJQFJUiTwAAABC0lEQVR4nAXBW0vCYACA4e/f1EV6E3UjGJ0MSUtdZDqnpSZTQ7Y005TykE63aViYKIJFUEEQeNufe3sesa8eIBV9yBU/6eYpuX6S22md2mKIOC6nOSlHCeshpFwApRSjYOo0Fh2E9lInb+Q5v47hDfs5lCVSdxk6bw3EZGlhfxjojRt8EQWXN0BIvUQ364jPP4P5ckbJMDlK6jh3gmzLKsGrImL+Y/L89U72YYjnosLqXpTNSBl3/B7xNOnTHr2i6B224lUckoZbtfFqY8Rg0KdlWCS0Ji6lxprcxq3NCbZ+EbbZ47FrolYtdjM9nIkBG9kZnso3YmhbWPaIcneKrzDCEbNZObNYT435B9jiobPJNIM5AAAAAElFTkSuQmCC"
     },
     {
       "id": "ctrl-001",
@@ -498,9 +515,9 @@
       "alt": "CTRL Performance 1",
       "description": "CTRL dance performance",
       "orientation": "landscape",
-      "featured": false,
+      "featured": true,
       "dateTaken": "Spring 2024",
-      "rank": 18,
+      "rank": 7,
       "optimized": {
         "avif": {
           "thumb_400": "/images/gallery-optimized/avif/ctrl1-400w.avif",
@@ -523,7 +540,8 @@
           "full_1920": "/images/gallery-optimized/jpeg/ctrl1-1920w.jpg",
           "full_2400": "/images/gallery-optimized/jpeg/ctrl1-2400w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAKAAcDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAUH/8QAIRAAAQMDBAMAAAAAAAAAAAAAAwABAgQGEQUWIVEjQYH/xAAVAQEBAAAAAAAAAAAAAAAAAAACA//EABkRAAMAAwAAAAAAAAAAAAAAAAABAgMEIf/aAAwDAQACEQMRAD8AlazfoYElW1opyDJ8CD23aLPb6d9wkHnxxbiPpviKV4pTBW3U8SP/2Q=="
     },
     {
       "id": "ctrl-002",
@@ -550,7 +568,8 @@
           "thumb_400": "/images/gallery-optimized/jpeg/ctrl2-400w.jpg",
           "thumb_800": "/images/gallery-optimized/jpeg/ctrl2-800w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAKCAYAAAB4zEQNAAAACXBIWXMAABYlAAAWJQFJUiTwAAABAklEQVR4nB3JW0vCYACA4e8vFV0JXQghZpZSq+ZpY33T2UozlifQYZozNU+tkRhWeOVf6Ne9URfP1SNaHY9qs8ndvY1TM2m2ywynA4LVJ8J78emN+vS8KqPnIrOJg/8+xP/4QnjDMX2vzXTgsJ6X+X5rsAr6LIIFotNxcWsVuhWTWV0yb1i8uhUmj3VEyc5jXirI4yMaeppuwWDZdtiMXYSqnKHEopxHDihlVJ5ui2ynA342y79UOT1JoiSSWFqOum3he1226yUipWTQUjpSM7CliS0NnJtrWrUHxJVuYRo2BWmjZzUS8TiRcPifyGYkWs5Cy+VRL9LEoofsh0Ls7ezyC6T0oU7GdDohAAAAAElFTkSuQmCC"
     },
     {
       "id": "ctrl-003",
@@ -577,7 +596,8 @@
           "thumb_400": "/images/gallery-optimized/jpeg/ctrl3-400w.jpg",
           "thumb_800": "/images/gallery-optimized/jpeg/ctrl3-800w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAKCAYAAAB4zEQNAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA/UlEQVR4nAXBW0vCYACA4e9fBt11IZI3gtSautJsaJnHkOkOuTk3FS1sY4nLtKFk4J96ex6x3STsvg/skyPH3xOH/ZHk50C83iKm7gTHsPGtIWOtz1wbEI5nrJcRwtZ0utUaTSVPJZOilU7jVet8Oj7CN1+x2k10VaGeuaB1foZ9UyDs6Yip7RBOxkSuwbxbpX+ZYijJjEoqovX0yJvvslnO2C5cvIc7/Nojg9sKQs7lGJkDvoIFf3HAyjGJHAer0UFcZbPovS5xsOC0W5FEH8RBiDeaIhS5QKfxzMwxeHdNPMtA1wzaLzpCyRcpFxUaahm1cE0pLyNJRST5nn/EPMM/Wt8WnQAAAABJRU5ErkJggg=="
     },
     {
       "id": "ctrl-004",
@@ -604,7 +624,8 @@
           "thumb_400": "/images/gallery-optimized/jpeg/ctrl4-400w.jpg",
           "thumb_800": "/images/gallery-optimized/jpeg/ctrl4-800w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAKCAYAAAB4zEQNAAAACXBIWXMAABYlAAAWJQFJUiTwAAABFUlEQVR4nBXMzS+CcQDA8d/BxcU1pgNNyzrUYpViXore9FSop+gp1Xp6lSFWy1jpYmOLumjD5uClYwd/39d8/oCP+FWKjIvn/Nw90O19kOmPkJ+H5Ib3iHHpklG+xuCkTuGsy06jj6PRw9VsI95KVzxGU9TD+wT3spgzt2iTHRaOWojOTZd8QkGRJKTgAa7DCjpPBp1bQVwUaoTcXuRAkEQsQUQpMucIoXHGEdf5KlGXFzWRolyqcpyvoF3eZnIpghg025QjMlU5iZpTiaUzTNs2mbDvIr6eXmimVbK+ECFfgHW/n1nrClOOLcTo9ZP/WrKtYtYbMFpMGJ1WTAEX4vt9REs9xWOxMa+ZYdGgZ23DTjju5w80+5DCk8T62AAAAABJRU5ErkJggg=="
     },
     {
       "id": "glamity-001",
@@ -631,7 +652,8 @@
           "thumb_400": "/images/gallery-optimized/jpeg/glamity1-400w.jpg",
           "thumb_800": "/images/gallery-optimized/jpeg/glamity1-800w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAKCAYAAAB4zEQNAAAACXBIWXMAABYlAAAWJQFJUiTwAAABC0lEQVR4nAXBaUvCcADA4f83yA4Jr0g8St3Usi2d05YOm9cwCamQDoowe1EURkVip0JQYJHv+6S/nkcYxgDTeMXMv2HoT+QyfXT1nmyqhygVRpSNIZb+SH69i66ek1OuKSgviHppjG2MsNM3aFKDTKxJVr6gkvpF7Fe+aG7csqudsJWwKCVtNuUOteQP4sD6oKldsqOeUV1p01Da1JKn2FIf0Sp+Ul57wJTvMKQryquH1OMtqstHCDM7RpO/SfgnRLzPpAJ7GKECxYCFUNR3pMgEv/sPp2OAz1lH8iRRFtKIeOKYcKiHzz1kbrqLa7ZIwLVEzBtDRKImwWALj6vDzNQ2TkeaxXk/UW+Yf3IQf2PysC9rAAAAAElFTkSuQmCC"
     },
     {
       "id": "glamity-002",
@@ -658,7 +680,8 @@
           "thumb_400": "/images/gallery-optimized/jpeg/glamity2-400w.jpg",
           "thumb_800": "/images/gallery-optimized/jpeg/glamity2-800w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAKCAYAAAB4zEQNAAAACXBIWXMAABYlAAAWJQFJUiTwAAABDElEQVR4nAXBTUvCcADA4f9nCEKKRBN8W1uZsuF0S93cnNPJbIoeIoIIO0UQFAirQyEFBl1DolNdoj5A9N1+PY+wvDlO95ZOJ8ZuXWGZMxr1MU3DR3R7C/zeAwNvgWfcYKmnmKqPbVqIqP/KsLdk0nlhoM6xd04wdhu0jRpi6nwSWktC8wlbuqC6PUHN61i6iRjVf+hqz7jlmFruhHLKp5LTaGkNxKH+i1da0ZLuqWbPUDN9akWTttZGBPU/gtI3QfGNSF4yUM4J9kNczUE0q1848gdu5p1pYcVYvibcG6MrOqIo3aGkYyrJmLDwyFC+xC1E5FMKYnPriMT6iORGxEF+hiMdo6d9EmtZ/gHoKoNOlbMvQwAAAABJRU5ErkJggg=="
     },
     {
       "id": "glamity-003",
@@ -685,7 +708,8 @@
           "thumb_400": "/images/gallery-optimized/jpeg/glamity3-400w.jpg",
           "thumb_800": "/images/gallery-optimized/jpeg/glamity3-800w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAKCAYAAAB4zEQNAAAACXBIWXMAABYlAAAWJQFJUiTwAAABC0lEQVR4nAXBTUvCcADA4f9H6FAk9CYhWeZS9745N5k1FHUapLKkVw8FRRevRRFlnYKKgjwVdOqFCurz/XoeobnHWPk+htpDzUbI2QhVbqDJLiLvXRN451SsA3y1hSVX0BUfQ7MRgf9E279lvXBEQ69RVE0s3cAydUS08sFO6ZWee0pkdwkdj+WCg2OriG33l03znXZuQEs5ZM1ZpV6s4uU1xIb2RyfzQ5i6p6Oc0XG2aHpNXFtBhNI34eIXtYUhrdwVdWWXklbDUBVEkPmkvPRGOT0kSF1gze2Tmw+R0hbCyzzjSi+YyQek6UtmY33iU10SiRLClu5QUo8k4zdMjA0YHTkhNr7H5EyVf9lhg8TZy4UYAAAAAElFTkSuQmCC"
     },
     {
       "id": "canada-001",
@@ -715,7 +739,8 @@
           "thumb_800": "/images/gallery-optimized/jpeg/canada1-800w.jpg",
           "full_1200": "/images/gallery-optimized/jpeg/canada1-1200w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAABYlAAAWJQFJUiTwAAABYUlEQVR4nCWOPUsCAQCG70eE3J13dh9md5qHoqUcQURfkFLUGn2MESFBbZXVFs1hEEHf/8BaCgoMcy5qqElqc+hyEJye6Bye7XkfXsEwwmQyLsXiLrVajXa7jef98vb2zsvLKx8fn7RaLYR/MZt12dnZo1J54ufH4+vrm4eHR+7u7nl+rtFsNhF03SSdGqBQWOP4+ISb8i1XV9fs7x9QKh1RLt/geR6CrplEo3EmJ/PMzy+xvLzC3NwCudwUq6sFLs4vaTQanWKkx8JxEjhO0h8ZRgRD7yGfn+bwsES9Xu98DJsRNM1EVTVEMYgkqUhikHQ6w9bmNtVqtSNavVFsuw/TjCBLCoGA5KPrYRYXlzg9PUPQNAPLihGPJ/yBqnb7VVlWfcbGJlhf30AIhTT6Yg6uO0g242JbMYKyiqKEEEWZVKqfmZlZBFUJ4cQTjI6M+ySTKWRZ8enqCmDbMYaGhvkDsG7OKIV476gAAAAASUVORK5CYII="
     },
     {
       "id": "canada-002",
@@ -745,7 +770,8 @@
           "thumb_800": "/images/gallery-optimized/jpeg/canada2-800w.jpg",
           "full_1200": "/images/gallery-optimized/jpeg/canada2-1200w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAHCAYAAAAxrNxjAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA6ElEQVR4nB3Ky07CQABA0dmBZTp9DNN2+hIoLSoBSoVAFCRIlJWJccP/f8k1uji7I/QkY1hbTJMwrCKCwhAUGSpOkTqmLyV910HYSUr5WDJpG6btA1k9wuQ5ysTI0OB4ioGvEOPZlFm7oDse2J1OzNuWNC9R2jDwNW4Q4BuDeOq2rPYHtm8XXs8fLNfPFOUIFWoc5RNEluS+QqyPV7rjldX+zHy9Y1w1xDZD+gF3roe2BUW9QGwuP3SnL+rlHltO8bRBhUMc5dGXLqEtyOo5Yvd5Y/P+TdO+ECY5vYFLT7r/6Y9nEqJ8zC/jrF+WbWVkjgAAAABJRU5ErkJggg=="
     },
     {
       "id": "canada-003",
@@ -775,7 +801,8 @@
           "thumb_800": "/images/gallery-optimized/jpeg/canada3-800w.jpg",
           "full_1200": "/images/gallery-optimized/jpeg/canada3-1200w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAHCAYAAAAxrNxjAAAACXBIWXMAABYlAAAWJQFJUiTwAAABI0lEQVR4nAXBzytDAQDA8fdfbM1bW2/MLFNLmIlWy48aW5siwmFsh10UJ0XEGnkHaxKFC2q11Eq2bBEHB+1CI43QLmaoLVIOU1+fj3B7lyFxHCd+GCOVTPBWeKVS+eP755fy1w/vH58UiwWE8/QBm5Egayvz7O1skX/KUS6VuM7mOL3IcJQ84ySVRJCDASbGXAS8Q0TkEC8PWfLPj0SjMRaDMrMLIcLrYYRBTwd2WwsDbhdheZn7mysyl2mW5mZwOhz0Ot2M+/wIpgY9eoMBa5uN6alJovvb7G6s4hvpx9pYT6vFQo+jD0EjaRA1WqTqOrq77Pi9w/hHPXS2N2HUiegkCV2NEUGhVKBQKlFViRhrdTSbjVjMBkx6LZJaiVoUUYkS/83dp1fYRv3zAAAAAElFTkSuQmCC"
     },
     {
       "id": "sf-001",
@@ -802,7 +829,8 @@
           "thumb_400": "/images/gallery-optimized/jpeg/sf1-400w.jpg",
           "thumb_800": "/images/gallery-optimized/jpeg/sf1-800w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAKCAYAAAB4zEQNAAAACXBIWXMAABYlAAAWJQFJUiTwAAABH0lEQVR4nD2MTSiDcQCH/1cfOcjHYZGcpTgsClvNhG2UUYzDepXGLJGaiwg5cBBxmI/DDjsoLg5qNPk6aeagHGwmvLvZxfZme9/VIysOv57D8/QTwbNznqNRtJyGqql5/k2E7yN8yPK/VDWNrJrlO5NBxF7ifCaTaLlcPkgpCm9ygofHJ8RdOEIs/spXKk1aUXiXEwRDl2z5DhDbvn0Ch0eErm64uL7l+OSU5bUNRsY8CIfkwj3jZX1zhz1/gF1/gLnFVQalcYTJ2ke3fQjJPc3s/BLehRWcLg+2gWFEq9mKsbMHu8PJ6MQUkmuSrl47+hYjot3WT5vZgqHDQrPBRH2jHl1VDaVlFYjfyyaDmboGPbrqWsordRQWl1BQWMQPLcW/vCpvCOYAAAAASUVORK5CYII="
     },
     {
       "id": "allen-001",
@@ -813,9 +841,9 @@
       "alt": "Allen Event",
       "description": "Event photography",
       "orientation": "landscape",
-      "featured": false,
+      "featured": true,
       "dateTaken": "Spring 2024",
-      "rank": 29,
+      "rank": 8,
       "optimized": {
         "avif": {
           "thumb_400": "/images/gallery-optimized/avif/allen1-400w.avif",
@@ -838,7 +866,8 @@
           "full_1920": "/images/gallery-optimized/jpeg/allen1-1920w.jpg",
           "full_2400": "/images/gallery-optimized/jpeg/allen1-2400w.jpg"
         }
-      }
+      },
+      "blurDataURL": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAHCAYAAAAxrNxjAAAACXBIWXMAABYlAAAWJQFJUiTwAAABHElEQVR4nCXLTS+CAQDA8ee7sLYOOCht2YQOPYtaSSFqUeLQyxaZl7aWXji0hpk1WzGHxoyD17mxkVFzcGHJqvUsvsXfwe/+ExrSD/WmREOSqDebNFu/fNUa5PI51iKrJFIpHoplhPePCp/VGv+hReW7Svntlf1shmgkTDIZ4/zqBqFwesbF7R1PL2WeSyUei/dcXx6T2Vwh5Hfj87mJbawjJNKrbGXjHJ3scljYJn+QZm8nTmTRi2vKjN6gwWwXEeaCIoElA8vRcfwLFgLBScKheTwuO8NDWjoVbagGZQgOTzfOWSUz3l5sE0os1j5c0xYcThMjtgHU2nb6jTIEs7UDg6kLo1GFqFOgE3swWzXY7BrGHGr0o3IMdjl/9dWwORvY5Y4AAAAASUVORK5CYII="
     }
   ],
   "albums": [
