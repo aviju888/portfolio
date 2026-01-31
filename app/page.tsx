@@ -173,12 +173,14 @@ export default function Home() {
             <Link href="/contact" className="btn-primary">
               Get in Touch
             </Link>
-            <button 
-              onClick={() => setShowPopup(true)}
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-secondary"
             >
               View Resume
-            </button>
+            </a>
           </div>
         </div>
       </section>

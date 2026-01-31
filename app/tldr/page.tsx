@@ -30,12 +30,13 @@ export default function TldrPage() {
     >
       {/* Download Resume Button */}
       <div className="flex justify-center mb-8">
-        <button 
-          onClick={() => setShowPopup(true)}
+        <a
+          href="/resume.pdf"
+          download
           className="btn-secondary"
         >
           Download Resume PDF →
-        </button>
+        </a>
       </div>
       
       <div className="max-w-4xl mx-auto space-y-12">
