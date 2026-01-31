@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "next dev",
     "optimize:images": "node scripts/optimize-images.js",
-    "prebuild": "npm run optimize:images",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
