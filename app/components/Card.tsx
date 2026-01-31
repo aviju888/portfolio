@@ -14,6 +14,7 @@ interface CardProps {
   image?: string;
   optimized?: OptimizedImageType;
   href?: string;
+  onClick?: () => void;
   children?: ReactNode;
   className?: string;
   loading?: boolean;
@@ -26,6 +27,7 @@ export default function Card({
   image,
   optimized,
   href,
+  onClick,
   children,
   className = '',
   loading = false
@@ -102,6 +104,14 @@ export default function Card({
       <Link href={href} className="block" onClick={handleClick}>
         {cardContent}
       </Link>
+    );
+  }
+
+  if (onClick) {
+    return (
+      <button className="block w-full text-left cursor-pointer" onClick={onClick}>
+        {cardContent}
+      </button>
     );
   }
 

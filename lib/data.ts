@@ -1,4 +1,5 @@
 import { Profile, Project, Photos, Media, Tldr, Photo, Album, MediaItem, Experience, OptimizedImage } from './types';
+export type { Project };
 
 // Import JSON data
 import profileData from '../data/profile.json';
