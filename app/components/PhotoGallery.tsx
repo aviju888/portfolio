@@ -19,9 +19,9 @@ function PhotoCard({ photo, onClick, priority = false }: PhotoCardProps) {
   return (
     <div
       onClick={onClick}
-      className="cursor-pointer group break-inside-avoid mb-4 md:mb-6"
+      className="cursor-pointer group"
     >
-      <div className="relative w-full overflow-hidden rounded-lg shadow-md group-hover:shadow-xl transition-shadow duration-300">
+      <div className="relative w-full aspect-[3/4] overflow-hidden rounded-lg shadow-md group-hover:shadow-xl transition-shadow duration-300">
         {/* Blur placeholder */}
         {photo.blurDataURL && !isLoaded && (
           <div
@@ -33,11 +33,10 @@ function PhotoCard({ photo, onClick, priority = false }: PhotoCardProps) {
             }}
           />
         )}
-        {/* Natural aspect ratio image */}
         <img
           src={src}
           alt={photo.alt}
-          className={`w-full h-auto transition-all duration-500 group-hover:scale-105 ${
+          className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${
             isLoaded ? 'opacity-100' : 'opacity-0'
           }`}
           onLoad={() => setIsLoaded(true)}
@@ -73,8 +72,8 @@ export default function PhotoGallery({ photos }: PhotoGalleryProps) {
 
   return (
     <>
-      {/* Pinterest-style masonry grid */}
-      <div className="columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-6">
+      {/* Grid - left to right, top to bottom */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
         {visiblePhotos.map((photo, index) => (
           <PhotoCard
             key={photo.id}
