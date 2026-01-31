@@ -840,5 +840,39 @@
         }
       }
     }
+  ],
+  "albums": [
+    {
+      "slug": "graduation",
+      "title": "Graduation",
+      "category": "Portrait",
+      "cover": "/images/gallery/gracegrad1.png",
+      "count": 5,
+      "description": "Graduation portraits"
+    },
+    {
+      "slug": "dance",
+      "title": "Dance",
+      "category": "Performance",
+      "cover": "/images/gallery/unhinged1.jpg",
+      "count": 19,
+      "description": "Dance performances and events"
+    },
+    {
+      "slug": "travel",
+      "title": "Travel",
+      "category": "Travel",
+      "cover": "/images/gallery/canada1.png",
+      "count": 4,
+      "description": "Travel photography"
+    },
+    {
+      "slug": "events",
+      "title": "Events",
+      "category": "Events",
+      "cover": "/images/gallery/allen1.png",
+      "count": 1,
+      "description": "Event photography"
+    }
   ]
 }
