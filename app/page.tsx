@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { profile, getFeaturedProjects, getFeaturedPhotos, getFeaturedMedia, getCurrentExperiences, getRecentExperiences } from '@/lib/data';
+import { profile, getFeaturedProjects, getRainbowPhotos, getFeaturedMedia, getCurrentExperiences, getRecentExperiences, Project } from '@/lib/data';
 import SpotlightRow from './components/SpotlightRow';
 import Card from './components/Card';
 import Tag from './components/Tag';
@@ -10,16 +10,18 @@ import OrganicDivider from './components/OrganicDivider';
 import PhotoGallery from './components/PhotoGallery';
 import CodeDroppingAnimation from './components/CodeDroppingAnimation';
 import FadeIn from './components/FadeIn';
+import ProjectModal from './components/ProjectModal';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
   const featuredProjects = getFeaturedProjects().slice(0, 2);
-  const featuredPhotos = getFeaturedPhotos().slice(0, 8);
+  const rainbowPhotos = getRainbowPhotos(12);
   const featuredMedia = getFeaturedMedia().slice(0, 1);
   const currentExperiences = getCurrentExperiences();
   const recentExperiences = getRecentExperiences(2);
   const displayExperiences = [...currentExperiences, ...recentExperiences].slice(0, 4);
   const [showPopup, setShowPopup] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   // Auto-dismiss popup after 3 seconds
   useEffect(() => {
@@ -108,7 +110,7 @@ export default function Home() {
                   title={project.title}
                   description={project.summary}
                   image={project.images[0]}
-                  href={`/code/${project.slug}`}
+                  onClick={() => setSelectedProject(project)}
                 >
                   <div className="flex flex-wrap gap-2">
                     {project.tags.slice(0, 3).map((tag) => (
@@ -152,7 +154,7 @@ export default function Home() {
                 </div>
               </div>
               
-              <PhotoGallery photos={featuredPhotos} variant="scroll" />
+              <PhotoGallery photos={rainbowPhotos} variant="scroll" />
             </div>
           </div>
         </section>
@@ -211,6 +213,12 @@ export default function Home() {
           </div>
         </div>
         )}
+
+      {/* Project Modal */}
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
       </div>
     </FadeIn>
   );

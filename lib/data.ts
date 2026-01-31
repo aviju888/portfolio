@@ -80,6 +80,51 @@ export function getFeaturedPhotos(): Photo[] {
     }));
 }
 
+// Get photos with diverse colors for rainbow scroll effect
+export function getRainbowPhotos(count: number = 12): Photo[] {
+  const visiblePhotos = photos.photos.filter(p => p.visible !== false);
+
+  // Group photos by hue ranges (12 buckets of 30 degrees)
+  const hueBuckets: Photo[][] = Array.from({ length: 12 }, () => []);
+
+  visiblePhotos.forEach(photo => {
+    const hsl = photo.dominantColor?.hsl;
+    if (hsl && hsl.s >= 15) { // Skip grayscale
+      const bucketIndex = Math.floor(hsl.h / 30) % 12;
+      hueBuckets[bucketIndex].push(photo);
+    }
+  });
+
+  // Pick one photo from each bucket that has photos, preferring higher saturation
+  const selected: Photo[] = [];
+
+  for (let i = 0; i < 12 && selected.length < count; i++) {
+    const bucket = hueBuckets[i];
+    if (bucket.length > 0) {
+      // Sort by saturation (most saturated first) and pick one
+      bucket.sort((a, b) => (b.dominantColor?.hsl?.s || 0) - (a.dominantColor?.hsl?.s || 0));
+      selected.push(bucket[0]);
+    }
+  }
+
+  // If we need more photos, fill from buckets with multiple photos
+  let bucketIndex = 0;
+  while (selected.length < count) {
+    const bucket = hueBuckets[bucketIndex % 12];
+    const nextPhoto = bucket.find(p => !selected.includes(p));
+    if (nextPhoto) {
+      selected.push(nextPhoto);
+    }
+    bucketIndex++;
+    if (bucketIndex > 24) break; // Safety limit
+  }
+
+  return selected.map(photo => ({
+    ...photo,
+    optimized: getOptimizedImageFromManifest(getFilenameFromPath(photo.srcThumb), 'gallery')
+  }));
+}
+
 export function getCategoryPreviewImage(category: 'All' | 'Graduation' | 'Dance' | 'Travel'): string {
   // Map categories to specific photo titles
   const categoryPhotoMap: Record<string, string> = {

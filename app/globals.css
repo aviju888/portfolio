@@ -139,10 +139,29 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
-  
+
   /* Hide scrollbar for IE, Edge and Firefox */
   .scrollbar-hide {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+  }
+
+  /* Infinite scroll animation */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 30s linear infinite;
+  }
+
+  .animate-scroll:hover,
+  .pause-animation:hover {
+    animation-play-state: paused;
   }
 }

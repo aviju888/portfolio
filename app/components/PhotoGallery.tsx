@@ -137,21 +137,24 @@ export default function PhotoGallery({ photos, variant = 'masonry' }: PhotoGalle
   };
 
   if (variant === 'scroll') {
+    // Duplicate photos for infinite scroll effect
+    const duplicatedPhotos = [...visiblePhotos, ...visiblePhotos];
+
     return (
       <>
-        {/* Horizontal scroll gallery */}
-        <div className="relative -mx-6 md:-mx-8">
+        {/* Infinite horizontal scroll gallery */}
+        <div className="relative -mx-6 md:-mx-8 overflow-hidden">
           <div
             ref={scrollRef}
-            className="flex gap-3 overflow-x-auto px-6 md:px-8 pb-4 scrollbar-hide"
-            style={{ height: '280px', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            className="flex gap-3 px-6 md:px-8 animate-scroll hover:pause-animation"
+            style={{ height: '280px' }}
           >
-            {visiblePhotos.map((photo, index) => (
+            {duplicatedPhotos.map((photo, index) => (
               <ScrollPhotoCard
-                key={photo.id}
+                key={`${photo.id}-${index}`}
                 photo={photo}
-                onClick={() => openLightbox(index)}
-                priority={index < 4}
+                onClick={() => openLightbox(index % visiblePhotos.length)}
+                priority={index < 8}
               />
             ))}
           </div>
