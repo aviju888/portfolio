@@ -152,7 +152,7 @@ export default function Home() {
                 </div>
               </div>
               
-              <PhotoGallery photos={featuredPhotos} />
+              <PhotoGallery photos={featuredPhotos} variant="scroll" />
             </div>
           </div>
         </section>
