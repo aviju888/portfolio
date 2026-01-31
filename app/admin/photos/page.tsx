@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
 
 interface Photo {
   id: string;
@@ -12,6 +11,8 @@ interface Photo {
   orientation: string;
   dateTaken: string;
   album: string;
+  blurDataURL?: string;
+  [key: string]: any;
 }
 
 interface CropArea {
@@ -25,14 +26,15 @@ export default function AdminPhotosPage() {
   const [authenticated, setAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [photos, setPhotos] = useState<Photo[]>([]);
+  const [albums, setAlbums] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
-  const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState('');
   const [cropPhoto, setCropPhoto] = useState<Photo | null>(null);
   const [cropArea, setCropArea] = useState<CropArea | null>(null);
-  const [cropping, setCropping] = useState(false);
   const imageRef = useRef<HTMLImageElement>(null);
   const [dragStart, setDragStart] = useState<{ x: number; y: number } | null>(null);
+
+  const ADMIN_PASSWORD = 'chronos2026';
 
   const fetchPhotos = async () => {
     setLoading(true);
@@ -40,6 +42,7 @@ export default function AdminPhotosPage() {
       const res = await fetch('/api/photos');
       const data = await res.json();
       setPhotos(data.photos || []);
+      setAlbums(data.albums || []);
     } catch (e) {
       setMessage('Failed to load photos');
     }
@@ -54,7 +57,11 @@ export default function AdminPhotosPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    setAuthenticated(true);
+    if (password === ADMIN_PASSWORD) {
+      setAuthenticated(true);
+    } else {
+      setMessage('Wrong password');
+    }
   };
 
   const toggleVisibility = (id: string) => {
@@ -63,26 +70,16 @@ export default function AdminPhotosPage() {
     ));
   };
 
-  const saveChanges = async () => {
-    setSaving(true);
-    setMessage('');
-    try {
-      const res = await fetch('/api/photos', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password, photos })
-      });
-
-      if (res.ok) {
-        setMessage('Saved successfully!');
-      } else {
-        const data = await res.json();
-        setMessage(data.error || 'Failed to save');
-      }
-    } catch (e) {
-      setMessage('Failed to save');
-    }
-    setSaving(false);
+  const downloadJSON = () => {
+    const data = { photos, albums };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'photos.json';
+    a.click();
+    URL.revokeObjectURL(url);
+    setMessage('Downloaded! Replace data/photos.json and push to deploy.');
   };
 
   const openCropEditor = (photo: Photo) => {
@@ -117,42 +114,39 @@ export default function AdminPhotosPage() {
     setDragStart(null);
   };
 
-  const applyCrop = async () => {
+  const applyCrop = () => {
     if (!cropPhoto || !cropArea || !imageRef.current) return;
 
-    setCropping(true);
-    try {
-      const rect = imageRef.current.getBoundingClientRect();
-      const scaleX = imageRef.current.naturalWidth / rect.width;
-      const scaleY = imageRef.current.naturalHeight / rect.height;
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-      const res = await fetch('/api/photos/crop', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          password,
-          photoId: cropPhoto.id,
-          crop: {
-            x: Math.round(cropArea.x * scaleX),
-            y: Math.round(cropArea.y * scaleY),
-            width: Math.round(cropArea.width * scaleX),
-            height: Math.round(cropArea.height * scaleY)
-          }
-        })
-      });
+    const img = imageRef.current;
+    const rect = img.getBoundingClientRect();
+    const scaleX = img.naturalWidth / rect.width;
+    const scaleY = img.naturalHeight / rect.height;
 
-      if (res.ok) {
-        setMessage('Cropped successfully!');
-        setCropPhoto(null);
-        // Refresh photos with cache bust
-        await fetchPhotos();
-      } else {
-        setMessage('Failed to crop');
-      }
-    } catch (e) {
-      setMessage('Failed to crop');
-    }
-    setCropping(false);
+    const cropX = Math.round(cropArea.x * scaleX);
+    const cropY = Math.round(cropArea.y * scaleY);
+    const cropW = Math.round(cropArea.width * scaleX);
+    const cropH = Math.round(cropArea.height * scaleY);
+
+    canvas.width = cropW;
+    canvas.height = cropH;
+    ctx.drawImage(img, cropX, cropY, cropW, cropH, 0, 0, cropW, cropH);
+
+    canvas.toBlob((blob) => {
+      if (!blob) return;
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      const filename = cropPhoto.srcThumb.split('/').pop() || 'cropped.jpg';
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+      setMessage(`Downloaded cropped image! Replace the original file and push.`);
+      setCropPhoto(null);
+    }, 'image/jpeg', 0.9);
   };
 
   const visibleCount = photos.filter(p => p.visible).length;
@@ -170,6 +164,7 @@ export default function AdminPhotosPage() {
             placeholder="Enter password"
             className="w-full px-4 py-3 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
+          {message && <p className="text-red-500 text-sm mb-4">{message}</p>}
           <button
             type="submit"
             className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition"
@@ -194,16 +189,15 @@ export default function AdminPhotosPage() {
           </div>
           <div className="flex items-center gap-4">
             {message && (
-              <span className={`text-sm ${message.includes('success') ? 'text-green-600' : 'text-red-600'}`}>
+              <span className="text-sm text-green-600 max-w-xs truncate">
                 {message}
               </span>
             )}
             <button
-              onClick={saveChanges}
-              disabled={saving}
-              className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition disabled:opacity-50"
+              onClick={downloadJSON}
+              className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition"
             >
-              {saving ? 'Saving...' : 'Save Changes'}
+              Download JSON
             </button>
           </div>
         </div>
@@ -223,7 +217,7 @@ export default function AdminPhotosPage() {
                 }`}
               >
                 <img
-                  src={photo.srcThumb + '?v=' + Date.now()}
+                  src={photo.srcThumb}
                   alt={photo.title}
                   className="w-full h-auto"
                 />
@@ -278,7 +272,7 @@ export default function AdminPhotosPage() {
 
             <div className="p-4">
               <p className="text-sm text-gray-500 mb-4">
-                Click and drag to select the area you want to keep
+                Click and drag to select the area you want to keep. The cropped image will download.
               </p>
 
               <div
@@ -290,18 +284,17 @@ export default function AdminPhotosPage() {
               >
                 <img
                   ref={imageRef}
-                  src={cropPhoto.srcFull + '?v=' + Date.now()}
+                  src={cropPhoto.srcFull}
                   alt={cropPhoto.title}
                   className="max-w-full max-h-[60vh]"
                   draggable={false}
+                  crossOrigin="anonymous"
                 />
 
                 {/* Crop overlay */}
                 {cropArea && cropArea.width > 0 && cropArea.height > 0 && (
                   <>
-                    {/* Darkened areas */}
                     <div className="absolute inset-0 bg-black/50 pointer-events-none" />
-                    {/* Clear crop area */}
                     <div
                       className="absolute border-2 border-white pointer-events-none"
                       style={{
@@ -326,10 +319,10 @@ export default function AdminPhotosPage() {
               </button>
               <button
                 onClick={applyCrop}
-                disabled={!cropArea || cropArea.width < 10 || cropping}
+                disabled={!cropArea || cropArea.width < 10}
                 className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition disabled:opacity-50"
               >
-                {cropping ? 'Cropping...' : 'Apply Crop'}
+                Download Cropped
               </button>
             </div>
           </div>
