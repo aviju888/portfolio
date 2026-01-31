@@ -1,21 +1,20 @@
 'use client';
 
 import Link from 'next/link';
-import { profile, getFeaturedProjects, getFeaturedPhotos, getFeaturedMedia, getCurrentExperiences, getRecentExperiences, getCategoryPreviewImage } from '@/lib/data';
+import { profile, getFeaturedProjects, getFeaturedPhotos, getFeaturedMedia, getCurrentExperiences, getRecentExperiences } from '@/lib/data';
 import SpotlightRow from './components/SpotlightRow';
 import Card from './components/Card';
 import Tag from './components/Tag';
 import ExperienceCard from './components/ExperienceCard';
 import OrganicDivider from './components/OrganicDivider';
 import PhotoGallery from './components/PhotoGallery';
-import PhotoCategoryCard from './components/PhotoCategoryCard';
 import CodeDroppingAnimation from './components/CodeDroppingAnimation';
 import FadeIn from './components/FadeIn';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
   const featuredProjects = getFeaturedProjects().slice(0, 2);
-  const featuredPhotos = getFeaturedPhotos().slice(0, 6);
+  const featuredPhotos = getFeaturedPhotos().slice(0, 8);
   const featuredMedia = getFeaturedMedia().slice(0, 1);
   const currentExperiences = getCurrentExperiences();
   const recentExperiences = getRecentExperiences(2);
@@ -153,28 +152,7 @@ export default function Home() {
                 </div>
               </div>
               
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-                <PhotoCategoryCard
-                  category="All"
-                  previewImage={getCategoryPreviewImage('All')}
-                  href="/photos#All"
-                />
-                <PhotoCategoryCard
-                  category="Graduation"
-                  previewImage={getCategoryPreviewImage('Graduation')}
-                  href="/photos#Graduation"
-                />
-                <PhotoCategoryCard
-                  category="Dance"
-                  previewImage={getCategoryPreviewImage('Dance')}
-                  href="/photos#Dance"
-                />
-                <PhotoCategoryCard
-                  category="Travel"
-                  previewImage={getCategoryPreviewImage('Travel')}
-                  href="/photos#Travel"
-                />
-              </div>
+              <PhotoGallery photos={featuredPhotos} />
             </div>
           </div>
         </section>

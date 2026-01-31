@@ -1,23 +1,13 @@
 'use client';
 
-import { useState, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 import Image from 'next/image';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
-import { getPhotosByCategory, getFeaturedPhotos } from '@/lib/data';
+import { photos } from '@/lib/data';
 import { Photo } from '@/lib/types';
 import Section from '../components/Section';
 import FadeIn from '../components/FadeIn';
-
-type Category = 'All' | 'Portraits' | 'Dance Teams' | 'Travel';
-
-const categoryMap: Record<Category, string> = {
-  'All': 'All',
-  'Portraits': 'graduation',
-  'Dance Teams': 'dance',
-  'Travel': 'travel',
-};
 
 function getOptimizedSrc(photo: Photo): string {
   if (photo.optimized?.webp?.thumb_800) {
@@ -94,21 +84,12 @@ function PhotoCard({ photo, onClick, priority = false }: PhotoCardProps) {
 }
 
 export default function PhotosPage() {
-  const [activeTab, setActiveTab] = useState<Category>('All');
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
-  const getPhotos = useCallback(() => {
-    if (activeTab === 'All') {
-      return getPhotosByCategory('All');
-    }
-    return getPhotosByCategory(categoryMap[activeTab]);
-  }, [activeTab]);
+  const allPhotos = photos.photos;
 
-  const displayPhotos = getPhotos();
-  const featuredPhotos = getFeaturedPhotos();
-
-  const slides = displayPhotos.map(photo => ({
+  const slides = allPhotos.map(photo => ({
     src: getFullSrc(photo),
     alt: photo.alt,
   }));
@@ -118,85 +99,27 @@ export default function PhotosPage() {
     setLightboxOpen(true);
   };
 
-  const tabs: Category[] = ['All', 'Portraits', 'Dance Teams', 'Travel'];
-
   return (
     <FadeIn>
       <Section
         title="Photos"
         description="Graduation portraits, dance performances, travel, and more"
       >
-        {/* Featured Photos - Only show on All tab */}
-        {activeTab === 'All' && (
-          <div className="mb-12">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Featured</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {featuredPhotos.slice(0, 8).map((photo, index) => (
-                <PhotoCard
-                  key={photo.id}
-                  photo={photo}
-                  onClick={() => {
-                    const fullIndex = displayPhotos.findIndex(p => p.id === photo.id);
-                    if (fullIndex >= 0) openLightbox(fullIndex);
-                  }}
-                  priority={index < 4}
-                />
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Filter Tabs */}
-        <div className="sticky top-16 z-10 bg-white/80 backdrop-blur-md -mx-6 px-6 py-3 mb-6">
-          <div className="flex gap-2 overflow-x-auto scrollbar-hide">
-            {tabs.map((tab) => (
-              <motion.button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`relative flex-shrink-0 px-4 py-2 rounded-full font-medium text-sm transition-colors ${
-                  activeTab === tab
-                    ? 'text-white'
-                    : 'text-gray-600 hover:text-gray-900 bg-gray-100 hover:bg-gray-200'
-                }`}
-              >
-                {activeTab === tab && (
-                  <motion.div
-                    layoutId="activePhotoTab"
-                    className="absolute inset-0 bg-gray-900 rounded-full"
-                    style={{ zIndex: -1 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  />
-                )}
-                {tab}
-              </motion.button>
-            ))}
-          </div>
+        {/* Photo Grid - Masonry */}
+        <div className="columns-2 md:columns-3 lg:columns-4 gap-4">
+          {allPhotos.map((photo, index) => (
+            <PhotoCard
+              key={photo.id}
+              photo={photo}
+              onClick={() => openLightbox(index)}
+              priority={index < 8}
+            />
+          ))}
         </div>
 
-        {/* Photo Grid - Masonry */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="columns-2 md:columns-3 lg:columns-4 gap-4"
-          >
-            {displayPhotos.map((photo, index) => (
-              <PhotoCard
-                key={photo.id}
-                photo={photo}
-                onClick={() => openLightbox(index)}
-                priority={activeTab === 'All' && index < 8}
-              />
-            ))}
-          </motion.div>
-        </AnimatePresence>
-
-        {displayPhotos.length === 0 && (
+        {allPhotos.length === 0 && (
           <div className="text-center py-16">
-            <p className="text-gray-500">No photos in this category yet.</p>
+            <p className="text-gray-500">No photos yet.</p>
           </div>
         )}
 
