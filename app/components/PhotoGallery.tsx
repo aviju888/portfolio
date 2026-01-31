@@ -60,22 +60,25 @@ function ScrollPhotoCard({ photo, onClick, priority = false }: PhotoCardProps) {
       className={`cursor-pointer group flex-shrink-0 h-full ${aspectClass}`}
     >
       <div className="relative h-full overflow-hidden rounded-xl shadow-md group-hover:shadow-xl transition-all duration-300">
-        {photo.blurDataURL && !isLoaded && (
-          <img
-            src={photo.blurDataURL}
-            alt=""
-            className="absolute inset-0 w-full h-full scale-110 blur-lg object-cover"
-            aria-hidden="true"
+        {photo.blurDataURL && (
+          <div
+            className="absolute inset-0 scale-110 blur-lg"
+            style={{
+              backgroundImage: `url(${photo.blurDataURL})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
           />
         )}
         <img
           src={src}
           alt={photo.alt}
-          className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-105 ${
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover:scale-105 ${
             isLoaded ? 'opacity-100' : 'opacity-0'
           }`}
           onLoad={() => setIsLoaded(true)}
-          loading={priority ? 'eager' : 'lazy'}
+          loading="eager"
+          fetchPriority={priority ? 'high' : 'auto'}
         />
       </div>
     </div>
