@@ -2,6 +2,13 @@
 
 import { useState, useEffect, useRef } from 'react';
 
+interface CropArea {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
 interface Photo {
   id: string;
   srcThumb: string;
@@ -12,14 +19,8 @@ interface Photo {
   dateTaken: string;
   album: string;
   blurDataURL?: string;
+  cropArea?: CropArea; // Stored crop coordinates (percentages)
   [key: string]: any;
-}
-
-interface CropArea {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
 }
 
 export default function AdminPhotosPage() {
@@ -33,6 +34,7 @@ export default function AdminPhotosPage() {
   const [cropArea, setCropArea] = useState<CropArea | null>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const [dragStart, setDragStart] = useState<{ x: number; y: number } | null>(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const ADMIN_PASSWORD = 'chronos2026';
 
@@ -64,7 +66,7 @@ export default function AdminPhotosPage() {
     }
   };
 
-  const toggleVisibility = (id: string) => {
+  const toggleSelection = (id: string) => {
     setPhotos(photos.map(p =>
       p.id === id ? { ...p, visible: !p.visible } : p
     ));
@@ -84,11 +86,17 @@ export default function AdminPhotosPage() {
 
   const openCropEditor = (photo: Photo) => {
     setCropPhoto(photo);
-    setCropArea(null);
+    setImageLoaded(false);
+    // Load existing crop if any
+    if (photo.cropArea) {
+      setCropArea(photo.cropArea);
+    } else {
+      setCropArea(null);
+    }
   };
 
   const handleMouseDown = (e: React.MouseEvent) => {
-    if (!imageRef.current) return;
+    if (!imageRef.current || !imageLoaded) return;
     const rect = imageRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -114,43 +122,39 @@ export default function AdminPhotosPage() {
     setDragStart(null);
   };
 
-  const applyCrop = () => {
+  const saveCrop = () => {
     if (!cropPhoto || !cropArea || !imageRef.current) return;
 
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+    const rect = imageRef.current.getBoundingClientRect();
 
-    const img = imageRef.current;
-    const rect = img.getBoundingClientRect();
-    const scaleX = img.naturalWidth / rect.width;
-    const scaleY = img.naturalHeight / rect.height;
+    // Store crop as percentages so it works regardless of display size
+    const cropPercentage: CropArea = {
+      x: (cropArea.x / rect.width) * 100,
+      y: (cropArea.y / rect.height) * 100,
+      width: (cropArea.width / rect.width) * 100,
+      height: (cropArea.height / rect.height) * 100
+    };
 
-    const cropX = Math.round(cropArea.x * scaleX);
-    const cropY = Math.round(cropArea.y * scaleY);
-    const cropW = Math.round(cropArea.width * scaleX);
-    const cropH = Math.round(cropArea.height * scaleY);
+    setPhotos(photos.map(p =>
+      p.id === cropPhoto.id ? { ...p, cropArea: cropPercentage } : p
+    ));
 
-    canvas.width = cropW;
-    canvas.height = cropH;
-    ctx.drawImage(img, cropX, cropY, cropW, cropH, 0, 0, cropW, cropH);
-
-    canvas.toBlob((blob) => {
-      if (!blob) return;
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      const filename = cropPhoto.srcThumb.split('/').pop() || 'cropped.jpg';
-      a.download = filename;
-      a.click();
-      URL.revokeObjectURL(url);
-      setMessage(`Downloaded cropped image! Replace the original file and push.`);
-      setCropPhoto(null);
-    }, 'image/jpeg', 0.9);
+    setMessage(`Crop saved for ${cropPhoto.title}. Download JSON to apply.`);
+    setCropPhoto(null);
   };
 
-  const visibleCount = photos.filter(p => p.visible).length;
-  const hiddenCount = photos.filter(p => !p.visible).length;
+  const clearCrop = () => {
+    if (!cropPhoto) return;
+
+    setPhotos(photos.map(p =>
+      p.id === cropPhoto.id ? { ...p, cropArea: undefined } : p
+    ));
+    setCropArea(null);
+    setMessage(`Crop cleared for ${cropPhoto.title}.`);
+  };
+
+  const selectedCount = photos.filter(p => p.visible).length;
+  const totalCount = photos.length;
 
   if (!authenticated) {
     return (
@@ -184,7 +188,7 @@ export default function AdminPhotosPage() {
           <div>
             <h1 className="text-xl font-bold">Photo Admin</h1>
             <p className="text-sm text-gray-500">
-              {visibleCount} visible, {hiddenCount} hidden
+              {selectedCount} of {totalCount} selected
             </p>
           </div>
           <div className="flex items-center gap-4">
@@ -203,8 +207,16 @@ export default function AdminPhotosPage() {
         </div>
       </div>
 
+      {/* Instructions */}
+      <div className="max-w-7xl mx-auto px-4 pt-6">
+        <p className="text-sm text-gray-600 bg-white rounded-lg p-3 shadow-sm">
+          Click photos to select/deselect. Only selected photos appear on the live site.
+          Use "Crop" to adjust framing without modifying the original file.
+        </p>
+      </div>
+
       {/* Photo Grid */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="max-w-7xl mx-auto px-4 py-6">
         {loading ? (
           <div className="text-center py-12">Loading...</div>
         ) : (
@@ -212,42 +224,50 @@ export default function AdminPhotosPage() {
             {photos.map((photo) => (
               <div
                 key={photo.id}
-                className={`break-inside-avoid mb-4 relative group rounded-lg overflow-hidden ${
-                  !photo.visible ? 'opacity-40' : ''
-                }`}
+                className="break-inside-avoid mb-4 relative group"
               >
-                <img
-                  src={photo.srcThumb}
-                  alt={photo.title}
-                  className="w-full h-auto"
-                />
+                {/* Photo with click to toggle */}
+                <div
+                  onClick={() => toggleSelection(photo.id)}
+                  className={`relative rounded-lg overflow-hidden cursor-pointer transition-all duration-200 ${
+                    photo.visible
+                      ? 'ring-4 ring-green-500 ring-offset-2'
+                      : 'opacity-50 hover:opacity-75'
+                  }`}
+                >
+                  <img
+                    src={photo.srcThumb}
+                    alt={photo.title}
+                    className="w-full h-auto"
+                  />
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2">
-                  <button
-                    onClick={() => toggleVisibility(photo.id)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
-                      photo.visible
-                        ? 'bg-red-500 text-white hover:bg-red-600'
-                        : 'bg-green-500 text-white hover:bg-green-600'
-                    }`}
-                  >
-                    {photo.visible ? 'Hide' : 'Show'}
-                  </button>
-                  <button
-                    onClick={() => openCropEditor(photo)}
-                    className="px-4 py-2 rounded-lg text-sm font-medium bg-white text-gray-900 hover:bg-gray-100 transition"
-                  >
-                    Crop
-                  </button>
+                  {/* Checkmark for selected */}
+                  {photo.visible && (
+                    <div className="absolute top-2 right-2 bg-green-500 text-white rounded-full w-6 h-6 flex items-center justify-center shadow-lg">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                  )}
+
+                  {/* Crop indicator */}
+                  {photo.cropArea && (
+                    <div className="absolute top-2 left-2 bg-blue-500 text-white text-xs px-2 py-1 rounded shadow">
+                      Cropped
+                    </div>
+                  )}
                 </div>
 
-                {/* Hidden badge */}
-                {!photo.visible && (
-                  <div className="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
-                    Hidden
-                  </div>
-                )}
+                {/* Crop button - separate from selection */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    openCropEditor(photo);
+                  }}
+                  className="absolute bottom-2 right-2 bg-white/90 hover:bg-white text-gray-700 text-xs px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  Crop
+                </button>
               </div>
             ))}
           </div>
@@ -272,7 +292,7 @@ export default function AdminPhotosPage() {
 
             <div className="p-4">
               <p className="text-sm text-gray-500 mb-4">
-                Click and drag to select the area you want to keep. The cropped image will download.
+                Click and drag to select the visible area. The original image is preserved.
               </p>
 
               <div
@@ -288,15 +308,15 @@ export default function AdminPhotosPage() {
                   alt={cropPhoto.title}
                   className="max-w-full max-h-[60vh]"
                   draggable={false}
-                  crossOrigin="anonymous"
+                  onLoad={() => setImageLoaded(true)}
                 />
 
                 {/* Crop overlay */}
-                {cropArea && cropArea.width > 0 && cropArea.height > 0 && (
+                {imageLoaded && cropArea && cropArea.width > 0 && cropArea.height > 0 && (
                   <>
                     <div className="absolute inset-0 bg-black/50 pointer-events-none" />
                     <div
-                      className="absolute border-2 border-white pointer-events-none"
+                      className="absolute border-2 border-white pointer-events-none bg-transparent"
                       style={{
                         left: cropArea.x,
                         top: cropArea.y,
@@ -310,20 +330,28 @@ export default function AdminPhotosPage() {
               </div>
             </div>
 
-            <div className="p-4 border-t flex justify-end gap-3">
+            <div className="p-4 border-t flex justify-between">
               <button
-                onClick={() => setCropPhoto(null)}
-                className="px-4 py-2 text-gray-600 hover:text-gray-900"
+                onClick={clearCrop}
+                className="px-4 py-2 text-red-600 hover:text-red-800"
               >
-                Cancel
+                Clear Crop
               </button>
-              <button
-                onClick={applyCrop}
-                disabled={!cropArea || cropArea.width < 10}
-                className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition disabled:opacity-50"
-              >
-                Download Cropped
-              </button>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setCropPhoto(null)}
+                  className="px-4 py-2 text-gray-600 hover:text-gray-900"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={saveCrop}
+                  disabled={!cropArea || cropArea.width < 10}
+                  className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition disabled:opacity-50"
+                >
+                  Save Crop
+                </button>
+              </div>
             </div>
           </div>
         </div>
