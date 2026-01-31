@@ -2,7 +2,7 @@
   {
     "slug": "chronos",
     "title": "Chronos",
-    "role": "Full Stack Developer",
+    "role": "Fullstack",
     "summary": "Generate interactive timelines for any region in history with AI-powered research",
     "description": [
       "Natural language queries like 'Roman Empire 27 BCE - 476 CE' generate comprehensive timelines",
@@ -24,7 +24,7 @@
   {
     "slug": "doculaw-ai",
     "title": "DocuLaw AI",
-    "role": "Frontend Developer",
+    "role": "Frontend",
     "summary": "Translate dense legal contracts into plain English with side-by-side comparison",
     "description": [
       "Upload legal documents and get plain-English explanations of complex clauses",
@@ -45,7 +45,7 @@
   {
     "slug": "product-page-reviewer",
     "title": "Product Page Reviewer",
-    "role": "Full Stack Developer",
+    "role": "Fullstack",
     "summary": "Analyze any product page for conversion optimization with 50+ UX heuristics",
     "description": [
       "Paste a URL and get a structured UX/conversion audit with actionable recommendations",
@@ -67,7 +67,7 @@
   {
     "slug": "kosmos-website",
     "title": "KOSMOS Website",
-    "role": "Full Stack Developer",
+    "role": "Fullstack",
     "summary": "Archive of 10+ years of dance org history with member bios and performance galleries",
     "description": [
       "Componentized gallery system for photos, videos, and performance archives",
@@ -88,7 +88,7 @@
   {
     "slug": "diffusion-models",
     "title": "Diffusion Models",
-    "role": "AI/ML Engineer",
+    "role": "AI/ML",
     "summary": "Custom diffusion sampling with inpainting, text-conditioning, and classifier-free guidance",
     "description": [
       "Implemented DDPM sampling loops from scratch with configurable noise schedules",
@@ -154,7 +154,7 @@
   {
     "slug": "asthma-aqi-analysis",
     "title": "Asthma & AQI Analysis",
-    "role": "Data Scientist",
+    "role": "Data Science",
     "summary": "Statistical analysis of air quality impact on asthma hospitalization rates",
     "description": [
       "Analyzed correlation between county-level AQI data and asthma ER visit rates",
@@ -176,7 +176,7 @@
   {
     "slug": "pasae-website",
     "title": "PASAE Website",
-    "role": "Frontend Developer",
+    "role": "Frontend",
     "summary": "Redesigned student org website with modern UI and improved navigation",
     "description": [
       "Led website redesign for Philippine American engineering student organization",
@@ -197,7 +197,7 @@
   {
     "slug": "toxic-speech-detection",
     "title": "Toxic Speech Detection",
-    "role": "ML Engineer",
+    "role": "ML",
     "summary": "NLP classifier for detecting and categorizing toxic speech patterns on Twitter",
     "description": [
       "Built text classification pipeline using NLTK for preprocessing and feature extraction",
@@ -218,7 +218,7 @@
   {
     "slug": "pacman-ai",
     "title": "Pacman AI Agent",
-    "role": "AI Engineer",
+    "role": "AI",
     "summary": "Search algorithms and reinforcement learning for game-playing AI agents",
     "description": [
       "Implemented DFS, BFS, UCS, and A* search for pathfinding in maze environments",
@@ -240,7 +240,7 @@
   {
     "slug": "cs61cpu",
     "title": "RISC-V CPU",
-    "role": "Systems Engineer",
+    "role": "Systems",
     "summary": "5-stage pipelined processor with hazard detection and forwarding",
     "description": [
       "Designed complete RISC-V datapath: IF, ID, EX, MEM, WB stages",
@@ -262,7 +262,7 @@
   {
     "slug": "gitlet",
     "title": "Gitlet",
-    "role": "Systems Engineer",
+    "role": "Systems",
     "summary": "Git clone with commits, branches, merging, and persistent storage",
     "description": [
       "Implemented core Git commands: init, add, commit, checkout, branch, merge",
@@ -284,7 +284,7 @@
   {
     "slug": "solar-water-heating",
     "title": "Solar Water Heating Analysis",
-    "role": "Data Scientist",
+    "role": "Data Science",
     "summary": "Performance modeling of solar thermal systems using LBNL weather data",
     "description": [
       "Analyzed LBNL's Multiscale Solar Water Heating simulation outputs",
