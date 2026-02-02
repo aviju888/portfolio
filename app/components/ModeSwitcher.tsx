@@ -25,9 +25,9 @@ const modeIcons: Record<VisitorMode, JSX.Element> = {
 };
 
 const modeLabels: Record<VisitorMode, string> = {
-  hiring: 'Hiring',
-  tech: 'Tech',
-  creative: 'Creative',
+  hiring: 'Recruiter',
+  tech: 'Developer',
+  creative: 'Photo Client',
 };
 
 export default function ModeSwitcher() {
