@@ -72,6 +72,9 @@ export default function VisitorModePopup() {
               </svg>
             </button>
 
+            {/* Header */}
+            <p className="text-center text-gray-500 text-sm mb-6">Who are you?</p>
+
             {/* Mode options */}
             <div className="flex gap-6 md:gap-8">
               {modes.map((mode) => (
