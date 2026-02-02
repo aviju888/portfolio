@@ -16,14 +16,15 @@ export default function TldrPage() {
       title="TLDR" 
       description="A quick summary if you're in a time crunch"
     >
-      {/* Download Resume Button */}
+      {/* View Resume Button */}
       <div className="flex justify-center mb-8">
         <a
           href="/resume.pdf"
-          download
+          target="_blank"
+          rel="noopener noreferrer"
           className="btn-secondary"
         >
-          Download Resume PDF →
+          View Resume PDF →
         </a>
       </div>
       
