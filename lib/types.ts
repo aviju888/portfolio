@@ -112,6 +112,29 @@ export interface Tldr {
   };
 }
 
+export type VisitorMode = 'hiring' | 'tech' | 'creative';
+
+export interface NavItem {
+  name: string;
+  path: string;
+  external?: boolean;
+}
+
+export interface HeroLink {
+  label: string;
+  href: string;
+  external?: boolean;
+}
+
+export interface VisitorModeConfig {
+  id: VisitorMode;
+  label: string;
+  icon: 'briefcase' | 'code' | 'camera';
+  navItems: NavItem[];
+  sectionOrder: string[];
+  heroLinks: HeroLink[];
+}
+
 export interface Experience {
   company: string;
   role: string;

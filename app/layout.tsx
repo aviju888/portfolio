@@ -4,6 +4,9 @@ import './globals.css';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import { profile } from '@/lib/data';
+import { Providers } from './providers';
+import VisitorModePopup from './components/VisitorModePopup';
+import ModeSwitcher from './components/ModeSwitcher';
 
 const spaceGrotesk = Space_Grotesk({ 
   subsets: ['latin'],
@@ -29,18 +32,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${spaceGrotesk.variable} font-sans bg-white text-gray-900 min-h-screen relative`}>
-            {/* Subtle background gradient */}
-            <div className="fixed inset-0 pointer-events-none">
-              <div className="absolute inset-0 bg-white" />
-            </div>
-        
-        <div className="relative z-10">
-          <Nav />
-          <main className="min-h-screen">
-            {children}
-          </main>
-          <Footer />
-        </div>
+        <Providers>
+          {/* Subtle background gradient */}
+          <div className="fixed inset-0 pointer-events-none">
+            <div className="absolute inset-0 bg-white" />
+          </div>
+
+          <div className="relative z-10">
+            <Nav />
+            <main className="min-h-screen">
+              {children}
+            </main>
+            <Footer />
+          </div>
+
+          {/* Visitor mode overlays */}
+          <VisitorModePopup />
+          <ModeSwitcher />
+        </Providers>
       </body>
     </html>
   );

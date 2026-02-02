@@ -4,21 +4,18 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-  const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'Code', path: '/code' },
-    { name: 'Experience', path: '/experience' },
-    { name: 'Photos', path: '/photos' },
-    // { name: 'Media', path: '/media' },
-    { name: 'TLDR', path: '/tldr' },
-    { name: 'Contact', path: '/contact' },
-  ];
+import { useVisitorMode } from '../context/VisitorModeContext';
+import { getModeConfig } from '@/lib/visitorModeConfig';
 
 export default function Nav() {
   const pathname = usePathname();
   const [isTransparent, setIsTransparent] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { mode, isHydrated } = useVisitorMode();
+
+  // Get nav items based on current mode
+  const config = getModeConfig(mode);
+  const navItems = config.navItems;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,9 +59,24 @@ export default function Nav() {
               {/* Desktop Navigation */}
               <div className="hidden md:flex items-center space-x-6 md:space-x-8">
                 {navItems.map((item) => {
+                  const isExternal = item.external || item.path.startsWith('http');
                   // Check if pathname matches exactly or starts with the item path (for nested routes)
-                  const isActive = pathname === item.path || (item.path !== '/' && pathname.startsWith(item.path));
-                  
+                  const isActive = !isExternal && (pathname === item.path || (item.path !== '/' && pathname.startsWith(item.path)));
+
+                  if (isExternal) {
+                    return (
+                      <a
+                        key={item.name}
+                        href={item.path}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative text-small font-medium transition-colors duration-200 text-gray-600 hover:text-gray-900"
+                      >
+                        {item.name}
+                      </a>
+                    );
+                  }
+
                   return (
                     <Link
                       key={item.name}
@@ -76,10 +88,10 @@ export default function Nav() {
                       }`}
                     >
                       {item.name}
-                      <motion.span 
+                      <motion.span
                         className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-[1px] bg-gray-900 rounded-full"
                         initial={{ width: 0, opacity: 0 }}
-                        animate={{ 
+                        animate={{
                           width: isActive ? 20 : 0,
                           opacity: isActive ? 1 : 0
                         }}
@@ -124,9 +136,24 @@ export default function Nav() {
                 >
                   <div className="py-3 md:py-4 space-y-2">
                     {navItems.map((item) => {
+                      const isExternal = item.external || item.path.startsWith('http');
                       // Check if pathname matches exactly or starts with the item path (for nested routes)
-                      const isActive = pathname === item.path || (item.path !== '/' && pathname.startsWith(item.path));
-                      
+                      const isActive = !isExternal && (pathname === item.path || (item.path !== '/' && pathname.startsWith(item.path)));
+
+                      if (isExternal) {
+                        return (
+                          <a
+                            key={item.name}
+                            href={item.path}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block px-4 py-3 rounded-lg text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                          >
+                            {item.name}
+                          </a>
+                        );
+                      }
+
                       return (
                         <Link
                           key={item.name}
