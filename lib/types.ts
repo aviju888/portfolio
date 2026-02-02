@@ -67,6 +67,10 @@ export interface Photo {
   optimized?: OptimizedImage;
   blurDataURL?: string;
   visible?: boolean;
+  dominantColor?: {
+    hex: string;
+    hsl: { h: number; s: number; l: number };
+  };
 }
 
 export interface Album {
