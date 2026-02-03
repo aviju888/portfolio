@@ -19,7 +19,7 @@ export default function TldrPage() {
       {/* View Resume Button */}
       <div className="flex justify-center mb-8">
         <a
-          href="/resume.pdf"
+          href="/adriel-vijuan-resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="btn-secondary"

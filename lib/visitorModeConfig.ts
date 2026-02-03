@@ -7,14 +7,14 @@ export const modeConfigs: Record<VisitorMode, VisitorModeConfig> = {
     icon: 'briefcase',
     navItems: [
       { name: 'Home', path: '/' },
-      { name: 'Resume', path: '/resume.pdf', external: true },
+      { name: 'Resume', path: '/adriel-vijuan-resume.pdf', external: true },
       { name: 'Experience', path: '/experience' },
       { name: 'Code', path: '/code' },
       { name: 'Contact', path: '/contact' },
     ],
     sectionOrder: ['hero', 'experience', 'projects', 'photos', 'cta'],
     heroLinks: [
-      { label: 'View Resume', href: '/resume.pdf', external: true },
+      { label: 'View Resume', href: '/adriel-vijuan-resume.pdf', external: true },
       { label: 'See Experience', href: '/experience' },
       { label: 'Get in Touch', href: '/contact' },
     ],

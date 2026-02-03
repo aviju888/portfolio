@@ -178,7 +178,7 @@ function CTASection() {
             Get in Touch
           </Link>
           <a
-            href="/resume.pdf"
+            href="/adriel-vijuan-resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-secondary"
