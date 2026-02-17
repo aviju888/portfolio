@@ -44,13 +44,8 @@ export default function Nav() {
     <motion.nav
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isTransparent ? 'bg-transparent' : 'bg-white/80 dark:bg-gray-950/80 supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-gray-950/70 backdrop-blur-md'} ${!isTransparent ? 'shadow-lg shadow-black/10 dark:shadow-black/30' : ''}`}
-      style={!isTransparent ? {
-        borderBottom: theme === 'dark' ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid rgba(0, 0, 0, 0.08)',
-        boxShadow: theme === 'dark'
-          ? '0 1px 0 0 rgba(255, 255, 255, 0.03), 0 4px 16px 0 rgba(0, 0, 0, 0.4)'
-          : '0 1px 0 0 rgba(0, 0, 0, 0.05), 0 4px 16px 0 rgba(0, 0, 0, 0.1)'
-      } : {}}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isTransparent ? 'bg-transparent' : 'bg-white dark:bg-gray-950'}`}
+      style={{}}
     >
           <div className="max-w-6xl mx-auto px-6">
             <div className="flex justify-between h-16">

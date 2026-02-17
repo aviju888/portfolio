@@ -60,18 +60,30 @@ export default function ExperienceCard({ experience, className = '', compact = f
       {/* Header with logo and role info */}
       <div className="flex items-start gap-3 md:gap-4 mb-4 pr-10 md:pr-0">
         {experience.logo && (
-          <div className={`flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center ${
-            ['KOSMOS @ Cal', 'Self-Employed', 'AFX Dance', 'PASAE', 'Apex Agent Labs'].includes(experience.company)
-              ? 'bg-gray-900 dark:bg-transparent border border-gray-200 dark:border-gray-700'
-              : 'bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700'
-          }`}>
-            <Image
-              src={experience.logo}
-              alt={`${experience.company} logo`}
-              width={36}
-              height={36}
-              className="opacity-90 transition-opacity"
-            />
+          <div className="flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+            {experience.logoBg === 'dark' ? (
+              <div className="w-9 h-9 rounded-lg bg-gray-900 flex items-center justify-center">
+                <Image
+                  src={experience.logo}
+                  alt={`${experience.company} logo`}
+                  width={28}
+                  height={28}
+                  className="opacity-90 transition-opacity"
+                />
+              </div>
+            ) : (
+              <Image
+                src={experience.logo}
+                alt={`${experience.company} logo`}
+                width={36}
+                height={36}
+                className={`rounded-lg opacity-90 transition-opacity ${
+                  experience.logoStyle === 'white'
+                    ? 'invert dark:invert-0'
+                    : ''
+                }`}
+              />
+            )}
           </div>
         )}
 

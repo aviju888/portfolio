@@ -38,7 +38,8 @@
       "repo": "",
       "caseStudy": "/photos"
     },
-    "logo": "/images/icons/camera_inverted.png"
+    "logo": "/images/icons/camera_inverted.png",
+    "logoStyle": "white"
   },
   {
     "company": "KOSMOS @ Cal",
@@ -58,7 +59,8 @@
       "repo": "",
       "caseStudy": "/code/kosmos-website"
     },
-    "logo": "/images/icons/kosmos_inverted.png"
+    "logo": "/images/icons/kosmos.png",
+    "logoBg": "dark"
   },
   {
     "company": "KOSMOS @ Cal",
@@ -78,7 +80,8 @@
       "repo": "",
       "caseStudy": ""
     },
-    "logo": "/images/icons/kosmos_inverted.png"
+    "logo": "/images/icons/kosmos.png",
+    "logoBg": "dark"
   },
   {
     "company": "PASAE",
@@ -98,7 +101,7 @@
       "repo": "",
       "caseStudy": "/code/pasae-website"
     },
-    "logo": "/images/icons/pasae_inverted.png"
+    "logo": "/images/icons/pasae_new.png"
   },
   {
     "company": "AFX Dance",
@@ -118,7 +121,8 @@
       "repo": "",
       "caseStudy": ""
     },
-    "logo": "/images/icons/afx_inverted.png"
+    "logo": "/images/icons/afx_inverted.png",
+    "logoStyle": "white"
   },
   {
     "company": "Dowork.ai",

@@ -171,4 +171,6 @@ export interface Experience {
     caseStudy: string;
   };
   logo: string;
+  logoStyle?: 'contained' | 'white';
+  logoBg?: 'dark';
 }

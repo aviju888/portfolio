@@ -33,12 +33,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${spaceGrotesk.variable} font-sans bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 min-h-screen relative`}>
         <Providers>
-          {/* Subtle background gradient */}
-          <div className="fixed inset-0 pointer-events-none">
+          {/* Background layer */}
+          <div className="fixed inset-0 pointer-events-none z-[-1]">
             <div className="absolute inset-0 bg-white dark:bg-gray-950" />
           </div>
 
-          <div className="relative z-10">
+          <div className="relative">
             <Nav />
             <main className="min-h-screen">
               {children}
