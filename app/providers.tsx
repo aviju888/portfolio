@@ -2,11 +2,14 @@
 
 import { ReactNode } from 'react';
 import { VisitorModeProvider } from './context/VisitorModeContext';
+import { ThemeProvider } from './context/ThemeContext';
 
 export function Providers({ children }: { children: ReactNode }) {
   return (
-    <VisitorModeProvider>
-      {children}
-    </VisitorModeProvider>
+    <ThemeProvider>
+      <VisitorModeProvider>
+        {children}
+      </VisitorModeProvider>
+    </ThemeProvider>
   );
 }

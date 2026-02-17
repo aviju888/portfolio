@@ -31,11 +31,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${spaceGrotesk.variable} font-sans bg-white text-gray-900 min-h-screen relative`}>
+      <body className={`${spaceGrotesk.variable} font-sans bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 min-h-screen relative`}>
         <Providers>
           {/* Subtle background gradient */}
           <div className="fixed inset-0 pointer-events-none">
-            <div className="absolute inset-0 bg-white" />
+            <div className="absolute inset-0 bg-white dark:bg-gray-950" />
           </div>
 
           <div className="relative z-10">

@@ -57,7 +57,7 @@ export default function ModeSwitcher() {
                   setMode(m);
                   setIsExpanded(false);
                 }}
-                className="w-10 h-10 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center text-gray-500 hover:text-gray-900 hover:border-gray-300 transition-colors"
+                className="w-10 h-10 rounded-full bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-gray-300 dark:hover:border-gray-600 transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 title={modeLabels[m]}
@@ -72,7 +72,7 @@ export default function ModeSwitcher() {
       {/* Main toggle button - shows current mode */}
       <motion.button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-12 h-12 rounded-full bg-gray-900 shadow-lg flex items-center justify-center text-white hover:bg-gray-800 transition-colors"
+        className="w-12 h-12 rounded-full bg-gray-900 dark:bg-white shadow-lg flex items-center justify-center text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         title={`Current: ${modeLabels[mode]}`}

@@ -51,8 +51,8 @@ export default function AlbumClient({ photos }: AlbumClientProps) {
               />
             </div>
             <div className="mt-2">
-              <h4 className="font-medium text-gray-900 text-sm">{photo.title}</h4>
-              <p className="text-xs text-gray-500">{photo.dateTaken}</p>
+              <h4 className="font-medium text-gray-900 dark:text-white text-sm">{photo.title}</h4>
+              <p className="text-xs text-gray-500 dark:text-gray-400">{photo.dateTaken}</p>
             </div>
           </motion.div>
         ))}
@@ -61,7 +61,7 @@ export default function AlbumClient({ photos }: AlbumClientProps) {
       {/* Empty State */}
       {photos.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-gray-500">No photos found in this album.</p>
+          <p className="text-gray-500 dark:text-gray-400">No photos found in this album.</p>
         </div>
       )}
       

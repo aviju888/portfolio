@@ -19,21 +19,21 @@ export default function CodePage() {
       <Section title="Code" description="AI/ML, frontend, web development, and more">
       {/* Filter Tabs */}
       <div className="relative overflow-x-auto md:overflow-visible mb-8 -mx-6 md:mx-0 px-6 md:px-0">
-        <div className="flex gap-2 md:flex-wrap md:gap-2 md:p-1 md:bg-gray-50 md:rounded-2xl md:glass-border min-w-max md:min-w-0">
+        <div className="flex gap-2 md:flex-wrap md:gap-2 md:p-1 md:bg-gray-50 dark:md:bg-gray-900 md:rounded-2xl md:glass-border min-w-max md:min-w-0">
           {['All', 'AI/ML', 'Computer Vision', 'Web Development', 'Data Science', 'Systems'].map((category) => (
             <motion.button
               key={category}
               onClick={() => setActiveTab(category)}
               className={`relative flex-shrink-0 px-4 py-2.5 md:px-4 md:py-2 rounded-full md:rounded-xl font-semibold text-sm md:text-sm transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                 activeTab === category
-                  ? 'bg-gray-900 text-white md:bg-transparent md:text-gray-900 md:font-bold'
-                  : 'bg-gray-100 text-gray-700 md:bg-transparent md:text-gray-500 md:hover:text-gray-900'
+                  ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900 md:bg-transparent md:dark:bg-transparent md:text-gray-900 md:dark:text-white md:font-bold'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 md:bg-transparent md:dark:bg-transparent md:text-gray-500 md:dark:text-gray-400 md:hover:text-gray-900 md:dark:hover:text-white'
               }`}
             >
               {activeTab === category && (
                 <motion.div
                   layoutId="activeTabCode"
-                  className="hidden md:block absolute inset-0 bg-white rounded-xl"
+                  className="hidden md:block absolute inset-0 bg-white dark:bg-gray-800 rounded-xl"
                   style={{
                     zIndex: -1,
                     boxShadow: '0 2px 8px 0 rgba(0, 0, 0, 0.15), inset 0 1px 0 0 rgba(0, 0, 0, 0.05)'
@@ -62,7 +62,7 @@ export default function CodePage() {
                 <Tag key={tag}>{tag}</Tag>
               ))}
             </div>
-            <div className="text-sm text-gray-500">
+            <div className="text-sm text-gray-500 dark:text-gray-400">
               {project.year}
             </div>
           </Card>

@@ -17,37 +17,37 @@ export default function ExperienceCard({ experience, className = '', compact = f
   const isCurrent = experience.end === null;
   const dateRange = formatDateRange(experience.start, experience.end);
   const [isExpanded, setIsExpanded] = useState(false);
-  
+
   const hasExpandableContent = !!(experience.summary || experience.highlights.length > 0 || experience.stack.length > 0 || experience.links.repo || experience.links.site);
 
   return (
-        <div 
+        <div
           onClick={hasExpandableContent ? () => setIsExpanded(!isExpanded) : undefined}
-          className={`group relative rounded-2xl glass-border p-4 md:p-6 
+          className={`group relative rounded-2xl glass-border p-4 md:p-6
                         transition-all duration-200 ease-out
                         ${hasExpandableContent ? (compact ? 'cursor-pointer' : 'md:cursor-default cursor-pointer') : ''}
-                        ${isCurrent 
-                          ? 'bg-gradient-to-br from-blue-50/50 via-indigo-50/30 to-purple-50/50 hover:from-blue-100/60 hover:via-indigo-100/45 hover:to-purple-100/60 hover:shadow-sm' 
-                          : 'bg-white hover:bg-gray-50 hover:shadow-sm'
+                        ${isCurrent
+                          ? 'bg-gradient-to-br from-blue-50/50 via-indigo-50/30 to-purple-50/50 hover:from-blue-100/60 hover:via-indigo-100/45 hover:to-purple-100/60 hover:shadow-sm dark:from-blue-950/30 dark:via-indigo-950/20 dark:to-purple-950/30 dark:hover:from-blue-950/40 dark:hover:via-indigo-950/30 dark:hover:to-purple-950/40'
+                          : 'bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 hover:shadow-sm'
                         }
                         ${className}`}>
-      
-      
+
+
       {/* Current role badge */}
       {isCurrent && (
-        <div className="absolute -top-2.5 -right-2.5 md:-right-2.5 bg-gray-900 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg z-20">
+        <div className="absolute -top-2.5 -right-2.5 md:-right-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg z-20">
           Current
         </div>
       )}
-      
-      {/* Expand/Collapse indicator - Mobile only, shows on hover */}
+
+      {/* Expand/Collapse indicator */}
       {hasExpandableContent && (
         <div
           className={`${compact ? '' : 'md:hidden '}absolute top-4 w-8 h-8 flex items-center justify-center pointer-events-none z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 ${isCurrent ? 'right-16' : 'right-4'}`}
           aria-label={isExpanded ? 'Collapsed' : 'Expandable'}
         >
           <svg
-            className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
+            className={`w-5 h-5 text-gray-400 dark:text-gray-500 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -56,14 +56,14 @@ export default function ExperienceCard({ experience, className = '', compact = f
           </svg>
         </div>
       )}
-      
+
       {/* Header with logo and role info */}
       <div className="flex items-start gap-3 md:gap-4 mb-4 pr-10 md:pr-0">
         {experience.logo && (
-          <div className={`flex-shrink-0 w-14 h-14 rounded-xl border border-gray-200 flex items-center justify-center ${
-            ['KOSMOS @ Cal', 'Self-Employed', 'AFX Dance', 'PASAE', 'Apex Agent Labs'].includes(experience.company) 
-              ? 'bg-gray-900' 
-              : 'bg-gray-100'
+          <div className={`flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center ${
+            ['KOSMOS @ Cal', 'Self-Employed', 'AFX Dance', 'PASAE', 'Apex Agent Labs'].includes(experience.company)
+              ? 'bg-gray-900 dark:bg-transparent border border-gray-200 dark:border-gray-700'
+              : 'bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700'
           }`}>
             <Image
               src={experience.logo}
@@ -74,53 +74,53 @@ export default function ExperienceCard({ experience, className = '', compact = f
             />
           </div>
         )}
-        
+
         <div className="flex-1 min-w-0">
           {/* Role Title - Most Prominent */}
-          <h3 className="text-xl md:text-2xl font-bold tracking-tight text-gray-900 mb-0">
+          <h3 className="text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white mb-0">
             {experience.role}
           </h3>
-          
+
           {/* Company and Type */}
           <div className="flex items-center gap-2 flex-wrap mb-0.5">
-            <p className="text-sm md:text-base font-semibold text-gray-800">
+            <p className="text-sm md:text-base font-semibold text-gray-800 dark:text-gray-200">
               {experience.company}
             </p>
-            <span className="text-gray-300">•</span>
-            <span className="text-sm text-gray-600">
+            <span className="text-gray-300 dark:text-gray-600">•</span>
+            <span className="text-sm text-gray-600 dark:text-gray-400">
               {experience.type}
             </span>
           </div>
-          
+
           {/* Date and Location */}
-          <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600">
+          <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
             <span className="font-medium">{dateRange}</span>
-            <span className="text-gray-400">•</span>
+            <span className="text-gray-400 dark:text-gray-600">•</span>
             <span>{experience.location}</span>
           </div>
         </div>
       </div>
-      
+
       {/* Summary and Highlights - Collapsible on mobile */}
       {(experience.summary || experience.highlights.length > 0) && (
         <div className={`mb-2 ${hasExpandableContent ? (isExpanded ? 'block' : (compact ? 'hidden' : 'hidden md:block')) : ''}`}>
           <ul className="space-y-1">
             {experience.summary && (
-              <li className="text-sm text-gray-700 flex items-start gap-2">
-                <span className="text-gray-400 mt-0.5 flex-shrink-0 text-xs">▸</span>
+              <li className="text-sm text-gray-700 dark:text-gray-300 flex items-start gap-2">
+                <span className="text-gray-400 dark:text-gray-500 mt-0.5 flex-shrink-0 text-xs">▸</span>
                 <span className="flex-1 leading-relaxed">{experience.summary}</span>
               </li>
             )}
             {experience.highlights.map((highlight, index) => (
-              <li key={index} className="text-sm text-gray-700 flex items-start gap-2">
-                <span className="text-gray-400 mt-0.5 flex-shrink-0 text-xs">▸</span>
+              <li key={index} className="text-sm text-gray-700 dark:text-gray-300 flex items-start gap-2">
+                <span className="text-gray-400 dark:text-gray-500 mt-0.5 flex-shrink-0 text-xs">▸</span>
                 <span className="flex-1 leading-relaxed">{highlight}</span>
               </li>
             ))}
           </ul>
         </div>
       )}
-      
+
       {/* Tech Stack - Collapsible on mobile */}
       {experience.stack.length > 0 && (
         <div className={`mb-3 mt-[5px] ${hasExpandableContent ? (isExpanded ? 'block' : (compact ? 'hidden' : 'hidden md:block')) : ''}`}>
@@ -133,15 +133,15 @@ export default function ExperienceCard({ experience, className = '', compact = f
           </div>
         </div>
       )}
-      
+
       {/* Links - Collapsible on mobile */}
       {(experience.links.repo || experience.links.site) && (
-        <div className={`flex flex-wrap gap-4 pt-4 border-t border-gray-100 ${hasExpandableContent ? (isExpanded ? 'flex' : (compact ? 'hidden' : 'hidden md:flex')) : ''}`}>
+        <div className={`flex flex-wrap gap-4 pt-4 border-t border-gray-100 dark:border-gray-800 ${hasExpandableContent ? (isExpanded ? 'flex' : (compact ? 'hidden' : 'hidden md:flex')) : ''}`}>
           {experience.links.repo && (
-            <Link 
+            <Link
               href={experience.links.repo}
               onClick={(e) => e.stopPropagation()}
-              className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -149,10 +149,10 @@ export default function ExperienceCard({ experience, className = '', compact = f
             </Link>
           )}
           {experience.links.site && (
-            <Link 
+            <Link
               href={experience.links.site}
               onClick={(e) => e.stopPropagation()}
-              className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -31,14 +31,14 @@ export default function TldrPage() {
       <div className="max-w-4xl mx-auto space-y-12">
         {/* Now Section */}
         <div>
-          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
             What I'm doing now
           </h3>
           <ul className="space-y-2">
             {tldr.now?.map((item, index) => (
               <li key={index} className="flex items-start">
-                <span className="text-gray-400 mr-3">•</span>
-                <span className="text-gray-700">{item}</span>
+                <span className="text-gray-400 dark:text-gray-500 mr-3">•</span>
+                <span className="text-gray-700 dark:text-gray-300">{item}</span>
               </li>
             ))}
           </ul>
@@ -46,13 +46,13 @@ export default function TldrPage() {
 
         {/* Education */}
         <div>
-          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
             Education
           </h3>
           <ul className="space-y-2">
             <li className="flex items-start">
-              <span className="text-gray-400 mr-3">•</span>
-              <span className="text-gray-700">
+              <span className="text-gray-400 dark:text-gray-500 mr-3">•</span>
+              <span className="text-gray-700 dark:text-gray-300">
                 {profile.education.degree} with {profile.education.minor} from {profile.education.school}, {profile.education.end}
               </span>
             </li>
@@ -62,31 +62,31 @@ export default function TldrPage() {
         {/* Experience Summary */}
         {displayExperiences.length > 0 && (
           <div>
-            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
               Current & Recent Work
             </h3>
             <ul className="space-y-3">
               {displayExperiences.map((experience, index) => (
                 <li key={`${experience.company}-${experience.start}`} className="flex items-start">
-                  <span className="text-gray-400 mr-3 flex-shrink-0">•</span>
+                  <span className="text-gray-400 dark:text-gray-500 mr-3 flex-shrink-0">•</span>
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-2 mb-1">
-                      <span className="font-medium text-gray-900">{experience.role}</span>
-                      <span className="hidden md:inline text-gray-400">@</span>
-                      <span className="text-gray-600">{experience.company}</span>
-                      <span className="text-gray-500 text-sm">
+                      <span className="font-medium text-gray-900 dark:text-white">{experience.role}</span>
+                      <span className="hidden md:inline text-gray-400 dark:text-gray-500">@</span>
+                      <span className="text-gray-600 dark:text-gray-400">{experience.company}</span>
+                      <span className="text-gray-500 dark:text-gray-400 text-sm">
                         ({formatDateRange(experience.start, experience.end)})
                       </span>
                     </div>
-                    <p className="text-gray-700 text-sm">{experience.summary}</p>
+                    <p className="text-gray-700 dark:text-gray-300 text-sm">{experience.summary}</p>
                   </div>
                 </li>
               ))}
             </ul>
             <div className="mt-4">
-              <Link 
+              <Link
                 href="/experience"
-                className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm"
+                className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-sm"
               >
                 View full experience →
               </Link>
@@ -96,7 +96,7 @@ export default function TldrPage() {
 
         {/* Featured Projects */}
         <div>
-          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
             Featured Projects
           </h3>
           <ul className="space-y-3">
@@ -104,24 +104,24 @@ export default function TldrPage() {
               const project = getProjectBySlug(slug);
               return project ? (
                 <li key={index} className="flex items-start">
-                  <span className="text-gray-400 mr-3">•</span>
+                  <span className="text-gray-400 dark:text-gray-500 mr-3">•</span>
                   <div className="flex-1">
-                    <Link 
+                    <Link
                       href={`/code/${project.slug}`}
-                      className="font-medium text-gray-900 hover:text-gray-700 transition-colors duration-200"
+                      className="font-medium text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-200"
                     >
                       {project.title}
                     </Link>
-                    <p className="text-gray-700 text-sm mt-1">{project.summary}</p>
+                    <p className="text-gray-700 dark:text-gray-300 text-sm mt-1">{project.summary}</p>
                   </div>
                 </li>
               ) : null;
             })}
           </ul>
           <div className="mt-4">
-            <Link 
+            <Link
               href="/code"
-              className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-sm"
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-sm"
             >
               View full projects →
             </Link>
@@ -130,19 +130,19 @@ export default function TldrPage() {
 
                 {/* Contact */}
                 <div>
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4">
                     Contact
                   </h3>
                   <div className="space-y-2">
-                    <p className="text-gray-700">
-                      <span className="font-medium text-gray-900">Email:</span> {tldr.contact.email}
+                    <p className="text-gray-700 dark:text-gray-300">
+                      <span className="font-medium text-gray-900 dark:text-white">Email:</span> {tldr.contact.email}
                     </p>
                     <div className="flex space-x-4">
                       {tldr.contact.links.map((link, index) => (
                         <Link
                           key={index}
                           href={`/${link}`}
-                          className="text-gray-600 hover:text-gray-900 transition-colors duration-200 capitalize"
+                          className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 capitalize"
                         >
                           {link}
                         </Link>

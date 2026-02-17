@@ -29,7 +29,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto shadow-2xl"
+          className="bg-white dark:bg-gray-900 rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto shadow-2xl"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Screenshot */}
@@ -48,16 +48,16 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             {/* Header */}
             <div className="flex items-start justify-between mb-4">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
                   {project.title}
                 </h2>
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                   {project.year} · {project.role}
                 </p>
               </div>
               <button
                 onClick={onClose}
-                className="p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                className="p-2 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -70,7 +70,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
+                  className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-xs rounded-full"
                 >
                   {tag}
                 </span>
@@ -79,14 +79,14 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
             {/* About */}
             <div className="mb-6">
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                 {project.summary}
               </p>
               {project.description.length > 0 && (
                 <ul className="mt-4 space-y-2">
                   {project.description.map((item, index) => (
-                    <li key={index} className="text-sm text-gray-500 flex items-start gap-2">
-                      <span className="text-gray-300">•</span>
+                    <li key={index} className="text-sm text-gray-500 dark:text-gray-400 flex items-start gap-2">
+                      <span className="text-gray-300 dark:text-gray-600">•</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -102,7 +102,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     href={project.links.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 py-2.5 px-4 bg-gray-900 text-white text-sm font-medium rounded-lg text-center hover:bg-gray-800 transition-colors"
+                    className="flex-1 py-2.5 px-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-medium rounded-lg text-center hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
                   >
                     Live Demo →
                   </a>
@@ -112,7 +112,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     href={project.links.repo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 py-2.5 px-4 border border-gray-200 text-gray-700 text-sm font-medium rounded-lg text-center hover:bg-gray-50 transition-colors"
+                    className="flex-1 py-2.5 px-4 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-sm font-medium rounded-lg text-center hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                   >
                     GitHub →
                   </a>

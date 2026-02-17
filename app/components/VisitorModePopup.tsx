@@ -59,12 +59,12 @@ export default function VisitorModePopup() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="bg-white rounded-2xl p-8 shadow-2xl relative"
+            className="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-2xl relative"
           >
             {/* Dismiss button */}
             <button
               onClick={dismissPopup}
-              className="absolute top-3 right-3 p-1.5 text-gray-400 hover:text-gray-600 transition-colors"
+              className="absolute top-3 right-3 p-1.5 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
               aria-label="Dismiss"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -73,7 +73,7 @@ export default function VisitorModePopup() {
             </button>
 
             {/* Header */}
-            <p className="text-center text-gray-500 text-sm mb-6">Who are you?</p>
+            <p className="text-center text-gray-500 dark:text-gray-400 text-sm mb-6">Who are you?</p>
 
             {/* Mode options */}
             <div className="flex gap-6 md:gap-8">
@@ -81,12 +81,12 @@ export default function VisitorModePopup() {
                 <button
                   key={mode.id}
                   onClick={() => handleSelect(mode.id)}
-                  className="flex flex-col items-center gap-3 p-4 rounded-xl hover:bg-gray-50 transition-colors group"
+                  className="flex flex-col items-center gap-3 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group"
                 >
-                  <div className="w-14 h-14 flex items-center justify-center text-gray-500 group-hover:text-gray-900 transition-colors">
+                  <div className="w-14 h-14 flex items-center justify-center text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
                     {mode.icon}
                   </div>
-                  <span className="text-sm font-medium text-gray-500 group-hover:text-gray-900 transition-colors">
+                  <span className="text-sm font-medium text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
                     {mode.label}
                   </span>
                 </button>

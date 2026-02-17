@@ -14,46 +14,45 @@ export default function ExperiencePage() {
 
   return (
     <FadeIn>
-      <Section 
-      // eyebrow="EXPERIENCE" 
-      title="Experience" 
+      <Section
+      title="Experience"
       description="My education, skills, and teams"
     >
       {/* Education and Skills Side by Side */}
       <div className="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-8 mb-12">
         {/* Education Module */}
-        <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 shadow-sm hover:shadow-md transition-shadow">
           {/* Date in top right */}
           <div className="flex justify-end mb-4">
-            <span className="text-sm text-gray-500">{profile.education.start}–{profile.education.end}</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">{profile.education.start}–{profile.education.end}</span>
           </div>
-          
+
           {/* Centered Berkeley Logo */}
           <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center">
-              <img 
-                src="/images/icons/cal.svg" 
-                alt="UC Berkeley" 
+            <div className="w-16 h-16 bg-blue-50 dark:bg-blue-950 rounded-2xl flex items-center justify-center">
+              <img
+                src="/images/icons/cal.svg"
+                alt="UC Berkeley"
                 className="w-10 h-10"
               />
             </div>
           </div>
-          
+
           {/* Education Details */}
           <div className="text-center">
-            <h3 className="text-lg font-bold text-gray-900 mb-2">{profile.education.school}</h3>
-            <p className="text-gray-700 font-medium text-sm mb-1">{profile.education.degree}</p>
-            <p className="text-gray-500 text-sm mb-3">{profile.education.minor}</p>
-            <p className="text-sm text-gray-500">{profile.education.location}</p>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{profile.education.school}</h3>
+            <p className="text-gray-700 dark:text-gray-300 font-medium text-sm mb-1">{profile.education.degree}</p>
+            <p className="text-gray-500 dark:text-gray-400 text-sm mb-3">{profile.education.minor}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{profile.education.location}</p>
           </div>
         </div>
 
         {/* Skills Module */}
-        <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow">
-          <h3 className="text-xl font-bold text-gray-900 mb-6">Skills & Technologies</h3>
+        <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 shadow-sm hover:shadow-md transition-shadow">
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">Skills & Technologies</h3>
           <div className="space-y-4">
             <div>
-              <h4 className="text-sm font-medium text-gray-700 mb-2">Frontend</h4>
+              <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Frontend</h4>
               <div className="flex flex-wrap gap-2">
                 {['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'].map(skill => (
                   <Tag key={skill}>{skill}</Tag>
@@ -61,7 +60,7 @@ export default function ExperiencePage() {
               </div>
             </div>
             <div>
-              <h4 className="text-sm font-medium text-gray-700 mb-2">Backend & Tools</h4>
+              <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Backend & Tools</h4>
               <div className="flex flex-wrap gap-2">
                 {['Python', 'FastAPI', 'Supabase', 'PostgreSQL', 'Git'].map(skill => (
                   <Tag key={skill}>{skill}</Tag>
@@ -69,7 +68,7 @@ export default function ExperiencePage() {
               </div>
             </div>
             <div>
-              <h4 className="text-sm font-medium text-gray-700 mb-2">ML & CV</h4>
+              <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">ML & CV</h4>
               <div className="flex flex-wrap gap-2">
                 {['PyTorch', 'OpenCV', 'NumPy', 'scikit-learn', 'Jupyter'].map(skill => (
                   <Tag key={skill}>{skill}</Tag>
@@ -82,7 +81,7 @@ export default function ExperiencePage() {
 
       {/* Work Experience Filter Tabs */}
       <div className="relative overflow-x-auto md:overflow-visible mb-8 -mx-6 md:mx-0 px-6 md:px-0">
-        <div className="flex gap-3 md:flex-wrap md:gap-2 md:p-1 md:bg-gray-50 md:rounded-2xl md:glass-border min-w-max md:min-w-0">
+        <div className="flex gap-3 md:flex-wrap md:gap-2 md:p-1 md:bg-gray-50 dark:md:bg-gray-900 md:rounded-2xl md:glass-border min-w-max md:min-w-0">
           {[
             { key: 'all', label: 'All' },
             { key: 'Software', label: 'Software' },
@@ -94,14 +93,14 @@ export default function ExperiencePage() {
               onClick={() => setActiveTab(tab.key as any)}
               className={`relative flex-shrink-0 px-6 py-3.5 md:px-4 md:py-2 rounded-full md:rounded-xl font-semibold text-base md:text-sm transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                 activeTab === tab.key
-                  ? 'bg-gray-900 text-white md:bg-transparent md:text-gray-900 md:font-bold'
-                  : 'bg-gray-100 text-gray-700 md:bg-transparent md:text-gray-500 md:hover:text-gray-900'
+                  ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900 md:bg-transparent md:dark:bg-transparent md:text-gray-900 md:dark:text-white md:font-bold'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 md:bg-transparent md:dark:bg-transparent md:text-gray-500 md:dark:text-gray-400 md:hover:text-gray-900 md:dark:hover:text-white'
               }`}
             >
               {activeTab === tab.key && (
                 <motion.div
                   layoutId="activeTabExperience"
-                  className="hidden md:block absolute inset-0 bg-white rounded-xl"
+                  className="hidden md:block absolute inset-0 bg-white dark:bg-gray-800 rounded-xl"
                   style={{
                     zIndex: -1,
                     boxShadow: '0 2px 8px 0 rgba(0, 0, 0, 0.15), inset 0 1px 0 0 rgba(0, 0, 0, 0.05)'
@@ -128,7 +127,7 @@ export default function ExperiencePage() {
       {/* Empty State */}
       {displayExperiences.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-gray-500">No experiences found for this category.</p>
+          <p className="text-gray-500 dark:text-gray-400">No experiences found for this category.</p>
         </div>
       )}
     </Section>

@@ -25,16 +25,16 @@ function HeroSection() {
       <CodeDroppingAnimation />
 
       <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
-        <div className="text-xs md:text-xs uppercase tracking-[0.2em] text-gray-500 mb-6 md:mb-4">
+        <div className="text-xs md:text-xs uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 mb-6 md:mb-4">
           {config.heroSubtitle}
         </div>
 
-        <h1 className="text-[clamp(56px,10vw,80px)] md:text-[clamp(40px,7vw,80px)] leading-[1.05] tracking-tight font-semibold text-gray-900 mb-10 md:mb-8">
+        <h1 className="text-[clamp(56px,10vw,80px)] md:text-[clamp(40px,7vw,80px)] leading-[1.05] tracking-tight font-semibold text-gray-900 dark:text-white mb-10 md:mb-8">
           {profile.name}
         </h1>
 
         {profile.headline && (
-          <p className="text-[clamp(20px,4vw,24px)] md:text-[clamp(18px,2.2vw,24px)] text-gray-600 leading-relaxed mb-8 md:mb-3 max-w-3xl mx-auto">
+          <p className="text-[clamp(20px,4vw,24px)] md:text-[clamp(18px,2.2vw,24px)] text-gray-600 dark:text-gray-400 leading-relaxed mb-8 md:mb-3 max-w-3xl mx-auto">
             {profile.headline}
           </p>
         )}
@@ -47,7 +47,7 @@ function HeroSection() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full md:w-auto px-6 py-3.5 md:px-0 md:py-0 text-base md:text-sm text-center md:text-left text-gray-900 md:text-gray-600 md:hover:text-gray-900 bg-gray-100 md:bg-transparent rounded-full md:rounded-none font-medium md:font-normal transition-all duration-200 group"
+                className="w-full md:w-auto px-6 py-3.5 md:px-0 md:py-0 text-base md:text-sm text-center md:text-left text-gray-900 dark:text-white md:text-gray-600 md:dark:text-gray-400 md:hover:text-gray-900 md:dark:hover:text-white bg-gray-100 dark:bg-gray-800 md:bg-transparent md:dark:bg-transparent rounded-full md:rounded-none font-medium md:font-normal transition-all duration-200 group"
               >
                 {link.label} <span className="inline-block opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200">→</span>
               </a>
@@ -55,7 +55,7 @@ function HeroSection() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="w-full md:w-auto px-6 py-3.5 md:px-0 md:py-0 text-base md:text-sm text-center md:text-left text-gray-900 md:text-gray-600 md:hover:text-gray-900 bg-gray-100 md:bg-transparent rounded-full md:rounded-none font-medium md:font-normal transition-all duration-200 group"
+                className="w-full md:w-auto px-6 py-3.5 md:px-0 md:py-0 text-base md:text-sm text-center md:text-left text-gray-900 dark:text-white md:text-gray-600 md:dark:text-gray-400 md:hover:text-gray-900 md:dark:hover:text-white bg-gray-100 dark:bg-gray-800 md:bg-transparent md:dark:bg-transparent rounded-full md:rounded-none font-medium md:font-normal transition-all duration-200 group"
               >
                 {link.label} <span className="inline-block opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200">→</span>
               </Link>
@@ -143,22 +143,22 @@ function PhotosSection({ mode }: { mode: VisitorMode }) {
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="mb-16">
           <div className="mb-8">
-            <div className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-3">
+            <div className="text-xs uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 mb-3">
               PHOTOGRAPHY
             </div>
             <div className="flex flex-col md:flex-row md:justify-between md:items-end">
               <div>
-                <h2 className="text-h1-sm md:text-4xl font-semibold tracking-tight text-gray-900 mb-2">
+                <h2 className="text-h1-sm md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white mb-2">
                   Selected Shots
                 </h2>
-                <div className="w-12 h-[1px] bg-gray-300 mb-4" />
-                <p className="mt-3 text-gray-600 max-w-xl leading-relaxed">
+                <div className="w-12 h-[1px] bg-gray-300 dark:bg-gray-700 mb-4" />
+                <p className="mt-3 text-gray-600 dark:text-gray-400 max-w-xl leading-relaxed">
                   {override?.description ?? "Graduation portraits, dance performances, and events."}
                 </p>
               </div>
               <a
                 href="/photos"
-                className="text-xs text-gray-600 hover:text-gray-900 transition-colors duration-200 flex items-center gap-1 mt-3 md:mt-0"
+                className="text-xs text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 flex items-center gap-1 mt-3 md:mt-0"
               >
                 View All
                 <span className="text-xs">→</span>
@@ -184,10 +184,10 @@ function CTASection({ mode }: { mode: VisitorMode }) {
   return (
     <section className="py-16 md:py-24">
       <div className="max-w-4xl mx-auto px-6 text-center">
-        <h2 className="text-h1-sm md:text-h1 font-bold text-gray-900 mb-6">
+        <h2 className="text-h1-sm md:text-h1 font-bold text-gray-900 dark:text-white mb-6">
           {cta.heading}
         </h2>
-        <p className="text-body text-gray-600 mb-12">
+        <p className="text-body text-gray-600 dark:text-gray-400 mb-12">
           {cta.description}
         </p>
         <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -221,7 +221,7 @@ export default function Home() {
   if (!isHydrated) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-gray-300 border-t-gray-900 rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-gray-300 dark:border-gray-700 border-t-gray-900 dark:border-t-white rounded-full animate-spin" />
       </div>
     );
   }
@@ -235,7 +235,7 @@ export default function Home() {
             <Fragment key={sectionKey}>
               {index > 0 && <div className="w-full glass-divider" />}
               {isSecondary ? (
-                <div className="bg-gray-50 border-y border-gray-100">
+                <div className="bg-gray-50 dark:bg-gray-900/50 border-y border-gray-100 dark:border-gray-800">
                   {sections[sectionKey]}
                 </div>
               ) : (

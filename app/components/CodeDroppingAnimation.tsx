@@ -16,7 +16,7 @@ export default function CodeDroppingAnimation() {
       {codeLines.map((line, index) => (
         <motion.div
           key={index}
-          className="absolute text-gray-200/20 font-mono text-xs md:text-sm"
+          className="absolute text-gray-200/20 dark:text-gray-700/30 font-mono text-xs md:text-sm"
           initial={{ 
             y: -100,
             opacity: 0,

@@ -158,15 +158,15 @@ export default function AdminPhotosPage() {
 
   if (!authenticated) {
     return (
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-        <form onSubmit={handleLogin} className="bg-white p-8 rounded-xl shadow-lg max-w-sm w-full">
-          <h1 className="text-2xl font-bold mb-6 text-center">Admin Login</h1>
+      <div className="min-h-screen bg-gray-100 dark:bg-gray-950 flex items-center justify-center p-4">
+        <form onSubmit={handleLogin} className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg max-w-sm w-full">
+          <h1 className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-white">Admin Login</h1>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter password"
-            className="w-full px-4 py-3 border rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           {message && <p className="text-red-500 text-sm mb-4">{message}</p>}
           <button
@@ -181,13 +181,13 @@ export default function AdminPhotosPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-950">
       {/* Header */}
-      <div className="sticky top-0 z-50 bg-white border-b shadow-sm">
+      <div className="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <div>
-            <h1 className="text-xl font-bold">Photo Admin</h1>
-            <p className="text-sm text-gray-500">
+            <h1 className="text-xl font-bold text-gray-900 dark:text-white">Photo Admin</h1>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
               {selectedCount} of {totalCount} selected
             </p>
           </div>
@@ -209,7 +209,7 @@ export default function AdminPhotosPage() {
 
       {/* Instructions */}
       <div className="max-w-7xl mx-auto px-4 pt-6">
-        <p className="text-sm text-gray-600 bg-white rounded-lg p-3 shadow-sm">
+        <p className="text-sm text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-900 rounded-lg p-3 shadow-sm">
           Click photos to select/deselect. Only selected photos appear on the live site.
           Use "Crop" to adjust framing without modifying the original file.
         </p>
@@ -264,7 +264,7 @@ export default function AdminPhotosPage() {
                     e.stopPropagation();
                     openCropEditor(photo);
                   }}
-                  className="absolute bottom-2 right-2 bg-white/90 hover:bg-white text-gray-700 text-xs px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity"
+                  className="absolute bottom-2 right-2 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity"
                 >
                   Crop
                 </button>
@@ -277,12 +277,12 @@ export default function AdminPhotosPage() {
       {/* Crop Modal */}
       {cropPhoto && (
         <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-          <div className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-auto">
-            <div className="p-4 border-b flex items-center justify-between">
-              <h2 className="text-lg font-bold">Crop Photo</h2>
+          <div className="bg-white dark:bg-gray-900 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-auto">
+            <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+              <h2 className="text-lg font-bold text-gray-900 dark:text-white">Crop Photo</h2>
               <button
                 onClick={() => setCropPhoto(null)}
-                className="text-gray-500 hover:text-gray-700"
+                className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -291,7 +291,7 @@ export default function AdminPhotosPage() {
             </div>
 
             <div className="p-4">
-              <p className="text-sm text-gray-500 mb-4">
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
                 Click and drag to select the visible area. The original image is preserved.
               </p>
 
@@ -330,17 +330,17 @@ export default function AdminPhotosPage() {
               </div>
             </div>
 
-            <div className="p-4 border-t flex justify-between">
+            <div className="p-4 border-t border-gray-200 dark:border-gray-700 flex justify-between">
               <button
                 onClick={clearCrop}
-                className="px-4 py-2 text-red-600 hover:text-red-800"
+                className="px-4 py-2 text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300"
               >
                 Clear Crop
               </button>
               <div className="flex gap-3">
                 <button
                   onClick={() => setCropPhoto(null)}
-                  className="px-4 py-2 text-gray-600 hover:text-gray-900"
+                  className="px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 >
                   Cancel
                 </button>

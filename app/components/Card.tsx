@@ -43,14 +43,14 @@ export default function Card({
 
   const cardContent = (
     <div
-      className={`group relative bg-white rounded-2xl glass-border p-4 md:p-6
+      className={`group relative bg-white dark:bg-gray-900 rounded-2xl glass-border p-4 md:p-6
                   transition-colors duration-200 ease-out
-                  hover:bg-gray-50
+                  hover:bg-gray-50 dark:hover:bg-gray-800
                   ${className}`}
     >
       {/* Image with inset frame */}
       {image && (
-        <div className="relative overflow-hidden rounded-lg bg-gray-100 aspect-[16/9] mb-4 p-1">
+        <div className="relative overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800 aspect-[16/9] mb-4 p-1">
           {!imageLoaded && <ImageSkeleton />}
           {optimized ? (
             <OptimizedImage
@@ -76,24 +76,24 @@ export default function Card({
           )}
         </div>
       )}
-      
+
       <div className="space-y-2">
-        <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-700 transition-colors">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
           {title}
         </h3>
-        
+
         {subtitle && (
-          <p className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors">
+          <p className="text-sm text-gray-600 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
             {subtitle}
           </p>
         )}
-        
+
         {description && (
-          <p className="text-sm text-gray-700 group-hover:text-gray-800 transition-colors leading-relaxed">
+          <p className="text-sm text-gray-700 dark:text-gray-300 group-hover:text-gray-800 dark:group-hover:text-gray-200 transition-colors leading-relaxed">
             {description}
           </p>
         )}
-        
+
         {children}
       </div>
     </div>
