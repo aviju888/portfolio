@@ -1,12 +1,19 @@
+'use client';
+
 import Section from '../components/Section';
 import FadeIn from '../components/FadeIn';
+import { useVisitorMode } from '../context/VisitorModeContext';
+import { getModeConfig } from '@/lib/visitorModeConfig';
 
 export default function ContactPage() {
+  const { mode } = useVisitorMode();
+  const config = getModeConfig(mode);
+
   return (
     <FadeIn>
-      <Section 
-      title="Contact" 
-      description="Feel free to reach out!"
+      <Section
+      title="Contact"
+      description={config.contactDescription}
     >
       <div className="max-w-4xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

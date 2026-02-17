@@ -13,6 +13,7 @@ import ProjectModal from './components/ProjectModal';
 import { useState, Fragment } from 'react';
 import { useVisitorMode } from './context/VisitorModeContext';
 import { getModeConfig } from '@/lib/visitorModeConfig';
+import { VisitorMode } from '@/lib/types';
 
 // Section components
 function HeroSection() {
@@ -25,7 +26,7 @@ function HeroSection() {
 
       <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
         <div className="text-xs md:text-xs uppercase tracking-[0.2em] text-gray-500 mb-6 md:mb-4">
-          Software Engineer & Creative
+          {config.heroSubtitle}
         </div>
 
         <h1 className="text-[clamp(56px,10vw,80px)] md:text-[clamp(40px,7vw,80px)] leading-[1.05] tracking-tight font-semibold text-gray-900 mb-10 md:mb-8">
@@ -64,10 +65,12 @@ function HeroSection() {
   );
 }
 
-function ExperienceSection() {
+function ExperienceSection({ mode }: { mode: VisitorMode }) {
   const currentExperiences = getCurrentExperiences();
   const recentExperiences = getRecentExperiences(2);
   const displayExperiences = [...currentExperiences, ...recentExperiences].slice(0, 4);
+  const config = getModeConfig(mode);
+  const override = config.sectionOverrides['experience'];
 
   if (displayExperiences.length === 0) return null;
 
@@ -77,13 +80,14 @@ function ExperienceSection() {
         <SpotlightRow
           eyebrow="EXPERIENCE"
           title="Current & Recent Work"
-          description="My journey through software engineering, research, and creative work"
+          description={override?.description ?? "My journey through software engineering, research, and creative work"}
           viewAllHref="/experience"
         >
           {displayExperiences.map((experience) => (
             <ExperienceCard
               key={`${experience.company}-${experience.start}`}
               experience={experience}
+              compact
             />
           ))}
         </SpotlightRow>
@@ -92,8 +96,10 @@ function ExperienceSection() {
   );
 }
 
-function ProjectsSection({ onSelectProject }: { onSelectProject: (project: Project) => void }) {
+function ProjectsSection({ onSelectProject, mode }: { onSelectProject: (project: Project) => void; mode: VisitorMode }) {
   const featuredProjects = getFeaturedProjects().slice(0, 2);
+  const config = getModeConfig(mode);
+  const override = config.sectionOverrides['projects'];
 
   return (
     <section className="relative py-16 md:py-24">
@@ -101,7 +107,7 @@ function ProjectsSection({ onSelectProject }: { onSelectProject: (project: Proje
         <SpotlightRow
           eyebrow="CODE"
           title="Featured Projects"
-          description="A few shipped pieces across frontend, CV/ML, and CRO."
+          description={override?.description ?? "A few shipped pieces across frontend, CV/ML, and CRO."}
           viewAllHref="/code"
         >
           {featuredProjects.map((project) => (
@@ -125,8 +131,10 @@ function ProjectsSection({ onSelectProject }: { onSelectProject: (project: Proje
   );
 }
 
-function PhotosSection() {
+function PhotosSection({ mode }: { mode: VisitorMode }) {
   const rainbowPhotos = getRainbowPhotos(12);
+  const config = getModeConfig(mode);
+  const override = config.sectionOverrides['photos'];
 
   return (
     <section className="py-16 md:py-24">
@@ -143,7 +151,7 @@ function PhotosSection() {
                 </h2>
                 <div className="w-12 h-[1px] bg-gray-300 mb-4" />
                 <p className="mt-3 text-gray-600 max-w-xl leading-relaxed">
-                  Graduation portraits, dance performances, and events.
+                  {override?.description ?? "Graduation portraits, dance performances, and events."}
                 </p>
               </div>
               <a
@@ -163,28 +171,30 @@ function PhotosSection() {
   );
 }
 
-function CTASection() {
+function CTASection({ mode }: { mode: VisitorMode }) {
+  const { cta } = getModeConfig(mode);
+
+  const SecondaryTag = cta.secondaryExternal ? 'a' : Link;
+  const secondaryProps = cta.secondaryExternal
+    ? { href: cta.secondaryHref, target: '_blank' as const, rel: 'noopener noreferrer' }
+    : { href: cta.secondaryHref };
+
   return (
     <section className="py-16 md:py-24">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <h2 className="text-h1-sm md:text-h1 font-bold text-gray-900 mb-6">
-          Let's work together
+          {cta.heading}
         </h2>
         <p className="text-body text-gray-600 mb-12">
-          I'm always interested in new opportunities and collaborations.
+          {cta.description}
         </p>
         <div className="flex flex-col sm:flex-row gap-6 justify-center">
-          <Link href="/contact" className="btn-primary">
-            Get in Touch
+          <Link href={cta.primaryHref} className="btn-primary">
+            {cta.primaryLabel}
           </Link>
-          <a
-            href="/adriel-vijuan-resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-secondary"
-          >
-            View Resume
-          </a>
+          <SecondaryTag {...secondaryProps} className="btn-secondary">
+            {cta.secondaryLabel}
+          </SecondaryTag>
         </div>
       </div>
     </section>
@@ -199,10 +209,10 @@ export default function Home() {
   // Section mapping
   const sections: Record<string, JSX.Element | null> = {
     hero: <HeroSection />,
-    experience: <ExperienceSection />,
-    projects: <ProjectsSection onSelectProject={setSelectedProject} />,
-    photos: <PhotosSection />,
-    cta: <CTASection />,
+    experience: <ExperienceSection mode={mode} />,
+    projects: <ProjectsSection onSelectProject={setSelectedProject} mode={mode} />,
+    photos: <PhotosSection mode={mode} />,
+    cta: <CTASection mode={mode} />,
   };
 
   // Don't render until hydrated to prevent layout shift
@@ -217,12 +227,21 @@ export default function Home() {
   return (
     <FadeIn>
       <div className="min-h-screen">
-        {config.sectionOrder.map((sectionKey, index) => (
-          <Fragment key={sectionKey}>
-            {index > 0 && <div className="w-full glass-divider" />}
-            {sections[sectionKey]}
-          </Fragment>
-        ))}
+        {config.sectionOrder.map((sectionKey, index) => {
+          const isSecondary = config.secondarySections.includes(sectionKey);
+          return (
+            <Fragment key={sectionKey}>
+              {index > 0 && <div className="w-full glass-divider" />}
+              {isSecondary ? (
+                <div className="bg-gray-50 border-y border-gray-100">
+                  {sections[sectionKey]}
+                </div>
+              ) : (
+                sections[sectionKey]
+              )}
+            </Fragment>
+          );
+        })}
 
         {/* Project Modal */}
         <ProjectModal

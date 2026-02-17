@@ -126,6 +126,21 @@ export interface HeroLink {
   external?: boolean;
 }
 
+export interface SectionOverride {
+  description?: string;
+}
+
+export interface CTAConfig {
+  heading: string;
+  description: string;
+  primaryLabel: string;
+  primaryHref: string;
+  primaryExternal?: boolean;
+  secondaryLabel: string;
+  secondaryHref: string;
+  secondaryExternal?: boolean;
+}
+
 export interface VisitorModeConfig {
   id: VisitorMode;
   label: string;
@@ -133,6 +148,11 @@ export interface VisitorModeConfig {
   navItems: NavItem[];
   sectionOrder: string[];
   heroLinks: HeroLink[];
+  heroSubtitle: string;
+  cta: CTAConfig;
+  contactDescription: string;
+  secondarySections: string[];
+  sectionOverrides: Record<string, SectionOverride>;
 }
 
 export interface Experience {

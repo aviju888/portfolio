@@ -10,9 +10,10 @@ import Tag from './Tag';
 interface ExperienceCardProps {
   experience: Experience;
   className?: string;
+  compact?: boolean;
 }
 
-export default function ExperienceCard({ experience, className = '' }: ExperienceCardProps) {
+export default function ExperienceCard({ experience, className = '', compact = false }: ExperienceCardProps) {
   const isCurrent = experience.end === null;
   const dateRange = formatDateRange(experience.start, experience.end);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -24,7 +25,7 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
           onClick={hasExpandableContent ? () => setIsExpanded(!isExpanded) : undefined}
           className={`group relative rounded-2xl glass-border p-4 md:p-6 
                         transition-all duration-200 ease-out
-                        ${hasExpandableContent ? 'md:cursor-default cursor-pointer' : ''}
+                        ${hasExpandableContent ? (compact ? 'cursor-pointer' : 'md:cursor-default cursor-pointer') : ''}
                         ${isCurrent 
                           ? 'bg-gradient-to-br from-blue-50/50 via-indigo-50/30 to-purple-50/50 hover:from-blue-100/60 hover:via-indigo-100/45 hover:to-purple-100/60 hover:shadow-sm' 
                           : 'bg-white hover:bg-gray-50 hover:shadow-sm'
@@ -42,7 +43,7 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
       {/* Expand/Collapse indicator - Mobile only, shows on hover */}
       {hasExpandableContent && (
         <div
-          className={`md:hidden absolute top-4 w-8 h-8 flex items-center justify-center pointer-events-none z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 ${isCurrent ? 'right-16' : 'right-4'}`}
+          className={`${compact ? '' : 'md:hidden '}absolute top-4 w-8 h-8 flex items-center justify-center pointer-events-none z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 ${isCurrent ? 'right-16' : 'right-4'}`}
           aria-label={isExpanded ? 'Collapsed' : 'Expandable'}
         >
           <svg
@@ -102,7 +103,7 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
       
       {/* Summary and Highlights - Collapsible on mobile */}
       {(experience.summary || experience.highlights.length > 0) && (
-        <div className={`mb-2 ${hasExpandableContent ? (isExpanded ? 'block' : 'hidden md:block') : ''}`}>
+        <div className={`mb-2 ${hasExpandableContent ? (isExpanded ? 'block' : (compact ? 'hidden' : 'hidden md:block')) : ''}`}>
           <ul className="space-y-1">
             {experience.summary && (
               <li className="text-sm text-gray-700 flex items-start gap-2">
@@ -122,7 +123,7 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
       
       {/* Tech Stack - Collapsible on mobile */}
       {experience.stack.length > 0 && (
-        <div className={`mb-3 mt-[5px] ${hasExpandableContent ? (isExpanded ? 'block' : 'hidden md:block') : ''}`}>
+        <div className={`mb-3 mt-[5px] ${hasExpandableContent ? (isExpanded ? 'block' : (compact ? 'hidden' : 'hidden md:block')) : ''}`}>
           <div className="flex flex-wrap gap-2">
             {experience.stack.map((tech) => (
               <Tag key={tech} className="text-xs">
@@ -135,7 +136,7 @@ export default function ExperienceCard({ experience, className = '' }: Experienc
       
       {/* Links - Collapsible on mobile */}
       {(experience.links.repo || experience.links.site) && (
-        <div className={`flex flex-wrap gap-4 pt-4 border-t border-gray-100 ${hasExpandableContent ? (isExpanded ? 'flex' : 'hidden md:flex') : ''}`}>
+        <div className={`flex flex-wrap gap-4 pt-4 border-t border-gray-100 ${hasExpandableContent ? (isExpanded ? 'flex' : (compact ? 'hidden' : 'hidden md:flex')) : ''}`}>
           {experience.links.repo && (
             <Link 
               href={experience.links.repo}
