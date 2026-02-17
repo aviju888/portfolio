@@ -1,14 +1,14 @@
 {
   "now": [
-    "Building and growing in the agentic AI space",
+    "Building AI-powered tools at Apex Agent Labs",
     "Journaling, reading, dancing, and exploring life",
     "Navigating post-grad (go bears!)"
   ],
   "topProjects": [
+    "chronos",
     "doculaw-ai",
-    "kosmos-website", 
-    "diffusion-models",
-    "hybrid-images"
+    "kosmos-website",
+    "diffusion-models"
   ],
   "selectedPhotos": [
     "/images/gallery/monicagrad1.png",

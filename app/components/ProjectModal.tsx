@@ -84,7 +84,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               </p>
               {project.description.length > 0 && (
                 <ul className="mt-4 space-y-2">
-                  {project.description.slice(0, 3).map((item, index) => (
+                  {project.description.map((item, index) => (
                     <li key={index} className="text-sm text-gray-500 flex items-start gap-2">
                       <span className="text-gray-300">•</span>
                       <span>{item}</span>

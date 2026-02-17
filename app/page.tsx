@@ -33,9 +33,11 @@ function HeroSection() {
           {profile.name}
         </h1>
 
-        <p className="text-[clamp(20px,4vw,24px)] md:text-[clamp(18px,2.2vw,24px)] text-gray-600 leading-relaxed mb-8 md:mb-3 max-w-3xl mx-auto">
-          {profile.headline}
-        </p>
+        {profile.headline && (
+          <p className="text-[clamp(20px,4vw,24px)] md:text-[clamp(18px,2.2vw,24px)] text-gray-600 leading-relaxed mb-8 md:mb-3 max-w-3xl mx-auto">
+            {profile.headline}
+          </p>
+        )}
 
         <div className="flex flex-col gap-4 md:flex-row md:gap-4 justify-center items-center">
           {config.heroLinks.map((link) => (

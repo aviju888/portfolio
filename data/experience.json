@@ -10,7 +10,7 @@
     "highlights": [
       "Developed AI Data Analyst Agent through 20+ iterations with financial impact analysis and persistent memory",
       "Built 50+ React/TypeScript components: real-time analytics dashboards, subscription billing, OAuth flows",
-      "Architected parallel data pipelines with multi-agent orchestration and security hardening (XSS, input validation)"
+      "Built parallel data pipelines with multi-agent orchestration and added security hardening (XSS, input validation)"
     ],
     "stack": ["React", "TypeScript", "Python", "AI/ML", "OAuth"],
     "links": {
